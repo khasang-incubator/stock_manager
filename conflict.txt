@@ -1,1 +1,5 @@
-qweqweqweqeqw
+class Hello{
+void hello(){
+println("hello world");
+end;
+}

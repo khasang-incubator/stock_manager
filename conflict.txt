@@ -1,5 +1,5 @@
 class Hello{
 void hello(){
-println("hello world");
+println("conquer world");
 end;
 }

@@ -1,0 +1,40 @@
+.header1{
+		text-align:center;
+	}
+	
+	.letter{
+			color:rgb(120,200,120);
+			font-size:400%;
+			font-family:serif;
+			position:relative;
+			top:1rem;
+			border: 10px solid rgb(120,200,120);
+			}
+	footer p{
+		color:rgb(200,200,200);
+		position:relative;
+		font-family:serif;
+		top:18rem;
+		
+	}
+	header h1{
+		font-family:serif;
+		font-size:380%;
+		color:rgb(120,200,120);
+		border: 10px solid rgb(120,200,120);
+	}
+	header .row{
+		display:flex;
+		position:relative;
+		align-items:center;
+	}
+	header nav{
+		display:flex;
+		justify-content:flex-end;
+	}
+	header p{
+		font-family:serif;
+		font-size:400%;
+		margin:4rem;
+		color:rgb(120,200,120);
+	}

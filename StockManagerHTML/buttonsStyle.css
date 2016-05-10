@@ -1,0 +1,25 @@
+.enterButton{
+		color:rgb(120,200,120);
+		font-family:serif;
+		position:relative;
+		top:9rem;
+		font-size:400%;
+		background-color:transparent;
+		
+	}
+	.enterButton a{
+		position:relative;
+	}
+	.enterButton a:active{
+		top:4px;
+	}
+	
+	nav li{
+		display:inline;
+		position:relative;
+		top:19.5rem;
+		font-family:serif;
+		margin:6rem;
+		font-size:200%;
+		font-weight:500;
+	}

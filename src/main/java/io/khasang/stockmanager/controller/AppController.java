@@ -18,6 +18,7 @@ public class AppController {
     public AppController() {
     }
 
+    // wired pupil bean through constructor injecting
     @Autowired
     public AppController(HelloMessage helloMessage) {
         this.helloMessage = helloMessage;

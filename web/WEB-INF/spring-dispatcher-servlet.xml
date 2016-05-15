@@ -17,10 +17,12 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <!--teacher bean-->
     <bean name="messageInfo" class="io.khasang.stockmanager.model.Message">
         <property name="messageInfo" value="What a wonderful world"/>
     </bean>
     
+    <!--pupil bean-->
     <bean name="helloMessage" class="io.khasang.stockmanager.model.HelloMessage">
         <property name="message" value="The message was injected in constructor"/>
     </bean>

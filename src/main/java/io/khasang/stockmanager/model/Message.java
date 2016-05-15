@@ -1,6 +1,7 @@
 package io.khasang.stockmanager.model;
 
 public class Message {
+
     private String messageInfo;
 
     public Message() {

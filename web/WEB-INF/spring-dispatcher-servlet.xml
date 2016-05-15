@@ -20,7 +20,11 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
     <bean name="messageInfo" class="io.khasang.stockmanager.model.Message">
         <property name="messageInfo" value="What a wonderful world"/>
     </bean>
-
+    
+    <bean name="helloMessage" class="io.khasang.stockmanager.model.HelloMessage">
+        <property name="message" value="The message was injected in constructor"/>
+    </bean>
+    
     <mvc:default-servlet-handler/>
 
     <!-- resources exclusions from servlet mapping -->

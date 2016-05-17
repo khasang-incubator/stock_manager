@@ -1,6 +1,0 @@
-class Hello{
-void hello(){
-println("destroy world");
-println("conquer world");
-end;
-}

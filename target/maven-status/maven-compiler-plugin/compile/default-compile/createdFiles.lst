@@ -1,0 +1,3 @@
+com/cliffdurden/spring/javaconfig/helloworld/config/WebConfig.class
+com/cliffdurden/spring/javaconfig/helloworld/config/WebAppInitializer.class
+com/cliffdurden/spring/javaconfig/helloworld/controller/HelloWorldController.class

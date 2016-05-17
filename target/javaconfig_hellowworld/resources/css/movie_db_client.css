@@ -1,0 +1,12 @@
+.main_body_class{
+    width: 50%;
+    margin: 0 auto;
+}
+
+.theader{
+    background-color: #cccccc;
+}
+
+#help_label{
+    text-decoration: underline;
+}

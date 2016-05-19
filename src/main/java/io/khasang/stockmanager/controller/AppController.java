@@ -1,7 +1,6 @@
 package io.khasang.stockmanager.controller;
 
 import io.khasang.stockmanager.model.DataExample;
-import io.khasang.stockmanager.model.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,4 +28,11 @@ public class AppController {
         model.addAttribute("tablecreate", dataExample.getResult());
         return "tablecreate";
     }
+
+    @RequestMapping("/confidential/developermsv")
+    public String listProduct(Model model){
+        model.addAttribute("stockbalance", "category");
+        return "stockbalance";
+    }
+
 }

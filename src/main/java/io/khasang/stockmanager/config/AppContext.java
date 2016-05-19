@@ -1,7 +1,7 @@
 package io.khasang.stockmanager.config;
 
 import io.khasang.stockmanager.model.DataExample;
-import io.khasang.stockmanager.model.Message;
+import io.khasang.stockmanager.model.HelloMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,6 +21,12 @@ public class AppContext {
 //        return  new Message();
 //    }
 
+    // pupil bean helloMessage
+    @Bean
+    public HelloMessage helloMessage(){
+        return new HelloMessage();
+    }
+    
     @Bean
     public JdbcTemplate jdbcTemplate(){
         JdbcTemplate jdbcTemplate = new JdbcTemplate();

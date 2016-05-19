@@ -4,7 +4,7 @@
     <head>
         <title>Test application by pShtykov aka Buranzo</title>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="css/front.css">
+        <link rel="stylesheet" href="css/helloApp.css">
     </head>
     <body>
         <div class="teacherMessageBlock">

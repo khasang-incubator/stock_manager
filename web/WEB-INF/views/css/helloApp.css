@@ -1,6 +1,9 @@
-* {
-    font-family: Lucida Sans;
-    background: lightgrey;
+body {
+    background-color: lightgray;
+    /*background-image: url('/images/sun.gif');*/
+/*    background-repeat: repeat;
+    background-attachment: fixed;*/
+    background-position: top center;
 }
 
 hr {

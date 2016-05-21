@@ -1,10 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>Translator en-ru</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/translation.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script src="../js/translation.js"></script>
 </head>
 <body>
 <h1>Переводчик с английского на русский</h1>

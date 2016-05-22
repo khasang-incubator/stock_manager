@@ -2,9 +2,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Open Movie Database Client</title>
-    <script src="/resources/js/movie_db_client.js"></script>
-    <link rel="stylesheet" href="/resources/css/main.css">
-    <link rel="stylesheet" href="/resources/css/movie_db_client.css">
+    <script src="/js/movie_db_client.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/movie_db_client.css">
 </head>
 <body>
 <div class="main_body_class">

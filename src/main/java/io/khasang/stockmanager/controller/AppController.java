@@ -29,4 +29,10 @@ public class AppController {
         model.addAttribute("tablecreate", dataExample.getResult());
         return "tablecreate";
     }
+
+    @RequestMapping("/dmkoro")
+    public String dmkoro(Model model) {
+        model.addAttribute("", "");
+        return "dmkoro_page";
+    }
 }

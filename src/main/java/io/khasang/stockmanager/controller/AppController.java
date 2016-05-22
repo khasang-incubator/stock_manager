@@ -1,5 +1,7 @@
 package io.khasang.stockmanager.controller;
 
+import io.khasang.stockmanager.model.DataExample;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class AppController {
+    @Autowired
+    DataExample dataExample;
 
     @RequestMapping("/")
     public String shrink(Model model){
@@ -32,6 +36,16 @@ public class AppController {
     public String returnJSONP(Model model){
         model.addAttribute("script","script");
         return "script";
+    }
+    @RequestMapping("/romak_table")
+    public String tableCreate(Model model){
+        model.addAttribute("tablecreate",dataExample.getResultCreateTable());
+        return "tablecreate";
+    }
+    @RequestMapping("/romak_truncate")
+    public String tableTruncate(Model model){
+        model.addAttribute("truncate",dataExample.getResultTruncate());
+        return "truncate";
     }
 
 }

@@ -4,8 +4,8 @@
     <head>
         <title>Test application by ShtykovPB aka Buranzo</title>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="../../css/htmlPage.css">
-        <script src="../../js/createTable.js">
+        <link rel="stylesheet" href="../css/htmlPage.css">
+        <script src="../js/createTable.js">
         </script>
     </head>
     <body>

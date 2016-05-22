@@ -13,29 +13,25 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 @Configuration
 @PropertySource("classpath:util.properties")
 public class AppContext {
+
     @Autowired
     Environment environment;
 
-//    @Bean
-//    public Message message(){
-//        return  new Message();
-//    }
-
     // pupil bean helloMessage
     @Bean
-    public HelloMessage helloMessage(){
+    public HelloMessage helloMessage() {
         return new HelloMessage();
     }
-    
+
     @Bean
-    public JdbcTemplate jdbcTemplate(){
+    public JdbcTemplate jdbcTemplate() {
         JdbcTemplate jdbcTemplate = new JdbcTemplate();
         jdbcTemplate.setDataSource(dataSource());
         return jdbcTemplate;
     }
 
     @Bean
-    public DriverManagerDataSource dataSource(){
+    public DriverManagerDataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(environment.getProperty("jdbc.postgresql.driverClass"));
         dataSource.setUrl(environment.getProperty("jdbc.postgresql.url"));
@@ -45,7 +41,7 @@ public class AppContext {
     }
 
     @Bean
-    public DataExample dataExample(){
+    public DataExample dataExample() {
         return new DataExample(jdbcTemplate());
     }
 }

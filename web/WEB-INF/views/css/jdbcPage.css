@@ -1,0 +1,35 @@
+* {
+    font-family: Lucida Sans, Arial, Helvetica, sans-serif;
+    background: lightgray;
+}
+
+.titleTextBlock {
+    text-align: center; font-size: 22px;
+    color:  coral; margin-top: 24px;
+}
+.textBlock {
+    text-align: center; font-size: 12px;
+    color: #666; margin-top: 24px;
+}
+
+.resultTextTrue {
+    text-align: center; font-size: 16px;
+    color: green; margin-top: 24px;
+}
+
+.resultTextFalse {
+    text-align: center; font-size: 16px;
+    color: crimson; margin-top: 24px;
+}
+
+table tr {
+    text-align: center; font-size: 12px;
+    color: #555; margin-top: 24px;
+}
+
+td {
+    width: 50%;
+    border: solid; border-width: 1px; border-color: lightslategray; 
+    text-align: center; font-size: 16px;
+    color: green; margin-top: 24px;
+}

@@ -33,7 +33,7 @@ public class AppController {
         return "tablecreate";
     }
 
-    @RequestMapping("/confidential/yukon85/stockmanager")
+    @RequestMapping("/yukon85/stockmanager")
     public String showStockTable(Model model) {
         model.addAttribute("showtable", testDataBase.showDataTable());
         return "stockpage";

@@ -2,6 +2,12 @@ package io.khasang.stockmanager.config;
 
 import io.khasang.stockmanager.model.DataExample;
 import io.khasang.stockmanager.model.HelloMessage;
+import io.khasang.stockmanager.model.pShtykov.CreateTables;
+import io.khasang.stockmanager.model.pShtykov.FillData;
+import io.khasang.stockmanager.model.pShtykov.OuterJoin;
+import io.khasang.stockmanager.model.pShtykov.SelectDepartments;
+import io.khasang.stockmanager.model.pShtykov.SelectEmployees;
+import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +22,31 @@ public class AppContext {
 
     @Autowired
     Environment environment;
+
+    @Autowired
+    private CreateTables createTables;
+
+    @Autowired
+    private FillData fillData;
+
+    @Autowired
+    private SelectEmployees selectEmployees;
+    
+    @Autowired
+    private SelectDepartments selectDepartments;
+    
+
+    @Autowired
+    private OuterJoin outerJoin;
+
+    @PostConstruct
+    public void process() {
+        createTables.create();
+        fillData.fill();
+        selectEmployees.select();
+        selectDepartments.select();
+        outerJoin.select();
+    }
 
     // pupil bean helloMessage
     @Bean

@@ -4,7 +4,9 @@ import io.khasang.stockmanager.model.DataExample;
 import io.khasang.stockmanager.model.HelloMessage;
 import io.khasang.stockmanager.model.pShtykov.CreateTables;
 import io.khasang.stockmanager.model.pShtykov.FillData;
-import io.khasang.stockmanager.model.pShtykov.Select;
+import io.khasang.stockmanager.model.pShtykov.OuterJoin;
+import io.khasang.stockmanager.model.pShtykov.SelectDepartments;
+import io.khasang.stockmanager.model.pShtykov.SelectEmployees;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +25,13 @@ public class AppController {
     private FillData fillData;
 
     @Autowired
-    private Select select;
+    private SelectEmployees selectEmployees;
+    
+    @Autowired
+    private SelectDepartments selectDepartments;
+
+    @Autowired
+    private OuterJoin outerJoin;
 
     // injecting pupil bean helloMessage
     @Autowired
@@ -55,17 +63,14 @@ public class AppController {
         return "/pShtykov/htmlPage/htmlPage";
     }
 
-    //mapping to my HTML/JS application
+    //mapping to my JDBC application
     @RequestMapping("/pShtykov/jdbc")
     public String jdbc(Model model) {
-
-        createTables.create();
-        fillData.fill();
-        select.select();
-
         model.addAttribute("createTables", createTables.getResult());
         model.addAttribute("fillData", fillData.getResult());
-        model.addAttribute("select", select.getSelectResult());
+        model.addAttribute("selectEmployees", selectEmployees.getResult());
+        model.addAttribute("selectDepartments", selectDepartments.getResult());
+        model.addAttribute("selectOuterJoin", outerJoin.getResult());
         return "/pShtykov/jdbc/jdbc";
     }
 }

@@ -3,7 +3,6 @@ package io.khasang.stockmanager.model.pShtykov;
 import io.khasang.stockmanager.model.pShtykov.datalanguage.Ddl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
-import javax.annotation.PostConstruct;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
@@ -19,42 +18,40 @@ public class CreateTables {
     private FillData fillData;
 
     @Autowired
-    private Select select;
+    private SelectEmployees select;
+
+    @Autowired
+    private OuterJoin outerJoin;
 
     private boolean result;
 
     public CreateTables() {
     }
 
-    @PostConstruct
     public void create() {
-        result = (dropTableOne() & dropTableTwo() & createTableOne() & createTableTwo());
-        if (result) {
-            fillData.fill();
-            select.select();
-        }
+        result = (dropTableEmployees() & dropTableDepartments() & createTableEmployees() & createTableDepartments());
     }
 
-    private boolean dropTableOne() {
-        String query = "DROP TABLE IF EXISTS table_one;";
+    private boolean dropTableEmployees() {
+        String query = "DROP TABLE IF EXISTS employees;";
         return ddl.query(query);
     }
 
-    private boolean dropTableTwo() {
-        String query = "DROP TABLE IF EXISTS table_two;";
+    private boolean dropTableDepartments() {
+        String query = "DROP TABLE IF EXISTS departments;";
         return ddl.query(query);
     }
 
-    private boolean createTableOne() {
-        String query = "CREATE TABLE table_one "
+    private boolean createTableEmployees() {
+        String query = "CREATE TABLE employees "
                 + "(ID  SERIAL PRIMARY KEY, "
                 + "employee TEXT NOT NULL, "
                 + "room INT NOT NULL);";
         return ddl.query(query);
     }
 
-    private boolean createTableTwo() {
-        String query = "CREATE TABLE table_two "
+    private boolean createTableDepartments() {
+        String query = "CREATE TABLE departments "
                 + "(ID  SERIAL PRIMARY KEY, "
                 + "room INT NOT NULL, "
                 + "department TEXT NOT NULL);";

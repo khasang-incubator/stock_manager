@@ -1,12 +1,12 @@
 package io.khasang.stockmanager.model.pShtykov.model;
 
-public class Employees {
+public class Employee {
 
     private long id;
     private String employee;
     private int room;
 
-    public Employees(long id, String employee, int room) {
+    public Employee(long id, String employee, int room) {
         this.id = id;
         this.employee = employee;
         this.room = room;

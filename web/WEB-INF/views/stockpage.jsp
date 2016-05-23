@@ -1,10 +1,16 @@
-<!doctype html>
+<%--
+  Created by IntelliJ IDEA.
+  User: admin
+  Date: 22.05.2016
+  Time: 4:51
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Stock Manager</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script src="stock_manager.js"></script>
-    <link rel="stylesheet" href="stock_manager.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="stockpage">
 </head>
 <body>
 <div id="container">
@@ -17,7 +23,6 @@
 
     </div>
 
-
     <div id="container_for_table">
         <table id="table_with_items" border="1">
             <tr>
@@ -28,9 +33,9 @@
                 <th class="quantity_of_item">Количество</th>
                 <th class="cost_of_item">Стоимость</th>
             </tr>
+            ${showtable}
         </table>
     </div>
-
 
     <div id="buttons">
 
@@ -38,4 +43,3 @@
 </div>
 </body>
 </html>
-

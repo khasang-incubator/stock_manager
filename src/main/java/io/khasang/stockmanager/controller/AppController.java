@@ -16,4 +16,10 @@ public class AppController {
         model.addAttribute("hello", message.getMessageInfo());
         return "hello";
     }
+
+    @RequestMapping("/confidential")
+    public String securePage(Model model) {
+        model.addAttribute("cat", "Barsik");
+        return "cat";
+    }
 }

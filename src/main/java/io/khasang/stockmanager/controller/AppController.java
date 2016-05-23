@@ -1,6 +1,7 @@
 package io.khasang.stockmanager.controller;
 
 import io.khasang.stockmanager.model.DataExample;
+import io.khasang.stockmanager.model.MyTestDataBase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AppController {
     @Autowired
     DataExample dataExample;
+
+    @Autowired
+    MyTestDataBase testDataBase;
 
     @RequestMapping("/")
     public String shrink(Model model) {
@@ -29,8 +33,9 @@ public class AppController {
         return "tablecreate";
     }
 
-    @RequestMapping("/yukon85/test_template")
-    public String showTestTemplate() {
-        return "/sm/stock_manager";
+    @RequestMapping("/confidential/yukon85/stockmanager")
+    public String showStockTable(Model model) {
+        model.addAttribute("showtable", testDataBase.showDataTable());
+        return "stockpage";
     }
 }

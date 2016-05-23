@@ -1,7 +1,7 @@
 package io.khasang.stockmanager.config;
 
 import io.khasang.stockmanager.model.DataExample;
-import io.khasang.stockmanager.model.Message;
+import io.khasang.stockmanager.model.MyTestDataBase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,11 +15,6 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 public class AppContext {
     @Autowired
     Environment environment;
-
-//    @Bean
-//    public Message message(){
-//        return  new Message();
-//    }
 
     @Bean
     public JdbcTemplate jdbcTemplate(){
@@ -41,5 +36,10 @@ public class AppContext {
     @Bean
     public DataExample dataExample(){
         return new DataExample(jdbcTemplate());
+    }
+
+    @Bean
+    public MyTestDataBase testDataBase() {
+        return  new MyTestDataBase(jdbcTemplate());
     }
 }

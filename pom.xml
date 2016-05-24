@@ -13,9 +13,7 @@
         <spring.version>4.2.5.RELEASE</spring.version>
         <jdk.version>1.8</jdk.version>
         <spring.security.version>4.0.4.RELEASE</spring.security.version>
-     </properties>
-
-    <dependencies>
+        <!--Spring Framework-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
@@ -41,6 +39,16 @@
             <artifactId>spring-orm</artifactId>
             <version>${spring.version}</version>
         </dependency>
+
+        <!--Spring Security-->
+
+
+        <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-test</artifactId>
+        <version>${spring.version}</version>
+        <scope>test</scope>
+    </dependency>
         <!--Spring Security-->
 
         <dependency>
@@ -68,7 +76,9 @@
             <scope>test</scope>
         </dependency>
 
-        <!--JSP-->
+
+        <!--JSP -->
+
         <dependency>
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
@@ -90,7 +100,9 @@
             <artifactId>jta</artifactId>
             <version>1.1</version>
         </dependency>
-        <!--PostgreSql-->
+
+        <!-- PostgreSQL-->
+
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
@@ -101,6 +113,9 @@
     <build>
         <finalName>stock_manager</finalName>
         <sourceDirectory>src/main/java</sourceDirectory>
+
+        <testSourceDirectory>src/test/java</testSourceDirectory>
+
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>

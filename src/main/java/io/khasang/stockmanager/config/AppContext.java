@@ -1,6 +1,10 @@
 package io.khasang.stockmanager.config;
 
 import io.khasang.stockmanager.model.DataExample;
+
+
+import io.khasang.stockmanager.model.Message;
+
 import io.khasang.stockmanager.model.ProductOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -17,11 +21,19 @@ public class AppContext {
     Environment environment;
 
     @Bean
+
+    @Bean
+    ProductOrder productOrder(){
+        return new ProductOrder(jdbcTemplate());
+    }
+
+    @Bean
     public JdbcTemplate jdbcTemplate(){
         JdbcTemplate jdbcTemplate = new JdbcTemplate();
         jdbcTemplate.setDataSource(dataSource());
         return jdbcTemplate;
     }
+
     @Bean
     public DriverManagerDataSource dataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -42,4 +54,12 @@ public class AppContext {
     ProductOrder productOrder(){
         return new ProductOrder(jdbcTemplate());
     }
+=======
+    }
+
+    @Bean
+    public DataExample dataExample(){
+        return new DataExample(jdbcTemplate());
+    }
+>>>>>>> origin/development
 }

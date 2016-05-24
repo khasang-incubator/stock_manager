@@ -1,15 +1,17 @@
 package io.khasang.stockmanager.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.xml.crypto.Data;
+
 public class Message {
-    private String messageInfo;
+    @Autowired
+    DataExample dataExample;
 
     public Message() {
     }
-    public String getMessageInfo(){
-        return messageInfo;
-    }
 
-    public void setMessageInfo(String messageInfo) {
-        this.messageInfo = messageInfo;
+    public String getMessageInfo() {
+        return "blabla";
     }
 }

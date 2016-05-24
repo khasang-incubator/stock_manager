@@ -1,6 +1,7 @@
 package io.khasang.stockmanager.config;
 
 import io.khasang.stockmanager.model.DataExample;
+import io.khasang.stockmanager.model.ProductOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -35,5 +36,10 @@ public class AppContext {
     @Bean
     DataExample dataExample(){
         return new DataExample(jdbcTemplate());
+    }
+
+    @Bean
+    ProductOrder productOrder(){
+        return new ProductOrder(jdbcTemplate());
     }
 }

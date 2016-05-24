@@ -21,7 +21,8 @@ public class DataExample {
         try {
             jdbcTemplate.execute("CREATE TABLE COMPANY" +
                     "(ID INT PRIMARY KEY NOT NULL,"+"GOODS TEXT)");
-            jdbcTemplate.execute("INSERT INTO COMPANY(ID, GOODS) VALUES(1,'ABS'),(2,'PLA'),(3,'METALL')");
+            jdbcTemplate.execute("INSERT INTO COMPANY(ID, GOODS) VALUES(1,'ABS'),(2,'PLA'),(3,'METALL'),(4,'WOOD')," +
+                    "(5,'GLASS'),(6,'FIBERGLASS'),(7,'LEATHER'),(8,'WOOL'),(9,'NYLON')");
             result = "Table Company created successful!";
         } catch (Exception e) {
             result = e + "";

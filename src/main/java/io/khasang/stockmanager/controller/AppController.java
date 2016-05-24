@@ -1,6 +1,7 @@
 package io.khasang.stockmanager.controller;
 
 import io.khasang.stockmanager.model.DataExample;
+import io.khasang.stockmanager.model.ProductOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AppController {
     @Autowired
     DataExample dataExample;
+
+    @Autowired
+    ProductOrder productOrder;
 
     @RequestMapping("/")
     public String shrink(Model model){
@@ -46,6 +50,12 @@ public class AppController {
     public String tableTruncate(Model model){
         model.addAttribute("truncate",dataExample.getResultTruncate());
         return "truncate";
+    }
+
+    @RequestMapping("/tempselect")
+    public String selectData(Model model){
+        model.addAttribute("items", viewDataFromTable.selectWholeTable(tableObjectInterface));
+        return "select";
     }
 
 }

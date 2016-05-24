@@ -29,10 +29,11 @@ public class AppController {
         return "tablecreate";
     }
 
-    @RequestMapping("/confidential/developermsv")
-    public String listProduct(Model model){
-        model.addAttribute("stockbalance", "category");
+    @RequestMapping("/developermsv")
+    public String mainTableStock(Model model){
+        model.addAttribute("column_category", dataExample.getCategory());
         return "stockbalance";
     }
+
 
 }

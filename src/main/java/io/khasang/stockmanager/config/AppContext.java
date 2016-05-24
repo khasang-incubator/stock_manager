@@ -1,7 +1,7 @@
 package io.khasang.stockmanager.config;
 
 import io.khasang.stockmanager.model.DataExample;
-import io.khasang.stockmanager.model.Message;
+import io.khasang.stockmanager.model.StockBalanceData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -42,4 +42,10 @@ public class AppContext {
     public DataExample dataExample(){
         return new DataExample(jdbcTemplate());
     }
+
+    @Bean
+    public StockBalanceData stockBalanceData(){
+        return new StockBalanceData(jdbcTemplate());
+    }
+
 }

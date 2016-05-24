@@ -1,7 +1,10 @@
 package io.khasang.stockmanager.controller;
 
+import io.khasang.stockmanager.dao.HibernateUtil;
 import io.khasang.stockmanager.model.DataExample;
 import io.khasang.stockmanager.model.ProductOrder;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +21,7 @@ public class AppController {
 
     @RequestMapping("/")
     public String shrink(Model model) {
+        SessionFactory session = HibernateUtil.getSessionFactory();
         model.addAttribute("hello", "");
         return "hello";
     }

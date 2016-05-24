@@ -2,8 +2,8 @@
 <html>
 <head>
     <title>Hello World Spring MVC</title>
-    <link rel="stylesheet" href="/resources/css/main.css">
-    <link rel="stylesheet" href="/resources/css/movie_db_client.css">
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/movie_db_client.css">
 </head>
 <body>
 <div class="main_body_class">

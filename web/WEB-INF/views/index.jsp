@@ -18,6 +18,8 @@
     <a href="/cliffdurden/list_employees">list_employees</a>
     <br/>
     <a href="/cliffdurden/dump_db">dump_db</a>
+    <br/>
+    <a href="/cliffdurden/show_salaries">update employees salaries</a>
 </div>
 </body>
 </html>

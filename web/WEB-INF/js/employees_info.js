@@ -11,6 +11,9 @@ function updateResults(data) {
     table.setAttribute("class", "employees_table");
     var trheader = document.createElement("tr");
     trheader.setAttribute("class", "theader");
+    var tdheader0 = document.createElement("td");
+    tdheader0.innerHTML = 'id';
+    trheader.appendChild(tdheader0);
     var tdheader1 = document.createElement("td");
     tdheader1.innerHTML = 'First name';
     trheader.appendChild(tdheader1);

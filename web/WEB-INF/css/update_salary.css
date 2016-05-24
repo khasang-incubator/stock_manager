@@ -1,0 +1,10 @@
+.salaries_table{
+    border: 2px;
+    bordercolor: black;
+    width: 100%;
+}
+
+.theader{
+    background-color: #cccccc;
+}
+

@@ -2,6 +2,7 @@ package io.khasang.stockmanager.config;
 
 import io.khasang.stockmanager.dao.EmployeeDao;
 import io.khasang.stockmanager.dao.EmployeeInfoDao;
+import io.khasang.stockmanager.dao.SalariesDao;
 import io.khasang.stockmanager.model.DataExample;
 import io.khasang.stockmanager.model.Message;
 import io.khasang.stockmanager.model.ProductOrder;
@@ -65,6 +66,11 @@ public class AppContext {
     @Bean
     public DBBackupCommandRunner dbBackupCommandRunner() {
         return new DBBackupCommandRunner();
+    }
+
+    @Bean
+    public SalariesDao salariesDao() {
+        return new SalariesDao();
     }
 
 }

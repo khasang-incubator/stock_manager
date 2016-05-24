@@ -1,7 +1,6 @@
 package io.khasang.stockmanager.dao;
 
 import io.khasang.stockmanager.model.Employee;
-import io.khasang.stockmanager.model.EmployeeInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -19,7 +18,8 @@ public class EmployeeDao {
                 "select * from employees;");
         List<Employee> employeeRows = new LinkedList<>();
         for (Map row : rows) {
-            Employee employee = new EmployeeInfo();
+            Employee employee = new Employee();
+            employee.setId((int) row.get("id"));
             employee.setFirstName((String) row.get("first_name"));
             employee.setLastName((String) row.get("last_name"));
             employee.setPhone((String) row.get("phone"));

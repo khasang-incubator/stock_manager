@@ -1,15 +1,12 @@
-/*window.onload = init;
-
- function init() {
- // updateResults(???);
- }
- */
-
 function updateResults(data) {
     var resultsDiv = document.getElementById("result");
     var table = document.createElement("table");
-    table.setAttribute("class", "employees_table");
+    table.setAttribute("class", "salaries_table");
     var trheader = document.createElement("tr");
+    trheader.setAttribute("class", "theader");
+    var tdheader0 = document.createElement("td");
+    tdheader0.innerHTML = 'id';
+    trheader.appendChild(tdheader0);
     trheader.setAttribute("class", "theader");
     var tdheader1 = document.createElement("td");
     tdheader1.innerHTML = 'First name';
@@ -26,6 +23,12 @@ function updateResults(data) {
     var tdheader5 = document.createElement("td");
     tdheader5.innerHTML = 'Email';
     trheader.appendChild(tdheader5);
+    var tdheader6 = document.createElement("td");
+    tdheader6.innerHTML = 'Salary';
+    trheader.appendChild(tdheader6);
+    var tdheader7 = document.createElement("td");
+    tdheader7.innerHTML = 'Currency';
+    trheader.appendChild(tdheader7);
     table.appendChild(trheader);
     var dataJson = JSON.parse(data);
     for (var i = 0; i < dataJson.length; i++) {

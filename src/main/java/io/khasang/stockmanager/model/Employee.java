@@ -2,11 +2,20 @@ package io.khasang.stockmanager.model;
 
 public class Employee {
 
+    private int id;
     private String firstName;
     private String lastName;
     private String position;
     private String phone;
     private String email;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getFirstName() {
         return firstName;

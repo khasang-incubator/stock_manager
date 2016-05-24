@@ -15,11 +15,12 @@ public class EmployeeInfoDao {
 
     public List<EmployeeInfo> findAll() {
         List<Map<String, Object>> rows = jdbcTemplate.queryForList(
-                "select employees.first_name, employees.last_name, employees.position, employees.phone, employees.email, depts.name as dept_name, depts.description as dept_description " +
+                "select employees.id, employees.first_name, employees.last_name, employees.position, employees.phone, employees.email, depts.name as dept_name, depts.description as dept_description " +
                         "from employees inner join depts on employees.dept_id = depts.id;");
         List<EmployeeInfo> employeeInfoRows = new LinkedList<>();
         for (Map row : rows) {
             EmployeeInfo employeeInfo = new EmployeeInfo();
+            employeeInfo.setId((int) row.get("id"));
             employeeInfo.setFirstName((String) row.get("first_name"));
             employeeInfo.setLastName((String) row.get("last_name"));
             employeeInfo.setPhone((String) row.get("phone"));
@@ -28,7 +29,6 @@ public class EmployeeInfoDao {
             employeeInfo.setDeptName((String) row.get("dept_name"));
             employeeInfo.setDeptDescription((String) row.get("dept_description"));
             employeeInfoRows.add(employeeInfo);
-
         }
         return employeeInfoRows;
     }

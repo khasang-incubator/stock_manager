@@ -2,7 +2,6 @@
 <html>
 <head>
     <title>List of company's employees</title>
-    <title>Company Employees Info</title>
     <script src="/js/list_employees.js"></script>
     <link rel="stylesheet" href="/css/list_employees.css">
 </head>

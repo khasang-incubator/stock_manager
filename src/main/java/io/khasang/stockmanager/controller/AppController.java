@@ -1,6 +1,7 @@
 package io.khasang.stockmanager.controller;
 
 import io.khasang.stockmanager.model.DataExample;
+import io.khasang.stockmanager.model.StockBalanceData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AppController {
     @Autowired
     DataExample dataExample;
+
+    @Autowired
+    StockBalanceData stockBalanceData;
 
     @RequestMapping("/")
     public String shrink(Model model) {
@@ -31,7 +35,7 @@ public class AppController {
 
     @RequestMapping("/developermsv")
     public String mainTableStock(Model model){
-        model.addAttribute("column_category", dataExample.getCategory());
+        model.addAttribute("column_category", stockBalanceData.getCategory());
         return "stockbalance";
     }
 

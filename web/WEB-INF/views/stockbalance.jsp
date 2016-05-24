@@ -2,8 +2,8 @@
 <html>
 <head>
     <title>Stock Manager</title>
-    <link rel="stylesheet" href="../css/main.css">
-    <script src="../js/main.js"></script>
+    <link rel="stylesheet" href="../css/stockbalance.css">
+    <script src="../js/stockbalance.js"></script>
 </head>
 <!--header-->
 <div class="header__main">

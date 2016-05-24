@@ -2,6 +2,7 @@ package io.khasang.stockmanager.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -21,10 +22,15 @@ public class StockBalanceData {
     }
 
     private List<Category> getListCategory() {
-        String sql = "SELECT * FROM CATEGORY";
+        String sql = "SELECT * FROM CATEGORY ORDER BY name";
         List <Category> categories = jdbcTemplate.query(sql,
                 new BeanPropertyRowMapper(Category.class));
         return categories;
+    }
+
+    private int  updateCategory(Category category) throws DataAccessException {
+        String sql = "UPDATE category SET name = ? WHERE id = ?";
+        return jdbcTemplate.update(sql, new Object[] { category.getName(),category.getId()});
     }
 
     public String getCategory() {
@@ -53,4 +59,16 @@ public class StockBalanceData {
         return div.toString();
     }
 
+    public String getResultUpdate() {
+        String result;
+        Category category = new Category();
+        category.setId(3);
+        category.setName("update");
+        try {
+            result = "Обновлено записей: " + String.valueOf(updateCategory(category));
+        } catch (DataAccessException e) {
+            result = e.getLocalizedMessage();
+        }
+        return result;
+    }
 }

@@ -3,6 +3,7 @@
 <head>
     <title>Stock Manager</title>
     <link rel="stylesheet" href="../css/main.css">
+    <script src="../js/main.js"></script>
 </head>
 <!--header-->
 <div class="header__main">
@@ -10,44 +11,10 @@
     <div class="header__column_product gridHeaderCell">Товар</div>
 </div>
 <!--rows-->
-<div class="main">
-
+<div class="main" id = "main_table_stock">
     <div class="main__left" style="left: 0px;">
-        <div class="navigation__region">
-            <div class="navigation__item navigation__item_state_selected">
-                <div class="category">
-                    <div class="category__name">
-                        Бытовая техника
-                    </div>
-                </div>
-            </div>
-            <div class="navigation__item">
-                <div class="category">
-                    <a class="category__url" href="" onmousedown="">
-                        <div class="category__name">
-                            Спортивные товары
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="navigation__item">
-                <div class="category">
-                    <a class="category__url" href="" onmousedown="">
-                        <div class="category__name">
-                            Продукты
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="navigation__item">
-                <div class="category">
-                    <a class="category__url" href="" onmousedown="">
-                        <div class="category__name">
-                            Видео продукция
-                        </div>
-                    </a>
-                </div>
-            </div>
+        <div class="navigation__region" id="column_category">
+            ${column_category}
         </div>
     </div>
     <div class="main__center">

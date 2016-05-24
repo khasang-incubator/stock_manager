@@ -6,6 +6,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 public class DataExample {
     @Autowired
+    Message message;
+
+    @Autowired
     Environment environment;
 
     private JdbcTemplate jdbcTemplate;

@@ -20,7 +20,7 @@ public class StockBalanceData {
     public StockBalanceData() {
     }
 
-    public List<Category> getListCategory() {
+    private List<Category> getListCategory() {
         String sql = "SELECT * FROM CATEGORY";
         List <Category> categories = jdbcTemplate.query(sql,
                 new BeanPropertyRowMapper(Category.class));

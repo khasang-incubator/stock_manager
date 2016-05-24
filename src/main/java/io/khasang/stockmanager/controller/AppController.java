@@ -39,5 +39,11 @@ public class AppController {
         return "stockbalance";
     }
 
+    @RequestMapping("/developermsv/update")
+    public String mainTableStockUpdate(Model model){
+        model.addAttribute("column_category", stockBalanceData.getResultUpdate());
+        return "stockbalance";
+    }
+
 
 }

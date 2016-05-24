@@ -20,9 +20,9 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .usersByUsernameQuery(
                         "select username,password, enabled from users where username=?")
                 .authoritiesByUsernameQuery(
-                        "select u.username, r.role_name \n" +
-                                "from user_roles ur\n" +
-                                "join users u on u.user_id = ur.user_id and u.username = ?  \n" +
+                        "select u.username, r.role_name " +
+                                "from user_roles ur " +
+                                "join users u on u.user_id = ur.user_id and u.username = ?  " +
                                 "join role r on r.role_id = ur.role_id");
 //        auth.inMemoryAuthentication().withUser("user").password("user").roles("USER");
 //        auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ADMIN");

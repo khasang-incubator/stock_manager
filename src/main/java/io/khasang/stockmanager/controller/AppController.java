@@ -39,8 +39,8 @@ public class AppController {
     }
 
     @RequestMapping("/yukon85/select")
-    public String showSelectExample(Model model) {
-        model.addAttribute("showtable", testDataBase.showDataTable());
+    public String showSelectExample(Model model) throws SQLException {
+        model.addAttribute("items", testDataBase.selectWholeTestTable());
         return "selectpage";
     }
 

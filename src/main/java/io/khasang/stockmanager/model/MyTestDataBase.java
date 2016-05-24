@@ -3,44 +3,97 @@ package io.khasang.stockmanager.model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
-import java.util.Map;
 
 public class MyTestDataBase {
     @Autowired
     Environment environment;
 
     private JdbcTemplate jdbcTemplate;
-    private String result = "";
+//    private String result = "";
+
+    private int id;
+    private String name;
+    private String size;
+    private String unit;
+    private int quantity;
+    private float cost;
+
+    public MyTestDataBase() {
+    }
 
     public MyTestDataBase(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public String showDataTable() {
-        String sql = "SELECT * FROM stockitems";
-        try {
-            List<Map<String, Object>> rows = jdbcTemplate.queryForList(sql);
-            for (Map<String, Object> row : rows) {
-                result += "<tr class=\"data\">";
-                for (Object obj: row.values()) {
-                    result += "<th>" + obj.toString() + "</th>";
-                }
-                result += "</tr>";
-            }
-        } catch (Exception e) {
-            result = e + "";
-            e.printStackTrace();
-        }
-        return result;
+    public List selectWholeTestTable() throws SQLException {
+        return this.jdbcTemplate.query("SELECT * " +
+                "FROM stockitems;", new TestItemMapper());
     }
 
-    public String getResult() {
-        return result;
+    public int getId() {
+        return id;
     }
 
-    public void setResult(String result) {
-        this.result = result;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public float getCost() {
+        return cost;
+    }
+
+    public void setCost(float cost) {
+        this.cost = cost;
+    }
+
+}
+
+final class TestItemMapper implements RowMapper<MyTestDataBase> {
+    public MyTestDataBase mapRow(ResultSet rs, int rowNum) throws SQLException {
+        MyTestDataBase testDataBase = new MyTestDataBase();
+        testDataBase.setId(rs.getInt("id"));
+        testDataBase.setName(rs.getString("name"));
+        testDataBase.setSize(rs.getString("size"));
+        testDataBase.setUnit(rs.getString("unit"));
+        testDataBase.setQuantity(rs.getInt("quantity"));
+        testDataBase.setCost(rs.getFloat("cost"));
+        return testDataBase;
     }
 }

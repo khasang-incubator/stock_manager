@@ -38,10 +38,10 @@ public class AppController {
         return "tablecreate";
     }
 
-    @RequestMapping("/yukon85/stockmanager")
-    public String showStockTable(Model model) {
+    @RequestMapping("/yukon85/select")
+    public String showSelectExample(Model model) {
         model.addAttribute("showtable", testDataBase.showDataTable());
-        return "stockpage";
+        return "selectpage";
     }
 
     @RequestMapping("/select")

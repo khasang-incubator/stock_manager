@@ -10,14 +10,13 @@
 <head>
     <title>Stock Manager</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link rel="stylesheet" href="stockpage">
+    <link rel="stylesheet" href="css/examplepage.css">
 </head>
 <body>
 <div id="container">
     <div id="header">
         <h1>Main Information</h1>
     </div>
-
 
     <div id="add_item">
 

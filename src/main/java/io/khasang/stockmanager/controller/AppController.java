@@ -16,11 +16,11 @@ public class AppController {
     @Autowired
     ProductOrder productOrder;
 
-    @RequestMapping("/")
-    public String shrink(Model model) {
-        model.addAttribute("hello", "");
-        return "hello";
-    }
+//    @RequestMapping("/")
+//    public String shrink(Model model) {
+//        model.addAttribute("hello", "");
+//        return "hello";
+//    }
 
     @RequestMapping("/confidential")
     public String securePage(Model model) {

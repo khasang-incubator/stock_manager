@@ -13,9 +13,7 @@ public class DBBackupCommandRunner {
         StringBuilder sb = new StringBuilder();
         try {
             Resource resource = new ClassPathResource("pg_dump.sh");
-            //resource.getURL().getPath();
-            //Process p = Runtime.getRuntime().exec("/Library/PostgreSQL/9.4/bin/pg_dump stockmanager");
-            //Process p = Runtime.getRuntime().exec("/Users/cliff/dev/study/khasang/stock_manager/pg_dump.sh");
+            Process chmod = Runtime.getRuntime().exec("chmod 755 " + resource.getURL().getPath());
             Process p = Runtime.getRuntime().exec(resource.getURL().getPath());
             BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
             BufferedReader stdError = new BufferedReader(new InputStreamReader(p.getErrorStream()));
@@ -29,7 +27,7 @@ public class DBBackupCommandRunner {
         } catch (IOException e) {
             System.out.println("exception happened - here's what I know: ");
             e.printStackTrace();
-            sb.append("ERROR:");
+            sb.append("ERROR: ");
             sb.append(e.getMessage());
         }
         return sb.toString();

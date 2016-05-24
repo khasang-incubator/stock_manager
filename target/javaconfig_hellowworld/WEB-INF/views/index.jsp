@@ -14,6 +14,10 @@
     <a href="/cliffdurden/sayhello">say hello</a>
     <br/>
     <a href="/cliffdurden/all_employees_info">employees info</a>
+    <br/>
+    <a href="/cliffdurden/list_employees">list_employees</a>
+    <br/>
+    <a href="/cliffdurden/dump_db">dump_db</a>
 </div>
 </body>
 </html>

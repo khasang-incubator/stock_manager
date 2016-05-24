@@ -1,9 +1,11 @@
 package com.cliffdurden.spring.javaconfig.helloworld.config;
 
 
+import com.cliffdurden.spring.javaconfig.helloworld.dao.EmployeeDao;
 import com.cliffdurden.spring.javaconfig.helloworld.dao.EmployeeInfoDao;
 import com.cliffdurden.spring.javaconfig.helloworld.model.DataExample;
 import com.cliffdurden.spring.javaconfig.helloworld.model.Message;
+import com.cliffdurden.spring.javaconfig.helloworld.util.DBBackupCommandRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -51,5 +53,15 @@ public class AppContext {
     @Bean
     public EmployeeInfoDao employeeInfoDao() {
         return new EmployeeInfoDao();
+    }
+
+    @Bean
+    public EmployeeDao employeeDao() {
+        return new EmployeeDao();
+    }
+
+    @Bean
+    public DBBackupCommandRunner dbBackupCommandRunner(){
+        return new DBBackupCommandRunner();
     }
 }

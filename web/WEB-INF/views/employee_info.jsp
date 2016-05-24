@@ -7,10 +7,10 @@
 </head>
 <body>
 <h1>Employees Info</h1>
-<br/>
-
+<a href="/">home</a>
 <!--p>raw data: ${allEmployeeInfo}</p-->
-<div id="result"></div>
+<p id="help_label">Result:</p>
+<div id="result"/>
 <script>updateResults('${allEmployeeInfo}');</script>
 </body>
 </html>

@@ -14,15 +14,6 @@ public class CreateTables {
     @Autowired
     private Ddl ddl;
 
-    @Autowired
-    private FillData fillData;
-
-    @Autowired
-    private SelectEmployees select;
-
-    @Autowired
-    private OuterJoin outerJoin;
-
     private boolean result;
 
     public CreateTables() {

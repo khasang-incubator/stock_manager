@@ -18,7 +18,7 @@ public class SelectDepartments {
 
     public SelectDepartments() {
     }
-    
+
     public void select() {
         String query = "SELECT * "
                 + "FROM departments;";

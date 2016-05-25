@@ -5,7 +5,7 @@
     <head>
         <title>JDBC application by ShtykovPB aka Buranzo</title>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="../css/jdbcPage.css">
+        <link rel="stylesheet" href="../../css/jdbcPage.css">
         <script src="../js/createTable.js">
         </script>
     </head>
@@ -61,8 +61,7 @@
                         <td><c:out value="${department.department}" /></td>
                     </tr>
                 </c:forEach>
-            </table>
-            
+            </table>            
         </div>
 
         <br>
@@ -70,8 +69,8 @@
         <div id="textBlock" class="textBlock">
             <div id="titleTextBlock" class="titleTextBlock">Full OuterJoin.</div>
             <table>
-<!--                <tr><td colspan = '4' class="titleTable"><b>Full Outer Join table</b></td></tr>-->
-<th  colspan = '4' class="titleTable"><b>Full Outer Join table</b></th>
+                <!--                <tr><td colspan = '4' class="titleTable"><b>Full Outer Join table</b></td></tr>-->
+                <th  colspan = '4' class="titleTable"><b>Full Outer Join table</b></th>
                 <tr>
                     <td class="titleTable">Employee</td>
                     <td class="titleTable">EmployeeRoom</td>

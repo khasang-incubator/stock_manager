@@ -31,10 +31,9 @@ public class AppContext {
 
     @Autowired
     private SelectEmployees selectEmployees;
-    
+
     @Autowired
     private SelectDepartments selectDepartments;
-    
 
     @Autowired
     private OuterJoin outerJoin;

@@ -18,18 +18,23 @@ public class AppController {
     @Autowired
     DataExample dataExample;
 
+    // wiring create Employee & Department tables
     @Autowired
     private CreateTables createTables;
 
+    // wiring fill testing data Empliyee & Department tables
     @Autowired
     private FillData fillData;
 
+    // wiring select from Employees table
     @Autowired
     private SelectEmployees selectEmployees;
-    
+
+    // wiring select from Department table
     @Autowired
     private SelectDepartments selectDepartments;
 
+    // wiring full outer join Employee & Department tables table
     @Autowired
     private OuterJoin outerJoin;
 

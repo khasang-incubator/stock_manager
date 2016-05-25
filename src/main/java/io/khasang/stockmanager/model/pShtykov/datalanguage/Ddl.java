@@ -8,8 +8,11 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+/**
+ *
+ * Class SQL Data Definition Language
+ */
 @Configuration
-@Scope("prototype")
 public class Ddl {
 
     @Autowired
@@ -40,7 +43,9 @@ public class Ddl {
             return result;
         } finally {
             try {
-                ps.close();
+                if (ps != null) {
+                    ps.close();
+                }
                 jdbcTemplate.getDataSource().getConnection().close();
             } catch (SQLException ex) {
                 ex.printStackTrace();

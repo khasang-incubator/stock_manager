@@ -5,7 +5,6 @@ import io.khasang.stockmanager.model.pShtykov.model.Department;
 import io.khasang.stockmanager.model.pShtykov.model.Employee;
 import io.khasang.stockmanager.model.pShtykov.model.EmployeeDepartment;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import java.sql.ResultSet;
 import java.sql.SQLException;

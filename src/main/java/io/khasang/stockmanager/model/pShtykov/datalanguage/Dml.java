@@ -1,16 +1,17 @@
 package io.khasang.stockmanager.model.pShtykov.datalanguage;
 
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+/**
+ *
+ * Class SQL Data Manipulation Language
+ */
 @Configuration
-@Scope("prototype")
 public class Dml {
 
     @Autowired
@@ -27,7 +28,7 @@ public class Dml {
     }
 
     public Object selectOrUpdate(String query) {
-        PreparedStatement ps = null;
+        PreparedStatement ps;
         try {
             ps = jdbcTemplate.getDataSource().getConnection().prepareStatement(query);
             boolean result = ps.execute();
@@ -49,7 +50,7 @@ public class Dml {
     }
 
     public boolean insert(String query) {
-        PreparedStatement ps = null;
+        PreparedStatement ps;
         try {
             ps = jdbcTemplate.getDataSource().getConnection().prepareStatement(query);
             ps.execute();

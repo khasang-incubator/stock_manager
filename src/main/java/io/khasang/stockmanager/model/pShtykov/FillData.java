@@ -2,7 +2,6 @@ package io.khasang.stockmanager.model.pShtykov;
 
 import io.khasang.stockmanager.model.pShtykov.datalanguage.Dml;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration

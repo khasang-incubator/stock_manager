@@ -14,5 +14,7 @@
 <button><a href="http://localhost:8080/romak_tableUpdate">update</a></button>
 <button><a href="http://localhost:8080/romak_deleteTable">delete table</a></button>
 <button><a href="http://localhost:8080/romak_deleteTenRows">delete first ten rows</a></button>
+<button><a href="http://localhost:8080/romak_innerJoin">inner join</a></button>
+<button><a href="http://localhost:8080/romak_outerJoin">outer join</a></button>
 </body>
 </html>

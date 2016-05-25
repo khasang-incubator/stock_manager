@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>GoodsSelect</title>
+    <title>InnerJoinGoods</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <style>
@@ -19,7 +19,7 @@
         <th>ID</th>
         <th>GOODS</th>
     </tr>
-    <c:forEach items="${goodsselect}" var="dataexample">
+    <c:forEach items="${innerJoin}" var="dataexample">
         <tr>
             <td><c:out value="${dataexample.ID}"/></td>
             <td><c:out value="${dataexample.goods}"/></td>

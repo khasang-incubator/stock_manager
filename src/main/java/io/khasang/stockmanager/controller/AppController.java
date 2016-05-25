@@ -93,6 +93,16 @@ public class AppController {
         model.addAttribute("deleteRows",dataExample.getResultDeleteRows());
         return "deleteTenRows";
     }
+    @RequestMapping("/romak_innerJoin")
+    public String innerJoin(Model model) throws SQLException{
+        model.addAttribute("innerJoin",dataExample.innerJoin());
+        return "innerJoin";
+    }
+    @RequestMapping("/romak_outerJoin")
+    public String outerJoin(Model model) throws SQLException{
+        model.addAttribute("outerJoin",dataExample.outerJoin());
+        return "outerJoin";
+    }
 
 
 }

@@ -51,10 +51,7 @@ public class DataExample {
         }
     }
 
-    public List selectGoodsTable() {
-        return this.jdbcTemplate.query("SELECT c.id,c.goods" +
-                " FROM company c;", new GoodsMapper());
-    }
+
 
     public void updateGoods(){
         try {
@@ -85,6 +82,20 @@ public class DataExample {
             e.printStackTrace();
         }
 
+    }
+    public List selectGoodsTable() {
+        return this.jdbcTemplate.query("SELECT c.id,c.goods" +
+                " FROM company c;", new GoodsMapper());
+    }
+    public List innerJoin(){
+
+            return this.jdbcTemplate.query("SELECT * " +
+                    "FROM metals INNER JOIN company ON (company.GOODS=metals.goods);", new GoodsMapper());
+    }
+    public List outerJoin(){
+
+            return this.jdbcTemplate.query("SELECT * " +
+                    "FROM company FULL OUTER JOIN metals ON (company.GOODS=metals.goods);", new GoodsMapper());
     }
 
     public String getResultTruncate() {

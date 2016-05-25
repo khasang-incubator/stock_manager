@@ -12,6 +12,7 @@ import java.util.List;
 public class StockBalanceData {
     @Autowired
     Environment environment;
+    @Autowired
     private JdbcTemplate jdbcTemplate;
 
     public StockBalanceData(JdbcTemplate jdbcTemplate) {
@@ -23,14 +24,14 @@ public class StockBalanceData {
 
     private List<Category> getListCategory() {
         String sql = "SELECT * FROM CATEGORY ORDER BY name";
-        List <Category> categories = jdbcTemplate.query(sql,
+        List<Category> categories = jdbcTemplate.query(sql,
                 new BeanPropertyRowMapper(Category.class));
         return categories;
     }
 
-    private int  updateCategory(Category category) throws DataAccessException {
+    private int updateCategory(Category category) throws DataAccessException {
         String sql = "UPDATE category SET name = ? WHERE id = ?";
-        return jdbcTemplate.update(sql, new Object[] { category.getName(),category.getId()});
+        return jdbcTemplate.update(sql, new Object[]{category.getName(), category.getId()});
     }
 
     public String getCategory() {

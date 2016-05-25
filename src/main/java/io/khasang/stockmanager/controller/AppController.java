@@ -1,6 +1,6 @@
 package io.khasang.stockmanager.controller;
 
-import io.khasang.stockmanager.dao.HibernateUtil;
+import io.khasang.stockmanager.dao.InsertToTable;
 import io.khasang.stockmanager.model.DataExample;
 import io.khasang.stockmanager.model.ProductOrder;
 import org.hibernate.Session;
@@ -18,10 +18,11 @@ public class AppController {
     DataExample dataExample;
     @Autowired
     ProductOrder productOrder;
+    @Autowired
+    InsertToTable insertToTable;
 
     @RequestMapping("/")
     public String shrink(Model model) {
-        SessionFactory session = HibernateUtil.getSessionFactory();
         model.addAttribute("hello", "");
         return "hello";
     }
@@ -42,6 +43,12 @@ public class AppController {
     public String items (Model model) throws SQLException{
         model.addAttribute("items", productOrder.selectWholeTable());
         return "select";
+    }
+
+    @RequestMapping(value = {"/krokodil"})
+    public String home(Model model) {
+        model.addAttribute("krokodil", insertToTable.getResult(200, "ref"));
+        return "home";
     }
 
 }

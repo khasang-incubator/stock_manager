@@ -1,5 +1,6 @@
 package io.khasang.stockmanager.config;
 
+import io.khasang.stockmanager.dao.InsertToTable;
 import io.khasang.stockmanager.model.DataExample;
 import io.khasang.stockmanager.model.Message;
 import io.khasang.stockmanager.model.ProductOrder;
@@ -48,5 +49,10 @@ public class AppContext {
     @Bean
     public DataExample dataExample(){
         return new DataExample(jdbcTemplate());
+    }
+
+    @Bean
+    public InsertToTable insertToTable(){
+        return new InsertToTable();
     }
 }

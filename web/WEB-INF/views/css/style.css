@@ -98,6 +98,7 @@ div#content {
     box-shadow: 0 0 6px rgba(0,0,0,0.4);
     border-radius: 2px;
     border-color: rgba(0,0,0,0.3);
+    height: 640px;
 }
 
 table.logs_list tbody tr td.break_all {

@@ -46,7 +46,7 @@ public class AppController {
         model.addAttribute("script","script");
         return "script";
     }
-    @RequestMapping("/romak_table")
+    @RequestMapping("/romak_createTable")
     public String tableCreate(Model model){
         model.addAttribute("tablecreate",dataExample.getResultCreateTable());
         return "tablecreate";
@@ -56,17 +56,43 @@ public class AppController {
         model.addAttribute("truncate",dataExample.getResultTruncate());
         return "truncate";
     }
-    
+
     @RequestMapping("/confidential")
     public String securePage(Model model) {
         model.addAttribute("cat", "Barsik");
         return "cat";
     }
 
-    @RequestMapping("/select")
+    @RequestMapping("/romak_select")
     public String items (Model model) throws SQLException{
         model.addAttribute("items", productOrder.selectWholeTable());
         return "select";
     }
+    @RequestMapping("/romak_goodsSelect")
+    public String goods (Model model) throws SQLException{
+        model.addAttribute("goodsselect", dataExample.selectGoodsTable());
+        return "goodsselect";
+    }
+    @RequestMapping("/romak_table")
+    public String table(Model model) throws SQLException{
+        model.addAttribute("table","table");
+        return "table";
+    }
+    @RequestMapping("/romak_tableUpdate")
+    public String update(Model model) throws SQLException{
+        model.addAttribute("goodsUpdate",dataExample.getResultUpdate());
+        return "update";
+    }
+    @RequestMapping("/romak_deleteTable")
+    public String delete(Model model) throws SQLException{
+        model.addAttribute("goodsTableDelete",dataExample.getResultDeleteTable());
+        return "deleteTable";
+    }
+    @RequestMapping("/romak_deleteTenRows")
+    public String deleteRows(Model model) throws SQLException{
+        model.addAttribute("deleteRows",dataExample.getResultDeleteRows());
+        return "deleteTenRows";
+    }
+
 
 }

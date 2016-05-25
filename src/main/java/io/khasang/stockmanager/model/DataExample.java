@@ -52,8 +52,7 @@ public class DataExample {
     }
 
 
-
-    public void updateGoods(){
+    public void updateGoods() {
         try {
             jdbcTemplate.execute("UPDATE COMPANY SET GOODS = 'Met' WHERE GOODS='METALL'");
             result = "Table Company successfully updated";
@@ -63,7 +62,8 @@ public class DataExample {
         }
 
     }
-    public void deleteGoodsTable(){
+
+    public void deleteGoodsTable() {
         try {
             jdbcTemplate.execute("DROP TABLE company");
             result = "Table Company successfully deleted";
@@ -73,7 +73,8 @@ public class DataExample {
         }
 
     }
-    public void deleteTenRows(){
+
+    public void deleteTenRows() {
         try {
             jdbcTemplate.execute("DELETE FROM company where id<=10");
             result = "Table Rows successfully deleted";
@@ -83,19 +84,22 @@ public class DataExample {
         }
 
     }
+
     public List selectGoodsTable() {
         return this.jdbcTemplate.query("SELECT c.id,c.goods" +
                 " FROM company c;", new GoodsMapper());
     }
-    public List innerJoin(){
 
-            return this.jdbcTemplate.query("SELECT * " +
-                    "FROM metals INNER JOIN company ON (company.GOODS=metals.goods);", new GoodsMapper());
+    public List innerJoin() {
+
+        return this.jdbcTemplate.query("SELECT * " +
+                "FROM metals INNER JOIN company ON (company.GOODS=metals.goods);", new GoodsMapper());
     }
-    public List outerJoin(){
 
-            return this.jdbcTemplate.query("SELECT * " +
-                    "FROM company FULL OUTER JOIN metals ON (company.GOODS=metals.goods);", new GoodsMapper());
+    public List outerJoin() {
+
+        return this.jdbcTemplate.query("SELECT * " +
+                "FROM company FULL OUTER JOIN metals ON (company.GOODS=metals.goods);", new GoodsMapper());
     }
 
     public String getResultTruncate() {
@@ -104,6 +108,7 @@ public class DataExample {
 
         return result;
     }
+
     public String getResultUpdate() {
 
         updateGoods();
@@ -117,12 +122,14 @@ public class DataExample {
 
         return result;
     }
+
     public String getResultDeleteTable() {
 
         deleteGoodsTable();
 
         return result;
     }
+
     public String getResultDeleteRows() {
 
         deleteTenRows();

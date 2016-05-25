@@ -27,13 +27,13 @@ public class ProductOrder {
 
     private JdbcTemplate jdbcTemplate;
     private int id;
-   private String user;
+    private String user;
     private String url;
     private int timespent;
 
     public List selectWholeTable() throws SQLException {
         return this.jdbcTemplate.query("SELECT t.id,t.user,t.url,t.timespent" +
-                  " FROM template t;", new ItemMapper());
+                " FROM template t;", new ItemMapper());
 
     }
 
@@ -42,11 +42,11 @@ public class ProductOrder {
     }
 
     public String getUser() {
-       return user;
-  }
+        return user;
+    }
 
     public void setUser(String user) {
-       this.user = user;
+        this.user = user;
     }
 
     public String getUrl() {
@@ -58,7 +58,7 @@ public class ProductOrder {
     }
 
     public void setTimespent(int timespent) {
-       this.timespent = timespent;
+        this.timespent = timespent;
     }
 
     public int getId() {

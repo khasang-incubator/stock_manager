@@ -1,7 +1,9 @@
 package io.khasang.stockmanager.config;
 
-import io.khasang.stockmanager.model.DataExample;
-import io.khasang.stockmanager.model.Message;
+import io.khasang.stockmanager.dao.AuthorDAO;
+import io.khasang.stockmanager.dao.BookDAO;
+import io.khasang.stockmanager.dao.DBBackup;
+import io.khasang.stockmanager.dao.SubjectDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,10 +19,23 @@ public class AppContext {
     private Environment environment;
 
     @Bean
-    public Message message() {
-        Message message = new Message();
-        message.setMessageInfo("Shit");
-        return message;
+    public AuthorDAO authorDAO() {
+        return new AuthorDAO(jdbcTemplate());
+    }
+
+    @Bean
+    public BookDAO bookDAO() {
+        return new BookDAO(jdbcTemplate());
+    }
+
+    @Bean
+    public SubjectDAO subjectDAO() {
+        return new SubjectDAO(jdbcTemplate());
+    }
+
+    @Bean
+    public DBBackup dbBackup() {
+        return new DBBackup();
     }
 
     @Bean
@@ -28,11 +43,6 @@ public class AppContext {
         JdbcTemplate jdbcTemplate = new JdbcTemplate();
         jdbcTemplate.setDataSource(dataSource());
         return jdbcTemplate;
-    }
-
-    @Bean
-    public DataExample dataExample() {
-        return new DataExample(jdbcTemplate());
     }
 
     private DriverManagerDataSource dataSource() {

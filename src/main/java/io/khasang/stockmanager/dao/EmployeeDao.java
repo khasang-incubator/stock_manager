@@ -17,6 +17,17 @@ public class EmployeeDao {
         List<Map<String, Object>> rows = jdbcTemplate.queryForList(
                 "select * from employees;");
         List<Employee> employeeRows = new LinkedList<>();
+        return getListFromRows(rows);
+    }
+
+    public List<Employee> getEmployeesWithGodSalary() {
+        List<Map<String, Object>> rows = jdbcTemplate.queryForList(
+                "select * from employees where id in (select employee_id from salaries where salary > 7000)");
+        return getListFromRows(rows);
+    }
+
+    private List<Employee> getListFromRows(List<Map<String, Object>> rows) {
+        List<Employee> employeeRows = new LinkedList<>();
         for (Map row : rows) {
             Employee employee = new Employee();
             employee.setId((int) row.get("id"));

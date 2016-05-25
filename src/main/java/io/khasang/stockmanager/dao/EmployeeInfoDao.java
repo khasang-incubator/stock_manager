@@ -17,10 +17,24 @@ public class EmployeeInfoDao {
         List<Map<String, Object>> rows = jdbcTemplate.queryForList(
                 "select employees.id, employees.first_name, employees.last_name, employees.position, employees.phone, employees.email, depts.name as dept_name, depts.description as dept_description " +
                         "from employees inner join depts on employees.dept_id = depts.id;");
+        return getListFromRows(rows);
+    }
+
+    public List<EmployeeInfo> findAllOuterJoin() {
+        List<Map<String, Object>> rows = jdbcTemplate.queryForList(
+                "select employees.id, employees.first_name, employees.last_name, employees.position, employees.phone, employees.email, depts.name as dept_name, depts.description as dept_description " +
+                        "from employees full outer join depts on employees.dept_id = depts.id;");
+        return getListFromRows(rows);
+    }
+
+    private List<EmployeeInfo> getListFromRows(List<Map<String, Object>> rows) {
         List<EmployeeInfo> employeeInfoRows = new LinkedList<>();
         for (Map row : rows) {
             EmployeeInfo employeeInfo = new EmployeeInfo();
-            employeeInfo.setId((int) row.get("id"));
+            if (row.get("id") != null){
+                employeeInfo.setId((int) row.get("id"));
+            }
+
             employeeInfo.setFirstName((String) row.get("first_name"));
             employeeInfo.setLastName((String) row.get("last_name"));
             employeeInfo.setPhone((String) row.get("phone"));

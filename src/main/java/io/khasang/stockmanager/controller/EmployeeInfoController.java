@@ -29,4 +29,17 @@ public class EmployeeInfoController {
         }
         return "employee_info";
     }
+
+    @RequestMapping("/cliffdurden/all_employees_info_outer_join")
+    public String employeeInfoDaoOuterJoin(Model model) {
+        ObjectMapper mapper = new ObjectMapper();
+        List<EmployeeInfo> allEmployeeInfo = employeeInfoDao.findAllOuterJoin();
+        try {
+            model.addAttribute("allEmployeeInfo", mapper.writeValueAsString(allEmployeeInfo));
+        } catch (JsonProcessingException e) {
+            model.addAttribute("error", e.getMessage());
+            e.printStackTrace();
+        }
+        return "employee_info";
+    }
 }

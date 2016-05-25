@@ -13,9 +13,13 @@
     <br/>
     <a href="/cliffdurden/sayhello">say hello</a>
     <br/>
-    <a href="/cliffdurden/all_employees_info">employees info</a>
+    <a href="/cliffdurden/all_employees_info">employees info (inner join)</a>
+    <br/>
+    <a href="/cliffdurden/all_employees_info_outer_join">employees info (outer join)</a>
     <br/>
     <a href="/cliffdurden/list_employees">list_employees</a>
+    <br/>
+    <a href="/cliffdurden/list_of_rich_employees">list_of_rich_employees</a>
     <br/>
     <a href="/cliffdurden/dump_db">dump_db</a>
     <br/>

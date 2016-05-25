@@ -1,5 +1,6 @@
 package io.khasang.stockmanager.config;
 
+import io.khasang.stockmanager.dao.CrudDao;
 import io.khasang.stockmanager.dao.EmployeeDao;
 import io.khasang.stockmanager.dao.EmployeeInfoDao;
 import io.khasang.stockmanager.dao.SalariesDao;
@@ -71,6 +72,11 @@ public class AppContext {
     @Bean
     public SalariesDao salariesDao() {
         return new SalariesDao();
+    }
+
+    @Bean
+    public CrudDao crudDao() {
+        return new CrudDao();
     }
 
 }

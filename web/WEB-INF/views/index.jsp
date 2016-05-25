@@ -20,6 +20,12 @@
     <a href="/cliffdurden/dump_db">dump_db</a>
     <br/>
     <a href="/cliffdurden/show_salaries">update employees salaries</a>
+    <br/>
+    <p>Dummy operations</p>
+    <a href="/cliffdurden/crud/create">Create dummy table</a>
+    <a href="/cliffdurden/crud/fill">Fill dummy table</a>
+    <a href="/cliffdurden/crud/delete">Delete rows from dummy table</a>
+    <a href="/cliffdurden/crud/truncate">Truncate dummy table</a>
 </div>
 </body>
 </html>

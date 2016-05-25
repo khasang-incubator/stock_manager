@@ -16,16 +16,16 @@
 <table align="center">
     <tr>
         <th>ID</th>
-        <%--<th>user</th>--%>
-        <%--<th>url</th>--%>
-        <%--<th>timespent</th>--%>
+        <th>user</th>
+        <th>url</th>
+        <th>timespent</th>
     </tr>
     <c:forEach items="${items}" var="productorder">
         <tr>
             <td><c:out value="${productorder.id}"/></td>
-            <%--<td><c:out value="${productorder.user}"/></td>--%>
-            <%--<td><c:out value="${productorder.url}"/></td>--%>
-            <%--<td><c:out value="${productorder.timespent}"/></td>--%>
+            <td><c:out value="${productorder.user}"/></td>
+            <td><c:out value="${productorder.url}"/></td>
+            <td><c:out value="${productorder.timespent}"/></td>
         </tr>
     </c:forEach>
 </table>

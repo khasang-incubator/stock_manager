@@ -56,32 +56,16 @@ public class AppController {
         model.addAttribute("truncate",dataExample.getResultTruncate());
         return "truncate";
     }
-
-    @RequestMapping("/tempselect")
-    public String selectData(Model model){
-        model.addAttribute("items", viewDataFromTable.selectWholeTable(tableObjectInterface));
-
-    public String shrink(Model model) {
-        model.addAttribute("hello", "");
-        return "hello";
-    }
-
+    
     @RequestMapping("/confidential")
     public String securePage(Model model) {
         model.addAttribute("cat", "Barsik");
         return "cat";
     }
 
-    @RequestMapping("/confidential/tablecreate")
-    public String tableCreate(Model model) {
-        model.addAttribute("tablecreate", dataExample.getResult());
-        return "tablecreate";
-    }
-
     @RequestMapping("/select")
     public String items (Model model) throws SQLException{
         model.addAttribute("items", productOrder.selectWholeTable());
->>>>>>> origin/development
         return "select";
     }
 

@@ -1,4 +1,4 @@
-package io.khasang.stockmanager.model;
+/*package io.khasang.stockmanager.model;
 
 import io.khasang.stockmanager.config.application.WebConfig;
 import org.junit.Assert;
@@ -22,4 +22,4 @@ public class MessageTest {
         Assert.assertEquals("blabla", message.getMessageInfo());
     }
 
-}
+}*/

@@ -20,12 +20,6 @@ public class AppContext {
     @Autowired
     Environment environment;
 
-    @Bean
-
-    @Bean
-    ProductOrder productOrder(){
-        return new ProductOrder(jdbcTemplate());
-    }
 
     @Bean
     public JdbcTemplate jdbcTemplate(){
@@ -45,21 +39,14 @@ public class AppContext {
 
     }
 
-    @Bean
-    DataExample dataExample(){
-        return new DataExample(jdbcTemplate());
-    }
 
     @Bean
     ProductOrder productOrder(){
         return new ProductOrder(jdbcTemplate());
-    }
-=======
     }
 
     @Bean
     public DataExample dataExample(){
         return new DataExample(jdbcTemplate());
     }
->>>>>>> origin/development
 }

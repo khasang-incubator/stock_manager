@@ -22,6 +22,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter{
         http.authorizeRequests()
                 .antMatchers("/map/rest/hello/**").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/confidential/**").access("hasRole('ROLE_SUPERADMIN')")
+                .antMatchers("/vrystsov/**").anonymous()
                 .and().formLogin().defaultSuccessUrl("/", false);
     }
 }

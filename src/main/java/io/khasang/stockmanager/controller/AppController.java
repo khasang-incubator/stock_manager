@@ -51,6 +51,12 @@ public class AppController {
         return "stockbalance";
     }
 
+    @RequestMapping("/developermsv/backup")
+    public String makeBackup(Model model){
+        model.addAttribute("column_category", stockBalanceData.makeBackup());
+        return "stockbalance";
+    }
+
     @RequestMapping("/select")
     public String items (Model model) throws SQLException{
         model.addAttribute("items", productOrder.selectWholeTable());

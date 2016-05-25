@@ -1,5 +1,6 @@
 package io.khasang.stockmanager.config;
 
+import io.khasang.stockmanager.model.JdbcAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -13,17 +14,13 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private JdbcTemplate jdbcTemplate;
-
+    @Autowired
+    private JdbcAuthentication jdbcAuthentication;
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(jdbcTemplate.getDataSource())
-                .usersByUsernameQuery(
-                        "select username,password, enabled from users where username=?")
-                .authoritiesByUsernameQuery(
-                        "select u.username, r.role_name " +
-                                "from user_roles ur " +
-                                "join users u on u.user_id = ur.user_id and u.username = ?  " +
-                                "join role r on r.role_id = ur.role_id");
+                .usersByUsernameQuery(jdbcAuthentication.getSqlByUsernameQuery())
+                .authoritiesByUsernameQuery(jdbcAuthentication.getSqlByUsernameRoleQuery());
 //        auth.inMemoryAuthentication().withUser("user").password("user").roles("USER");
 //        auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ADMIN");
 //        auth.inMemoryAuthentication().withUser("superadmin").password("superadmin").roles("SUPERADMIN");

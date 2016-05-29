@@ -22,7 +22,6 @@ public class ProjectTest {
 
     @Before
     public void beforeTest() {
-        project.setId("0");
         project.setTitle("test_project");
         project.setUserId(1);
         project.setStartDate(LocalDate.now());
@@ -37,8 +36,8 @@ public class ProjectTest {
         Assert.assertNotNull(project);
     }
 
-//    @Test
-//    public void testGetTitle() {
-//        Assert.assertEquals("test_project", project.getTitle());
-//    }
+    @Test
+    public void testGetTitle() {
+        Assert.assertEquals("test_project", project.getTitle());
+    }
 }

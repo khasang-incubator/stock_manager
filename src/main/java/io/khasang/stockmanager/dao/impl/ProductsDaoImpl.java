@@ -49,4 +49,21 @@ public class ProductsDaoImpl implements ProductsDao {
     public List<Product> getAll() {
         return Collections.emptyList();
     }
+
+    @Override
+    public Product getById(int id) {
+        Session session = sessionFactory.openSession();
+        try {
+            session.beginTransaction();
+            Product product = session.get(Product.class, id);
+            session.getTransaction().commit();
+            return product;
+        } catch (HibernateException e) {
+            session.getTransaction().rollback();
+            e.printStackTrace();
+            return null;
+        } finally {
+            session.close();
+        }
+    }
 }

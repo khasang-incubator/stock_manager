@@ -37,4 +37,11 @@ public class ProductTest {
         productsDao.delete(product);
         Assert.assertEquals (null,product.getName());
     }
+
+    @Test
+    public void getByIdTest() {
+        int id = 1;
+        Product product = productsDao.getById(id);
+        Assert.assertEquals("Test", product.getName());
+    }
 }

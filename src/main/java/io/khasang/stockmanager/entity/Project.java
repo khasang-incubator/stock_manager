@@ -1,11 +1,15 @@
 package io.khasang.stockmanager.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDate;
 
 @Entity
 public class Project {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
     private String title;
     private int userId;
@@ -38,7 +42,6 @@ public class Project {
     public int getUserId() {
         return userId;
     }
-
 
     public void setStartDate(LocalDate starDate) {
         this.startDate = starDate;

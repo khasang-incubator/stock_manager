@@ -23,7 +23,9 @@ public class ProductDaoTest {
 
     @Test
     public void testInsertToTable() {
-        projectDao.insertToTable(new Project());
+        Project project1 = new Project();
+        project1.setProjectName("KhasangProj");
+        projectDao.insertToTable(project1);
         assertEquals("Result wrong", "sucessfully insert to table", projectDao.getResult());
     }
 

@@ -23,24 +23,19 @@ public class ProjectDao {
 
         Session session = sessionFactory.openSession();
 
-//            session.beginTransaction();
-//            String sql = "SELECT * FROM Project";
-//            SQLQuery query = session.createSQLQuery(sql);
-//            query.addEntity(Project.class);
-
         try {
             session.beginTransaction();
 
             //Receive status with specify id - required for check field state = at status end or not.
-            List result = session.createCriteria(Project.class, "id")
+            List list = session.createCriteria(Project.class, "id")
                     .list();
 
             session.save(project);
             session.getTransaction().commit();
-
+            result = "sucessfully insert to table";
         } catch (HibernateException e) {
             session.getTransaction().rollback();
-          //  resultQuery = "fail: " + e;
+            result = "unable to insert to table";
             e.printStackTrace();
         } finally {
             session.close();

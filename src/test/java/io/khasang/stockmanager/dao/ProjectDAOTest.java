@@ -6,6 +6,7 @@ import io.khasang.stockmanager.entity.Project;
 import io.khasang.stockmanager.entity.ProjectStatus;
 import org.hibernate.SessionFactory;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +29,10 @@ public class ProjectDAOTest {
     @Autowired
     private SessionFactory sessionFactory;
 
-    @Test
-    public void addTest() {
+    @Before
+    public void beforeTest() {
+//        project.setId();
+        project.setTitle("test_project");
         project.setTitle("test_project");
         project.setUserId(1);
         project.setStartDate(LocalDate.now());
@@ -37,31 +40,16 @@ public class ProjectDAOTest {
         project.setStatus(ProjectStatus.ACTIVE);
         project.setBudget(10000);
         project.setType("ddd");
+    }
 
-        Project projectTest = (Project) sessionFactory.getCurrentSession().load(Project.class, 1);
+    @Test
+    public void addTest() {
+        projectDAO.add(project);
+        Project projectTest = sessionFactory.openSession().get(Project.class, project.getId());
+        sessionFactory.close();
 
         Assert.assertEquals(project, projectTest);
     }
-
-//    @Repository("userDao")
-//    public class UserDao implements IUserDao {
-//
-//        @Autowired
-//        private SessionFactory sessionFactory;
-//
-//        public void SaveUser(User user) {
-//            sessionFactory.getCurrentSession().save(user);
-//        }
-//        @SuppressWarnings("unchecked")
-//        public List<User> ListUsers() {
-//            List<User> users = (List<User>) sessionFactory.getCurrentSession().createCriteria(User.class).list();
-//            return users;
-//        }
-//        public User GetUserById(Integer id) {
-//            User user = (User) sessionFactory.getCurrentSession().load(User.class, id);
-//            return user;
-//        }
-//    }
 
     @Test
     public void deleteTest() {

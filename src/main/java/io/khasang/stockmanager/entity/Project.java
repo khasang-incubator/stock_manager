@@ -10,7 +10,7 @@ import java.time.LocalDate;
 public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private int id;
     private String title;
     private int userId;
     private LocalDate startDate;
@@ -19,11 +19,11 @@ public class Project {
     private int budget;
     private String type;
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -81,5 +81,50 @@ public class Project {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "Project{" +
+                "id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", userId=" + userId +
+                ", startDate=" + startDate +
+                ", finishDate=" + finishDate +
+                ", status=" + status +
+                ", budget=" + budget +
+                ", type='" + type + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Project project = (Project) o;
+
+        if (id != project.id) return false;
+        if (userId != project.userId) return false;
+        if (budget != project.budget) return false;
+        if (title != null ? !title.equals(project.title) : project.title != null) return false;
+        if (startDate != null ? !startDate.equals(project.startDate) : project.startDate != null) return false;
+        if (finishDate != null ? !finishDate.equals(project.finishDate) : project.finishDate != null) return false;
+        if (status != project.status) return false;
+        return type != null ? type.equals(project.type) : project.type == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        result = 31 * result + userId;
+        result = 31 * result + (startDate != null ? startDate.hashCode() : 0);
+        result = 31 * result + (finishDate != null ? finishDate.hashCode() : 0);
+        result = 31 * result + (status != null ? status.hashCode() : 0);
+        result = 31 * result + budget;
+        result = 31 * result + (type != null ? type.hashCode() : 0);
+        return result;
     }
 }

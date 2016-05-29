@@ -20,24 +20,24 @@ public class AppContext {
     Environment environment;
 
     @Bean
-    public Message message(){
-        return  new Message();
+    public Message message() {
+        return new Message();
     }
 
     @Bean
-    ProductOrder productOrder(){
+    ProductOrder productOrder() {
         return new ProductOrder(jdbcTemplate());
     }
 
     @Bean
-    public JdbcTemplate jdbcTemplate(){
+    public JdbcTemplate jdbcTemplate() {
         JdbcTemplate jdbcTemplate = new JdbcTemplate();
         jdbcTemplate.setDataSource(dataSource());
         return jdbcTemplate;
     }
 
     @Bean
-    public DriverManagerDataSource dataSource(){
+    public DriverManagerDataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(environment.getProperty("jdbc.postgresql.driverClass"));
         dataSource.setUrl(environment.getProperty("jdbc.postgresql.url"));
@@ -47,12 +47,12 @@ public class AppContext {
     }
 
     @Bean
-    public DataExample dataExample(){
+    public DataExample dataExample() {
         return new DataExample(jdbcTemplate());
     }
 
     @Bean
     public MyTestDataBase testDataBase() {
-        return  new MyTestDataBase(jdbcTemplate());
+        return new MyTestDataBase(jdbcTemplate());
     }
 }

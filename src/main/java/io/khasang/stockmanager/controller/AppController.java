@@ -58,8 +58,15 @@ public class AppController {
         return "resultoperationpage";
     }
 
+    @RequestMapping("/yukon85/truncate")
+    public String truncateExample(Model model) throws SQLException {
+        model.addAttribute("result", testDataBase.truncateTable());
+        model.addAttribute("items", testDataBase.selectWholeTestTable());
+        return "resultoperationpage";
+    }
+
     @RequestMapping("/select")
-    public String items (Model model) throws SQLException{
+    public String items(Model model) throws SQLException {
         model.addAttribute("items", productOrder.selectWholeTable());
         return "select";
     }

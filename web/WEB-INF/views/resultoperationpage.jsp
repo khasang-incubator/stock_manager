@@ -4,7 +4,7 @@
 <head>
     <title>Stock Manager</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link rel="stylesheet" href="examplepage.css">
+    <link rel="stylesheet" href="css/examplepage.css">
 </head>
 <body>
 <div id="container">

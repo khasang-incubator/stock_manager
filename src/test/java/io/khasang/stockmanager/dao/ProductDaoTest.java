@@ -22,9 +22,15 @@ public class ProductDaoTest {
     ProjectDao projectDao;
 
     @Test
-    public void testInsertToTable(){
+    public void testInsertToTable() {
         projectDao.insertToTable(new Project());
         assertEquals("Result wrong", "sucessfully insert to table", projectDao.getResult());
+    }
+
+    @Test
+    public void testErrorWhenInsertToTable() {
+        projectDao.insertToTable(new Project());
+        assertEquals("Result wrong", "unable to insert to table", projectDao.getResult());
     }
 
 }

@@ -9,6 +9,8 @@ public class ProjectDao {
     private String result;
     public void insertToTable(Project project){
 
+
+
     }
 
     public String getResult(){

@@ -1,20 +1,36 @@
 package io.khasang.stockmanager.dao;
 
+import io.khasang.stockmanager.entity.Project;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
+
 public class ProjectDAO {
+    @Autowired
+    private SessionFactory sessionFactory;
 
-    public void add() {
+    public void add(Project project) {
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+            session.save(project);
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void delete(Project project) {
 
     }
 
-    public void delete() {
-
+    public List<Project> getAll() {
+        return null;
     }
 
-    public void getAll() {
-
-    }
-
-    public void getById() {
-
+    public Project getById(Integer id) {
+        return null;
     }
 }

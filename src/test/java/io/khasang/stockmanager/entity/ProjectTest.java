@@ -1,7 +1,6 @@
 package io.khasang.stockmanager.entity;
 
 import io.khasang.stockmanager.config.application.WebConfig;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -19,4 +18,6 @@ public class ProjectTest {
     public void testProductEntity(){
         assertNotNull(new Project());
     }
+
+
 }

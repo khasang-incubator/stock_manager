@@ -22,20 +22,19 @@ public class ProjectTest {
 
     @Before
     public void beforeTest() {
-        project = new Project();
         project.setId("0");
         project.setTitle("test_project");
         project.setUserId(1);
-        project.setStarDate(LocalDate.now());
+        project.setStartDate(LocalDate.now());
         project.setFinishDate(LocalDate.now().plusDays(2));
         project.setStatus(ProjectStatus.ACTIVE);
         project.setBudget(10000);
-        project.setType();
+        project.setType("ddd");
     }
 
     @Test
     public void testProjectNotNull() {
-        Assert.assertNotNull(new Project());
+        Assert.assertNotNull(project);
     }
 
 //    @Test

@@ -1,6 +1,7 @@
 package io.khasang.stockmanager.config;
 
 import io.khasang.stockmanager.dao.InsertToTable;
+import io.khasang.stockmanager.entity.Project;
 import io.khasang.stockmanager.model.DataExample;
 import io.khasang.stockmanager.model.Message;
 import io.khasang.stockmanager.model.ProductOrder;
@@ -11,7 +12,6 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 @Configuration
 @PropertySource("classpath:util.properties")
@@ -54,5 +54,10 @@ public class AppContext {
     @Bean
     public InsertToTable insertToTable(){
         return new InsertToTable();
+    }
+
+    @Bean
+    public Project project() {
+        return new Project();
     }
 }

@@ -1,6 +1,7 @@
 package io.khasang.stockmanager.config;
 
 import io.khasang.stockmanager.entity.Offer;
+import io.khasang.stockmanager.entity.Project;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -31,7 +32,7 @@ public class HibernateConfig {
         sessionFactory.setDataSource(dataSource());
         sessionFactory.setPackagesToScan("io.khasang.stockmanager.*");
         sessionFactory.setHibernateProperties(hibernateProperties());
-        sessionFactory.setAnnotatedClasses(Offer.class);
+        sessionFactory.setAnnotatedClasses(Offer.class, Project.class);
         return sessionFactory;
     }
 

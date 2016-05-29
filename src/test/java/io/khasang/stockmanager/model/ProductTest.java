@@ -30,11 +30,11 @@ public class ProductTest {
     @Test
     public void deleteTest() {
         Product product = new Product();
+        product.setId(2);
         product.setName("Test");
         product.setDescription("Description");
         product.setUserId(1);
         productsDao.delete(product);
         Assert.assertEquals (null,product.getName());
-
     }
 }

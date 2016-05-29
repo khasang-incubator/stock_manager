@@ -32,7 +32,17 @@ public class ProductsDaoImpl implements ProductsDao {
 
     @Override
     public void delete(Product product) {
-
+        Session session = sessionFactory.openSession();
+        try {
+            session.beginTransaction();
+            session.delete(product);
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            session.getTransaction().rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
     }
 
     @Override

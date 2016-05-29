@@ -12,6 +12,10 @@ import java.util.List;
 public class DataExample {
     @Autowired
     Environment environment;
+
+    @Autowired
+    StockRegistration stockRegistration;
+
     private JdbcTemplate jdbcTemplate;
 
     private String result;
@@ -35,6 +39,18 @@ public class DataExample {
             jdbcTemplate.execute("INSERT INTO COMPANY(ID, GOODS) VALUES(1,'ABS'),(2,'PLA'),(3,'METALL'),(4,'WOOD')," +
                     "(5,'GLASS'),(6,'FIBERGLASS'),(7,'LEATHER'),(8,'WOOL'),(9,'NYLON'),(10,'ALUMINIUM'),(11,'DIRT'),(12,'SAND'),(13,'ROOFING'),(14,'STEEL')");
             result = "Table Company created successful!";
+        } catch (Exception e) {
+            result = e + "";
+            e.printStackTrace();
+        }
+    }
+
+    public void createRegistrationTable() {
+        try {
+            jdbcTemplate.execute("CREATE TABLE REGISTRATION" +
+                    "(USERNAME TEXT PRIMARY KEY," + " PASSWORD TEXT," + " FIRSTNAME TEXT," +
+                    " LASTNAME TEXT," + " EMAIL TEXT)");
+            result = "Registration table created successful!";
         } catch (Exception e) {
             result = e + "";
             e.printStackTrace();
@@ -85,6 +101,24 @@ public class DataExample {
 
     }
 
+    public void addUser(StockRegistration Stockuser) {
+        try {
+
+            jdbcTemplate.execute("INSERT INTO registration (USERNAME,PASSWORD,FIRSTNAME,LASTNAME,EMAIL)" +
+                    " VALUES (\'" + Stockuser.getUserName() + "\'," + "\'" + Stockuser.getPassword() + "\',"
+                    + "\'" + Stockuser.getFirstName() + "\'," + "\'" + Stockuser.getLastName() + "\'," +
+                    "\'" + Stockuser.getEmail() + "\')");
+            result = "User Added Successfully";
+        } catch (Exception e) {
+            result = e + "";
+            e.printStackTrace();
+        }
+    }
+
+    public List findUser(String username) {
+        return this.jdbcTemplate.query("SELECT username from registration where username=\'" + username + "\';", new UsersMapper());
+    }
+
     public List selectGoodsTable() {
         return this.jdbcTemplate.query("SELECT c.id,c.goods" +
                 " FROM company c;", new GoodsMapper());
@@ -101,6 +135,7 @@ public class DataExample {
         return this.jdbcTemplate.query("SELECT * " +
                 "FROM company FULL OUTER JOIN metals ON (company.GOODS=metals.goods);", new GoodsMapper());
     }
+
 
     public String getResultTruncate() {
 
@@ -119,6 +154,13 @@ public class DataExample {
     public String getResultCreateTable() {
 
         createDataTable();
+
+        return result;
+    }
+
+    public String getResultRegistrationTable() {
+
+        createRegistrationTable();
 
         return result;
     }
@@ -164,5 +206,18 @@ final class GoodsMapper implements RowMapper<DataExample> {
         dataExample.setID(rs.getInt("id"));
         dataExample.setGoods(rs.getString("goods"));
         return dataExample;
+    }
+}
+
+final class UsersMapper implements RowMapper<StockRegistration> {
+    public StockRegistration mapRow(ResultSet rs, int rowNum) throws SQLException {
+        StockRegistration stockRegistration = new StockRegistration();
+        stockRegistration.setUserName(rs.getString("userName"));
+        /*stockRegistration.setPassword(rs.getString("password"));
+        stockRegistration.setFirstName(rs.getString("firstName"));
+        stockRegistration.setLastName(rs.getString("lastName"));
+        stockRegistration.setEmail(rs.getString("email"));*/
+
+        return stockRegistration;
     }
 }

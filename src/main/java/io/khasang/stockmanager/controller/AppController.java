@@ -2,13 +2,19 @@ package io.khasang.stockmanager.controller;
 
 import io.khasang.stockmanager.model.DataExample;
 import io.khasang.stockmanager.model.ProductOrder;
+import io.khasang.stockmanager.model.StockRegistration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
+
 import java.sql.SQLException;
+
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 
 @Controller
@@ -19,6 +25,9 @@ public class AppController {
     @Autowired
     ProductOrder productOrder;
 
+    @Autowired
+    StockRegistration stockRegistration;
+
     @RequestMapping("/")
 
     public String shrink(Model model) {
@@ -26,9 +35,12 @@ public class AppController {
         return "hello";
     }
 
-    @RequestMapping("/romak_Main")
-    public String stockMainPage(Model model) {
-        model.addAttribute("Stock", "Main");
+    @RequestMapping(value = "/romak_{username}", method = GET)
+    public String stockMainPage(
+            @PathVariable String username,
+            Model model) {
+        StockRegistration stockUser = stockRegistration.find(username);
+        model.addAttribute(stockUser);
         return "Stock";
     }
 
@@ -114,6 +126,25 @@ public class AppController {
     public String outerJoin(Model model) throws SQLException {
         model.addAttribute("outerJoin", dataExample.outerJoin());
         return "outerJoin";
+    }
+
+    @RequestMapping(value = "/romak_register", method = GET)
+    public String showRegistrationForm(Model model) {
+        model.addAttribute("StockRegistration", new StockRegistration());
+        return "StockRegistration";
+    }
+
+    @RequestMapping(value = "/romak_register", method = POST)
+    public String processRegistration(StockRegistration user) {
+        stockRegistration.save(user);
+        return "redirect:/romak_" +
+                user.getUserName();
+    }
+
+    @RequestMapping("/romak_RegistrationTable")
+    public String tableRegistrationCreate(Model model) {
+        model.addAttribute("regTable", dataExample.getResultRegistrationTable());
+        return "regTable";
     }
 
 

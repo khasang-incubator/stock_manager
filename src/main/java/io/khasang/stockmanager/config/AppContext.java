@@ -6,6 +6,7 @@ import io.khasang.stockmanager.model.DataExample;
 import io.khasang.stockmanager.model.Message;
 
 import io.khasang.stockmanager.model.ProductOrder;
+import io.khasang.stockmanager.model.StockRegistration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -49,4 +50,10 @@ public class AppContext {
     public DataExample dataExample() {
         return new DataExample(jdbcTemplate());
     }
+
+    @Bean
+    public StockRegistration stockRegistration() {
+        return new StockRegistration();
+    }
 }
+

@@ -3,7 +3,7 @@ package io.khasang.stockmanager.entity;
 import javax.persistence.*;
 
 @Entity
-public class Users {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,7 +15,7 @@ public class Users {
     private String email;
     private String role;
 
-    public Users() {
+    public User() {
     }
 
     public int getId() {

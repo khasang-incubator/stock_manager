@@ -4,25 +4,25 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-public class Projects {
+public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 
     private int id;
-    @Column(name="project_name")
+    @Column(name = "project_name")
     private String projectName;
-    @Column(name="user_id")
+    @Column(name = "user_id")
     private int userId;
-    @Column(name="start_date")
+    @Column(name = "start_date")
     private Date startDate;
-    @Column(name="end_date")
+    @Column(name = "end_date")
     private Date endDate;
     private String status;
     private int budget;
     private String type;
     private boolean vip;
 
-    public Projects() {
+    public Project() {
     }
 
     public int getId() {

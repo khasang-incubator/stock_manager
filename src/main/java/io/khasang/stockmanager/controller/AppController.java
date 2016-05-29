@@ -65,6 +65,13 @@ public class AppController {
         return "resultoperationpage";
     }
 
+    @RequestMapping("/yukon85/update")
+    public String updateExample(Model model) throws SQLException {
+        model.addAttribute("result", testDataBase.updateTable(2, "Доска нестроганная"));
+        model.addAttribute("items", testDataBase.selectWholeTestTable());
+        return "resultoperationpage";
+    }
+
     @RequestMapping("/select")
     public String items(Model model) throws SQLException {
         model.addAttribute("items", productOrder.selectWholeTable());

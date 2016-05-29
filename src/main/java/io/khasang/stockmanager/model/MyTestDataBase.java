@@ -143,6 +143,18 @@ public class MyTestDataBase {
         this.cost = cost;
     }
 
+    public String updateTable(int id, String name) {
+        String result = "";
+        String sql = "UPDATE stock_items SET name = ? WHERE id = ?";
+        try {
+            jdbcTemplate.update(sql, new Object[]{name, id});
+            result = "Table stock_items truncate successful!";
+        } catch (Exception e) {
+            result = e + "";
+            e.printStackTrace();
+        }
+        return result;
+    }
 }
 
 final class TestItemMapper implements RowMapper<MyTestDataBase> {

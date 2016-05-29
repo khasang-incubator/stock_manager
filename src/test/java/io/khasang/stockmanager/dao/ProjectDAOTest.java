@@ -46,18 +46,16 @@ public class ProjectDAOTest {
 
     @Test
     public void deleteTest() {
+        projectDAO.add(project);
         projectDAO.delete(project);
 
         Assert.assertNull(projectDAO.getById(project.getId()));
     }
 
     @Test
-    public void getAllTest() {
-
-    }
-
-    @Test
     public void getByIdTest() {
+        projectDAO.add(project);
 
+        Assert.assertEquals(project, projectDAO.getById(project.getId()));
     }
 }

@@ -1,5 +1,6 @@
 package io.khasang.stockmanager.model;
 
+import io.khasang.stockmanager.entity.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.DataAccessException;
@@ -43,15 +44,15 @@ public class StockBalanceData {
             if (i == 0) {
                 div.append("<div class=\"navigation__item navigation__item_state_selected\">");
                 div.append("<div class=\"category\"><div class=\"category__name\">");
-                div.append(category.name);
+                div.append(category.getName());
                 div.append("</div></div></div>");
             } else {
                 div.append("<div class=\"navigation__item\">");
                 div.append("<div class=\"category\"><a class=\"category__url\" id = \"id_");
-                div.append(category.id);
+                div.append(category.getId());
                 div.append("\" href=\"\" onmousedown=\"\">");
                 div.append("<div class=\"category__name\">");
-                div.append(category.name);
+                div.append(category.getName());
                 div.append("</div></a></div></div>");
             }
         }

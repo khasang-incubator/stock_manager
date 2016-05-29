@@ -2,10 +2,8 @@ package io.khasang.stockmanager.controller;
 
 import io.khasang.stockmanager.dao.InsertToTable;
 import io.khasang.stockmanager.model.DataExample;
-import io.khasang.stockmanager.model.StockBalanceData;
 import io.khasang.stockmanager.model.ProductOrder;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import io.khasang.stockmanager.model.StockBalanceData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,25 +43,25 @@ public class AppController {
 
 
     @RequestMapping("/developermsv")
-    public String mainTableStock(Model model){
+    public String mainTableStock(Model model) {
         model.addAttribute("column_category", stockBalanceData.getCategory());
         return "stockbalance";
     }
 
     @RequestMapping("/developermsv/update")
-    public String mainTableStockUpdate(Model model){
+    public String mainTableStockUpdate(Model model) {
         model.addAttribute("column_category", stockBalanceData.getResultUpdate());
         return "stockbalance";
     }
 
     @RequestMapping("/developermsv/backup")
-    public String makeBackup(Model model){
+    public String makeBackup(Model model) {
         model.addAttribute("column_category", stockBalanceData.makeBackup());
         return "stockbalance";
     }
 
     @RequestMapping("/select")
-    public String items (Model model) throws SQLException{
+    public String items(Model model) throws SQLException {
         model.addAttribute("items", productOrder.selectWholeTable());
         return "select";
     }
@@ -74,4 +72,10 @@ public class AppController {
         return "home";
     }
 
-}
+    @RequestMapping("/init_category")
+    public String initTableCategory(Model model) {
+        model.addAttribute("category", insertToTable.initTableCategory());
+        return "category";
+    }
+    }
+

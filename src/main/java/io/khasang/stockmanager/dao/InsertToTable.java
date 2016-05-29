@@ -1,5 +1,6 @@
 package io.khasang.stockmanager.dao;
 
+import io.khasang.stockmanager.entity.Category;
 import io.khasang.stockmanager.entity.Offer;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -87,9 +88,40 @@ public class InsertToTable {
         }
     }
 
+    public boolean insertNewCategory(String name) {
+        Session session = sessionFactory.openSession();
+        boolean result = true;
+        try {
+            session.beginTransaction();
+            Category category = new Category();
+            category.setName(name);
+            session.save(category);
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            session.getTransaction().rollback();
+            e.printStackTrace();
+            result = false;
+        } finally {
+            session.close();
+        }
+        return result;
+    }
+
     public String getResult(long id, String state) {
         insertData(id, state);
         return resultQuery + " " + resultPay;
     }
 
+    public String initTableCategory() {
+        String[] nameCategory = {"Отделочные материалы", "Напольные покрытия", "Лаки и краски", "Крепеж"};
+        resultQuery = "Добавлены категории: ";
+        for (String s : nameCategory) {
+            if (!insertNewCategory(s)) {
+                break;
+            } else {
+                resultQuery += s;
+            }
+        }
+        return resultQuery;
+    }
 }

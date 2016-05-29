@@ -9,7 +9,7 @@
 <body>
 <div id="container">
     <div id="header">
-        <h1>Main Information</h1>
+        <h1>${result}</h1>
     </div>
 
     <div id="add_item">

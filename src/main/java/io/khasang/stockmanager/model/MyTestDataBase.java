@@ -14,7 +14,6 @@ public class MyTestDataBase {
     Environment environment;
 
     private JdbcTemplate jdbcTemplate;
-//    private String result = "";
 
     private int id;
     private String name;
@@ -32,7 +31,57 @@ public class MyTestDataBase {
 
     public List selectWholeTestTable() throws SQLException {
         return this.jdbcTemplate.query("SELECT * " +
-                "FROM stockitems;", new TestItemMapper());
+                "FROM stock_items ORDER BY id;", new TestItemMapper());
+    }
+
+    public String dropAndCreateTestTable() throws SQLException {
+        String result;
+        try {
+            Boolean isTableExists = jdbcTemplate.queryForObject("select exists " +
+                    "(select 1 from information_schema.tables where table_name='stock_items');", Boolean.class);
+            if (isTableExists) {
+                jdbcTemplate.execute("DROP TABLE stock_items;");
+            }
+            jdbcTemplate.execute("CREATE TABLE stock_items " +
+                    "(ID INT PRIMARY KEY NOT NULL, name CHARACTER(255), size CHARACTER (255), unit CHARACTER (255)," +
+                    "quantity INT, cost REAL)");
+            result = "Table stock_items created successful!";
+        } catch (Exception e) {
+            result = e + "";
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+
+    public String fillTable() {
+        String result;
+        String dataForTable[] = {"01, 'Доска строганная', '20*90*6000', 'кв.м.', 100, 13000",
+                                "02, 'Доска строганная', '20*100*3000', 'кв.м.', 230, 15000",
+                                "03, 'Доска строганная', '30*100*3000', 'кв.м.', 10, 15500",
+                                "04, 'Доска строганная', '40*100*3000', 'кв.м.', 1340, 16000",
+                                "05, 'Рейка строганая', '10*20*3000', 'кв.м.', 1000, 45000",
+                                "06, 'Рейка строганая', '10*15*3000', 'кв.м.', 80, 35000",
+                                "07, 'Брус строганый', '140*140*6000', 'кв.м.', 46, 13000",
+                                "08, 'Брус строганый', '160*160*6000', 'кв.м.', 34, 15000",
+                                "09, 'Брус строганый', '180*180*6000', 'кв.м.', 108, 17000",
+                                "10, 'Плинтус фигурный', '12х35х3000', 'пог.м.', 300, 40",
+                                "11, 'Уголок наружный', '50х60х3000', 'пог.м.', 277, 55",
+                                "12, 'Уголок наружный', '60х60х3000', 'пог.м.', 47, 65",
+                                "13, 'Уголок наружный', '40х50х3000', 'пог.м.', 26, 50",
+                                "14, 'Уголок наружный', '50х40х3000', 'пог.м.', 800, 60"};
+        try {
+            for (int i = 0; i < dataForTable.length; i++) {
+                jdbcTemplate.execute("insert into stock_items (id, name, size, unit, quantity, cost)" +
+                        " values (" + dataForTable[i] + ");");
+
+            }
+            result = "Table Company filled successful!";
+        } catch (Exception e) {
+            result = e + "";
+            e.printStackTrace();
+        }
+        return result;
     }
 
     public int getId() {

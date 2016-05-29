@@ -44,6 +44,20 @@ public class AppController {
         return "selectpage";
     }
 
+    @RequestMapping("/yukon85/dropandcreate")
+    public String dropAndCreateExample(Model model) throws SQLException {
+        model.addAttribute("result", testDataBase.dropAndCreateTestTable());
+        model.addAttribute("items", testDataBase.selectWholeTestTable());
+        return "resultoperationpage";
+    }
+
+    @RequestMapping("/yukon85/fill")
+    public String fillExample(Model model) throws SQLException {
+        model.addAttribute("result", testDataBase.fillTable());
+        model.addAttribute("items", testDataBase.selectWholeTestTable());
+        return "resultoperationpage";
+    }
+
     @RequestMapping("/select")
     public String items (Model model) throws SQLException{
         model.addAttribute("items", productOrder.selectWholeTable());

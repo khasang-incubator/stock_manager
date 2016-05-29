@@ -11,13 +11,13 @@ div {
 	background: #FFFFFF;
 	margin: 15px auto;
 	width: 900px;
-	height: 600px;
+	height: 850px;
 	outline: ridge medium;
 }
 #header {
 	background: #838283;
 	width: 900px;
-	height: 50px;
+	height: 100px;
 }
 #add_item {
 	/*visibility: hidden;*/
@@ -30,7 +30,7 @@ div {
 	background: #ffff00;
 	float: left;
 	width: 800px;
-	height: 520px;
+	height: 720px;
 }
 #table_with_items {
 	margin: 5px auto;
@@ -44,5 +44,5 @@ th,td {
 	background: #ffa500;
 	float: right;
 	width: 100px;
-	height: 520px;
+	height: 720px;
 }

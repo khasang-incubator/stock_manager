@@ -40,8 +40,9 @@ public class AppController {
 
     @RequestMapping("/yukon85/select")
     public String showSelectExample(Model model) throws SQLException {
+        model.addAttribute("result", "Select all table:");
         model.addAttribute("items", testDataBase.selectWholeTestTable());
-        return "selectpage";
+        return "resultoperationpage";
     }
 
     @RequestMapping("/yukon85/dropandcreate")

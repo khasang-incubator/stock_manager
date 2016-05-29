@@ -7,8 +7,9 @@ public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int Id;
-    private String user_name;
+    private int id;
+    @Column(name="user_name")
+    private String userName;
     private String login;
     private String password;
     private String email;
@@ -18,19 +19,19 @@ public class Users {
     }
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int id) {
-        Id = id;
+        id = id;
     }
 
-    public String getUser_name() {
-        return user_name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getLogin() {
@@ -64,7 +65,5 @@ public class Users {
     public void setRole(String role) {
         this.role = role;
     }
-
-
 
 }

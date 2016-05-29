@@ -38,7 +38,6 @@ public class ProjectDAOTest {
 
     @Test
     public void addTest() {
-        System.out.println("add:" + project.toString());
         projectDAO.add(project);
         Project projectTest = projectDAO.getById(project.getId());
 
@@ -47,10 +46,9 @@ public class ProjectDAOTest {
 
     @Test
     public void deleteTest() {
-        System.out.println("del:" + project.toString());
-        Project projectTest = projectDAO.delete(project);
+        projectDAO.delete(project);
 
-        Assert.assertNull(projectTest);
+        Assert.assertNull(projectDAO.getById(project.getId()));
     }
 
     @Test

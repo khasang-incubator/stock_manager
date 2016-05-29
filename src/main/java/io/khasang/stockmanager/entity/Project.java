@@ -86,7 +86,6 @@ public class Project {
     @Override
     public String toString() {
         return "Project{" +
-                "id='" + id + '\'' +
                 ", title='" + title + '\'' +
                 ", userId=" + userId +
                 ", startDate=" + startDate +

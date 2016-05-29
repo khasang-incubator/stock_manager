@@ -22,9 +22,14 @@ public class ProjectDAO {
         }
     }
 
-    public Project delete(Project project) {
-
-        return project;
+    public void delete(Project project) {
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+            session.delete(project);
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
     }
 
     public List<Project> getAll() {

@@ -27,4 +27,14 @@ public class ProductTest {
         productsDao.persist(product);
         Assert.assertNotNull(product.getId());
     }
+    @Test
+    public void deleteTest() {
+        Product product = new Product();
+        product.setName("Test");
+        product.setDescription("Description");
+        product.setUserId(1);
+        productsDao.delete(product);
+        Assert.assertEquals (null,product.getName());
+
+    }
 }

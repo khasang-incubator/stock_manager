@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
+@Table(name = "project_product")
 public class ProjectProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

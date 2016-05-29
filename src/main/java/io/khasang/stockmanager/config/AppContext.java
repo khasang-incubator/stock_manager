@@ -6,6 +6,7 @@ import io.khasang.stockmanager.model.Message;
 import io.khasang.stockmanager.model.ProductOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
@@ -15,6 +16,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 @Configuration
 @PropertySource("classpath:util.properties")
+@ComponentScan("io.khasang.stockmanager.dao")
 public class AppContext {
     @Autowired
     Environment environment;
@@ -55,4 +57,5 @@ public class AppContext {
     public InsertToTable insertToTable(){
         return new InsertToTable();
     }
+
 }

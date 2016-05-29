@@ -33,7 +33,14 @@ public class ProjectDAO {
     }
 
     public List<Project> getAll() {
-        return null;
+        List list = null;
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+            list = session.createCriteria(Project.class).list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 
     public Project getById(Integer id) {

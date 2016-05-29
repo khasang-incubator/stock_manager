@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class User {
+public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -69,14 +69,14 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        User user = (User) o;
+        Users users = (Users) o;
 
-        if (id != user.id) return false;
-        if (name != null ? !name.equals(user.name) : user.name != null) return false;
-        if (login != null ? !login.equals(user.login) : user.login != null) return false;
-        if (password != null ? !password.equals(user.password) : user.password != null) return false;
-        if (email != null ? !email.equals(user.email) : user.email != null) return false;
-        return role != null ? role.equals(user.role) : user.role == null;
+        if (id != users.id) return false;
+        if (name != null ? !name.equals(users.name) : users.name != null) return false;
+        if (login != null ? !login.equals(users.login) : users.login != null) return false;
+        if (password != null ? !password.equals(users.password) : users.password != null) return false;
+        if (email != null ? !email.equals(users.email) : users.email != null) return false;
+        return role != null ? role.equals(users.role) : users.role == null;
 
     }
 

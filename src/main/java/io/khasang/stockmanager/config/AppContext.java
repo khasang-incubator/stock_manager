@@ -3,6 +3,8 @@ package io.khasang.stockmanager.config;
 import io.khasang.stockmanager.dao.InsertToTable;
 import io.khasang.stockmanager.dao.ProjectDAO;
 import io.khasang.stockmanager.entity.Project;
+import io.khasang.stockmanager.entity.ProjectProduct;
+import io.khasang.stockmanager.entity.Users;
 import io.khasang.stockmanager.model.DataExample;
 import io.khasang.stockmanager.model.Message;
 import io.khasang.stockmanager.model.ProductOrder;
@@ -66,4 +68,15 @@ public class AppContext {
     public ProjectDAO projectDAO() {
         return new ProjectDAO();
     }
+
+    @Bean
+    public ProjectProduct projectProduct() {
+        return new ProjectProduct();
+    }
+
+    @Bean
+    public Users user() {
+        return new Users();
+    }
+
 }

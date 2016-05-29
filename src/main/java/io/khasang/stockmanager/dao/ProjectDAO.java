@@ -22,8 +22,9 @@ public class ProjectDAO {
         }
     }
 
-    public void delete(Project project) {
+    public Project delete(Project project) {
 
+        return project;
     }
 
     public List<Project> getAll() {
@@ -31,6 +32,13 @@ public class ProjectDAO {
     }
 
     public Project getById(Integer id) {
-        return null;
+        Project project = null;
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+            project = session.get(Project.class, id);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
+        return project;
     }
 }

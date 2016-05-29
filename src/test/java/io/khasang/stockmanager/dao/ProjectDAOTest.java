@@ -4,7 +4,6 @@ import io.khasang.stockmanager.config.HibernateConfig;
 import io.khasang.stockmanager.config.application.WebConfig;
 import io.khasang.stockmanager.entity.Project;
 import io.khasang.stockmanager.entity.ProjectStatus;
-import org.hibernate.SessionFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,34 +25,32 @@ public class ProjectDAOTest {
     @Autowired
     private ProjectDAO projectDAO;
 
-    @Autowired
-    private SessionFactory sessionFactory;
-
     @Before
     public void beforeTest() {
-//        project.setId();
-        project.setTitle("test_project");
         project.setTitle("test_project");
         project.setUserId(1);
         project.setStartDate(LocalDate.now());
         project.setFinishDate(LocalDate.now().plusDays(2));
         project.setStatus(ProjectStatus.ACTIVE);
         project.setBudget(10000);
-        project.setType("ddd");
+        project.setType("ddd1");
     }
 
     @Test
     public void addTest() {
+        System.out.println("add:" + project.toString());
         projectDAO.add(project);
-        Project projectTest = sessionFactory.openSession().get(Project.class, project.getId());
-        sessionFactory.close();
+        Project projectTest = projectDAO.getById(project.getId());
 
         Assert.assertEquals(project, projectTest);
     }
 
     @Test
     public void deleteTest() {
+        System.out.println("del:" + project.toString());
+        Project projectTest = projectDAO.delete(project);
 
+        Assert.assertNull(projectTest);
     }
 
     @Test

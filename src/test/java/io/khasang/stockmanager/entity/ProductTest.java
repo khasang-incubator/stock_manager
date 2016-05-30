@@ -25,7 +25,7 @@ public class ProductTest {
 
     @Test
     public void testUserId() {
-        assertSame("user id is wrong", 2l, product.getUserId());
+        assertSame("user id is wrong", user, product.getUser());
     }
 
     @Test

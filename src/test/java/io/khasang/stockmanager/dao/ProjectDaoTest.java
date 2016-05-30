@@ -16,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(classes = {WebConfig.class, AppContext.class})
-public class ProductDaoTest {
+public class ProjectDaoTest {
 
     @Autowired
     ProjectDao projectDao;

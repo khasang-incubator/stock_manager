@@ -3,6 +3,9 @@ package io.khasang.stockmanager.entity;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
+
 public class ProductTest {
 
     private Product product;
@@ -24,8 +27,8 @@ public class ProductTest {
     }
 
     @Test
-    public void testUserId() {
-        assertSame("user id is wrong", user, product.getUser());
+    public void testUser() {
+        assertEquals("user is wrong", user, product.getUser());
     }
 
     @Test

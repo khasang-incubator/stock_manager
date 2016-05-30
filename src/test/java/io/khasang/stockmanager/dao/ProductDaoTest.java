@@ -27,8 +27,8 @@ public class ProductDaoTest {
     @Before
     public void setUp() {
         user = new User();
-        user.setFirstName("James");
-        user.setLastName("Smith");
+        user.setFirstName("Mark");
+        user.setLastName("Wood");
         user.setLogin("jsmith");
         user.setPassword("qwerty");
         user.setEmail("jsmith@google.com");
@@ -42,13 +42,13 @@ public class ProductDaoTest {
     @Test
     public void testInsertToTable() {
         productDao.insertToTable(product);
-        assertEquals("Result wrong", "sucessfully insert to table", productDao.getResult());
+        assertEquals("InsertToTable Result wrong", "sucessfully insert to table", productDao.getResult());
     }
 
     @Test
     public void testErrorWhenInsertToTable() {
         product.setProductName(null);
         productDao.insertToTable(product);
-        assertEquals("Result wrong", "unable to insert to table", productDao.getResult());
+        assertEquals("ErrorWhenInsertToTable Result wrong", "unable to insert to table", productDao.getResult());
     }
 }

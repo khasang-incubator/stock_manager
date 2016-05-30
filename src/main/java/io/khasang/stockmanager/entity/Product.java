@@ -10,10 +10,10 @@ public class Product {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name="user_id_fk")
+    @JoinColumn(name = "user_id_fk")
     private User user;
 
-    @Column
+    @Column(nullable = false)
     private String productName;
 
     @Column

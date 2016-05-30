@@ -4,7 +4,12 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.math.BigDecimal;
 import java.util.Date;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
+
 
 public class ProjectProductTest {
 
@@ -15,31 +20,31 @@ public class ProjectProductTest {
     public void setUp() {
         currentDate = new Date();
         projectProduct = new ProjectProduct();
-        projectProduct.setProjectId(1);
+        projectProduct.setProjectId(1l);
         projectProduct.setAmount(3);
-        projectProduct.setPrice(20);
-        projectProduct.setSumm(60);
+        projectProduct.setPrice(new BigDecimal(20));
+        projectProduct.setSumm(new BigDecimal(60));
         projectProduct.setDate(currentDate);
     }
 
     @Test
     public void testProjectId() {
-        assertEquals("project id is wrong", 1, projectProduct.getProjectId());
+        assertSame("project id is wrong", 1l, projectProduct.getProjectId());
     }
 
     @Test
     public void testAmount() {
-        assertEquals("amount is wrong", 3, projectProduct.getAmount());
+        assertSame("amount is wrong", 3, projectProduct.getAmount());
     }
 
     @Test
     public void testPrice() {
-        assertEquals("price is wrong", 20, projectProduct.getPrice());
+        assertEquals("price is wrong", new BigDecimal(20), projectProduct.getPrice());
     }
 
     @Test
     public void testSumm() {
-        assertEquals("summ is wrong", 60, projectProduct.getSumm());
+        assertEquals("summ is wrong", new BigDecimal(60), projectProduct.getSumm());
     }
 
     @Test

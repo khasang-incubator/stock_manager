@@ -3,7 +3,7 @@ package io.khasang.stockmanager.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Users")
+@Table(name = "users")
 public class User {
 
     @Id
@@ -16,7 +16,7 @@ public class User {
     @Column
     private String lastName;
 
-    @Column
+    @Column(nullable = false)
     private String login;
 
     @Column

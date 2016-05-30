@@ -42,6 +42,7 @@ public class UserDaoTest {
     }
     @Test
     public void testErrorWhenInsertToTable() {
+        user.setLogin(null);
         userDao.insertToTable(user);
         assertEquals("Result wrong", "unable to insert to table", userDao.getResult());
     }

@@ -15,6 +15,9 @@ public class User {
     @Column
     private String lastName;
 
+    @Column
+    private String login;
+
     public String getFirstName() {
         return firstName;
     }
@@ -37,5 +40,13 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
     }
 }

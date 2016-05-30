@@ -16,7 +16,7 @@ public class UserTest {
         user.setFirstName("John");
         user.setLastName("Smith");
         user.setLogin("jsmith");
-//        user.setPassword("qwerty");
+        user.setPassword("qwerty");
 //        user.setEmail("jsmith@google.com");
 //        user.setRole("admin");
     }
@@ -33,6 +33,11 @@ public class UserTest {
 
     @Test
     public void testLogin(){
-        assertEquals("login name is wrong", "jsmith", user.getLogin());
+        assertEquals("login is wrong", "jsmith", user.getLogin());
+    }
+
+    @Test
+    public void testPassword(){
+        assertEquals("password is wrong", "qwerty", user.getPassword());
     }
 }

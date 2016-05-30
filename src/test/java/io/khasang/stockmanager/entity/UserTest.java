@@ -18,7 +18,7 @@ public class UserTest {
         user.setLogin("jsmith");
         user.setPassword("qwerty");
         user.setEmail("jsmith@google.com");
-//        user.setRole("admin");
+        user.setRole("admin");
     }
 
     @Test
@@ -44,5 +44,10 @@ public class UserTest {
     @Test
     public void testEmail(){
         assertEquals("email is wrong", "jsmith@google.com", user.getEmail());
+    }
+
+    @Test
+    public void testRole(){
+        assertEquals("role is wrong", "admin", user.getRole());
     }
 }

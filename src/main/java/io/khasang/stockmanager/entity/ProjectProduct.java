@@ -14,7 +14,7 @@ public class ProjectProduct {
     @Column
     private Long projectId;
 
-    @Column
+    @Column(nullable = false)
     private Integer amount;
 
     @Column

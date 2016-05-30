@@ -6,11 +6,19 @@ import org.junit.Test;
 public class ProductTest {
 
     private Product product;
+    private User user;
 
     @Before
     public void setUp() {
+        user = new User();
+        user.setFirstName("John");
+        user.setLastName("Smith");
+        user.setLogin("jsmith");
+        user.setPassword("qwerty");
+        user.setEmail("jsmith@google.com");
+        user.setRole("admin");
         product = new Product();
-        product.setUserId(2l);
+        product.setUser(user);
         product.setProductName("wood");
         product.setDescription("norwegian wood");
     }

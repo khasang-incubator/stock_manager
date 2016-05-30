@@ -7,7 +7,6 @@ import static org.junit.Assert.assertEquals;
 
 public class UserTest {
 
-    //users(id, фио, login, password, e-mail, роль).
     private User user;
 
     @Before

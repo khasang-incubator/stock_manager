@@ -3,6 +3,7 @@ package io.khasang.stockmanager.entity;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "Users")
 public class User {
 
     @Id

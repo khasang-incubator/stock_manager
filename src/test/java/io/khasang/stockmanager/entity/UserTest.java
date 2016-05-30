@@ -2,7 +2,9 @@ package io.khasang.stockmanager.entity;
 
 import org.junit.Before;
 import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
+
 public class UserTest {
 
     //users(id, фио, login, password, e-mail, роль).
@@ -13,7 +15,7 @@ public class UserTest {
         user = new User();
         user.setFirstName("John");
         user.setLastName("Smith");
-//        user.setLogin("jsmith");
+        user.setLogin("jsmith");
 //        user.setPassword("qwerty");
 //        user.setEmail("jsmith@google.com");
 //        user.setRole("admin");
@@ -25,5 +27,12 @@ public class UserTest {
     }
 
     @Test
-    public void testLastName() {asserEquals("Last name is wrong", "Smith", user.getLastName());}
+    public void testLastName() {
+        assertEquals("Last name is wrong", "Smith", user.getLastName());
+    }
+
+    @Test
+    public void testLogin(){
+        assertEquals("login name is wrong", "jsmith", user.getLogin());
+    }
 }

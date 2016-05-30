@@ -12,6 +12,9 @@ public class User {
     @Column
     private String firstName;
 
+    @Column
+    private String lastName;
+
     public String getFirstName() {
         return firstName;
     }
@@ -28,4 +31,11 @@ public class User {
         this.id = id;
     }
 
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 }

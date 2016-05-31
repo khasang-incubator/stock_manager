@@ -86,6 +86,12 @@ public class AppController {
         return "joinpage";
     }
 
+    @RequestMapping("/yukon85/innerjoin")
+    public String innerJoin(Model model) throws SQLException {
+        model.addAttribute("items", testDataBase.useInnerJoin());
+        return "joinpage";
+    }
+
     @RequestMapping("/select")
     public String items(Model model) throws SQLException {
         model.addAttribute("items", productOrder.selectWholeTable());

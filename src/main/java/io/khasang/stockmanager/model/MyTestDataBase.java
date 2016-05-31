@@ -138,6 +138,13 @@ public class MyTestDataBase {
             return jdbcTemplate.query(sql, new JoinMapper());
     }
 
+    public List useInnerJoin() {
+        String sql = "SELECT si.id, si.name AS name_item, o.name AS name_owner, o.email " +
+                "FROM stock_items si " +
+                "INNER JOIN owner o ON si.owner_id = o.id;";
+        return jdbcTemplate.query(sql, new JoinMapper());
+    }
+
     public int getId() {
         return id;
     }

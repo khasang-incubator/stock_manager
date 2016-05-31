@@ -25,6 +25,7 @@
                 <th class="unit_of_item">Единица измерения</th>
                 <th class="quantity_of_item">Количество</th>
                 <th class="cost_of_item">Стоимость</th>
+                <th class="cost_of_item">Владелец</th>
             </tr>
             <c:forEach items="${items}" var="stockitems">
                 <tr>
@@ -34,6 +35,7 @@
                     <td><c:out value="${stockitems.unit}"/></td>
                     <td><c:out value="${stockitems.quantity}"/></td>
                     <td><c:out value="${stockitems.cost}"/></td>
+                    <td><c:out value="${stockitems.owner_id}"/></td>
                 </tr>
             </c:forEach>
         </table>

@@ -21,6 +21,7 @@ public class MyTestDataBase {
     private String unit;
     private int quantity;
     private float cost;
+    private int owner_id;
 
     public MyTestDataBase() {
     }
@@ -44,7 +45,7 @@ public class MyTestDataBase {
             }
             jdbcTemplate.execute("CREATE TABLE stock_items " +
                     "(ID INT PRIMARY KEY NOT NULL, name CHARACTER(255), size CHARACTER (255), unit CHARACTER (255)," +
-                    "quantity INT, cost REAL)");
+                    "quantity INT, cost REAL, owner_id INT)");
             result = "Table stock_items created successful!";
         } catch (Exception e) {
             result = e + "";
@@ -100,7 +101,7 @@ public class MyTestDataBase {
         String sql = "UPDATE stock_items SET name = ? WHERE id = ?";
         try {
             jdbcTemplate.update(sql, new Object[]{name, id});
-            result = "Table stock_items truncate successful!";
+            result = "Table stock_items update successful!";
         } catch (Exception e) {
             result = e + "";
             e.printStackTrace();
@@ -175,6 +176,13 @@ public class MyTestDataBase {
         this.cost = cost;
     }
 
+    public int getOwner_id() {
+        return owner_id;
+    }
+
+    public void setOwner_id(int owner_id) {
+        this.owner_id = owner_id;
+    }
 }
 
 final class TestItemMapper implements RowMapper<MyTestDataBase> {
@@ -186,6 +194,7 @@ final class TestItemMapper implements RowMapper<MyTestDataBase> {
         testDataBase.setUnit(rs.getString("unit"));
         testDataBase.setQuantity(rs.getInt("quantity"));
         testDataBase.setCost(rs.getFloat("cost"));
+        testDataBase.setOwner_id(rs.getInt("owner_id"));
         return testDataBase;
     }
 }

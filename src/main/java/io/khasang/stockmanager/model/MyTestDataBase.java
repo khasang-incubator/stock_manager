@@ -22,6 +22,9 @@ public class MyTestDataBase {
     private int quantity;
     private float cost;
     private int owner_id;
+    // variables for owner table
+    private String name_owner;
+    private String email;
 
     public MyTestDataBase() {
     }
@@ -128,6 +131,13 @@ public class MyTestDataBase {
         return result;
     }
 
+    public List useOuterJoin() {
+        String sql = "SELECT si.id, si.name AS name_item, o.name AS name_owner, o.email " +
+                "FROM stock_items si " +
+                "LEFT JOIN owner o ON si.owner_id = o.id;";
+            return jdbcTemplate.query(sql, new JoinMapper());
+    }
+
     public int getId() {
         return id;
     }
@@ -183,6 +193,22 @@ public class MyTestDataBase {
     public void setOwner_id(int owner_id) {
         this.owner_id = owner_id;
     }
+
+    public String getName_owner() {
+        return name_owner;
+    }
+
+    public void setName_owner(String name_owner) {
+        this.name_owner = name_owner;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }
 
 final class TestItemMapper implements RowMapper<MyTestDataBase> {
@@ -198,3 +224,15 @@ final class TestItemMapper implements RowMapper<MyTestDataBase> {
         return testDataBase;
     }
 }
+
+final class JoinMapper implements RowMapper<MyTestDataBase> {
+    public MyTestDataBase mapRow(ResultSet rs, int rowNum) throws SQLException {
+        MyTestDataBase testDataBase = new MyTestDataBase();
+        testDataBase.setId(rs.getInt("id"));
+        testDataBase.setName(rs.getString("name_item"));
+        testDataBase.setName_owner(rs.getString("name_owner"));
+        testDataBase.setEmail(rs.getString("email"));
+        return testDataBase;
+    }
+}
+

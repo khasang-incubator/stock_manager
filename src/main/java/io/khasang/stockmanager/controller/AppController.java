@@ -80,6 +80,12 @@ public class AppController {
         return "resultoperationpage";
     }
 
+    @RequestMapping("/yukon85/leftjoin")
+    public String leftJoin(Model model) throws SQLException {
+        model.addAttribute("items", testDataBase.useOuterJoin());
+        return "joinpage";
+    }
+
     @RequestMapping("/select")
     public String items(Model model) throws SQLException {
         model.addAttribute("items", productOrder.selectWholeTable());

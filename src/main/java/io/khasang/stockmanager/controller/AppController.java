@@ -73,6 +73,13 @@ public class AppController {
         return "resultoperationpage";
     }
 
+    @RequestMapping("/yukon85/delete")
+    public String deleteTenRows(Model model) throws SQLException {
+        model.addAttribute("result", testDataBase.deleteFirstTenRows());
+        model.addAttribute("items", testDataBase.selectWholeTestTable());
+        return "resultoperationpage";
+    }
+
     @RequestMapping("/select")
     public String items(Model model) throws SQLException {
         model.addAttribute("items", productOrder.selectWholeTable());

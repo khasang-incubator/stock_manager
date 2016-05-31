@@ -108,6 +108,25 @@ public class MyTestDataBase {
         return result;
     }
 
+    public String deleteFirstTenRows() {
+        String result = "";
+        String sql = "DELETE FROM stock_items " +
+                "WHERE ctid IN (" +
+                "SELECT ctid " +
+                "FROM stock_items " +
+                "ORDER BY id " +
+                "LIMIT 10" +
+                ");";
+        try {
+            jdbcTemplate.update(sql);
+            result = "First 10 rows from table stock_items deleted successful!";
+        } catch (Exception e) {
+            result = e + "";
+            e.printStackTrace();
+        }
+        return result;
+    }
+
     public int getId() {
         return id;
     }

@@ -1,16 +1,13 @@
 package io.khasang.stockmanager.controller;
 
 import io.khasang.stockmanager.dao.InsertToTable;
+import io.khasang.stockmanager.dao.UserDAOImpl;
 import io.khasang.stockmanager.model.DataExample;
 import io.khasang.stockmanager.model.ProductOrder;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.sql.SQLException;
 
 @Controller
 public class AppController {
@@ -20,6 +17,8 @@ public class AppController {
     ProductOrder productOrder;
     @Autowired
     InsertToTable insertToTable;
+    @Autowired
+    UserDAOImpl userDAOImpl;
 
     @RequestMapping("/admin")
     public String admin(Model model) {
@@ -35,4 +34,12 @@ public class AppController {
     public String forbidden() {
         return "403";
     }
+
+    @RequestMapping("/admin/changerole")
+    public String changeRole(Model model) {
+        model.addAttribute("users", userDAOImpl.getAll());
+        return "changerole";
+    }
+
+
 }

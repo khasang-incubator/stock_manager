@@ -3,6 +3,8 @@ package io.khasang.stockmanager.controller;
 
 import io.khasang.stockmanager.config.AppContext;
 import io.khasang.stockmanager.config.application.WebConfig;
+import io.khasang.stockmanager.dao.UserDao;
+import io.khasang.stockmanager.entity.User;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,6 +16,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 
@@ -44,21 +47,17 @@ public class HelloControllerTest {
     @Test
     public void shouldProcessRegistration() throws Exception {
 
-
         //SpitterRepository mockRepository = mock(SpitterRepository.class);
         //Spitter unsaved = new Spitter("jbauer", "24hours", "Jack", "Bauer");
         //Spitter saved = new Spitter(24L, "jbauer", "24hours", "Jack", "Bauer");
-        //when(mockRepository.save(unsaved)).thenReturn(saved);
 
 
         //SpitterController controller = new SpitterController(mockRepository);
 
 
-        //UserDao userDao = mock(UserDao.class);
+        UserDao mockUserDao = mock(UserDao.class);
 
 
-
-        /*
         User userUnsaved = new User();
         userUnsaved.setFirstName("John");
         userUnsaved.setLastName("Smith");
@@ -77,7 +76,8 @@ public class HelloControllerTest {
         userSaved.setEmail("jsmith@google.com");
         userSaved.setRole("admin");
 
-        */
+
+        when(mockUserDao.save(userUnsaved)).thenReturn(userSaved);
 
 
         HelloController helloController = new HelloController();
@@ -86,7 +86,7 @@ public class HelloControllerTest {
         //MockMvc mockMvc = standaloneSetup(helloController).build();
 
 
-        mockMvc.perform(post("/")
+        mockMvc.perform(post("/add_user")
                 .param("firstName", "Jack")
                 .param("lastName", "Bauer")
                 .param("username", "jbauer")
@@ -96,9 +96,7 @@ public class HelloControllerTest {
                 .andExpect(redirectedUrl("/registration_result"));
 
 
-        /// verify(mockRepository, atLeastOnce()).save(unsaved);
-
-        ;
+        verify(mockUserDao, atLeastOnce()).save(userUnsaved);
 
 
         // ResultActions result = mockMvc.perform(request);

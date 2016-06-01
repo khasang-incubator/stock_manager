@@ -18,7 +18,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 
 @Controller
-public class AppController {
+public class AppController1 {
     @Autowired
     DataExample dataExample;
 

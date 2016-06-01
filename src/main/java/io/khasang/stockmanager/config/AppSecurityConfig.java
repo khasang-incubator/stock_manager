@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+
 import javax.sql.DataSource;
 
 @Configuration
@@ -18,8 +19,13 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     DataSource dataSource;
 
-    String userAndPaswQuery = "select login, password, true from users where login = ?";
-    String autorityQuery = "select login, role from user_roles where username = ?";
+//    String userAndPaswQuery = "select login, password, true from users where login = ?";
+//    String autorityQuery = "select login, role from user_roles where username = ?";
+
+    String userAndPaswQuery = "select login as principal, password as credentials, true from users where login = ?";
+    //"select username, password, true from users where username = ?";
+    String autorityQuery = "select login as principal, role from users where login = ?";
+    //"select username, role from user_roles where username = ?";
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -34,6 +40,10 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/admin").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/confidential/**").access("hasRole('ROLE_USER')")
-                .and().formLogin().defaultSuccessUrl("/", false);
+                .and().formLogin().loginPage("/").defaultSuccessUrl("/admin", false)
+                .and()
+                .exceptionHandling().accessDeniedPage("/403")
+                .and()
+                .csrf().disable();
     }
 }

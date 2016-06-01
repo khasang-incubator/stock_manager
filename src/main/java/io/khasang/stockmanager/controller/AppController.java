@@ -21,34 +21,18 @@ public class AppController {
     @Autowired
     InsertToTable insertToTable;
 
+    @RequestMapping("/admin")
+    public String admin(Model model) {
+        return "admin";
+    }
+
     @RequestMapping("/")
-    public String shrink(Model model) {
-        model.addAttribute("hello", "");
+    public String hello() {
         return "hello";
     }
 
-    @RequestMapping("/confidential")
-    public String securePage(Model model) {
-        model.addAttribute("cat", "Barsik");
-        return "cat";
+    @RequestMapping("/403")
+    public String forbidden() {
+        return "403";
     }
-
-    @RequestMapping("/confidential/tablecreate")
-    public String tableCreate(Model model) {
-        model.addAttribute("tablecreate", dataExample.getResult());
-        return "tablecreate";
-    }
-
-    @RequestMapping("/select")
-    public String items (Model model) throws SQLException{
-        model.addAttribute("items", productOrder.selectWholeTable());
-        return "select";
-    }
-
-    @RequestMapping(value = {"/krokodil"})
-    public String home(Model model) {
-        model.addAttribute("krokodil", insertToTable.getResult(200, "ref"));
-        return "home";
-    }
-
 }

@@ -14,9 +14,9 @@ public class UserDao {
     @Autowired
     SessionFactory sessionFactory;
 
-    private String result;
+    //private String result;
 
-    public void insertToTable(User user) {
+    public String insertToTable(User user) {
         Session session = sessionFactory.openSession();
         try {
             session.beginTransaction();
@@ -25,18 +25,18 @@ public class UserDao {
                     .list();
             session.save(user);
             session.getTransaction().commit();
-            result = "sucessfully insert to table";
+            return "sucessfully insert to table";
         } catch (Exception e) {
             session.getTransaction().rollback();
-            result = "unable to insert to table";
             e.printStackTrace();
+            return "unable to insert to table";
         } finally {
             session.close();
         }
     }
 
 
-    public String getResult() {
-        return result;
-    }
+//    //public String getResult() {
+//        return result;
+//    }
 }

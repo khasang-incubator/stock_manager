@@ -1,6 +1,5 @@
 package io.khasang.stockmanager.config.application;
 
-import io.khasang.stockmanager.model.Message;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +11,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan({"io.khasang.stockmanager.config", "io.khasang.stockmanager.controller"})
+@ComponentScan({"io.khasang.stockmanager.config", "io.khasang.stockmanager.controller", "io.khasang.stockmanager.dao"})
 public class WebConfig extends WebMvcConfigurerAdapter {
     @Bean
     public InternalResourceViewResolver viewResolver() {

@@ -1,6 +1,5 @@
 package io.khasang.stockmanager.dao;
 
-import io.khasang.stockmanager.entity.Project;
 import io.khasang.stockmanager.entity.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

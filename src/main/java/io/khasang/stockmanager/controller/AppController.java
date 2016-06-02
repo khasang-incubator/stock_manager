@@ -1,7 +1,7 @@
 package io.khasang.stockmanager.controller;
 
 import io.khasang.stockmanager.dao.InsertToTable;
-import io.khasang.stockmanager.dao.UserDAOImpl;
+import io.khasang.stockmanager.dao.UserDAO;
 import io.khasang.stockmanager.model.DataExample;
 import io.khasang.stockmanager.model.ProductOrder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ public class AppController {
     @Autowired
     InsertToTable insertToTable;
     @Autowired
-    UserDAOImpl userDAOImpl;
+    UserDAO userDAO;
 
     @RequestMapping("/admin")
     public String admin(Model model) {
@@ -37,7 +37,7 @@ public class AppController {
 
     @RequestMapping("/admin/changerole")
     public String changeRole(Model model) {
-        model.addAttribute("users", userDAOImpl.getAll());
+        model.addAttribute("users", userDAO.getAll());
         return "changerole";
     }
 

@@ -31,7 +31,7 @@ public class HibernateConfig {
         sessionFactory.setDataSource(dataSource());
         sessionFactory.setPackagesToScan("io.khasang.stockmanager.*");
         sessionFactory.setHibernateProperties(hibernateProperties());
-        sessionFactory.setAnnotatedClasses(Offer.class, Project.class, Product.class, Users.class, ProjectProduct.class);
+        sessionFactory.setAnnotatedClasses(Offer.class, Project.class, Product.class, User.class, ProjectProduct.class);
         return sessionFactory;
     }
 

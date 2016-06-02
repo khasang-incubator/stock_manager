@@ -1,11 +1,11 @@
 package io.khasang.stockmanager.dao;
 
-import io.khasang.stockmanager.entity.Users;
+import io.khasang.stockmanager.entity.User;
 
 import java.util.List;
 
 public interface UserDAO {
-    List<Users> getAll();
+    List<User> getAll();
 
-    void change(Users user);
+    void change(User user);
 }

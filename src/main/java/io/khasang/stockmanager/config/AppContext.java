@@ -2,10 +2,11 @@ package io.khasang.stockmanager.config;
 
 import io.khasang.stockmanager.dao.InsertToTable;
 import io.khasang.stockmanager.dao.ProjectDAO;
+import io.khasang.stockmanager.dao.UserDAO;
 import io.khasang.stockmanager.dao.UserDAOImpl;
 import io.khasang.stockmanager.entity.Project;
 import io.khasang.stockmanager.entity.ProjectProduct;
-import io.khasang.stockmanager.entity.Users;
+import io.khasang.stockmanager.entity.User;
 import io.khasang.stockmanager.model.DataExample;
 import io.khasang.stockmanager.model.Message;
 import io.khasang.stockmanager.model.ProductOrder;
@@ -76,12 +77,12 @@ public class AppContext {
     }
 
     @Bean
-    public Users user() {
-        return new Users();
+    public User user() {
+        return new User();
     }
 
     @Bean
-    public UserDAOImpl userDAOImpl() {
+    public UserDAO userDAO() {
         return new UserDAOImpl();
     }
 

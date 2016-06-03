@@ -11,6 +11,7 @@ import java.util.List;
 
 //@Import(HibernateConfig.class)
 public class UserDAOImpl implements UserDAO {
+    @SuppressWarnings("SpringJavaAutowiredMembersInspection")
     @Autowired
     private SessionFactory sessionFactory;
 
@@ -32,6 +33,17 @@ public class UserDAOImpl implements UserDAO {
         try (Session session = sessionFactory.openSession()) {
             session.beginTransaction();
             session.update(user);
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void add(User user) {
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+            session.save(user);
             session.getTransaction().commit();
         } catch (HibernateException e) {
             e.printStackTrace();

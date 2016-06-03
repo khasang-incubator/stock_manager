@@ -1,9 +1,6 @@
 package io.khasang.stockmanager.config;
 
-import io.khasang.stockmanager.dao.InsertToTable;
-import io.khasang.stockmanager.dao.ProjectDAO;
-import io.khasang.stockmanager.dao.UserDAO;
-import io.khasang.stockmanager.dao.UserDAOImpl;
+import io.khasang.stockmanager.dao.*;
 import io.khasang.stockmanager.entity.Project;
 import io.khasang.stockmanager.entity.ProjectProduct;
 import io.khasang.stockmanager.entity.User;
@@ -84,6 +81,11 @@ public class AppContext {
     @Bean
     public UserDAO userDAO() {
         return new UserDAOImpl();
+    }
+
+    @Bean
+    public BackupDB backup() {
+        return new BackupDBImpl();
     }
 
 }

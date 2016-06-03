@@ -1,5 +1,6 @@
 package io.khasang.stockmanager.controller;
 
+import io.khasang.stockmanager.dao.BackupDB;
 import io.khasang.stockmanager.dao.InsertToTable;
 import io.khasang.stockmanager.dao.UserDAO;
 import io.khasang.stockmanager.model.DataExample;
@@ -12,13 +13,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class AppController {
     @Autowired
-    DataExample dataExample;
+    private DataExample dataExample;
     @Autowired
-    ProductOrder productOrder;
+    private ProductOrder productOrder;
     @Autowired
-    InsertToTable insertToTable;
+    private InsertToTable insertToTable;
     @Autowired
-    UserDAO userDAO;
+    private UserDAO userDAO;
+    @Autowired
+    private BackupDB backupDB;
 
     @RequestMapping("/admin")
     public String admin(Model model) {
@@ -41,5 +44,10 @@ public class AppController {
         return "changerole";
     }
 
+    @RequestMapping("/admin/backup")
+    public String backup(Model model) {
+        model.addAttribute("backup", backupDB.makeBackup());
+        return "backup";
+    }
 
 }

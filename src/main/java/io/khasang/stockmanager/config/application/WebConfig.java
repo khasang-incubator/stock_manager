@@ -1,6 +1,5 @@
 package io.khasang.stockmanager.config.application;
 
-import io.khasang.stockmanager.model.Message;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -28,5 +27,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
             registry.addResourceHandler("/css/**").addResourceLocations("/WEB-INF/views/css/");
             registry.addResourceHandler("/jpg/**").addResourceLocations("/WEB-INF/views/images/");
             registry.addResourceHandler("/bootstrap/**").addResourceLocations("/WEB-INF/views/Content/");
+            registry.addResourceHandler("/script/**").addResourceLocations("/WEB-INF/views/script/");
     }
 }

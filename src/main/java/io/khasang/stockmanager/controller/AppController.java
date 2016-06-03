@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class AppController {
@@ -38,10 +39,15 @@ public class AppController {
         return "403";
     }
 
-    @RequestMapping("/admin/changerole")
+    @RequestMapping("/admin/users")
     public String changeRole(Model model) {
         model.addAttribute("users", userDAO.getAll());
-        return "changerole";
+        return "users";
+    }
+
+    @RequestMapping(value = "/admin/users", method = RequestMethod.POST)
+    public String userPost(Model model){
+        return "users";
     }
 
     @RequestMapping("/admin/backup")

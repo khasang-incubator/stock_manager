@@ -92,6 +92,14 @@ public class AppController {
         return "joinpage";
     }
 
+    @RequestMapping("/yukon85/backup")
+    public String backup(Model model) throws SQLException {
+        model.addAttribute("result", testDataBase.makeBackup());
+        model.addAttribute("items", testDataBase.selectWholeTestTable());
+        return "resultoperationpage";
+    }
+
+
     @RequestMapping("/select")
     public String items(Model model) throws SQLException {
         model.addAttribute("items", productOrder.selectWholeTable());

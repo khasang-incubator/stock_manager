@@ -5,6 +5,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -143,6 +144,40 @@ public class MyTestDataBase {
                 "FROM stock_items si " +
                 "INNER JOIN owner o ON si.owner_id = o.id;";
         return jdbcTemplate.query(sql, new JoinMapper());
+    }
+
+    public String makeBackup () {
+        String result = "error ";
+        int time = 0;
+        String cmd[]={
+                "C:\\Program Files\\PostgreSQL\\9.4\\bin\\pg_dump.exe",
+                "-d",
+                "stockmanagertest",
+                "-h",
+                "localhost",
+                "-U",
+                "root",
+                "-w",
+                "-f",
+                "C:\\proj\\backup\\backup_stockmanagertest.sql"
+        };
+        try {
+            ProcessBuilder pb=new ProcessBuilder(cmd);
+            pb.environment().put("PGPASSWORD","root");
+            Process pr=pb.start();
+            time = pr.waitFor();
+        } catch (IOException e) {
+            result = e.getLocalizedMessage();
+        } catch (InterruptedException e) {
+            result = e.getLocalizedMessage();
+        }
+        if(time == 0){
+            result =  "<b>backup is created</b>";
+        }
+        else{
+            result =  result + "fail to create backup";
+        }
+        return result;
     }
 
     public int getId() {

@@ -2,15 +2,19 @@ package io.khasang.stockmanager.dao;
 
 
 import io.khasang.stockmanager.entity.Product;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
-public interface ProductsDao {
+public interface ProductDao {
     void persist(Product product);
     void delete(Product product);
     List<Product> getAll();
 
     Product getById(int id);
+
+    public void addProduct(Product contact);
+
+    public List<Product> listProduct();
+
+    public void removeProduct(Integer id);
 }

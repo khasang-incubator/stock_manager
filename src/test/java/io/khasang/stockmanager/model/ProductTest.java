@@ -1,7 +1,7 @@
 package io.khasang.stockmanager.model;
 
 import io.khasang.stockmanager.config.application.WebConfig;
-import io.khasang.stockmanager.dao.ProductsDao;
+import io.khasang.stockmanager.dao.ProductDao;
 import io.khasang.stockmanager.entity.Product;
 import org.junit.Assert;
 import org.junit.Test;
@@ -16,7 +16,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @ContextConfiguration(classes = {WebConfig.class})
 public class ProductTest {
     @Autowired
-    ProductsDao productsDao;
+    ProductDao productsDao;
 
     @Test
     public void persistTest() {

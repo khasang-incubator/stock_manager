@@ -5,17 +5,17 @@ import javax.persistence.*;
 @Entity
 @Table(name = "products")
 public class Product {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
     @Column(name = "user_id")
     private int userId;
+
     @Column(name = "product_name")
     private String name;
     private String description;
-
-    public Product() {
-    }
 
     public int getId() {
         return id;

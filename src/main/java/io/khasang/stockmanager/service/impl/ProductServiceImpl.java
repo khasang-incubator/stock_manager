@@ -1,4 +1,4 @@
-package service.impl;
+package io.khasang.stockmanager.service.impl;
 
 
 import io.khasang.stockmanager.dao.ProductDao;

@@ -50,5 +50,10 @@ public class AppController {
         model.addAttribute("krokodil", insertToTable.getResult(200, "ref"));
         return "home";
     }
-
+    
+    @RequestMapping(value = {"/desk"})
+    public String desk(Model model) {
+//        model.addAttribute("krokodil", insertToTable.getResult(200, "ref"));
+        return "desk";
+    }
 }

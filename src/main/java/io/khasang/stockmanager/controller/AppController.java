@@ -2,6 +2,7 @@ package io.khasang.stockmanager.controller;
 
 import io.khasang.stockmanager.dao.BackupDB;
 import io.khasang.stockmanager.dao.InsertToTable;
+import io.khasang.stockmanager.dao.RestoreDB;
 import io.khasang.stockmanager.dao.UserDAO;
 import io.khasang.stockmanager.model.DataExample;
 import io.khasang.stockmanager.model.ProductOrder;
@@ -25,6 +26,8 @@ public class AppController {
     private UserDAO userDAO;
     @Autowired
     private BackupDB backupDB;
+    @Autowired
+    private RestoreDB restoreDB;
     @Autowired
     private UserEditor userEditor;
 
@@ -65,6 +68,12 @@ public class AppController {
     public String backup(Model model) {
         model.addAttribute("backup", backupDB.makeBackup());
         return "backup";
+    }
+
+    @RequestMapping("/admin/restore")
+    public String restore(Model model) {
+        model.addAttribute("restore", restoreDB.makeRestore());
+        return "restore";
     }
 
 }

@@ -28,9 +28,9 @@ public class RestoreDBImpl implements RestoreDB {
         }
 
         if (time == 0) {
-            result = "<b>backup is created</b>";
+            result = "<b>Restore was successful</b>";
         } else {
-            result = result + "fail to create backup";
+            result = result + "fail to restore";
         }
 
         return result;

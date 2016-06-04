@@ -5,6 +5,7 @@
 </head>
 <body>
     <a href="/admin/backup">Backup</a>
+    <a href="/admin/restore">Restore</a>
     <a href="/admin/users">Users</a>
 </body>
 </html>

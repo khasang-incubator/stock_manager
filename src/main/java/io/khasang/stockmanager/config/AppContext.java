@@ -90,6 +90,11 @@ public class AppContext {
     }
 
     @Bean
+    public RestoreDB restore() {
+        return new RestoreDBImpl();
+    }
+
+    @Bean
     public UserEditor userEditor() {
         return new UserEditor();
     }

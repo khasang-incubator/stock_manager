@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.security.InvalidParameterException;
+
 @Controller
 public class AppController {
     @Autowired
@@ -55,13 +57,23 @@ public class AppController {
     @RequestMapping(value = "/admin/users", method = RequestMethod.POST)
     public String userPost(Model model, @RequestParam(name = "id", required = false) String id,
                            @RequestParam(name = "name", required = false) String name,
+                           @RequestParam(name = "surname", required = false) String surname,
+                           @RequestParam(name = "password", required = false) String password,
                            @RequestParam(name = "login", required = false) String login,
                            @RequestParam(name = "email", required = false) String email,
                            @RequestParam(name = "role", required = false) String role,
                            @RequestParam(name = "new_user", required = false) String newUser ){
-//        userEditor.defineUserOperationsByParams();
-        model.addAttribute("users", userDAO.getAll());
-        return "users";
+        try {
+            userEditor.defineUserOperationsByParams(id, name, surname, login, password, email, role, newUser);
+            model.addAttribute("users", userDAO.getAll());
+            return "users";
+        }catch (InvalidParameterException e){
+            model.addAttribute("users", userDAO.getAll());
+            model.addAttribute("error",true);
+            return "users";
+        }
+
+
     }
 
     @RequestMapping("/admin/backup")

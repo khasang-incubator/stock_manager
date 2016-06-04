@@ -27,6 +27,9 @@
         </tr>
     </c:forEach>
 </table>
+<c:if test="${not empty error}">
+    <p>Error, check your params!</p>
+</c:if>
 <form id="user_form" method="post">
     <h1>USER</h1>
     <br>

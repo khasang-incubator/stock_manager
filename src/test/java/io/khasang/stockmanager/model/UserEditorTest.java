@@ -1,10 +1,22 @@
 package io.khasang.stockmanager.model;
 
+import io.khasang.stockmanager.config.AppContext;
+import io.khasang.stockmanager.config.AppSecurityConfig;
+import io.khasang.stockmanager.config.HibernateConfig;
+import io.khasang.stockmanager.config.application.WebConfig;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.security.InvalidParameterException;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@WebAppConfiguration
+@ContextConfiguration(classes = {AppContext.class,
+        HibernateConfig.class, WebConfig.class, AppSecurityConfig.class})
 public class UserEditorTest {
     String id;
     String name;

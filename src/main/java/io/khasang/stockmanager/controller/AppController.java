@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.persistence.NoResultException;
 import java.security.InvalidParameterException;
+import java.security.Principal;
 
 @Controller
 public class AppController {
@@ -62,18 +64,26 @@ public class AppController {
                            @RequestParam(name = "login", required = false) String login,
                            @RequestParam(name = "email", required = false) String email,
                            @RequestParam(name = "role", required = false) String role,
-                           @RequestParam(name = "new_user", required = false) String newUser ){
+                           @RequestParam(name = "new_user", required = false) String newUser) {
         try {
             userEditor.defineUserOperationsByParams(id, name, surname, login, password, email, role, newUser);
-            model.addAttribute("users", userDAO.getAll());
-            return "users";
-        }catch (InvalidParameterException e){
-            model.addAttribute("users", userDAO.getAll());
-            model.addAttribute("error",true);
-            return "users";
+        } catch (InvalidParameterException e) {
+            model.addAttribute("error", "check your params!");
         }
+        model.addAttribute("users", userDAO.getAll());
+        return "users";
+    }
 
-
+    @RequestMapping("/admin/delete")
+    public String delete(Model model,
+                         @RequestParam(name = "id", required = false) String id) {
+        try {
+            userEditor.delete(id);
+        } catch (NoResultException e) {
+            model.addAttribute("error", "user not exists.");
+        }
+        model.addAttribute("users", userDAO.getAll());
+        return "users";
     }
 
     @RequestMapping("/admin/backup")

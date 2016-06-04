@@ -4,15 +4,19 @@ import io.khasang.stockmanager.dao.UserDAO;
 import io.khasang.stockmanager.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.persistence.NoResultException;
 import java.security.InvalidParameterException;
 
 public class UserEditor {
 
     @Autowired
     private UserDAO userDAO;
+//    @Autowired
+//    private User user;
 
     /**
      * Define operation by params (New user || Update user)
+     *
      * @param id
      * @param name
      * @param surname
@@ -34,11 +38,22 @@ public class UserEditor {
         }
     }
 
+    public void delete(String id) throws NoResultException {
+        try {
+            User user = userDAO.getById(Integer.parseInt(id));
+            userDAO.delete(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new NoResultException();
+        }
+    }
+
     /**
      * Check login and role params
-     * @throws InvalidParameterException on check error
+     *
      * @param login
      * @param role
+     * @throws InvalidParameterException on check error
      */
     private void checkImportantParams(String login, String role) throws InvalidParameterException {
         if (login == null || role == null || login.equals("") || role.equals("")) {
@@ -48,6 +63,7 @@ public class UserEditor {
 
     /**
      * Check id param
+     *
      * @param id
      * @throws InvalidParameterException on check error
      */
@@ -61,6 +77,7 @@ public class UserEditor {
 
     /**
      * Update user with userDAO
+     *
      * @param id
      * @param name
      * @param surname
@@ -87,6 +104,7 @@ public class UserEditor {
 
     /**
      * Create new user with userDAO
+     *
      * @param name
      * @param surname
      * @param login
@@ -108,6 +126,7 @@ public class UserEditor {
 
     /**
      * Parse id to int
+     *
      * @param id
      * @return int id
      * @throws InvalidParameterException on parse error

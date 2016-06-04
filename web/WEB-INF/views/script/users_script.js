@@ -4,8 +4,7 @@ window.onload = function () {
     var trs = doc.getElementsByTagName("tr");
     for (var tr in trs) {
         trs[tr].onclick = function () {
-            USERS.asign(this);
-
+            USERS.assign(this);
         }
     }
     FORM.init();
@@ -13,11 +12,11 @@ window.onload = function () {
     passCheckbox.onclick = function () {
         FORM.togglePassword();
     }
-}
+};
 
 var USERS = {
     currentUser: undefined,
-    asign: function (tr) {
+    assign: function (tr) {
         var trIndex = tr.rowIndex - 1;
         var id = document.getElementsByClassName("id")[trIndex].innerHTML;
         var name = document.getElementsByClassName("name")[trIndex].innerHTML;
@@ -28,7 +27,7 @@ var USERS = {
         this.currentUser = new User(id, name, surname, login, email, role);
         this.currentUser.show();
     }
-}
+};
 
 function User(id, name, surname, login, email, role) {
     this.show = function () {
@@ -70,9 +69,13 @@ var FORM = {
         else
             password.style.visibility = "hidden";
     }
-}
+};
 
 var ROLES = {
     "USER": 0,
     "ADMIN": 1
+};
+
+function logoutSubmit() {
+    document.getElementById("logoutForm").submit();
 }

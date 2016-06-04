@@ -6,7 +6,11 @@
     <title>Title</title>
 </head>
 <body>
-<a href="/admin">Back</a><br>
+<c:if test="${pageContext.request.userPrincipal.name != null}">
+    <h2>User: ${pageContext.request.userPrincipal.name}</h2>
+</c:if>
+<a href="/admin">Back</a>
+<a href="javascript:logoutSubmit()">Logout</a><br>
 <table border="1" id="users_table">
     <tr>
         <th>ID</th>
@@ -15,6 +19,7 @@
         <th>Логин</th>
         <th>Email</th>
         <th>Роль</th>
+        <th>Удаление</th>
     </tr>
     <c:forEach items="${users}" var="users">
         <tr>
@@ -24,11 +29,12 @@
             <td class="login">${users.login}</td>
             <td class="email">${users.email}</td>
             <td class="role">${users.role}</td>
+            <td><a href="delete?id=${users.id}">X</a></td>
         </tr>
     </c:forEach>
 </table>
 <c:if test="${not empty error}">
-    <p>Error, check your params!</p>
+    <p>Error, ${error}!</p>
 </c:if>
 <form id="user_form" method="post">
     <h1>USER</h1>
@@ -58,6 +64,11 @@
     <input type="SUBMIT" value="Submit">
     <label>New user</label>
     <input type="checkbox" name="new_user" id="pass_checkbox">
+</form>
+<c:url value="/logout" var="logoutUrl" />
+<form action="${logoutUrl}" method="post" id="logoutForm">
+    <input type="hidden" name="${_csrf.parameterName}"
+           value="${_csrf.token}" />
 </form>
 </body>
 </html>

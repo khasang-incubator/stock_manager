@@ -6,8 +6,10 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.InvalidPropertyException;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.persistence.NoResultException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,7 +47,7 @@ public class UserDAOImpl implements UserDAO {
     public void add(User user) {
         try (Session session = sessionFactory.openSession()) {
             session.beginTransaction();
-            session.persist(user);
+            session.save(user);
             session.getTransaction().commit();
         } catch (HibernateException e) {
             e.printStackTrace();
@@ -53,7 +55,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public User getById(int id) {
+    public User getById(int id) throws NoResultException {
         User user = null;
         try (Session session = sessionFactory.openSession()) {
             session.beginTransaction();
@@ -62,6 +64,20 @@ public class UserDAOImpl implements UserDAO {
         } catch (HibernateException e) {
             e.printStackTrace();
         }
+        if (user == null) {
+            throw new NoResultException();
+        }
         return user;
+    }
+
+    @Override
+    public void delete(User user) {
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+            session.delete(user);
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
     }
 }

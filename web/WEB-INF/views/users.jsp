@@ -11,6 +11,7 @@
     <tr>
         <th>ID</th>
         <th>Имя</th>
+        <th>Фамилия</th>
         <th>Логин</th>
         <th>Email</th>
         <th>Роль</th>
@@ -19,6 +20,7 @@
         <tr>
             <td class="id">${users.id}</td>
             <td class="name">${users.name}</td>
+            <td class="surname">${users.surname}</td>
             <td class="login">${users.login}</td>
             <td class="email">${users.email}</td>
             <td class="role">${users.role}</td>

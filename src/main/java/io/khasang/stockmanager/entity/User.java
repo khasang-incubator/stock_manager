@@ -9,6 +9,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
+    private String surname;
     private String login;
     private String password;
     private String email;
@@ -17,8 +18,9 @@ public class User {
     public User() {
     }
 
-    public User(String name, String login, String password, String email, String role) {
+    public User(String name, String surname, String login, String password, String email, String role) {
         this.name = name;
+        this.surname = surname;
         this.login = login;
         this.password = password;
         this.email = email;
@@ -39,6 +41,14 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public String getLogin() {
@@ -82,10 +92,11 @@ public class User {
 
         if (id != user.id) return false;
         if (name != null ? !name.equals(user.name) : user.name != null) return false;
-        if (login != null ? !login.equals(user.login) : user.login != null) return false;
+        if (surname != null ? !surname.equals(user.surname) : user.surname != null) return false;
+        if (!login.equals(user.login)) return false;
         if (password != null ? !password.equals(user.password) : user.password != null) return false;
         if (email != null ? !email.equals(user.email) : user.email != null) return false;
-        return role != null ? role.equals(user.role) : user.role == null;
+        return role.equals(user.role);
 
     }
 
@@ -93,10 +104,11 @@ public class User {
     public int hashCode() {
         int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (login != null ? login.hashCode() : 0);
+        result = 31 * result + (surname != null ? surname.hashCode() : 0);
+        result = 31 * result + login.hashCode();
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + (role != null ? role.hashCode() : 0);
+        result = 31 * result + role.hashCode();
         return result;
     }
 }

@@ -49,7 +49,7 @@ public class AppContext {
     }
 
     @Bean
-    public StockBalanceData stockBalanceData(){
+    public StockBalanceData stockBalanceData() {
         return new StockBalanceData(jdbcTemplate());
     }
 

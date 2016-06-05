@@ -11,7 +11,7 @@
     <div class="header__column_product gridHeaderCell">Товар</div>
 </div>
 <!--rows-->
-<div class="main" id = "main_table_stock">
+<div class="main" id="main_table_stock">
     <div class="main__left" style="left: 0px;">
         <div class="navigation__region" id="column_category">
             ${column_category}

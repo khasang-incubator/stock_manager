@@ -1,5 +1,6 @@
 package io.khasang.stockmanager.controller;
 
+
 import io.khasang.stockmanager.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,13 +17,13 @@ public class ProductController {
 
     @RequestMapping("/products")
     public String listContacts(Map<String, Object> map) {
-        map.put("productList", productService.listProduct());
+        map.put("productList", productService.getAll());
         return "product";
     }
 
     @RequestMapping("/delete/{productId}")
     public String deleteProduct(@PathVariable("productId") Integer productId) {
-        productService.removeProduct(productId);
+        productService.delete(productId);
         return "redirect:/products";
     }
 }

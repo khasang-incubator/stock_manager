@@ -33,7 +33,7 @@ public class StockBalanceData {
 
     private int updateCategory(Category category) throws DataAccessException {
         String sql = "UPDATE category SET name = ? WHERE id = ?";
-        return jdbcTemplate.update(sql, new Object[]{category.getName(), category.getId()});
+        return jdbcTemplate.update(sql, category.getName(), category.getId());
     }
 
     public String getCategory() {
@@ -75,10 +75,10 @@ public class StockBalanceData {
         return result;
     }
 
-    public String makeBackup () {
+    public String makeBackup() {
         String result = "error ";
         int time = 0;
-        String cmd[]={
+        String cmd[] = {
                 "C:\\Program Files\\PostgreSQL\\9.4\\bin\\pg_dump.exe",
                 "-d",
                 "stockmanager",
@@ -91,20 +91,19 @@ public class StockBalanceData {
                 "C:\\proj\\backup\\backup_stockmanager.sql"
         };
         try {
-            ProcessBuilder pb=new ProcessBuilder(cmd);
-            pb.environment().put("PGPASSWORD","root");
-            Process pr=pb.start();
+            ProcessBuilder pb = new ProcessBuilder(cmd);
+            pb.environment().put("PGPASSWORD", "root");
+            Process pr = pb.start();
             time = pr.waitFor();
         } catch (IOException e) {
             result = e.getLocalizedMessage();
         } catch (InterruptedException e) {
             result = e.getLocalizedMessage();
         }
-        if(time == 0){
-            result =  "<b>backup is created</b>";
-        }
-        else{
-            result =  result + "fail to create backup";
+        if (time == 0) {
+            result = "<b>backup is created</b>";
+        } else {
+            result = result + "fail to create backup";
         }
         return result;
     }

@@ -3,17 +3,19 @@ package io.khasang.stockmanager.service.impl;
 
 import io.khasang.stockmanager.dao.ProductDao;
 import io.khasang.stockmanager.entity.Product;
+import io.khasang.stockmanager.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import service.ProductService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductDao dao;
 
     @Override
-    public void persistProduct(Product product) {
+    public void saveProduct(Product product) {
         if (product == null)
             return;
         dao.save(product);
@@ -24,6 +26,13 @@ public class ProductServiceImpl implements ProductService {
         if (product == null)
             return;
         dao.delete(product);
+    }
+
+    @Override
+    public void delete(int id) {
+        Product product = new Product();
+        product.setId(1);
+        delete(product);
     }
 
     @Override

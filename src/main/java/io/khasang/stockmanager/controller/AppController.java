@@ -77,5 +77,5 @@ public class AppController {
         model.addAttribute("category", insertToTable.initTableCategory());
         return "category";
     }
-    }
+}
 

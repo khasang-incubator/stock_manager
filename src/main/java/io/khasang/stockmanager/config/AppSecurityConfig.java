@@ -16,6 +16,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     private JdbcTemplate jdbcTemplate;
     @Autowired
     private JdbcAuthentication jdbcAuthentication;
+
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(jdbcTemplate.getDataSource())

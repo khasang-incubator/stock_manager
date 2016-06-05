@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>Reg result</title>
+    <meta http-equiv="refresh" content="3;/" />
 </head>
 <body>
 <a href="/">Home</a>

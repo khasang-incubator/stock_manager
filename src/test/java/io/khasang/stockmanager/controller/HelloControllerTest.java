@@ -8,14 +8,20 @@ import io.khasang.stockmanager.entity.User;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -24,6 +30,9 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
 public class HelloControllerTest {
 
     User userUnsaved;
+    @Autowired
+    WebApplicationContext wac;
+
 
     @Before
     public void setup() {
@@ -54,6 +63,22 @@ public class HelloControllerTest {
         verify(mockUserDao, atLeastOnce()).insertToTable(userUnsaved);
     }
 
+    @Test
+    public void testShowResult() throws Exception {
+        MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).dispatchOptions(true).build();
+        mockMvc.perform(get("/registration_result")
+                .param("result", "successfully insert to table"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("registration_result"))
+                .andExpect(forwardedUrl("/WEB-INF/views/registration_result.jsp"));
+    }
 
-
+    @Test
+    public void testAddUser() throws Exception {
+        MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).dispatchOptions(true).build();
+        mockMvc.perform(get("/add_user"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("add_user"))
+                .andExpect(forwardedUrl("/WEB-INF/views/add_user.jsp"));
+    }
 }

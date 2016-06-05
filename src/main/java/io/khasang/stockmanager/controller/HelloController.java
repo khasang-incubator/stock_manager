@@ -40,9 +40,4 @@ public class HelloController {
         return "registration_result";
     }
 
-
-    //http://ya.ru?x=100&y=200
-
-
-
 }

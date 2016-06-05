@@ -26,5 +26,17 @@
         </c:forEach>
     </table>
 </c:if>
+
+<form:form method="post" action="add" commandName="product">
+    <table>
+        <tr>
+            <td>Наименование</td>
+            <td><form:input path="firstname" /></td>
+            <td>Описание</td>
+            <td><form:input path="lastname" /></td>
+            <td><input type="submit" value="Добавить"/></td>
+        </tr>
+    </table>
+</form:form>
 </body>
 </html>

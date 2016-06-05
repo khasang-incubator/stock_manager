@@ -7,6 +7,7 @@ import io.khasang.stockmanager.config.application.WebConfig;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -18,16 +19,16 @@ import java.security.InvalidParameterException;
 @ContextConfiguration(classes = {AppContext.class,
         HibernateConfig.class, WebConfig.class, AppSecurityConfig.class})
 public class UserEditorTest {
-    String id;
-    String name;
-    String surname;
-    String login;
-    String password;
-    String email;
-    String role;
-    String newUser;
+    private String id;
+    private String name;
+    private String surname;
+    private String login;
+    private String password;
+    private String email;
+    private String role;
+    private String newUser;
 
-    UserEditor userEditor = new UserEditor();
+    private UserEditor userEditor = new UserEditor();
 
     @Before
     public void setup() {

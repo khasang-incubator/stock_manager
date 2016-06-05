@@ -21,6 +21,7 @@ public class ProductController {
 
     @RequestMapping("/products")
     public String listContacts(Map<String, Object> map) {
+        map.put("product", new Product());
         map.put("productList", productService.getAll());
         return "product";
     }

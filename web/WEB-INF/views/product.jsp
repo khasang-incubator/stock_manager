@@ -8,6 +8,20 @@
 </head>
 <body>
 <h3>Справочник продуктов</h3>
+<hr>
+<form:form method="post" action="add" commandName="product">
+    <table>
+        <tr>
+            <td valign="bottom">Новый:</td>
+            <td>Наименование:<br>
+            <form:input path="name" /></td>
+            <td>Описание:<br>
+            <form:input path="description" /></td>
+            <td valign="bottom"><input type="submit" value="Добавить"/></td>
+        </tr>
+    </table>
+</form:form>
+<hr>
 <c:if test="${!empty productList}">
     <table class="data">
         <tr>
@@ -27,16 +41,5 @@
     </table>
 </c:if>
 
-<form:form method="post" action="add" commandName="product">
-    <table>
-        <tr>
-            <td>Наименование</td>
-            <td><form:input path="firstname" /></td>
-            <td>Описание</td>
-            <td><form:input path="lastname" /></td>
-            <td><input type="submit" value="Добавить"/></td>
-        </tr>
-    </table>
-</form:form>
 </body>
 </html>

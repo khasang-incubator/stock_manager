@@ -9,6 +9,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import static org.junit.Assert.*;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
@@ -19,7 +21,12 @@ public class MessageTest {
 
     @Test
     public void testGetMessageInfo() {
-        Assert.assertEquals("blabla", message.getMessageInfo());
+        assertEquals("blabla", message.getMessageInfo());
+    }
+
+    @Test
+    public void testLogicMessaging(){
+        assertNotNull(new Message());
     }
 
 }

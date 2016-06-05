@@ -6,6 +6,7 @@ import io.khasang.stockmanager.entity.Product;
 import io.khasang.stockmanager.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -14,6 +15,7 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductDao dao;
 
+    @Transactional
     @Override
     public void saveProduct(Product product) {
         if (product == null)
@@ -21,6 +23,7 @@ public class ProductServiceImpl implements ProductService {
         dao.save(product);
     }
 
+    @Transactional
     @Override
     public void delete(Product product) {
         if (product == null)
@@ -28,6 +31,7 @@ public class ProductServiceImpl implements ProductService {
         dao.delete(product);
     }
 
+    @Transactional
     @Override
     public void delete(int id) {
         Product product = new Product();
@@ -35,11 +39,13 @@ public class ProductServiceImpl implements ProductService {
         delete(product);
     }
 
+    @Transactional
     @Override
     public List<Product> getAll() {
         return dao.getAll();
     }
 
+    @Transactional
     @Override
     public Product getById(int id) {
         return dao.getById(id);

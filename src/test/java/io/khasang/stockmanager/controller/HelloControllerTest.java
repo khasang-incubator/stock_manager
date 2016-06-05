@@ -8,12 +8,10 @@ import io.khasang.stockmanager.entity.User;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.web.context.WebApplicationContext;
 
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -25,14 +23,10 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
 @ContextConfiguration(classes = {WebConfig.class, AppContext.class})
 public class HelloControllerTest {
 
-    @Autowired
-    WebApplicationContext wac;
-
     User userUnsaved;
 
     @Before
     public void setup() {
-        // this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).dispatchOptions(true).build();
         userUnsaved = new User();
         userUnsaved.setFirstName("Dan");
         userUnsaved.setLastName("Smith");
@@ -46,7 +40,7 @@ public class HelloControllerTest {
     @Test
     public void shouldProcessRegistration() throws Exception {
         UserDao mockUserDao = mock(UserDao.class);
-        when(mockUserDao.insertToTable(userUnsaved)).thenReturn("sucessfully insert to table");
+        when(mockUserDao.insertToTable(userUnsaved)).thenReturn("successfully insert to table");
         HelloController helloController = new HelloController(mockUserDao);
         MockMvc mockMvc = standaloneSetup(helloController).build();
         mockMvc.perform(post("/add_user")
@@ -56,7 +50,7 @@ public class HelloControllerTest {
                 .param("password", "qwerty")
                 .param("email", "jsmith@google.com")
                 .param("role", "admin"))
-                .andExpect(redirectedUrl("/registration_result"));
+                .andExpect(redirectedUrl("/registration_result?result=successfully insert to table"));
         verify(mockUserDao, atLeastOnce()).insertToTable(userUnsaved);
     }
 

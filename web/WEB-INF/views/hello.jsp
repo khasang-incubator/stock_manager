@@ -7,5 +7,6 @@
 <body>
 <h1>Hello</h1>
 <p>${hello}</p>
+<a href="/add_user">Добавить пользователя</a>
 </body>
 </html>

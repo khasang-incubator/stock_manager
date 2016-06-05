@@ -14,8 +14,6 @@ public class UserDao {
     @Autowired
     SessionFactory sessionFactory;
 
-    //private String result;
-
     public String insertToTable(User user) {
         Session session = sessionFactory.openSession();
         try {
@@ -25,7 +23,7 @@ public class UserDao {
                     .list();
             session.save(user);
             session.getTransaction().commit();
-            return "sucessfully insert to table";
+            return "successfully insert to table";
         } catch (Exception e) {
             session.getTransaction().rollback();
             e.printStackTrace();
@@ -34,9 +32,4 @@ public class UserDao {
             session.close();
         }
     }
-
-
-//    //public String getResult() {
-//        return result;
-//    }
 }

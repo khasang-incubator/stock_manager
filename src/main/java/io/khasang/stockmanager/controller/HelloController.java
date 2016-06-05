@@ -5,8 +5,8 @@ import io.khasang.stockmanager.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -34,12 +34,14 @@ public class HelloController {
         return "redirect:/registration_result?result=" + result;
     }
 
-    @RequestMapping(value = "/registration_result{result}", method = GET)
-    public String showResult(@PathVariable("result") String result, Model model) {
-        model.addAttribute("registration_result", result);
+    @RequestMapping(value = "/registration_result", method = GET)
+    public String showResult(@RequestParam("result") String result, Model model) {
+        model.addAttribute("result", result);
         return "registration_result";
     }
 
+
+    //http://ya.ru?x=100&y=200
 
 
 

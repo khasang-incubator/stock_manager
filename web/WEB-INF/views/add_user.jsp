@@ -6,6 +6,7 @@
     <title>Registration</title>
 </head>
 <body>
+<a href="/">Home</a>
 <sf:form method="POST" commandName="user">
     First Name: <sf:input path="firstName" /><br/>
     Last Name: <sf:input path="lastName" /><br/>

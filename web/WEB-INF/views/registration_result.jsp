@@ -5,7 +5,8 @@
     <title>Reg result</title>
 </head>
 <body>
-<h1>Registration result</h1>
+<a href="/">Home</a>
+<h1>Registration result:</h1>
 <p>${result}</p>
 </body>
 </html>

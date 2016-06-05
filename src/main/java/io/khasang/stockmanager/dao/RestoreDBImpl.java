@@ -1,13 +1,13 @@
 package io.khasang.stockmanager.dao;
 
 public class RestoreDBImpl implements RestoreDB {
-    private String pathToPgdump = "\"C:\\Program Files\\PostgreSQL\\9.4\\bin\\psql.exe\"";
+    private String pathToPqsl = "\"C:\\Program Files\\PostgreSQL\\9.4\\bin\\psql.exe\"";
     private String pathForBackupFile = "C:\\backup\\backup_stockmanager.sql";
     private String nameOfDB = "stockmanager";
     private String userName = "root";
     private String password = "root";
 
-    private String command = pathToPgdump + " -d " + nameOfDB + " -U " + userName + " -f " + pathForBackupFile;
+    private String command = pathToPqsl + " -d " + nameOfDB + " -U " + userName + " -f " + pathForBackupFile;
     private String[] environment = {"PGPASSWORD=" + password};
 
 

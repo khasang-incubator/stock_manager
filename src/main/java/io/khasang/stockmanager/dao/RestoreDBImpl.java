@@ -1,38 +1,63 @@
 package io.khasang.stockmanager.dao;
 
-import java.io.IOException;
-
 public class RestoreDBImpl implements RestoreDB {
+    private String pathToPgdump = "\"C:\\Program Files\\PostgreSQL\\9.4\\bin\\psql.exe\"";
+    private String pathForBackupFile = "C:\\backup\\backup_stockmanager.sql";
+    private String nameOfDB = "stockmanager";
+    private String userName = "root";
+    private String password = "root";
 
+    private String command = pathToPgdump + " -d " + nameOfDB + " -U " + userName + " -f " + pathForBackupFile;
+    private String[] environment = {"PGPASSWORD=" + password};
+
+
+    /**
+     * Not for real use. Just for quick testing.
+     * Restores postgreSQL database from file.
+     *
+     * Uses command line to execute utility psql.
+     *
+     * It gets command from local variable "command" above and use environment variables
+     * to set password from local variable "password" above.
+     *
+     * It's not safety method. If you want restore safety, password should be passed
+     * into %APPDATA%\postgresql\pgpass.conf (windows) in following format:
+     * hostname:port:database:username:password
+     * then delete this method, variables "password" and "environment" and use method below.
+     *
+     * @return "success" or Exception
+     */
     @Override
     public String makeRestore() {
-        String result = "error ";
-        int time = 0;
-        String cmd[] = {
-                "C:\\Program Files\\PostgreSQL\\9.4\\bin\\psql.exe",
-                "-U",
-                "root",
-                "-d",
-                "stockmanager",
-                "-f",
-                "C:\\backup\\backup_stockmanager.sql"
-        };
-
         try {
-            ProcessBuilder pb = new ProcessBuilder(cmd);
-            pb.environment().put("PGPASSWORD", "root");
-            Process pr = pb.start();
-            time = pr.waitFor();
-        } catch (IOException| InterruptedException e) {
-            result = e.getMessage();
+            Runtime runtime = Runtime.getRuntime();
+            runtime.exec(command, environment);
+            return "success";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Error:" + e;
         }
-
-        if (time == 0) {
-            result = "<b>Restore was successful</b>";
-        } else {
-            result = result + "fail to restore";
-        }
-
-        return result;
     }
+
+    /**
+     * Restores postgreSQL database from file.
+     *
+     * Uses command line to execute utility psql.
+     *
+     * It gets command from local variable "command" above and
+     * password from %APPDATA%\postgresql\pgpass.conf (windows)
+     *
+     * @return "success" or Exception
+     */
+//    @Override
+//    public String makeRestore() {
+//        try {
+//            Runtime runtime = Runtime.getRuntime();
+//            runtime.exec(command);
+//            return "success";
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return "Error:" + e;
+//        }
+//    }
 }

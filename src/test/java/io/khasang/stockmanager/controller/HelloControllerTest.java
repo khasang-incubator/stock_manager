@@ -15,10 +15,8 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.validation.Errors;
 import org.springframework.web.context.WebApplicationContext;
 
-import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -93,21 +91,18 @@ public class HelloControllerTest {
 
     @Test
     public void testWrongUserRegistration() throws Exception {
-//        UserDao mockUserDao = mock(UserDao.class);
-//        when(mockUserDao.insertToTable(wrongUser)).thenReturn("successfully insert to table");
-//        HelloController helloController = new HelloController(mockUserDao);
-//        MockMvc mockMvc = standaloneSetup(helloController).build();
         MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).dispatchOptions(true).build();
         mockMvc.perform(post("/add_user")
                 .param("firstName", "D")
                 .param("lastName", "S")
-                .param("login", "jsmith")
+                //.param("login", "jsmith")
                 .param("password", "qwerty")
                 .param("email", "jsmith")
                 .param("role", "admin"))
-                .andExpect(status().is3xxRedirection())
+                .andExpect(status().isOk())
                 .andExpect(view().name("add_user"))
                 .andExpect(forwardedUrl("/WEB-INF/views/add_user.jsp"))
-                .andExpect(MockMvcResultMatchers.model().hasErrors());
+                .andExpect(MockMvcResultMatchers.model().hasErrors())
+                .andExpect(MockMvcResultMatchers.model().errorCount(2));
     }
 }

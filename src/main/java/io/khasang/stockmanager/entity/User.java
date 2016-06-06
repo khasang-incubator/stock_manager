@@ -1,8 +1,11 @@
 package io.khasang.stockmanager.entity;
 
-import org.osgi.service.component.annotations.Component;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
@@ -13,18 +16,27 @@ public class User {
     private Long id;
 
     @Column
+    @NotNull
+    @Size(min = 1, max = 256)
     private String firstName;
 
     @Column
+    @NotNull
+    @Size(min = 1, max = 256)
     private String lastName;
 
+
+    @NotNull
     @Column(nullable = false)
     private String login;
 
+    @NotNull
     @Column
     private String password;
 
+    @NotEmpty
     @Column
+    @Email
     private String email;
 
     @Column

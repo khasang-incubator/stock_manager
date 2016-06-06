@@ -5,8 +5,12 @@ import io.khasang.stockmanager.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.validation.Valid;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -29,9 +33,13 @@ public class HelloController {
     }
 
     @RequestMapping(value = "/add_user", method = POST)
-    public String addUser(User user) {
-        String result = userDao.insertToTable(user);
-        return "redirect:/registration_result?result=" + result;
+    public String addUser(@Valid @ModelAttribute("user") User user, Errors errors) {
+        if (errors.hasErrors()) {
+            return "add_user";
+        } else {
+            String result = userDao.insertToTable(user);
+            return "redirect:/registration_result?result=" + result;
+        }
     }
 
     @RequestMapping(value = "/registration_result", method = GET)

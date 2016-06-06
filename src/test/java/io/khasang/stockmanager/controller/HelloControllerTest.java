@@ -15,6 +15,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.validation.Errors;
 import org.springframework.web.context.WebApplicationContext;
 
 import static org.junit.Assert.assertEquals;
@@ -30,6 +31,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
 public class HelloControllerTest {
 
     User userUnsaved;
+    User wrongUser;
     @Autowired
     WebApplicationContext wac;
 
@@ -43,6 +45,13 @@ public class HelloControllerTest {
         userUnsaved.setPassword("qwerty");
         userUnsaved.setEmail("jsmith@google.com");
         userUnsaved.setRole("admin");
+        wrongUser = new User();
+        wrongUser.setFirstName("D");
+        wrongUser.setLastName("S");
+        wrongUser.setLogin("jsmith");
+        wrongUser.setPassword("qwerty");
+        wrongUser.setEmail("jsmith");
+        wrongUser.setRole("admin");
     }
 
 
@@ -74,11 +83,31 @@ public class HelloControllerTest {
     }
 
     @Test
-    public void testAddUser() throws Exception {
+    public void testAddUserGet() throws Exception {
         MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).dispatchOptions(true).build();
         mockMvc.perform(get("/add_user"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("add_user"))
                 .andExpect(forwardedUrl("/WEB-INF/views/add_user.jsp"));
+    }
+
+    @Test
+    public void testWrongUserRegistration() throws Exception {
+//        UserDao mockUserDao = mock(UserDao.class);
+//        when(mockUserDao.insertToTable(wrongUser)).thenReturn("successfully insert to table");
+//        HelloController helloController = new HelloController(mockUserDao);
+//        MockMvc mockMvc = standaloneSetup(helloController).build();
+        MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).dispatchOptions(true).build();
+        mockMvc.perform(post("/add_user")
+                .param("firstName", "D")
+                .param("lastName", "S")
+                .param("login", "jsmith")
+                .param("password", "qwerty")
+                .param("email", "jsmith")
+                .param("role", "admin"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("add_user"))
+                .andExpect(forwardedUrl("/WEB-INF/views/add_user.jsp"))
+                .andExpect(MockMvcResultMatchers.model().hasErrors());
     }
 }

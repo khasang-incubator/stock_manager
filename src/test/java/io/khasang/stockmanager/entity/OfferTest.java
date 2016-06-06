@@ -38,6 +38,6 @@ public class OfferTest {
 
     @Test
     public void testOfferInfo(){
-        assertEquals(123,offer.getId());
+        assertSame(123,offer.getId());
     }
 }

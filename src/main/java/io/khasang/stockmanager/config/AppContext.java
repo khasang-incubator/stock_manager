@@ -1,10 +1,6 @@
 package io.khasang.stockmanager.config;
 
 import io.khasang.stockmanager.model.DataExample;
-
-
-import io.khasang.stockmanager.model.Message;
-
 import io.khasang.stockmanager.model.ProductOrder;
 import io.khasang.stockmanager.model.StockRegistration;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,13 +10,14 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
+@EnableWebMvc
 @PropertySource("classpath:util.properties")
 public class AppContext {
     @Autowired
     Environment environment;
-
 
     @Bean
     public JdbcTemplate jdbcTemplate() {
@@ -40,14 +37,15 @@ public class AppContext {
 
     }
 
-
     @Bean
     ProductOrder productOrder() {
+
         return new ProductOrder(jdbcTemplate());
     }
 
     @Bean
     public DataExample dataExample() {
+
         return new DataExample(jdbcTemplate());
     }
 
@@ -55,5 +53,6 @@ public class AppContext {
     public StockRegistration stockRegistration() {
         return new StockRegistration();
     }
+
 }
 

@@ -1,20 +1,28 @@
 package io.khasang.stockmanager.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.RowMapper;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 public class StockRegistration {
     @Autowired
     DataExample dataExample;
 
     private int ID;
+    @NotNull
+    @Size(min=2, max=30)
     private String firstName;
+    @NotNull
+    @Size(min=2, max=30)
     private String lastName;
+    @NotEmpty
     private String email;
+    @NotNull
+    @Size(min=5, max=16)
     private String userName;
+    @NotNull
+    @Size(min=5, max=25)
     private String password;
 
     public int getID() {

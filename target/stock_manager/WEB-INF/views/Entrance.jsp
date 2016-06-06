@@ -20,7 +20,7 @@
         <span class="letter">Stock manager</span>
     </h1>
     <div class="row text-center">
-        <button id="enterButton" class="enterButton" type="button" onClick=""><a href="/romak_Main">Enter</a></button>
+        <button id="enterButton" class="enterButton" type="button" onClick=""><a href="/romak_register">Enter</a></button>
     </div>
     <nav class="row text-center">
         <ul>

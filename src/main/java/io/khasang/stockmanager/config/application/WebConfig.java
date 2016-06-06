@@ -1,6 +1,5 @@
 package io.khasang.stockmanager.config.application;
 
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +13,7 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableWebMvc
 @ComponentScan({"io.khasang.stockmanager.config", "io.khasang.stockmanager.controller"})
 public class WebConfig extends WebMvcConfigurerAdapter {
+
     @Bean
     public InternalResourceViewResolver viewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();

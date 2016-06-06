@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.persistence.NoResultException;
 import java.security.InvalidParameterException;
-import java.security.Principal;
 
 @Controller
 public class AppController {
@@ -58,15 +57,15 @@ public class AppController {
 
     @RequestMapping(value = "/admin/users", method = RequestMethod.POST)
     public String userPost(Model model, @RequestParam(name = "id", required = false) String id,
-                           @RequestParam(name = "name", required = false) String name,
-                           @RequestParam(name = "surname", required = false) String surname,
+                           @RequestParam(name = "firstName", required = false) String firstName,
+                           @RequestParam(name = "lastName", required = false) String lastName,
                            @RequestParam(name = "password", required = false) String password,
                            @RequestParam(name = "login", required = false) String login,
                            @RequestParam(name = "email", required = false) String email,
                            @RequestParam(name = "role", required = false) String role,
                            @RequestParam(name = "new_user", required = false) String newUser) {
         try {
-            userEditor.defineUserOperationsByParams(id, name, surname, login, password, email, role, newUser);
+            userEditor.defineUserOperationsByParams(id, firstName, lastName, login, password, email, role, newUser);
         } catch (InvalidParameterException e) {
             model.addAttribute("error", "check your params!");
         }

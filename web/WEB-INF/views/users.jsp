@@ -24,8 +24,8 @@
     <c:forEach items="${users}" var="users">
         <tr>
             <td class="id">${users.id}</td>
-            <td class="name">${users.name}</td>
-            <td class="surname">${users.surname}</td>
+            <td class="firstName">${users.firstName}</td>
+            <td class="lastName">${users.lastName}</td>
             <td class="login">${users.login}</td>
             <td class="email">${users.email}</td>
             <td class="role">${users.role}</td>
@@ -41,10 +41,10 @@
     <br>
     <input type="text" name="id" hidden>
     <label>Name</label>
-    <input type="text" name="name"/>
+    <input type="text" name="firstName"/>
     <br>
     <label>Surname</label>
-    <input type="text" name="surname"/>
+    <input type="text" name="lastName"/>
     <br>
     <label>Login</label>
     <input type="text" name="login"/>

@@ -94,8 +94,8 @@ public class UserEditor {
             throw new InvalidParameterException();
         newUser.setPassword(oldUser.getPassword());
         newUser.setId(parseId(id));
-        newUser.setName(name);
-        newUser.setSurname(surname);
+        newUser.setFirstName(name);
+        newUser.setLastName(surname);
         newUser.setLogin(login);
         newUser.setEmail(email);
         newUser.setRole(role);
@@ -115,8 +115,8 @@ public class UserEditor {
     private void newUser(String name, String surname, String login, String password, String email,
                          String role) {
         User user = new User();
-        user.setName(name);
-        user.setSurname(surname);
+        user.setFirstName(name);
+        user.setLastName(surname);
         user.setLogin(login);
         user.setEmail(email);
         user.setRole(role);

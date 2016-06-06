@@ -14,5 +14,4 @@ public class Message {
     public String getMessageInfo() {
         return "blabla";
     }
-
 }

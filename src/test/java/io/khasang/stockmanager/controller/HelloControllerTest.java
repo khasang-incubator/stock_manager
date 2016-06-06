@@ -1,6 +1,5 @@
 package io.khasang.stockmanager.controller;
 
-
 import io.khasang.stockmanager.config.AppContext;
 import io.khasang.stockmanager.config.application.WebConfig;
 import io.khasang.stockmanager.dao.UserDao;
@@ -33,7 +32,6 @@ public class HelloControllerTest {
     @Autowired
     WebApplicationContext wac;
 
-
     @Before
     public void setup() {
         userUnsaved = new User();
@@ -51,7 +49,6 @@ public class HelloControllerTest {
         wrongUser.setEmail("jsmith");
         wrongUser.setRole("admin");
     }
-
 
     @Test
     public void shouldProcessRegistration() throws Exception {

@@ -40,7 +40,7 @@ public class AppController {
     }
 
     @RequestMapping("/select")
-    public String items (Model model) throws SQLException{
+    public String items(Model model) throws SQLException {
         model.addAttribute("items", productOrder.selectWholeTable());
         return "select";
     }

@@ -27,7 +27,6 @@ public class User {
     @Size(min = 1, max = 256)
     private String lastName;
 
-
     @NotEmpty
     @NotNull
     @Column(nullable = false)
@@ -117,7 +116,6 @@ public class User {
         if (password != null ? !password.equals(user.password) : user.password != null) return false;
         if (email != null ? !email.equals(user.email) : user.email != null) return false;
         return role != null ? role.equals(user.role) : user.role == null;
-
     }
 
     @Override

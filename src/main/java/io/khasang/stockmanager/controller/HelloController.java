@@ -18,7 +18,6 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @Controller
 public class HelloController {
 
-
     UserDao userDao;
 
     @Autowired
@@ -47,5 +46,4 @@ public class HelloController {
         model.addAttribute("result", result);
         return "registration_result";
     }
-
 }

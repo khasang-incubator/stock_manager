@@ -17,25 +17,30 @@ public class User {
 
     @Column
     @NotNull
+    @NotEmpty
     @Size(min = 1, max = 256)
     private String firstName;
 
     @Column
     @NotNull
+    @NotEmpty
     @Size(min = 1, max = 256)
     private String lastName;
 
 
+    @NotEmpty
     @NotNull
     @Column(nullable = false)
     private String login;
 
     @NotNull
+    @NotEmpty
     @Column
     private String password;
 
     @NotEmpty
     @Column
+    @NotNull
     @Email
     private String email;
 

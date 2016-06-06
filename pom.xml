@@ -14,7 +14,6 @@
         <jdk.version>1.8</jdk.version>
         <spring.security.version>4.0.4.RELEASE</spring.security.version>
         <hibernate-version>5.0.1.Final</hibernate-version>
-        <spring-security-test>4.0.3.RELEASE</spring-security-test>
     </properties>
 
     <dependencies>
@@ -73,13 +72,6 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-test</artifactId>
-            <version>${spring-security-test}</version>
-            <scope>test</scope>
-            <type>jar</type>
         </dependency>
 
         <!--JSP -->
@@ -158,7 +150,6 @@
             <version>${hibernate-version}</version>
         </dependency>
         <!--END Hibernate -->
-        
     </dependencies>
 
     <build>

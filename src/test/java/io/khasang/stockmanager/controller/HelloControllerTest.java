@@ -92,14 +92,14 @@ public class HelloControllerTest {
         mockMvc.perform(post("/add_user")
                 .param("firstName", "D")
                 .param("lastName", "S")
-                //.param("login", "jsmith")
-                .param("password", "qwerty")
+                .param("login", "")
+                // .param("password", "qwerty")
                 .param("email", "jsmith")
                 .param("role", "admin"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("add_user"))
                 .andExpect(forwardedUrl("/WEB-INF/views/add_user.jsp"))
                 .andExpect(MockMvcResultMatchers.model().hasErrors())
-                .andExpect(MockMvcResultMatchers.model().errorCount(2));
+                .andExpect(MockMvcResultMatchers.model().errorCount(4));
     }
 }

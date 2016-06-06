@@ -7,7 +7,6 @@ import io.khasang.stockmanager.config.application.WebConfig;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -75,5 +74,5 @@ public class UserEditorTest {
 //        password = ;
 //        Assert.assertEquals("Something wrong", userEditor.defineUserOperationsByParams(id, name, surname,
 //                login, password, email, role, newUser));
-//    }
+//    }*/
 }

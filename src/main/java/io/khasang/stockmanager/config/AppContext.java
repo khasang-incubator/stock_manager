@@ -1,18 +1,17 @@
 package io.khasang.stockmanager.config;
 
-import io.khasang.stockmanager.model.*;
 import io.khasang.stockmanager.dao.*;
 import io.khasang.stockmanager.entity.Project;
 import io.khasang.stockmanager.entity.ProjectProduct;
 import io.khasang.stockmanager.entity.User;
+import io.khasang.stockmanager.model.*;
+import io.khasang.stockmanager.service.ProductService;
+import io.khasang.stockmanager.service.impl.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 @Configuration
 @PropertySource("classpath:util.properties")
@@ -105,4 +104,7 @@ public class AppContext {
     public UserEditor userEditor() {
         return new UserEditor();
     }
+
+    @Bean
+    public ProductService productService() { return new ProductServiceImpl();}
 }

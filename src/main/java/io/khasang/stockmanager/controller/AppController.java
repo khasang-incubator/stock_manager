@@ -19,6 +19,7 @@ import java.security.InvalidParameterException;
 
 @Controller
 public class AppController {
+
     @Autowired
     private DataExample dataExample;
     @Autowired
@@ -70,7 +71,7 @@ public class AppController {
             model.addAttribute("error", "check your params!");
         }
         model.addAttribute("users", userDAO.getAll());
-        return "users";
+        return "redirect:/admin/users";
     }
 
     @RequestMapping("/admin/delete")
@@ -82,7 +83,7 @@ public class AppController {
             model.addAttribute("error", "user not exists.");
         }
         model.addAttribute("users", userDAO.getAll());
-        return "users";
+        return "redirect:/admin/users";
     }
 
     @RequestMapping("/admin/backup")

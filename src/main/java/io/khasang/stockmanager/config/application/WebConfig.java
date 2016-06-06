@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan({"io.khasang.stockmanager.config", "io.khasang.stockmanager.controller"})
+@ComponentScan({"io.khasang.stockmanager.config", "io.khasang.stockmanager.controller","io.khasang.stockmanager.service","io.khasang.stockmanager.dao"})
 public class WebConfig extends WebMvcConfigurerAdapter {
     @Bean
     public InternalResourceViewResolver viewResolver() {

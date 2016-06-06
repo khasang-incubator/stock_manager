@@ -1,16 +1,20 @@
 package io.khasang.stockmanager.entity;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Entity
-@Table(name = "PRODUCTS")
+@Table(name = "products")
 public class Product {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
+    @Column(name = "user_id")
     private int userId;
-    private String productName;
+
+    @Column(name = "product_name")
+    private String name;
     private String description;
 
     public int getId() {
@@ -29,12 +33,12 @@ public class Product {
         this.userId = userId;
     }
 
-    public String getProductName() {
-        return productName;
+    public String getName() {
+        return name;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -43,28 +47,5 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Product product = (Product) o;
-
-        if (id != product.id) return false;
-        if (userId != product.userId) return false;
-        if (productName != null ? !productName.equals(product.productName) : product.productName != null) return false;
-        return description != null ? description.equals(product.description) : product.description == null;
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + userId;
-        result = 31 * result + (productName != null ? productName.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        return result;
     }
 }

@@ -1,4 +1,3 @@
-
 package io.khasang.stockmanager.entity;
 
 import javax.persistence.Basic;
@@ -16,19 +15,19 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Products", schema = "public")
 public class Product {
-   
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     @Basic
     @Column(name = "user_id")
     private Long user_id;
-    
+
     @Basic
-    @Column(name = "product_name") 
+    @Column(name = "product_name")
     private String product_name;
-    
+
     @Basic
     @Column(name = "description")
     private String description;
@@ -67,6 +66,5 @@ public class Product {
     public void setDescription(String description) {
         this.description = description;
     }
-    
-    
+
 }

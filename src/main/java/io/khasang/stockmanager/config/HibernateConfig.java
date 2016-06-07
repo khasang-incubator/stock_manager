@@ -22,6 +22,7 @@ import java.util.Properties;
 @ComponentScan({"io.khasang.stockmanager.config"})
 @PropertySource(value = {"classpath:hibernate.properties"})
 public class HibernateConfig {
+
     @Autowired
     private Environment environment;
 

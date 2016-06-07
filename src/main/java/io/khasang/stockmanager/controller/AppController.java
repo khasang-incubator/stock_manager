@@ -3,7 +3,6 @@ package io.khasang.stockmanager.controller;
 import io.khasang.stockmanager.dao.InsertToTable;
 import io.khasang.stockmanager.model.DataExample;
 import io.khasang.stockmanager.model.ProductOrder;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +13,7 @@ import java.sql.SQLException;
 
 @Controller
 public class AppController {
+
     @Autowired
     DataExample dataExample;
     @Autowired
@@ -40,7 +40,7 @@ public class AppController {
     }
 
     @RequestMapping("/select")
-    public String items (Model model) throws SQLException{
+    public String items(Model model) throws SQLException {
         model.addAttribute("items", productOrder.selectWholeTable());
         return "select";
     }
@@ -49,11 +49,5 @@ public class AppController {
     public String home(Model model) {
         model.addAttribute("krokodil", insertToTable.getResult(200, "ref"));
         return "home";
-    }
-    
-    @RequestMapping(value = {"/desk"})
-    public String desk(Model model) {
-//        model.addAttribute("krokodil", insertToTable.getResult(200, "ref"));
-        return "desk";
     }
 }

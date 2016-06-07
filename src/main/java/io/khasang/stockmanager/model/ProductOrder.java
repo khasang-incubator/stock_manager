@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class ProductOrder {
+
     @Autowired
     Environment environment;
 
@@ -28,8 +29,8 @@ public class ProductOrder {
 //    private int timespent;
 
     public List selectWholeTable() throws SQLException {
-        return this.jdbcTemplate.query("select id " +
-                "from template;", new ItemMapper());
+        return this.jdbcTemplate.query("select id "
+                + "from template;", new ItemMapper());
     }
 
     public void setId(int id) {
@@ -55,7 +56,6 @@ public class ProductOrder {
 //    public void setTimespent(int timespent) {
 //        this.timespent = timespent;
 //    }
-
     public int getId() {
         return id;
     }
@@ -66,6 +66,7 @@ public class ProductOrder {
 }
 
 final class ItemMapper implements RowMapper<ProductOrder> {
+
     public ProductOrder mapRow(ResultSet rs, int rowNum) throws SQLException {
         ProductOrder productorder = new ProductOrder();
         productorder.setId(rs.getInt("id"));

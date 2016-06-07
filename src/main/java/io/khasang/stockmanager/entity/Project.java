@@ -1,5 +1,6 @@
 package io.khasang.stockmanager.entity;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -16,42 +17,42 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Projects", schema = "public")
 public class Project {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     @Basic
     @Column(name = "project_name")
-    private String project_name;
-    
+    private String projectName;
+
     @Basic
     @Column(name = "start_date")
-    private Timestamp start_date;
-    
+    private Date startDate;
+
     @Basic
     @Column(name = "finish_date")
-    private Timestamp finish_date;
-    
+    private Date finishDate;
+
     @Basic
     @Column(name = "state")
     private String state;
-    
+
     @Basic
     @Column(name = "total_amount")
-    private int total_amount;
-    
+    private int totalAmount;
+
     @Basic
     @Column(name = "type")
     private String type;
-    
+
     @Basic
     @Column(name = "vip")
     private boolean vip;
-    
+
     @Basic
     @Column(name = "user_id")
-    private long user_id;
+    private long userId;
 
     public Project() {
     }
@@ -64,28 +65,28 @@ public class Project {
         this.id = id;
     }
 
-    public String getProject_name() {
-        return project_name;
+    public String getProjectName() {
+        return projectName;
     }
 
-    public void setProject_name(String project_name) {
-        this.project_name = project_name;
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
     }
 
-    public Timestamp getStart_date() {
-        return start_date;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setStart_date(Timestamp start_date) {
-        this.start_date = start_date;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
-    public Timestamp getFinish_date() {
-        return finish_date;
+    public Date getFinishDate() {
+        return finishDate;
     }
 
-    public void setFinish_date(Timestamp finish_date) {
-        this.finish_date = finish_date;
+    public void setFinishDate(Date finishDate) {
+        this.finishDate = finishDate;
     }
 
     public String getState() {
@@ -96,12 +97,12 @@ public class Project {
         this.state = state;
     }
 
-    public int getTotal_amount() {
-        return total_amount;
+    public int getTotalAmount() {
+        return totalAmount;
     }
 
-    public void setTotal_amount(int total_amount) {
-        this.total_amount = total_amount;
+    public void setTotalAmount(int totalAmount) {
+        this.totalAmount = totalAmount;
     }
 
     public String getType() {
@@ -120,11 +121,12 @@ public class Project {
         this.vip = vip;
     }
 
-    public long getUser_id() {
-        return user_id;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setUser_id(long user_id) {
-        this.user_id = user_id;
-    }  
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
 }

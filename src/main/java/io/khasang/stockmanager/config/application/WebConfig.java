@@ -14,6 +14,7 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableWebMvc
 @ComponentScan({"io.khasang.stockmanager.config", "io.khasang.stockmanager.controller"})
 public class WebConfig extends WebMvcConfigurerAdapter {
+
     @Bean
     public InternalResourceViewResolver viewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
@@ -25,8 +26,8 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-            registry.addResourceHandler("/css/**").addResourceLocations("/WEB-INF/views/css/");
-            registry.addResourceHandler("/jpg/**").addResourceLocations("/WEB-INF/views/images/");
-            registry.addResourceHandler("/bootstrap/**").addResourceLocations("/WEB-INF/views/Content/");
+        registry.addResourceHandler("/css/**").addResourceLocations("/WEB-INF/views/css/");
+        registry.addResourceHandler("/jpg/**").addResourceLocations("/WEB-INF/views/images/");
+        registry.addResourceHandler("/bootstrap/**").addResourceLocations("/WEB-INF/views/Content/");
     }
 }

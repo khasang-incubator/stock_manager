@@ -22,6 +22,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 //    String userAndPaswQuery = "select login, password, true from users where login = ?";
 //    String autorityQuery = "select login, role from user_roles where username = ?";
 
+    //TODO вынести запросы из конфига
     String userAndPaswQuery = "select login as principal, password as credentials, true from users where login = ?";
     //"select username, password, true from users where username = ?";
     String autorityQuery = "select login as principal, role from users where login = ?";

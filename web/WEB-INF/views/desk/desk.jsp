@@ -5,9 +5,11 @@
         <title>Desk of StockManager by ShtykovPB aka Buranzo</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="css/desk.css">
+        <script src="js/availableStateProject.js">
+        </script>
     </head>
     <body>
-        <h1 class="welcomeText">Projects</h1>
+        <h1 id="welcomeText" class="welcomeText">Projects</h1>
         <form action="/desk/addProject" method="GET">
             <table>
                 <th></th>
@@ -66,7 +68,6 @@
                     <td>
                         <select class="input" name="state">
                             <option>process</option>
-                            <option>complete</option>
                         </select>
                     </td>
                 </tr>
@@ -94,9 +95,8 @@
             </tr>
             <c:forEach items="${projects}" var="project">
                 <tr>
-                <form action="/desk/updateStateProject" method="GET">
-                    <td><input class="input" type="text" name="id" value=<c:out value="${project.id}" /> size="10"></td>
-<!--                    <td><label class="input" for="id"><c:out value="${project.id}" /></td>-->
+                <form name="stateProjectForm" action="/desk/updateStateProject" method="GET">
+                    <td><input class="input" type="text" name="id" value=<c:out value="${project.id}" /> size="5"></td>
                     <td><input class="input" type="text" name="projectName" value=<c:out value="${project.projectName}" /> size="10"></td>
                     <td><input class="input" type="text" name="type" value=<c:out value="${project.type}" /> size="10"></td>
                     <td><input class="input" type="text" name="startDate" value=<c:out value="${project.startDate}" /> size="10"></td>
@@ -104,35 +104,22 @@
                     <td><input class="input" type="text" name="totalAmount" value=<c:out value="${project.totalAmount}" /> size="5"></td>
                     <td><input class="input" type="text" name="vip" value=<c:out value="${project.vip}" /> size="3"></td>
                     <td>
-                        <select class="input" name="state" >
+                        <select class="input" id="state" name="state">
                             <option><c:out value="${project.state}" /></option>
-                            <option>process</option>
-                            <option>complete</option>
                         </select>
-                        <!--<input class="input" type="text" name="state" value=<c:out value="${project.state}" />>-->
                     </td>
-                    <td><input class="input" type="text" name="userId" value=<c:out value="${project.userId}" />></td>
-
-<!--                    <td><c:out value="${project.projectName}" /></td>
-             <td><c:out value="${project.type}" /></td>
-             <td><c:out value="${project.startDate}" /></td>
-             <td><c:out value="${project.finishDate}" /></td>
-             <td><c:out value="${project.totalAmount}" /></td>
-             <td><c:out value="${project.vip}" /></td>
-             <td><c:out value="${project.state}" /></td>
-             <td><c:out value="${project.userId}" /></td>-->
+                    <td><input class="input" type="text" name="userId" value=<c:out value="${project.userId}" /> size="5"></td>
                     <td>
-<!--                        <form action="/desk/updateStateProject/${project.id}" method="GET">-->
                         <input type="submit" value="updateState" >
+                    </td>
                 </form>
-            </td>
-            <td>
                 <form action="/desk/deleteProject/${project.id}" method="GET">
-                    <input type="submit" value="delete" >
+                    <td>             
+                        <input type="submit" value="delete" >  
+                    </td>
                 </form>
-            </td>
-        </tr>
-    </c:forEach>
-</table>
+            </tr>
+        </c:forEach>
+    </table>
 </body>
 </html>

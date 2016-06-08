@@ -1,6 +1,9 @@
-* {
-    font-family: Lucida Sans, Arial, Helvetica, sans-serif;
-    background: lightskyblue;
+body {
+    background-color: lightskyblue;
+    /*background-image: url('/images/sun.gif');*/
+    /*    background-repeat: repeat;
+        background-attachment: fixed;*/
+    background-position: top center;
 }
 
 .welcomeText {
@@ -20,6 +23,7 @@ table tr {
 td {
     border: solid; border-width: 1px; border-color: brown; 
     text-align: center; font-size: 12px;
+    vertical-align: bottom;
     color: #666; margin-top: 24px;
 }
 

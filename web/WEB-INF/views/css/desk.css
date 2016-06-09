@@ -1,5 +1,6 @@
 body {
-    background-color: lightskyblue;
+/*    background-color: lightskyblue;*/
+background-color: cadetblue;
     /*background-image: url('/images/sun.gif');*/
     /*    background-repeat: repeat;
         background-attachment: fixed;*/
@@ -12,7 +13,7 @@ body {
 }
 .welcomeBlock {
     text-align: center; font-size: 12px;
-    color: #666; margin-top: 24px;
+    color: #444; margin-top: 24px;
 }
 
 /*table tr {
@@ -29,30 +30,33 @@ td {
 
 table {
     position: relative;
-    border: solid; border-width: 2px; border-color: lightslategray; 
+/*    border: solid; border-width: 2px; border-color: lightslategray; */
+border: solid; border-width: 2px; border-color: coral; 
     float: left;
     margin: 10px;
     width: 30%;
-    color: #555; 
+    color: #333; 
 }
 
 th {
     border: solid; border-width: 1px; border-color: lightslategray; 
     text-align: center; font-size: 15px;
     vertical-align: central;
-    color: #555;
+    color: #333;
 }
 
 tr td {
     border: solid; border-width: 1px; border-color: lightslategray; 
+/*border: solid; border-width: 1px; border-color: coral;*/ 
     text-align: center; font-size: 13px;
     vertical-align: central;
-    color: gray;
+    color: #222;
 }
 
 .input {
     border: none;
-    background: lightgray; 
+/*    background: lightgray; */
+background: darkcyan; 
     text-align: center; font-size: 14px;
 }
 

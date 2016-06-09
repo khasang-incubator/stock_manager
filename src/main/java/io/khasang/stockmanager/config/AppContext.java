@@ -1,7 +1,9 @@
 package io.khasang.stockmanager.config;
 
-import io.khasang.stockmanager.dao.InsertToTable;
+import io.khasang.stockmanager.dao.*;
 import io.khasang.stockmanager.model.*;
+import io.khasang.stockmanager.service.ProductService;
+import io.khasang.stockmanager.service.impl.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -64,7 +66,28 @@ public class AppContext {
     }
 
     @Bean
-    public UserEditor userEditor(){
-        return  new UserEditor();
+    public UserDAO userDAO() {
+        return new UserDAOImpl();
     }
+
+    @Bean
+    public BackupDB backupDB() {
+        return new BackupDBImpl();
+    }
+
+    @Bean
+    public RestoreDB restoreDB() {
+        return new RestoreDBImpl();
+    }
+
+    @Bean
+    public UserEditor userEditor() {
+        return new UserEditor();
+    }
+
+    @Bean
+    public ProductService productService() {
+        return new ProductServiceImpl();
+    }
+
 }

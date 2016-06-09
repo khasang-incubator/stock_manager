@@ -14,7 +14,6 @@ import javax.persistence.NoResultException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
 //@Import(HibernateConfig.class)
 public class UserDAOImpl implements UserDAO {
     @Autowired

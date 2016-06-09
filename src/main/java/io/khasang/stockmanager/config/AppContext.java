@@ -67,42 +67,4 @@ public class AppContext {
     }
 
     @Bean
-    public Project project() {
-        return new Project();
-    }
-
-    @Bean
-    public ProjectDAO projectDAO() {
-        return new ProjectDAO();
-    }
-
-    @Bean
-    public ProjectProduct projectProduct() {
-        return new ProjectProduct();
-    }
-
-    @Bean
-    public User user() {
-        return new User();
-    }
-
-    @Bean
-    public UserDAO userDAO() {
-        return new UserDAOImpl();
-    }
-
-    @Bean
-    public BackupDB backup() {
-        return new BackupDBImpl();
-    }
-
-    @Bean
-    public RestoreDB restore() {
-        return new RestoreDBImpl();
-    }
-
-    @Bean
-    public UserEditor userEditor() {
-        return new UserEditor();
-    }
 }

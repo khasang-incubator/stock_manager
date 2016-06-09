@@ -6,11 +6,13 @@ import io.khasang.stockmanager.entity.Project;
 import io.khasang.stockmanager.entity.ProjectProduct;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author ShtykovPavel
  */
+@Service
 public class ProjectProductService implements IProjectProductService {
 
     @Autowired

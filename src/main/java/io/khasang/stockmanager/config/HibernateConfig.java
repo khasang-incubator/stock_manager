@@ -31,7 +31,7 @@ public class HibernateConfig {
         sessionFactory.setDataSource(dataSource());
         sessionFactory.setPackagesToScan("io.khasang.stockmanager.*");
         sessionFactory.setHibernateProperties(hibernateProperties());
-        sessionFactory.setAnnotatedClasses(Offer.class, Project.class, Product.class, User.class, ProjectProduct.class);
+        sessionFactory.setAnnotatedClasses(Project.class, Product.class, User.class, ProjectProduct.class);
         return sessionFactory;
     }
 
@@ -55,7 +55,6 @@ public class HibernateConfig {
     }
 
     @Bean
-    @Autowired
     public HibernateTransactionManager transactionManager(SessionFactory s) {
         HibernateTransactionManager txManager = new HibernateTransactionManager();
         txManager.setSessionFactory(s);
@@ -66,4 +65,5 @@ public class HibernateConfig {
     public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
         return new PersistenceExceptionTranslationPostProcessor();
     }
+
 }

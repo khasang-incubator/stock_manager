@@ -11,8 +11,6 @@ public class UserEditor {
 
     @Autowired
     private UserDAO userDAO;
-//    @Autowired
-//    private User user;
 
     /**
      * Define operation by params (New user || Update user)

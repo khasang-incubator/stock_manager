@@ -1,7 +1,6 @@
 package io.khasang.stockmanager.entity;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Entity
 @Table(name = "PRODUCTS")
@@ -67,4 +66,5 @@ public class Product {
         result = 31 * result + (description != null ? description.hashCode() : 0);
         return result;
     }
+
 }

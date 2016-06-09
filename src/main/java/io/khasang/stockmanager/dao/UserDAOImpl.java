@@ -6,7 +6,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.beans.InvalidPropertyException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-//@Import(HibernateConfig.class)
 public class UserDAOImpl implements UserDAO {
     @Autowired
     private SessionFactory sessionFactory;
@@ -81,4 +79,5 @@ public class UserDAOImpl implements UserDAO {
             e.printStackTrace();
         }
     }
+
 }

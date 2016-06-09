@@ -90,4 +90,5 @@ public class ProjectProduct {
         result = 31 * result + (saleDate != null ? saleDate.hashCode() : 0);
         return result;
     }
+
 }

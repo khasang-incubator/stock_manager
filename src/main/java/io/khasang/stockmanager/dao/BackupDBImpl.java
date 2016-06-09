@@ -15,12 +15,12 @@ public class BackupDBImpl implements BackupDB {
     /**
      * Not for real use. Just for quick testing.
      * Makes backup of postgreSQL database.
-     *
+     * <p>
      * Uses command line to execute utility pg_dump.
-     *
+     * <p>
      * It gets command from local variable "command" above and use environment variables
      * to set password from local variable "password" above.
-     *
+     * <p>
      * It's not safety method. If you want make backup safety, password should be passed
      * into %APPDATA%\postgresql\pgpass.conf (windows) in following format:
      * hostname:port:database:username:password
@@ -61,4 +61,5 @@ public class BackupDBImpl implements BackupDB {
 //            return "Error:" + e;
 //        }
 //    }
+
 }

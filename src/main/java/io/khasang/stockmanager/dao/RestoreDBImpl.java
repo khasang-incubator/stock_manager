@@ -14,12 +14,12 @@ public class RestoreDBImpl implements RestoreDB {
     /**
      * Not for real use. Just for quick testing.
      * Restores postgreSQL database from file.
-     *
+     * <p>
      * Uses command line to execute utility psql.
-     *
+     * <p>
      * It gets command from local variable "command" above and use environment variables
      * to set password from local variable "password" above.
-     *
+     * <p>
      * It's not safety method. If you want restore safety, password should be passed
      * into %APPDATA%\postgresql\pgpass.conf (windows) in following format:
      * hostname:port:database:username:password
@@ -60,4 +60,5 @@ public class RestoreDBImpl implements RestoreDB {
 //            return "Error:" + e;
 //        }
 //    }
+
 }

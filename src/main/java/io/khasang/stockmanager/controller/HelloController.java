@@ -1,6 +1,6 @@
 package io.khasang.stockmanager.controller;
 
-import io.khasang.stockmanager.dao.UserDao;
+import io.khasang.stockmanager.dao.UserDAO;
 import io.khasang.stockmanager.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,11 +18,11 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @Controller
 public class HelloController {
 
-    UserDao userDao;
+    UserDAO userDAO;
 
     @Autowired
-    public HelloController(UserDao userDao) {
-        this.userDao = userDao;
+    public HelloController(UserDAO userDAO) {
+        this.userDAO = userDAO;
     }
 
     @RequestMapping(value = "/add_user", method = GET)
@@ -36,7 +36,7 @@ public class HelloController {
         if (errors.hasErrors()) {
             return "add_user";
         } else {
-            String result = userDao.insertToTable(user);
+            String result = userDAO.insertToTable(user);
             return "redirect:/registration_result?result=" + result;
         }
     }

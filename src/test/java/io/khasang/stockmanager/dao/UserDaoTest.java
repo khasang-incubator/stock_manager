@@ -18,9 +18,8 @@ import static org.junit.Assert.assertEquals;
 @ContextConfiguration(classes = {WebConfig.class, AppContext.class})
 public class UserDaoTest {
 
-
     @Autowired
-    UserDao userDao;
+    UserDAO userDAO;
 
     private User user;
 
@@ -37,15 +36,13 @@ public class UserDaoTest {
 
     @Test
     public void testInsertToTable() {
-
-        assertEquals("Result wrong", "sucessfully insert to table", userDao.insertToTable(user));
+        assertEquals("Result wrong", "successfully insert to table", userDAO.insertToTable(user));
     }
 
     @Test
     public void testErrorWhenInsertToTable() {
         user.setLogin(null);
-        assertEquals("Result wrong", "unable to insert to table", userDao.insertToTable(user));
-
-
+        assertEquals("Result wrong", "unable to insert to table", userDAO.insertToTable(user));
     }
+
 }

@@ -73,7 +73,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public User getById(int id) throws NoResultException {
+    public User getById(Long id) throws NoResultException {
         User user = null;
         try (Session session = sessionFactory.openSession()) {
             session.beginTransaction();

@@ -38,7 +38,7 @@ public class UserEditor {
 
     public void delete(String id) throws NoResultException {
         try {
-            User user = userDAO.getById(Integer.parseInt(id));
+            User user = userDAO.getById(parseId(id));
             userDAO.delete(user);
         } catch (Exception e) {
             e.printStackTrace();
@@ -123,15 +123,15 @@ public class UserEditor {
     }
 
     /**
-     * Parse id to int
+     * Parse id to Long
      *
      * @param id
-     * @return int id
+     * @return Long id
      * @throws InvalidParameterException on parse error
      */
-    private int parseId(String id) throws InvalidParameterException {
+    private Long parseId(String id) throws InvalidParameterException {
         try {
-            return Integer.parseInt(id);
+            return Long.parseLong(id);
         } catch (NumberFormatException e) {
             throw new InvalidParameterException();
         }

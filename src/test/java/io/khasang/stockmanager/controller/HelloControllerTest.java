@@ -2,7 +2,7 @@ package io.khasang.stockmanager.controller;
 
 import io.khasang.stockmanager.config.AppContext;
 import io.khasang.stockmanager.config.application.WebConfig;
-import io.khasang.stockmanager.dao.UserDao;
+import io.khasang.stockmanager.dao.UserDAO;
 import io.khasang.stockmanager.entity.User;
 import org.junit.Before;
 import org.junit.Test;
@@ -52,9 +52,9 @@ public class HelloControllerTest {
 
     @Test
     public void shouldProcessRegistration() throws Exception {
-        UserDao mockUserDao = mock(UserDao.class);
-        when(mockUserDao.insertToTable(userUnsaved)).thenReturn("successfully insert to table");
-        HelloController helloController = new HelloController(mockUserDao);
+        UserDAO mockUserDAO = mock(UserDAO.class);
+        when(mockUserDAO.insertToTable(userUnsaved)).thenReturn("successfully insert to table");
+        HelloController helloController = new HelloController(mockUserDAO);
         MockMvc mockMvc = standaloneSetup(helloController).build();
         mockMvc.perform(post("/add_user")
                 .param("firstName", "Dan")
@@ -64,7 +64,7 @@ public class HelloControllerTest {
                 .param("email", "jsmith@google.com")
                 .param("role", "admin"))
                 .andExpect(redirectedUrl("/registration_result?result=successfully insert to table"));
-        verify(mockUserDao, atLeastOnce()).insertToTable(userUnsaved);
+        verify(mockUserDAO, atLeastOnce()).insertToTable(userUnsaved);
     }
 
     @Test

@@ -10,15 +10,15 @@ import java.util.List;
  */
 public interface IProjectDao {
 
-    public void addProject(Project project);
+    void addProject(Project project);
 
-    public void deleteProject(Long projectId);
+    void deleteProject(Long projectId);
 
-    public void updateStateProject(Project project);
+    void updateStateProject(Project project);
 
-    public List<Project> getProjects();
+    List<Project> getProjects();
 
-    public List<User> getUsers();
+    List<User> getUsers();
 
-    public void truncate() ;
+    void truncate() ;
 }

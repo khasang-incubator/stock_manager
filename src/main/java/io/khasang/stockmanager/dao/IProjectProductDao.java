@@ -11,17 +11,17 @@ import java.util.List;
  */
 public interface IProjectProductDao {
 
-    public void addProjectProduct(ProjectProduct projectProduct);
+    void addProjectProduct(ProjectProduct projectProduct);
 
-    public void deleteProjectProduct(Long projectProductId);
+    void deleteProjectProduct(Long projectProductId);
 
-    public void updateStateProjectProduct(ProjectProduct projectProduct);
+    void updateStateProjectProduct(ProjectProduct projectProduct);
 
-    public List<ProjectProduct> getProjectProducts();
+    List<ProjectProduct> getProjectProducts();
 
-    public List<Project> getProject();
+    List<Project> getProject();
 
-    public List<Product> getProduct();
+    List<Product> getProduct();
 
-    public void truncate();
+    void truncate();
 }

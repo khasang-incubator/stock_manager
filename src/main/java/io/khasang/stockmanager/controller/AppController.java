@@ -1,110 +1,91 @@
 package io.khasang.stockmanager.controller;
 
-import io.khasang.stockmanager.model.DataExample;
-import io.khasang.stockmanager.model.MyTestDataBase;
-import io.khasang.stockmanager.model.ProductOrder;
+import io.khasang.stockmanager.dao.BackupDB;
+import io.khasang.stockmanager.dao.RestoreDB;
+import io.khasang.stockmanager.dao.UserDAO;
+import io.khasang.stockmanager.model.UserEditor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.sql.SQLException;
+import javax.persistence.NoResultException;
+import java.security.InvalidParameterException;
 
 @Controller
 public class AppController {
     @Autowired
-    DataExample dataExample;
+    private UserDAO userDAO;
     @Autowired
-    ProductOrder productOrder;
+    private BackupDB backupDB;
+    @Autowired
+    private RestoreDB restoreDB;
+    @Autowired
+    private UserEditor userEditor;
 
-    @Autowired
-    MyTestDataBase testDataBase;
+    @RequestMapping("/admin")
+    public String admin(Model model) {
+        return "admin";
+    }
 
     @RequestMapping("/")
-    public String shrink(Model model) {
-        model.addAttribute("hello", "");
+    public String hello() {
         return "hello";
     }
 
-    @RequestMapping("/confidential")
-    public String securePage(Model model) {
-        model.addAttribute("cat", "Barsik");
-        return "cat";
+    @RequestMapping("/403")
+    public String forbidden() {
+        return "403";
     }
 
-    @RequestMapping("/confidential/tablecreate")
-    public String tableCreate(Model model) {
-        model.addAttribute("tablecreate", dataExample.getResult());
-        return "tablecreate";
+    @RequestMapping("/admin/users")
+    public String changeRole(Model model) {
+        model.addAttribute("users", userDAO.getAll());
+        return "users";
     }
 
-    @RequestMapping("/yukon85/select")
-    public String showSelectExample(Model model) throws SQLException {
-        model.addAttribute("result", "Select all table:");
-        model.addAttribute("items", testDataBase.selectWholeTestTable());
-        return "resultoperationpage";
+    @RequestMapping(value = "/admin/users", method = RequestMethod.POST)
+    public String userPost(Model model, @RequestParam(name = "id", required = false) String id,
+                           @RequestParam(name = "firstName", required = false) String firstName,
+                           @RequestParam(name = "lastName", required = false) String lastName,
+                           @RequestParam(name = "password", required = false) String password,
+                           @RequestParam(name = "login", required = false) String login,
+                           @RequestParam(name = "email", required = false) String email,
+                           @RequestParam(name = "role", required = false) String role,
+                           @RequestParam(name = "new_user", required = false) String newUser) {
+        try {
+            userEditor.defineUserOperationsByParams(id, firstName, lastName, login, password, email, role, newUser);
+        } catch (InvalidParameterException e) {
+            model.addAttribute("error", "check your params!");
+        }
+        model.addAttribute("users", userDAO.getAll());
+        return "users";
     }
 
-    @RequestMapping("/yukon85/dropandcreate")
-    public String dropAndCreateExample(Model model) throws SQLException {
-        model.addAttribute("result", testDataBase.dropAndCreateTestTable());
-        model.addAttribute("items", testDataBase.selectWholeTestTable());
-        return "resultoperationpage";
+    @RequestMapping("/admin/delete")
+    public String delete(Model model,
+                         @RequestParam(name = "id", required = false) String id) {
+        try {
+            userEditor.delete(id);
+        } catch (NoResultException e) {
+            model.addAttribute("error", "user not exists.");
+        }
+        model.addAttribute("users", userDAO.getAll());
+        return "users";
     }
 
-    @RequestMapping("/yukon85/fill")
-    public String fillExample(Model model) throws SQLException {
-        model.addAttribute("result", testDataBase.fillTable());
-        model.addAttribute("items", testDataBase.selectWholeTestTable());
-        return "resultoperationpage";
+    @RequestMapping("/admin/backup")
+    public String backup(Model model) {
+        model.addAttribute("backup", backupDB.makeBackup());
+        return "backup";
     }
 
-    @RequestMapping("/yukon85/truncate")
-    public String truncateExample(Model model) throws SQLException {
-        model.addAttribute("result", testDataBase.truncateTable());
-        model.addAttribute("items", testDataBase.selectWholeTestTable());
-        return "resultoperationpage";
+    @RequestMapping("/admin/restore")
+    public String restore(Model model) {
+        model.addAttribute("restore", restoreDB.makeRestore());
+        return "restore";
     }
-
-    @RequestMapping("/yukon85/update")
-    public String updateExample(Model model) throws SQLException {
-        model.addAttribute("result", testDataBase.updateTable(2, "Доска нестроганная"));
-        model.addAttribute("items", testDataBase.selectWholeTestTable());
-        return "resultoperationpage";
-    }
-
-    @RequestMapping("/yukon85/delete")
-    public String deleteTenRows(Model model) throws SQLException {
-        model.addAttribute("result", testDataBase.deleteFirstTenRows());
-        model.addAttribute("items", testDataBase.selectWholeTestTable());
-        return "resultoperationpage";
-    }
-
-    @RequestMapping("/yukon85/leftjoin")
-    public String leftJoin(Model model) throws SQLException {
-        model.addAttribute("items", testDataBase.useOuterJoin());
-        return "joinpage";
-    }
-
-    @RequestMapping("/yukon85/innerjoin")
-    public String innerJoin(Model model) throws SQLException {
-        model.addAttribute("items", testDataBase.useInnerJoin());
-        return "joinpage";
-    }
-
-    @RequestMapping("/yukon85/backup")
-    public String backup(Model model) throws SQLException {
-        model.addAttribute("result", testDataBase.makeBackup());
-        model.addAttribute("items", testDataBase.selectWholeTestTable());
-        return "resultoperationpage";
-    }
-
-
-    @RequestMapping("/select")
-    public String items(Model model) throws SQLException {
-        model.addAttribute("items", productOrder.selectWholeTable());
-        return "select";
-    }
-
 
 }

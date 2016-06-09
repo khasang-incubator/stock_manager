@@ -1,27 +1,46 @@
 package io.khasang.stockmanager.entity;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "USERS")
+@Table(name = "users")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
     @Column(name = "first_name")
+    @NotNull
+    @NotEmpty
+    @Size(min = 1, max = 256)
     private String firstName;
 
     @Column(name = "last_name")
+    @NotNull
+    @NotEmpty
+    @Size(min = 1, max = 256)
     private String lastName;
 
+    @NotEmpty
+    @NotNull
     @Column(nullable = false, unique = true)
     private String login;
 
+    @NotNull
+    @NotEmpty
     @Column(nullable = false)
     private String password;
 
+    @NotEmpty
     @Column
+    @NotNull
+    @Email
     private String email;
 
     @Column(nullable = false)
@@ -39,11 +58,11 @@ public class User {
         this.role = role;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -59,8 +78,8 @@ public class User {
         return lastName;
     }
 
-    public void setLastName(String surname) {
-        this.lastName = surname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getLogin() {
@@ -102,19 +121,18 @@ public class User {
 
         User user = (User) o;
 
-        if (id != user.id) return false;
+        if (id != null ? !id.equals(user.id) : user.id != null) return false;
         if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
         if (lastName != null ? !lastName.equals(user.lastName) : user.lastName != null) return false;
         if (login != null ? !login.equals(user.login) : user.login != null) return false;
         if (password != null ? !password.equals(user.password) : user.password != null) return false;
         if (email != null ? !email.equals(user.email) : user.email != null) return false;
         return role != null ? role.equals(user.role) : user.role == null;
-
     }
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         result = 31 * result + (login != null ? login.hashCode() : 0);
@@ -123,5 +141,4 @@ public class User {
         result = 31 * result + (role != null ? role.hashCode() : 0);
         return result;
     }
-
 }

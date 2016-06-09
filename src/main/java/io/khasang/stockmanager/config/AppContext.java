@@ -65,7 +65,4 @@ public class AppContext {
     public InsertToTable insertToTable(){
         return new InsertToTable();
     }
-
-    @Bean
-
 }

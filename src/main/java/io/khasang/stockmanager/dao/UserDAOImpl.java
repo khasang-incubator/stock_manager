@@ -33,24 +33,24 @@ public class UserDAOImpl implements UserDAO {
         return list;
     }
 
-//    public String insertToTable(User user) {
-//        Session session = sessionFactory.openSession();
-//        try {
-//            session.beginTransaction();
-//            //Receive status with specify id - required for check field state = at status end or not.
-//            List list = session.createCriteria(User.class, "id")
-//                    .list();
-//            session.save(user);
-//            session.getTransaction().commit();
-//            return "successfully insert to table";
-//        } catch (Exception e) {
-//            session.getTransaction().rollback();
-//            e.printStackTrace();
-//            return "unable to insert to table";
-//        } finally {
-//            session.close();
-//        }
-//    }
+    public String insertToTable(User user) {
+        Session session = sessionFactory.openSession();
+        try {
+            session.beginTransaction();
+            //Receive status with specify id - required for check field state = at status end or not.
+            List list = session.createCriteria(User.class, "id")
+                    .list();
+            session.save(user);
+            session.getTransaction().commit();
+            return "successfully insert to table";
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+            e.printStackTrace();
+            return "unable to insert to table";
+        } finally {
+            session.close();
+        }
+    }
 
     @Override
     public void update(User user) {
@@ -74,8 +74,7 @@ public class UserDAOImpl implements UserDAO {
         }
     }
 
-    @Override
-    public User getById(int id) throws NoResultException {
+    public User getById(long id) throws NoResultException {
         User user = null;
         try (Session session = sessionFactory.openSession()) {
             session.beginTransaction();

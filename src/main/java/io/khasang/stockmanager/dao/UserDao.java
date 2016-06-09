@@ -1,22 +1,19 @@
 package io.khasang.stockmanager.dao;
 
 import io.khasang.stockmanager.entity.User;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
-public class UserDao {
+public interface UserDAO {
+    List<User> getAll();
 
-    @Autowired
-    SessionFactory sessionFactory;
+    void update(User user);
 
-    public String insertToTable(User user) {
+    void add(User user);
 
-    User getById(int id);
+    User getById(long id);
 
     void delete(User user);
+
+    String insertToTable(User user);
 }

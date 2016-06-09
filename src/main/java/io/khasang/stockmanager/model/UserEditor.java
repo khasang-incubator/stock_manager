@@ -3,10 +3,12 @@ package io.khasang.stockmanager.model;
 import io.khasang.stockmanager.dao.UserDAO;
 import io.khasang.stockmanager.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.NoResultException;
 import java.security.InvalidParameterException;
 
+@Component
 public class UserEditor {
 
     @Autowired
@@ -131,9 +133,9 @@ public class UserEditor {
      * @return int id
      * @throws InvalidParameterException on parse error
      */
-    private int parseId(String id) throws InvalidParameterException {
+    private long parseId(String id) throws InvalidParameterException {
         try {
-            return Integer.parseInt(id);
+            return Long.parseLong(id);
         } catch (NumberFormatException e) {
             throw new InvalidParameterException();
         }

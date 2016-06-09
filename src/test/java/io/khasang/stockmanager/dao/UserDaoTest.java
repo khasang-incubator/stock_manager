@@ -20,7 +20,7 @@ public class UserDaoTest {
 
 
     @Autowired
-    UserDao userDao;
+    UserDAO userDao;
 
     private User user;
 

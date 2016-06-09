@@ -1,5 +1,8 @@
 package io.khasang.stockmanager.dao;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class RestoreDBImpl implements RestoreDB {
     private String pathToPqsl = "\"C:\\Program Files\\PostgreSQL\\9.4\\bin\\psql.exe\"";
     private String pathForBackupFile = "C:\\backup\\backup_stockmanager.sql";

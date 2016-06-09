@@ -1,6 +1,6 @@
 package io.khasang.stockmanager.controller;
 
-import io.khasang.stockmanager.dao.UserDao;
+import io.khasang.stockmanager.dao.UserDAO;
 import io.khasang.stockmanager.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,11 +17,11 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @Controller
 public class HelloController {
-
-    UserDao userDao;
+    @Autowired
+    UserDAO userDao;
 
     @Autowired
-    public HelloController(UserDao userDao) {
+    public HelloController(UserDAO userDao) {
         this.userDao = userDao;
     }
 

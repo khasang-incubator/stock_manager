@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.persistence.NoResultException;
 import java.security.InvalidParameterException;
+import java.sql.SQLException;
 
 @Controller
 public class AppController {
@@ -89,6 +90,8 @@ public class AppController {
     public String backup(Model model) {
         model.addAttribute("backup", backupDB.makeBackup());
         return "backup";
+    }
+    
     @RequestMapping("/select")
     public String items(Model model) throws SQLException {
         model.addAttribute("items", productOrder.selectWholeTable());

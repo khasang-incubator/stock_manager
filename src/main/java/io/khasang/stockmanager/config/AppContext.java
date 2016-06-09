@@ -1,10 +1,7 @@
 package io.khasang.stockmanager.config;
 
+import io.khasang.stockmanager.dao.InsertToTable;
 import io.khasang.stockmanager.model.*;
-import io.khasang.stockmanager.dao.*;
-import io.khasang.stockmanager.entity.Project;
-import io.khasang.stockmanager.entity.ProjectProduct;
-import io.khasang.stockmanager.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,24 +17,24 @@ public class AppContext {
     Environment environment;
 
     @Bean
-    public Message message(){
-        return  new Message();
+    public Message message() {
+        return new Message();
     }
 
     @Bean
-    ProductOrder productOrder(){
+    ProductOrder productOrder() {
         return new ProductOrder(jdbcTemplate());
     }
 
     @Bean
-    public JdbcTemplate jdbcTemplate(){
+    public JdbcTemplate jdbcTemplate() {
         JdbcTemplate jdbcTemplate = new JdbcTemplate();
         jdbcTemplate.setDataSource(dataSource());
         return jdbcTemplate;
     }
 
     @Bean
-    public DriverManagerDataSource dataSource(){
+    public DriverManagerDataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(environment.getProperty("jdbc.postgresql.driverClass"));
         dataSource.setUrl(environment.getProperty("jdbc.postgresql.url"));
@@ -47,7 +44,7 @@ public class AppContext {
     }
 
     @Bean
-    public DataExample dataExample(){
+    public DataExample dataExample() {
         return new DataExample(jdbcTemplate());
     }
 
@@ -60,8 +57,14 @@ public class AppContext {
     public JdbcAuthentication jdbcAuthentication() {
         return new JdbcAuthentication();
     }
+
     @Bean
-    public InsertToTable insertToTable(){
+    public InsertToTable insertToTable() {
         return new InsertToTable();
+    }
+
+    @Bean
+    public UserEditor userEditor(){
+        return  new UserEditor();
     }
 }

@@ -1,5 +1,9 @@
 package io.khasang.stockmanager.dao;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class BackupDBImpl implements BackupDB {
     private String pathToPgdump = "\"C:\\Program Files\\PostgreSQL\\9.4\\bin\\pg_dump.exe\"";
     private String pathForBackupFile = "C:\\backup\\backup_stockmanager.sql";

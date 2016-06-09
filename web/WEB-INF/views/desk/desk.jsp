@@ -14,8 +14,79 @@
         <!--VIEW PROJECTS-->
         <table class="tablePage">
             <tr>
-                <td class="tablePage">
+                <td class="tablePage"> 
+                    <form action="/desk/addProject" method="GET">
+                        <table>
+                            <th  colspan = '2' class="titleTable"><b>add Project</b></th>
+                            <tr>
+                                <td>Project name</td>
+                                <td>
+                                    <input class="input" type="text" name="projectName">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Type</td>
+                                <td>
+                                    <input class="input" type="text" name="type">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Start date</td>
+                                <td>
+                                    <input class="input" type="date" name="startDate">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Finish date</td>
+                                <td>
+                                    <input class="input" type="date" name="finishDate">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Total amount</td>
+                                <td>
+                                    <input class="input" type="text" name="totalAmount">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Vip</td>
+                                <td>
+                                    <select class="input" name="vip">
+                                        <option>No</option>
+                                        <option>Yes</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>User id</td>
+                                <td>
+                                    <select class="input" name="userId">
+                                        <option>select user id</option>
+                                        <c:forEach items="${users}" var="user">
+                                            <option><c:out value="${user.id}" /></option>
+                                        </c:forEach>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>state</td>
+                                <td>
+                                    <select class="input" name="state">
+                                        <option>process</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><input type="submit" value="addProject" ></td>
+                            </tr>
+                        </table>
+                        <br>
+                    </form>
+                </td>
 
+                <!--ADD PROJECT BLOCK-->
+
+                <td class="tablePage">
                     <table>
                         <th  colspan = '11' class="titleTable"><b>Projects</b></th>
                         <tr>
@@ -60,86 +131,60 @@
             </c:forEach>
         </table>
     </td>
-
-    <!--ADD PROJECT BLOCK-->
-
-<td class="tablePage">
-    <form action="/desk/addProject" method="GET">
-        <table>
-            <th  colspan = '2' class="titleTable"><b>add Project</b></th>
-            <tr>
-                <td>Project name</td>
-                <td>
-                    <input class="input" type="text" name="projectName">
-                </td>
-            </tr>
-            <tr>
-                <td>Type</td>
-                <td>
-                    <input class="input" type="text" name="type">
-                </td>
-            </tr>
-            <tr>
-                <td>Start date</td>
-                <td>
-                    <input class="input" type="date" name="startDate">
-                </td>
-            </tr>
-            <tr>
-                <td>Finish date</td>
-                <td>
-                    <input class="input" type="date" name="finishDate">
-                </td>
-            </tr>
-            <tr>
-                <td>Total amount</td>
-                <td>
-                    <input class="input" type="text" name="totalAmount">
-                </td>
-            </tr>
-            <tr>
-                <td>Vip</td>
-                <td>
-                    <select class="input" name="vip">
-                        <option>No</option>
-                        <option>Yes</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>User id</td>
-                <td>
-                    <select class="input" name="userId">
-                        <option>select user id</option>
-                        <c:forEach items="${users}" var="user">
-                            <option><c:out value="${user.id}" /></option>
-                        </c:forEach>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>state</td>
-                <td>
-                    <select class="input" name="state">
-                        <option>process</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2"><input type="submit" value="addProject" ></td>
-            </tr>
-        </table>
-        <br>
-    </form>
-</td>
 </tr>
- 
+
 <!--SEPARATOR-->
 <tr><td  class="tablePage" colspan="2"><hr></td></tr>
 
 <!--VIEW PROJECTS_PRODUCTS -->
 
 <tr>
+    <td class="tablePage">
+        <form action="/desk/addProjectProduct" method="GET">
+            <table>
+                <th  colspan = '2' class="titleTable"><b>add ProjectProduct</b></th>
+                <tr>
+                    <td>Project id</td>
+                    <td>
+                        <select class="input" name="projectId">
+                            <option>select project id</option>
+                            <c:forEach items="${projects}" var="project">
+                                <option><c:out value="${project.id}" /></option>
+                            </c:forEach>
+                        </select>
+                    </td>
+                </tr>
+                <td>Quantity</td>
+                <td>
+                    <input class="input" type="text" name="quantity">
+                </td>
+                </tr>
+                <tr>
+                    <td>Price</td>
+                    <td>
+                        <input class="input" type="text" name="price">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Amount</td>
+                    <td>
+                        <input class="input" type="text" name="amount">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Purchase date</td>
+                    <td>
+                        <input class="input" type="date" name="purchaseDate">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" value="addProjectProduct" ></td>
+                </tr>
+            </table>
+        </form>
+    </td>
+
+    <!-- ADD PROJECT PRODUCT BLOCK-->
     <td class="tablePage">
         <table>
             <th  colspan = '7' class="titleTable"><b>ProjectsProducts</b></th>
@@ -169,52 +214,6 @@
     </tr>
 </c:forEach>
 </table>
-</td>
-
-<!-- ADD PROJECT PRODUCT BLOCK-->
-<td class="tablePage">
-    <form action="/desk/addProjectProduct" method="GET">
-        <table>
-            <th  colspan = '2' class="titleTable"><b>add ProjectProduct</b></th>
-            <tr>
-                <td>Project id/td>
-                <td>
-                    <select class="input" name="projectId">
-                        <option>select project id</option>
-                        <c:forEach items="${projects}" var="project">
-                            <option><c:out value="${project.id}" /></option>
-                        </c:forEach>
-                    </select>
-                </td>
-            </tr>
-            <td>Quantity</td>
-            <td>
-                <input class="input" type="text" name="quantity">
-            </td>
-            </tr>
-            <tr>
-                <td>Price</td>
-                <td>
-                    <input class="input" type="text" name="price">
-                </td>
-            </tr>
-            <tr>
-                <td>Amount</td>
-                <td>
-                    <input class="input" type="text" name="amount">
-                </td>
-            </tr>
-            <tr>
-                <td>Purchase date</td>
-                <td>
-                    <input class="input" type="date" name="purchaseDate">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2"><input type="submit" value="addProjectProduct" ></td>
-            </tr>
-        </table>
-    </form>
 </td>
 </tr>
 </table>

@@ -17,16 +17,17 @@ import javax.persistence.Table;
 public class Product {
 
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Basic
     @Column(name = "user_id")
-    private Long user_id;
+    private Long userId;
 
     @Basic
     @Column(name = "product_name")
-    private String product_name;
+    private String productName;
 
     @Basic
     @Column(name = "description")
@@ -43,20 +44,20 @@ public class Product {
         this.id = id;
     }
 
-    public Long getUser_id() {
-        return user_id;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
-    public String getProduct_name() {
-        return product_name;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setProduct_name(String product_name) {
-        this.product_name = product_name;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
     public String getDescription() {

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface TableObjectInterface {
+
     void setDataSource(SimpleDriverDataSource dataSource);
 
     void setJdbcTemplate(JdbcTemplate jdbcTemplate);

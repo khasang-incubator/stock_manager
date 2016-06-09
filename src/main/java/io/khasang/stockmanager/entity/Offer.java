@@ -12,7 +12,7 @@ public class Offer {
 
     private String title;
 
-    private long payment_id;
+    private long paymentId;
 
     private String description;
 
@@ -53,11 +53,11 @@ public class Offer {
         this.price = price;
     }
 
-    public long getPayment_id() {
-        return payment_id;
+    public long getPaymentId() {
+        return paymentId;
     }
 
-    public void setPayment_id(long payment_id) {
-        this.payment_id = payment_id;
+    public void setPaymentId(long paymentId) {
+        this.paymentId = paymentId;
     }
 }

@@ -1,10 +1,12 @@
 package io.khasang.stockmanager.entity;
 
 import java.math.BigDecimal;
-import java.sql.Timestamp;
+import java.sql.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -18,11 +20,12 @@ public class ProjectProduct {
 
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Basic
     @Column(name = "project_id")
-    private Long project_id;
+    private Long projectId;
 
     @Basic
     @Column(name = "quantity")
@@ -38,7 +41,7 @@ public class ProjectProduct {
 
     @Basic
     @Column(name = "purchase_date")
-    private Timestamp purchase_date;
+    private Date purchaseDate;
 
     public ProjectProduct() {
     }
@@ -51,12 +54,12 @@ public class ProjectProduct {
         this.id = id;
     }
 
-    public Long getProject_id() {
-        return project_id;
+    public Long getProjectId() {
+        return projectId;
     }
 
-    public void setProject_id(Long project_id) {
-        this.project_id = project_id;
+    public void setProjectId(Long projectId) {
+        this.projectId = projectId;
     }
 
     public int getQuantity() {
@@ -83,12 +86,12 @@ public class ProjectProduct {
         this.amount = amount;
     }
 
-    public Timestamp getPurchase_date() {
-        return purchase_date;
+    public Date getPurchaseDate() {
+        return purchaseDate;
     }
 
-    public void setPurchase_date(Timestamp purchase_date) {
-        this.purchase_date = purchase_date;
+    public void setPurchaseDate(Date purchaseDate) {
+        this.purchaseDate = purchaseDate;
     }
 
 }

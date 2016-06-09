@@ -12,7 +12,7 @@ public interface IProjectDao {
 
     public void addProject(Project project);
 
-    public void deleteProject(Long project);
+    public void deleteProject(Long projectId);
 
     public void updateStateProject(Project project);
 

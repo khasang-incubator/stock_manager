@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.xml.crypto.Data;
 
 public class Message {
+
     @Autowired
     DataExample dataExample;
 

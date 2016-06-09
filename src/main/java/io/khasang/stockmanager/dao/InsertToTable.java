@@ -14,6 +14,7 @@ import java.util.List;
 
 @Component
 public class InsertToTable {
+
     @Autowired
     SessionFactory sessionFactory;
 
@@ -25,7 +26,7 @@ public class InsertToTable {
 
     /*
     * Insert notification if state not 'end'
-    */
+     */
     public void insertData(long id, String state) {
         Session session = sessionFactory.openSession();
         try {
@@ -71,7 +72,7 @@ public class InsertToTable {
                 offer.setDescription("krokodil");
                 offer.setPrice(BigDecimal.valueOf(20.00));
                 offer.setTitle(state);
-                offer.setPayment_id(id);
+                offer.setPaymentId(id);
                 session.save(offer);
             } else {
                 resultPay = "платеж с таким статусом уже есть";

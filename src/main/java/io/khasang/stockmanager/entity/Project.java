@@ -1,7 +1,6 @@
 package io.khasang.stockmanager.entity;
 
 import java.sql.Date;
-import java.sql.Timestamp;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,6 +18,7 @@ import javax.persistence.Table;
 public class Project {
 
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 

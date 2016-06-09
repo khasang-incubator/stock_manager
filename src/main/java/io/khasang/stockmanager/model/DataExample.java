@@ -5,6 +5,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public class DataExample {
+
     @Autowired
     Message message;
 
@@ -24,8 +25,8 @@ public class DataExample {
 
     public void createDataTable() {
         try {
-            jdbcTemplate.execute("CREATE TABLE COMPANY " +
-                    "(ID INT PRIMARY KEY NOT NULL)");
+            jdbcTemplate.execute("CREATE TABLE COMPANY "
+                    + "(ID INT PRIMARY KEY NOT NULL)");
             result = "Table Company created successful!";
         } catch (Exception e) {
             result = e + "";

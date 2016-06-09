@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 public class ProjectDao implements IProjectDao {
 
     @Autowired
-    SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
     @Override
     public void addProject(Project project) {

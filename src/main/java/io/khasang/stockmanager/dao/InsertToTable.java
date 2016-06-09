@@ -63,7 +63,6 @@ public class InsertToTable {
                 if (state.equals("end") && countRef > 0) {
                     isTrue = false;
                 }
-
             }
 
             // Receive current status - require adding or not.
@@ -124,4 +123,5 @@ public class InsertToTable {
         }
         return resultQuery;
     }
+
 }

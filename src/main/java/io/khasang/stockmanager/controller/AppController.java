@@ -89,6 +89,10 @@ public class AppController {
     public String backup(Model model) {
         model.addAttribute("backup", backupDB.makeBackup());
         return "backup";
+    @RequestMapping("/select")
+    public String items(Model model) throws SQLException {
+        model.addAttribute("items", productOrder.selectWholeTable());
+        return "select";
     }
 
     @RequestMapping("/admin/restore")

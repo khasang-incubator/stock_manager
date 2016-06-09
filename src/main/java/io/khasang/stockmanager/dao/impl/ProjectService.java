@@ -6,7 +6,6 @@ import io.khasang.stockmanager.entity.User;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -43,5 +42,10 @@ public class ProjectService implements IProjectService {
     @Override
     public List<User> getUsers() {
         return projectDao.getUsers();
+    }
+
+    @Override
+    public void truncate() {
+        projectDao.truncate();
     }
 }

@@ -23,4 +23,5 @@ public interface IProjectProductDao {
 
     public List<Product> getProduct();
 
+    public void truncate();
 }

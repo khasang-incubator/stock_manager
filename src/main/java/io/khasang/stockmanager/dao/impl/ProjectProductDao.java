@@ -66,4 +66,12 @@ public class ProjectProductDao implements IProjectProductDao{
         return session.createQuery("from Product p ORDER BY p.id ASC").list();
     }
 
+    @Override
+    public void truncate() {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+            session.createQuery("delete from ProjectProduct");
+        session.getTransaction().commit();
+    }
+
 }

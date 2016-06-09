@@ -62,4 +62,12 @@ public class ProjectDao implements IProjectDao {
         Session session = sessionFactory.openSession();
         return session.createQuery("from User u ORDER BY u.id ASC").list();
     }
+
+    @Override
+    public void truncate() {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.createQuery("delete from Project").executeUpdate();
+        session.getTransaction().commit();
+    }
 }

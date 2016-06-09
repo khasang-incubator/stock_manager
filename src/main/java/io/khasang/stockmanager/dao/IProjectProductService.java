@@ -23,4 +23,5 @@ public interface IProjectProductService {
 
     public List<Product> getProduct();
 
+    public void truncate();
 }

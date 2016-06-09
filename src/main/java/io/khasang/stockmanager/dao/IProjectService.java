@@ -19,4 +19,6 @@ public interface IProjectService {
     public List<Project> getProjects();
 
     public List<User> getUsers();
+
+    public void truncate();
 }

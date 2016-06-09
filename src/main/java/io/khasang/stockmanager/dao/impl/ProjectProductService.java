@@ -46,4 +46,9 @@ public class ProjectProductService implements IProjectProductService {
         return projectProductDao.getProduct();
     }
 
+    @Override
+    public void truncate() {
+        projectProductDao.truncate();
+    }
+
 }

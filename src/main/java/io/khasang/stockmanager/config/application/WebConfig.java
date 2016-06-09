@@ -1,6 +1,5 @@
 package io.khasang.stockmanager.config.application;
 
-import io.khasang.stockmanager.model.Message;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

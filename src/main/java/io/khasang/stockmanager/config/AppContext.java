@@ -76,14 +76,4 @@ public class AppContext {
         return new UserEditor();
     }
 
-    @Bean
-    public StockBalanceData stockBalanceData() {
-        return new StockBalanceData(jdbcTemplate());
-    }
-
-    @Bean
-    public JdbcAuthentication jdbcAuthentication() {
-        return new JdbcAuthentication();
-    }
-    
 }

@@ -74,7 +74,7 @@ public class AppController {
             model.addAttribute("error", "user not exists.");
         }
         model.addAttribute("users", userDAO.getAll());
-        return "users";
+        return "redirect:/admin/users";
     }
 
     @RequestMapping("/admin/backup")

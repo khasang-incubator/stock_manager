@@ -1,36 +1,63 @@
 package io.khasang.stockmanager.entity;
 
-import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@Table(name = "projects")
+@Table(name = "Projects", schema = "public")
 public class Project {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
 
-    private int id;
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @Basic
     @Column(name = "project_name")
     private String projectName;
-    @Column(name = "user_id")
-    private int userId;
+
+    @Basic
     @Column(name = "start_date")
     private Date startDate;
-    @Column(name = "end_date")
-    private Date endDate;
-    private String status;
-    private int budget;
+
+    @Basic
+    @Column(name = "finish_date")
+    private Date finishDate;
+
+    @Basic
+    @Column(name = "state")
+    private String state;
+
+    @Basic
+    @Column(name = "total_amount")
+    private int totalAmount;
+
+    @Basic
+    @Column(name = "type")
     private String type;
+
+    @Basic
+    @Column(name = "vip")
     private boolean vip;
+
+    @Basic
+    @Column(name = "user_id")
+    private long userId;
 
     public Project() {
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -42,14 +69,6 @@ public class Project {
         this.projectName = projectName;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
     public Date getStartDate() {
         return startDate;
     }
@@ -58,28 +77,28 @@ public class Project {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
-        return endDate;
+    public Date getFinishDate() {
+        return finishDate;
     }
 
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
+    public void setFinishDate(Date finishDate) {
+        this.finishDate = finishDate;
     }
 
-    public String getStatus() {
-        return status;
+    public String getState() {
+        return state;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setState(String state) {
+        this.state = state;
     }
 
-    public int getBudget() {
-        return budget;
+    public int getTotalAmount() {
+        return totalAmount;
     }
 
-    public void setBudget(int budget) {
-        this.budget = budget;
+    public void setTotalAmount(int totalAmount) {
+        this.totalAmount = totalAmount;
     }
 
     public String getType() {
@@ -98,37 +117,12 @@ public class Project {
         this.vip = vip;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Project project = (Project) o;
-
-        if (id != project.id) return false;
-        if (userId != project.userId) return false;
-        if (budget != project.budget) return false;
-        if (vip != project.vip) return false;
-        if (projectName != null ? !projectName.equals(project.projectName) : project.projectName != null) return false;
-        if (startDate != null ? !startDate.equals(project.startDate) : project.startDate != null) return false;
-        if (endDate != null ? !endDate.equals(project.endDate) : project.endDate != null) return false;
-        if (status != null ? !status.equals(project.status) : project.status != null) return false;
-        return type != null ? type.equals(project.type) : project.type == null;
-
+    public long getUserId() {
+        return userId;
     }
 
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (projectName != null ? projectName.hashCode() : 0);
-        result = 31 * result + userId;
-        result = 31 * result + (startDate != null ? startDate.hashCode() : 0);
-        result = 31 * result + (endDate != null ? endDate.hashCode() : 0);
-        result = 31 * result + (status != null ? status.hashCode() : 0);
-        result = 31 * result + budget;
-        result = 31 * result + (type != null ? type.hashCode() : 0);
-        result = 31 * result + (vip ? 1 : 0);
-        return result;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
 }

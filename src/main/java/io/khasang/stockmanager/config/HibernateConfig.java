@@ -1,6 +1,9 @@
 package io.khasang.stockmanager.config;
 
 import io.khasang.stockmanager.entity.*;
+import java.util.Properties;
+import javax.sql.DataSource;
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -14,14 +17,12 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import javax.sql.DataSource;
-import java.util.Properties;
-
 @Configuration
 @EnableTransactionManagement
 @ComponentScan({"io.khasang.stockmanager.config"})
 @PropertySource(value = {"classpath:hibernate.properties"})
 public class HibernateConfig {
+
     @Autowired
     private Environment environment;
 

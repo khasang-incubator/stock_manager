@@ -15,6 +15,7 @@ import org.springframework.web.servlet.view.JstlView;
         "io.khasang.stockmanager.service"})
 
 public class WebConfig extends WebMvcConfigurerAdapter {
+
     @Bean
     public InternalResourceViewResolver viewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();

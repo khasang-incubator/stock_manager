@@ -16,6 +16,7 @@ import java.security.InvalidParameterException;
 
 @Controller
 public class AppController {
+
     @Autowired
     private UserDAO userDAO;
     @Autowired

@@ -16,6 +16,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 @Configuration
 @PropertySource("classpath:util.properties")
 public class AppContext {
+
     @Autowired
     Environment environment;
 
@@ -76,4 +77,19 @@ public class AppContext {
         return new UserEditor();
     }
 
+    @Bean
+    public ProjectService projectService() {
+        return new ProjectService();
+    }
+
+    @Bean
+    public ProjectProductDao projectProductDao() {
+        return new ProjectProductDao();
+    }
+
+    @Bean
+    public ProjectProductService projectProductService() {
+        return new ProjectProductService();
+    }
+    
 }

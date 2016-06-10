@@ -7,17 +7,33 @@ import java.util.Date;
 @Entity
 @Table(name = "project_product")
 public class ProjectProduct {
+
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    @Basic
     @Column(name = "project_id")
     private int projectId;
+
+    @Basic
     @Column(name = "product_id")
     private int productId;
+    
+    @Basic
+    @Column(name = "quantity")
     private int quantity;
+
+    @Basic
+    @Column(name = "price")
     private BigDecimal price;
-    private BigDecimal total;
+
+    @Basic
+    @Column(name = "amount")
+    private BigDecimal amount;
+
+    @Basic
     @Column(name = "purchase_date")
     private Date purchaseDate;
 
@@ -64,12 +80,12 @@ public class ProjectProduct {
         this.price = price;
     }
 
-    public BigDecimal getTotal() {
-        return total;
+    public BigDecimal getAmount() {
+        return amount;
     }
 
-    public void setTotal(BigDecimal total) {
-        this.total = total;
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
     public Date getPurchaseDate() {

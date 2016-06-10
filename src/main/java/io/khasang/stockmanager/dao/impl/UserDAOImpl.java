@@ -1,5 +1,6 @@
-package io.khasang.stockmanager.dao;
+package io.khasang.stockmanager.dao.impl;
 
+import io.khasang.stockmanager.dao.UserDAO;
 import io.khasang.stockmanager.entity.User;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;

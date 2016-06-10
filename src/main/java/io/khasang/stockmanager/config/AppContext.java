@@ -1,9 +1,7 @@
 package io.khasang.stockmanager.config;
 
 import io.khasang.stockmanager.dao.*;
-import io.khasang.stockmanager.dao.impl.ProjectProductDao;
-import io.khasang.stockmanager.dao.impl.ProjectProductService;
-import io.khasang.stockmanager.dao.impl.ProjectService;
+import io.khasang.stockmanager.dao.impl.*;
 import io.khasang.stockmanager.entity.Project;
 import io.khasang.stockmanager.entity.ProjectProduct;
 import io.khasang.stockmanager.entity.User;

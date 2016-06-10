@@ -21,7 +21,7 @@ import java.sql.Date;
 public class ProjectTest {
 
     @Autowired
-    private ProjectServiceImpl projectServiceImplImpl;
+    private ProjectServiceImpl projectServiceImpl;
 
     private Project project;
 
@@ -40,8 +40,8 @@ public class ProjectTest {
 
     @Test
     public void addProjectTest() {
-        projectServiceImplImpl.truncate();
-        projectServiceImplImpl.addProject(project);
-        Assert.assertNotNull(projectServiceImplImpl.getProjects().size());
+        projectServiceImpl.truncate();
+        projectServiceImpl.addProject(project);
+        Assert.assertNotNull(projectServiceImpl.getProjects().size());
     }
 }

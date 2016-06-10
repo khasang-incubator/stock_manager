@@ -15,17 +15,13 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import java.math.BigDecimal;
 import java.sql.Date;
 
-/**
- *
- * @author ShtykovPavel
- */
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(classes = {WebConfig.class})
 public class ProjectProductTest {
 
     @Autowired
-    private ProjectProductServiceImpl projectProductServiceImplImpl;
+    private ProjectProductServiceImpl projectProductServiceImpl;
 
     private ProjectProduct projectProduct;
 
@@ -41,8 +37,8 @@ public class ProjectProductTest {
 
     @Test
     public void addProjectTest() {
-        projectProductServiceImplImpl.truncate();
-        projectProductServiceImplImpl.addProjectProduct(projectProduct);
-        Assert.assertNotNull(projectProductServiceImplImpl.getProjectProducts().size());
+        projectProductServiceImpl.truncate();
+        projectProductServiceImpl.addProjectProduct(projectProduct);
+        Assert.assertNotNull(projectProductServiceImpl.getProjectProducts().size());
     }
 }

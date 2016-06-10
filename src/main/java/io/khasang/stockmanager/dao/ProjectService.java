@@ -4,7 +4,7 @@ import io.khasang.stockmanager.entity.Project;
 import io.khasang.stockmanager.entity.User;
 import java.util.List;
 
-public interface IProjectService {
+public interface ProjectService {
 
     void addProject(Project project);
 

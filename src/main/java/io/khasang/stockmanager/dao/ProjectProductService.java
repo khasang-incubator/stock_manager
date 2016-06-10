@@ -5,7 +5,7 @@ import io.khasang.stockmanager.entity.Project;
 import io.khasang.stockmanager.entity.ProjectProduct;
 import java.util.List;
 
-public interface IProjectProductDao {
+public interface ProjectProductService {
 
     void addProjectProduct(ProjectProduct projectProduct);
 

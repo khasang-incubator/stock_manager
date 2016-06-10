@@ -15,7 +15,7 @@ import javax.persistence.NoResultException;
 import java.security.InvalidParameterException;
 
 @Controller
-public class AppController {
+public class AdminController {
 
     @Autowired
     private UserDAO userDAO;

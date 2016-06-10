@@ -1,7 +1,7 @@
 package io.khasang.stockmanager.service.impl;
 
 
-import io.khasang.stockmanager.dao.ProductDao;
+import io.khasang.stockmanager.dao.ProductDAO;
 import io.khasang.stockmanager.entity.Product;
 import io.khasang.stockmanager.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public class ProductServiceImpl implements ProductService {
     @Autowired
-    private ProductDao dao;
+    private ProductDAO dao;
 
     @Transactional
     @Override

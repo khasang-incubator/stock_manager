@@ -1,6 +1,6 @@
 package io.khasang.stockmanager.dao.impl;
 
-import io.khasang.stockmanager.dao.IProjectProductService;
+import io.khasang.stockmanager.dao.ProjectProductService;
 import io.khasang.stockmanager.entity.Product;
 import io.khasang.stockmanager.entity.Project;
 import io.khasang.stockmanager.entity.ProjectProduct;
@@ -10,44 +10,44 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ProjectProductService implements IProjectProductService {
+public class ProjectProductServiceImpl implements ProjectProductService {
 
     @Autowired
-    private ProjectProductDao projectProductDao;
+    private ProjectProductDAOImpl projectProductDaoImplImpl;
 
     @Override
     public void addProjectProduct(ProjectProduct projectProduct) {
-        projectProductDao.addProjectProduct(projectProduct);
+        projectProductDaoImplImpl.addProjectProduct(projectProduct);
     }
 
     @Override
     public void deleteProjectProduct(Long projectProductId) {
-        projectProductDao.deleteProjectProduct(projectProductId);
+        projectProductDaoImplImpl.deleteProjectProduct(projectProductId);
     }
 
     @Override
     public void updateStateProjectProduct(ProjectProduct projectProduct) {
-        projectProductDao.updateStateProjectProduct(projectProduct);
+        projectProductDaoImplImpl.updateStateProjectProduct(projectProduct);
     }
 
     @Override
     public List<ProjectProduct> getProjectProducts() {
-        return projectProductDao.getProjectProducts();
+        return projectProductDaoImplImpl.getProjectProducts();
     }
 
     @Override
     public List<Project> getProject() {
-        return projectProductDao.getProject();
+        return projectProductDaoImplImpl.getProject();
     }
 
     @Override
     public List<Product> getProduct() {
-        return projectProductDao.getProduct();
+        return projectProductDaoImplImpl.getProduct();
     }
 
     @Override
     public void truncate() {
-        projectProductDao.truncate();
+        projectProductDaoImplImpl.truncate();
     }
 
 }

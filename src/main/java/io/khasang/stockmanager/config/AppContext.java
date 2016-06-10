@@ -80,17 +80,17 @@ public class AppContext {
 
     @Bean
     public ProjectService projectService() {
-        return new ProjectService();
+        return new ProjectServiceImpl();
     }
 
     @Bean
-    public ProjectProductDao projectProductDao() {
-        return new ProjectProductDao();
+    public ProjectProductDAO projectProductDao() {
+        return new ProjectProductDAOImpl();
     }
 
     @Bean
     public ProjectProductService projectProductService() {
-        return new ProjectProductService();
+        return new ProjectProductServiceImpl();
     }
     
 }

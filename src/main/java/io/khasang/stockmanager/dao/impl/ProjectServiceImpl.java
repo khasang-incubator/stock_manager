@@ -1,6 +1,6 @@
 package io.khasang.stockmanager.dao.impl;
 
-import io.khasang.stockmanager.dao.IProjectService;
+import io.khasang.stockmanager.dao.ProjectService;
 import io.khasang.stockmanager.entity.Project;
 import io.khasang.stockmanager.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,40 +9,40 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ProjectService implements IProjectService {
+public class ProjectServiceImpl implements ProjectService {
 
     @Autowired
-    private ProjectDao projectDao;
+    private ProjectDAOImpl projectDaoImpl;
 
 //    @Transactional
     @Override
     public void addProject(Project project) {
-        projectDao.addProject(project);
+        projectDaoImpl.addProject(project);
     }
 
 //    @Transactional
     @Override
     public void deleteProject(Long projectId) {
-        projectDao.deleteProject(projectId);
+        projectDaoImpl.deleteProject(projectId);
     }
 
     @Override
     public void updateStateProject(Project project) {
-        projectDao.updateStateProject(project);
+        projectDaoImpl.updateStateProject(project);
     }
 
     @Override
     public List<Project> getProjects() {
-        return projectDao.getProjects();
+        return projectDaoImpl.getProjects();
     }
 
     @Override
     public List<User> getUsers() {
-        return projectDao.getUsers();
+        return projectDaoImpl.getUsers();
     }
 
     @Override
     public void truncate() {
-        projectDao.truncate();
+        projectDaoImpl.truncate();
     }
 }

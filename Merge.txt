@@ -55,5 +55,14 @@
  2. Тесты теперь все находятся в io.khasang.stockmanager.dao
 	
  3. Разобраться на тему единого класса ProjectDAO c командой ветки products.
-	
+
+ 4. Все интерфейсы (кроме ProjectDAO) теперь без I, а реализации в папке impl с таким же суффиксом. См. Чистый код, стр.47
+
 	Для нашей группы: Переделать форму. Теперь появилось требование к email и если его не правильно вбить выкидывает Exception. (У CDU_INL_DEV эта проблема решена) Надо разобраться со страницами приветствия и подумать, как конкретно реализовать работу админа под юзером (то есть со своим проектом, а не с адинистративной страничкой).
+
+
+Для всех:
+
+Кто понимает о чём речь?
+C:\proj\java\stock_manager\src\main\java\io\khasang\stockmanager\dao\impl\ProjectDAOImpl.java
+Information:java: Some input files use unchecked or unsafe operations.

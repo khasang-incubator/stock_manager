@@ -1,6 +1,6 @@
 package io.khasang.stockmanager.dao.impl;
 
-import io.khasang.stockmanager.dao.IProjectDao;
+import io.khasang.stockmanager.dao.IProjectDAO;
 import io.khasang.stockmanager.entity.Project;
 import io.khasang.stockmanager.entity.User;
 import org.hibernate.Session;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class ProjectDao implements IProjectDao {
+public class ProjectDAOImpl implements IProjectDAO {
 
     @Autowired
     private SessionFactory sessionFactory;

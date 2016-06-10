@@ -1,7 +1,7 @@
 package io.khasang.stockmanager.dao.desk;
 
 import io.khasang.stockmanager.config.application.WebConfig;
-import io.khasang.stockmanager.dao.impl.ProjectProductService;
+import io.khasang.stockmanager.dao.impl.ProjectProductServiceImpl;
 import io.khasang.stockmanager.entity.ProjectProduct;
 import org.junit.Assert;
 import org.junit.Before;
@@ -25,7 +25,7 @@ import java.sql.Date;
 public class ProjectProductTest {
 
     @Autowired
-    private ProjectProductService projectProductService;
+    private ProjectProductServiceImpl projectProductServiceImplImpl;
 
     private ProjectProduct projectProduct;
 
@@ -41,8 +41,8 @@ public class ProjectProductTest {
 
     @Test
     public void addProjectTest() {
-        projectProductService.truncate();
-        projectProductService.addProjectProduct(projectProduct);
-        Assert.assertNotNull(projectProductService.getProjectProducts().size());
+        projectProductServiceImplImpl.truncate();
+        projectProductServiceImplImpl.addProjectProduct(projectProduct);
+        Assert.assertNotNull(projectProductServiceImplImpl.getProjectProducts().size());
     }
 }

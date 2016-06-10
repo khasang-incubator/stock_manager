@@ -1,7 +1,7 @@
 package io.khasang.stockmanager.model;
 
 import io.khasang.stockmanager.config.application.WebConfig;
-import io.khasang.stockmanager.dao.ProductDao;
+import io.khasang.stockmanager.dao.ProductDAO;
 import io.khasang.stockmanager.entity.Product;
 import org.junit.Assert;
 import org.junit.Before;
@@ -19,16 +19,16 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class ProductTest {
     @Autowired
-    ProductDao productDao;
+    ProductDAO productDAO;
 
     @Before
     public void before() {
-        productDao.deleteAll();
+        productDAO.deleteAll();
         Product product = new Product();
         product.setName("Test");
         product.setDescription("Description");
         product.setUserId(1L);
-        productDao.save(product);
+        productDAO.save(product);
     }
 
     @Test
@@ -37,19 +37,19 @@ public class ProductTest {
         product.setName("Test");
         product.setDescription("Description");
         product.setUserId(1L);
-        productDao.save(product);
+        productDAO.save(product);
         Assert.assertNotNull(product.getId());
     }
 
     @Test
     public void deleteTest() {
-        productDao.delete(productDao.getAll().get(0));
-        Assert.assertEquals(0, productDao.getAll().size());
+        productDAO.delete(productDAO.getAll().get(0));
+        Assert.assertEquals(0, productDAO.getAll().size());
     }
 
     @Test
     public void getByIdTest() {
-        Product product = productDao.getById(productDao.getAll().get(0).getId());
+        Product product = productDAO.getById(productDAO.getAll().get(0).getId());
         Assert.assertEquals("Test", product.getName());
     }
 }

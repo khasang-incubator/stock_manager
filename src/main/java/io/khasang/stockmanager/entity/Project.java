@@ -1,76 +1,85 @@
 package io.khasang.stockmanager.entity;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
-@Table(name = "PROJECTS")
+@Table(name = "projects")
 public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+
     private int id;
-    private String title;
+    @Column(name = "project_name")
+    private String projectName;
+    @Column(name = "user_id")
     private int userId;
-    private LocalDate startDate;
-    private LocalDate finishDate;
-    private ProjectStatus status;
+    @Column(name = "start_date")
+    private Date startDate;
+    @Column(name = "end_date")
+    private Date endDate;
+    private String status;
     private int budget;
     private String type;
+    private boolean vip;
 
-    public void setId(int id) {
-        this.id = id;
+    public Project() {
     }
 
     public int getId() {
         return id;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getProjectName() {
+        return projectName;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
     }
 
     public int getUserId() {
         return userId;
     }
 
-    public void setStartDate(LocalDate starDate) {
-        this.startDate = starDate;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public LocalDate getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setFinishDate(LocalDate finishDate) {
-        this.finishDate = finishDate;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
-    public LocalDate getFinishDate() {
-        return finishDate;
+    public Date getEndDate() {
+        return endDate;
     }
 
-    public void setStatus(ProjectStatus status) {
-        this.status = status;
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
-    public ProjectStatus getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setBudget(int budget) {
-        this.budget = budget;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public int getBudget() {
         return budget;
+    }
+
+    public void setBudget(int budget) {
+        this.budget = budget;
     }
 
     public String getType() {
@@ -81,17 +90,12 @@ public class Project {
         this.type = type;
     }
 
-    @Override
-    public String toString() {
-        return "Project{" +
-                ", title='" + title + '\'' +
-                ", userId=" + userId +
-                ", startDate=" + startDate +
-                ", finishDate=" + finishDate +
-                ", status=" + status +
-                ", budget=" + budget +
-                ", type='" + type + '\'' +
-                '}';
+    public boolean isVip() {
+        return vip;
+    }
+
+    public void setVip(boolean vip) {
+        this.vip = vip;
     }
 
     @Override
@@ -104,10 +108,11 @@ public class Project {
         if (id != project.id) return false;
         if (userId != project.userId) return false;
         if (budget != project.budget) return false;
-        if (title != null ? !title.equals(project.title) : project.title != null) return false;
+        if (vip != project.vip) return false;
+        if (projectName != null ? !projectName.equals(project.projectName) : project.projectName != null) return false;
         if (startDate != null ? !startDate.equals(project.startDate) : project.startDate != null) return false;
-        if (finishDate != null ? !finishDate.equals(project.finishDate) : project.finishDate != null) return false;
-        if (status != project.status) return false;
+        if (endDate != null ? !endDate.equals(project.endDate) : project.endDate != null) return false;
+        if (status != null ? !status.equals(project.status) : project.status != null) return false;
         return type != null ? type.equals(project.type) : project.type == null;
 
     }
@@ -115,13 +120,14 @@ public class Project {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (title != null ? title.hashCode() : 0);
+        result = 31 * result + (projectName != null ? projectName.hashCode() : 0);
         result = 31 * result + userId;
         result = 31 * result + (startDate != null ? startDate.hashCode() : 0);
-        result = 31 * result + (finishDate != null ? finishDate.hashCode() : 0);
+        result = 31 * result + (endDate != null ? endDate.hashCode() : 0);
         result = 31 * result + (status != null ? status.hashCode() : 0);
         result = 31 * result + budget;
         result = 31 * result + (type != null ? type.hashCode() : 0);
+        result = 31 * result + (vip ? 1 : 0);
         return result;
     }
 

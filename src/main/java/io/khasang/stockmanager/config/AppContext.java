@@ -4,7 +4,7 @@ import io.khasang.stockmanager.dao.*;
 import io.khasang.stockmanager.entity.Project;
 import io.khasang.stockmanager.entity.ProjectProduct;
 import io.khasang.stockmanager.entity.User;
-import io.khasang.stockmanager.model.UserEditor;
+import io.khasang.stockmanager.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -76,4 +76,14 @@ public class AppContext {
         return new UserEditor();
     }
 
+    @Bean
+    public StockBalanceData stockBalanceData() {
+        return new StockBalanceData(jdbcTemplate());
+    }
+
+    @Bean
+    public JdbcAuthentication jdbcAuthentication() {
+        return new JdbcAuthentication();
+    }
+    
 }

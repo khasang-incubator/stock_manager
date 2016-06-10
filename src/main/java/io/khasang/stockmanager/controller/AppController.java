@@ -1,8 +1,10 @@
 package io.khasang.stockmanager.controller;
 
 import io.khasang.stockmanager.dao.BackupDB;
+import io.khasang.stockmanager.dao.InsertToTable;
 import io.khasang.stockmanager.dao.RestoreDB;
 import io.khasang.stockmanager.dao.UserDAO;
+import io.khasang.stockmanager.model.StockBalanceData;
 import io.khasang.stockmanager.model.UserEditor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +26,11 @@ public class AppController {
     private RestoreDB restoreDB;
     @Autowired
     private UserEditor userEditor;
+
+    @Autowired
+    InsertToTable insertToTable;
+    @Autowired
+    StockBalanceData stockBalanceData;
 
     @RequestMapping("/admin")
     public String admin(Model model) {
@@ -82,10 +89,35 @@ public class AppController {
         return "backup";
     }
 
+    @RequestMapping("/developermsv")
+    public String mainTableStock(Model model) {
+        model.addAttribute("column_category", stockBalanceData.getCategory());
+        return "stockbalance";
+    }
+
+    @RequestMapping("/developermsv/update")
+    public String mainTableStockUpdate(Model model) {
+        model.addAttribute("column_category", stockBalanceData.getResultUpdate());
+        return "stockbalance";
+    }
+
+    @RequestMapping("/developermsv/backup")
+    public String makeBackup(Model model) {
+        model.addAttribute("column_category", stockBalanceData.makeBackup());
+        return "stockbalance";
+    }
+
     @RequestMapping("/admin/restore")
     public String restore(Model model) {
         model.addAttribute("restore", restoreDB.makeRestore());
         return "restore";
     }
 
+    @RequestMapping("/init_category")
+    public String initTableCategory(Model model) {
+        model.addAttribute("category", insertToTable.initTableCategory());
+        return "category";
+    }
+    
 }
+

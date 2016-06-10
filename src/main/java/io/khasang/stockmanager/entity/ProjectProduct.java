@@ -2,19 +2,27 @@ package io.khasang.stockmanager.entity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
-@Table(name = "PROJECT_PRODUCTS")
+@Table(name = "project_product")
 public class ProjectProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
+    @Column(name = "project_id")
     private int projectId;
+    @Column(name = "product_id")
+    private int productId;
     private int quantity;
     private BigDecimal price;
-    private BigDecimal sum;
-    private LocalDate saleDate;
+    private BigDecimal total;
+    @Column(name = "purchase_date")
+    private Date purchaseDate;
+
+    public ProjectProduct() {
+    }
 
     public int getId() {
         return id;
@@ -30,6 +38,14 @@ public class ProjectProduct {
 
     public void setProjectId(int projectId) {
         this.projectId = projectId;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 
     public int getQuantity() {
@@ -48,20 +64,20 @@ public class ProjectProduct {
         this.price = price;
     }
 
-    public BigDecimal getSum() {
-        return sum;
+    public BigDecimal getTotal() {
+        return total;
     }
 
-    public void setSum(BigDecimal sum) {
-        this.sum = sum;
+    public void setTotal(BigDecimal total) {
+        this.total = total;
     }
 
-    public LocalDate getSaleDate() {
-        return saleDate;
+    public Date getPurchaseDate() {
+        return purchaseDate;
     }
 
-    public void setSaleDate(LocalDate saleDate) {
-        this.saleDate = saleDate;
+    public void setPurchaseDate(Date purchaseDate) {
+        this.purchaseDate = purchaseDate;
     }
 
     @Override
@@ -73,10 +89,11 @@ public class ProjectProduct {
 
         if (id != that.id) return false;
         if (projectId != that.projectId) return false;
+        if (productId != that.productId) return false;
         if (quantity != that.quantity) return false;
         if (price != null ? !price.equals(that.price) : that.price != null) return false;
-        if (sum != null ? !sum.equals(that.sum) : that.sum != null) return false;
-        return saleDate != null ? saleDate.equals(that.saleDate) : that.saleDate == null;
+        if (total != null ? !total.equals(that.total) : that.total != null) return false;
+        return purchaseDate != null ? purchaseDate.equals(that.purchaseDate) : that.purchaseDate == null;
 
     }
 
@@ -84,10 +101,11 @@ public class ProjectProduct {
     public int hashCode() {
         int result = id;
         result = 31 * result + projectId;
+        result = 31 * result + productId;
         result = 31 * result + quantity;
         result = 31 * result + (price != null ? price.hashCode() : 0);
-        result = 31 * result + (sum != null ? sum.hashCode() : 0);
-        result = 31 * result + (saleDate != null ? saleDate.hashCode() : 0);
+        result = 31 * result + (total != null ? total.hashCode() : 0);
+        result = 31 * result + (purchaseDate != null ? purchaseDate.hashCode() : 0);
         return result;
     }
 

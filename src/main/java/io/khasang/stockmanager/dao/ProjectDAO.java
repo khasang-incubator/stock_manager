@@ -43,7 +43,7 @@ public class ProjectDAO {
         return list;
     }
 
-    public Project getById(Integer id) {
+    public Project getById(Long id) {
         Project project = null;
         try (Session session = sessionFactory.openSession()) {
             session.beginTransaction();

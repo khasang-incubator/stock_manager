@@ -4,14 +4,11 @@ import io.khasang.stockmanager.dao.IProjectProductService;
 import io.khasang.stockmanager.entity.Product;
 import io.khasang.stockmanager.entity.Project;
 import io.khasang.stockmanager.entity.ProjectProduct;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-/**
- *
- * @author ShtykovPavel
- */
+import java.util.List;
+
 @Service
 public class ProjectProductService implements IProjectProductService {
 

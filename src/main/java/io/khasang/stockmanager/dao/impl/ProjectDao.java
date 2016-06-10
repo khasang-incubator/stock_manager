@@ -3,16 +3,13 @@ package io.khasang.stockmanager.dao.impl;
 import io.khasang.stockmanager.dao.IProjectDao;
 import io.khasang.stockmanager.entity.Project;
 import io.khasang.stockmanager.entity.User;
-import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-/**
- *
- * @author ShtykovPavel
- */
+import java.util.List;
+
 @Component
 public class ProjectDao implements IProjectDao {
 

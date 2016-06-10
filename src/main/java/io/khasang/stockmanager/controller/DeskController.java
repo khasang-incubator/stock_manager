@@ -25,7 +25,7 @@ public class DeskController {
     @Autowired
     private ProjectProductService projectProductService;
 
-    // general desk
+    // general io.khasang.stockmanager.dao.desk
     @RequestMapping("/desk")
     public String desk(Model model) {
         model.addAttribute("projects", projectService.getProjects());

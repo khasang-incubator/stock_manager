@@ -5,10 +5,6 @@ import io.khasang.stockmanager.entity.Project;
 import io.khasang.stockmanager.entity.ProjectProduct;
 import java.util.List;
 
-/**
- *
- * @author ShtykovPavel
- */
 public interface IProjectProductService {
 
     void addProjectProduct(ProjectProduct projectProduct);

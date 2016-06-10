@@ -1,9 +1,8 @@
-package desk;
+package io.khasang.stockmanager.dao.desk;
 
 import io.khasang.stockmanager.config.application.WebConfig;
 import io.khasang.stockmanager.dao.impl.ProjectService;
 import io.khasang.stockmanager.entity.Project;
-import java.sql.Date;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,10 +12,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-/**
- *
- * @author ShtykovPavel
- */
+import java.math.BigDecimal;
+import java.sql.Date;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(classes = {WebConfig.class})
@@ -32,12 +30,12 @@ public class ProjectTest {
         project = new Project();
         project.setProjectName("testProject");
         project.setType("testType");
-        project.setTotalAmount(1);
+        project.setTotalAmount(BigDecimal.valueOf(1));
         project.setStartDate(Date.valueOf("2016-01-01"));
         project.setFinishDate(Date.valueOf("2016-01-02"));
         project.setVip(true);
         project.setState("complete");
-        project.setUserId(new Long(1));
+        project.setUserId(1L);
     }
 
     @Test

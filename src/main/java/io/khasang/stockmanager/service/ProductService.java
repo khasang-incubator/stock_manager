@@ -10,10 +10,10 @@ public interface ProductService {
 
     void delete(Product product);
 
-    void delete(int id);
+    void delete(Long id);
 
     List<Product> getAll();
 
-    Product getById(int id);
+    Product getById(Long id);
 
 }

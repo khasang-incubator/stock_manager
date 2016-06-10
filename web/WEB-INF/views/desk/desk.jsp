@@ -4,7 +4,7 @@
     <head>
         <title>Desk of StockManager by ShtykovPB aka Buranzo</title>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="css/desk.css">
+        <link rel="stylesheet" href="css/io.khasang.stockmanager.dao.desk.css">
         <script src="js/availableStateProject.js">
         </script>
     </head>
@@ -15,7 +15,7 @@
         <table class="tablePage">
             <tr>
                 <td class="tablePage"> 
-                    <form action="/desk/addProject" method="GET">
+                    <form action="/io.khasang.stockmanager.dao.desk/addProject" method="GET">
                         <table>
                             <th  colspan = '2' class="titleTable"><b>add Project</b></th>
                             <tr>
@@ -104,7 +104,7 @@
                         </tr>
                         <tr>
                             <c:forEach items="${projects}" var="project">
-                            <form name="stateProjectForm" action="/desk/updateStateProject" method="GET">
+                            <form name="stateProjectForm" action="/io.khasang.stockmanager.dao.desk/updateStateProject" method="GET">
                                 <td><input class="input" type="text" name="id" value=<c:out value="${project.id}" /> size="5"></td>
                                 <td><input class="input" type="text" name="projectName" value=<c:out value="${project.projectName}" /> size="10"></td>
                                 <td><input class="input" type="text" name="type" value=<c:out value="${project.type}" /> size="10"></td>
@@ -122,7 +122,7 @@
                                     <input type="submit" value="update" >
                                 </td>
                             </form>
-                            <form action="/desk/deleteProject/${project.id}" method="GET">
+                            <form action="/io.khasang.stockmanager.dao.desk/deleteProject/${project.id}" method="GET">
                                 <td>             
                                     <input type="submit" value="delete" >  
                                 </td>
@@ -140,7 +140,7 @@
 
 <tr>
     <td class="tablePage">
-        <form action="/desk/addProjectProduct" method="GET">
+        <form action="/io.khasang.stockmanager.dao.desk/addProjectProduct" method="GET">
             <table>
                 <th  colspan = '2' class="titleTable"><b>add ProjectProduct</b></th>
                 <tr>
@@ -206,7 +206,7 @@
                     <td><input class="input" type="text" name="price" value=<c:out value="${projectProducts.price}" /> size="5"></td>
                     <td><input class="input" type="text" name="amount" value=<c:out value="${projectProducts.amount}" /> size="5"></td>
                     <td><input class="input" type="text" name="purchaseDate" value=<c:out value="${projectProducts.purchaseDate}" /> size="10"></td>
-                <form action="/desk/deleteProjectProduct/${projectProducts.id}" method="GET">
+                <form action="/io.khasang.stockmanager.dao.desk/deleteProjectProduct/${projectProducts.id}" method="GET">
                     <td>             
                         <input type="submit" value="delete" >  
                     </td>

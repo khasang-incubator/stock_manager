@@ -27,7 +27,7 @@ public class ProductTest {
         Product product = new Product();
         product.setName("Test");
         product.setDescription("Description");
-        product.setUserId(1);
+        product.setUserId(1L);
         productDao.save(product);
     }
 
@@ -36,7 +36,7 @@ public class ProductTest {
         Product product = new Product();
         product.setName("Test");
         product.setDescription("Description");
-        product.setUserId(1);
+        product.setUserId(1L);
         productDao.save(product);
         Assert.assertNotNull(product.getId());
     }

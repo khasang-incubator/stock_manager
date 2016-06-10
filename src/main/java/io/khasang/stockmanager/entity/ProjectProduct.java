@@ -11,15 +11,15 @@ public class ProjectProduct {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
     @Basic
     @Column(name = "project_id")
-    private int projectId;
+    private Long projectId;
 
     @Basic
     @Column(name = "product_id")
-    private int productId;
+    private Long productId;
     
     @Basic
     @Column(name = "quantity")
@@ -40,27 +40,27 @@ public class ProjectProduct {
     public ProjectProduct() {
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public int getProjectId() {
+    public Long getProjectId() {
         return projectId;
     }
 
-    public void setProjectId(int projectId) {
+    public void setProjectId(Long projectId) {
         this.projectId = projectId;
     }
 
-    public int getProductId() {
+    public Long getProductId() {
         return productId;
     }
 
-    public void setProductId(int productId) {
+    public void setProductId(Long productId) {
         this.productId = productId;
     }
 
@@ -84,7 +84,7 @@ public class ProjectProduct {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 
@@ -103,26 +103,25 @@ public class ProjectProduct {
 
         ProjectProduct that = (ProjectProduct) o;
 
-        if (id != that.id) return false;
-        if (projectId != that.projectId) return false;
-        if (productId != that.productId) return false;
         if (quantity != that.quantity) return false;
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (projectId != null ? !projectId.equals(that.projectId) : that.projectId != null) return false;
+        if (productId != null ? !productId.equals(that.productId) : that.productId != null) return false;
         if (price != null ? !price.equals(that.price) : that.price != null) return false;
-        if (total != null ? !total.equals(that.total) : that.total != null) return false;
+        if (amount != null ? !amount.equals(that.amount) : that.amount != null) return false;
         return purchaseDate != null ? purchaseDate.equals(that.purchaseDate) : that.purchaseDate == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + projectId;
-        result = 31 * result + productId;
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (projectId != null ? projectId.hashCode() : 0);
+        result = 31 * result + (productId != null ? productId.hashCode() : 0);
         result = 31 * result + quantity;
         result = 31 * result + (price != null ? price.hashCode() : 0);
-        result = 31 * result + (total != null ? total.hashCode() : 0);
+        result = 31 * result + (amount != null ? amount.hashCode() : 0);
         result = 31 * result + (purchaseDate != null ? purchaseDate.hashCode() : 0);
         return result;
     }
-
 }

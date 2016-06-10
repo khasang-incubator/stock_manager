@@ -1,10 +1,8 @@
 package io.khasang.stockmanager.dao;
 
-
 import io.khasang.stockmanager.entity.Product;
 
 import java.util.List;
-
 
 public interface ProductDao {
     void save(Product product);
@@ -13,5 +11,5 @@ public interface ProductDao {
     void deleteAll();
     List<Product> getAll();
 
-    Product getById(int id);
+    Product getById(Long id);
 }

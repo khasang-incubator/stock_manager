@@ -2,34 +2,66 @@ package io.khasang.stockmanager.entity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
-@Table(name = "PROJECT_PRODUCTS")
+@Table(name = "project_product")
 public class ProjectProduct {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    private int projectId;
-    private int quantity;
-    private BigDecimal price;
-    private BigDecimal sum;
-    private LocalDate saleDate;
 
-    public int getId() {
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @Basic
+    @Column(name = "project_id")
+    private Long projectId;
+
+    @Basic
+    @Column(name = "product_id")
+    private Long productId;
+    
+    @Basic
+    @Column(name = "quantity")
+    private int quantity;
+
+    @Basic
+    @Column(name = "price")
+    private BigDecimal price;
+
+    @Basic
+    @Column(name = "amount")
+    private BigDecimal amount;
+
+    @Basic
+    @Column(name = "purchase_date")
+    private Date purchaseDate;
+
+    public ProjectProduct() {
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public int getProjectId() {
+    public Long getProjectId() {
         return projectId;
     }
 
-    public void setProjectId(int projectId) {
+    public void setProjectId(Long projectId) {
         this.projectId = projectId;
+    }
+
+    public Long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 
     public int getQuantity() {
@@ -48,20 +80,20 @@ public class ProjectProduct {
         this.price = price;
     }
 
-    public BigDecimal getSum() {
-        return sum;
+    public BigDecimal getAmount() {
+        return amount;
     }
 
-    public void setSum(BigDecimal sum) {
-        this.sum = sum;
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
     }
 
-    public LocalDate getSaleDate() {
-        return saleDate;
+    public Date getPurchaseDate() {
+        return purchaseDate;
     }
 
-    public void setSaleDate(LocalDate saleDate) {
-        this.saleDate = saleDate;
+    public void setPurchaseDate(Date purchaseDate) {
+        this.purchaseDate = purchaseDate;
     }
 
     @Override
@@ -71,23 +103,25 @@ public class ProjectProduct {
 
         ProjectProduct that = (ProjectProduct) o;
 
-        if (id != that.id) return false;
-        if (projectId != that.projectId) return false;
         if (quantity != that.quantity) return false;
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (projectId != null ? !projectId.equals(that.projectId) : that.projectId != null) return false;
+        if (productId != null ? !productId.equals(that.productId) : that.productId != null) return false;
         if (price != null ? !price.equals(that.price) : that.price != null) return false;
-        if (sum != null ? !sum.equals(that.sum) : that.sum != null) return false;
-        return saleDate != null ? saleDate.equals(that.saleDate) : that.saleDate == null;
+        if (amount != null ? !amount.equals(that.amount) : that.amount != null) return false;
+        return purchaseDate != null ? purchaseDate.equals(that.purchaseDate) : that.purchaseDate == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + projectId;
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (projectId != null ? projectId.hashCode() : 0);
+        result = 31 * result + (productId != null ? productId.hashCode() : 0);
         result = 31 * result + quantity;
         result = 31 * result + (price != null ? price.hashCode() : 0);
-        result = 31 * result + (sum != null ? sum.hashCode() : 0);
-        result = 31 * result + (saleDate != null ? saleDate.hashCode() : 0);
+        result = 31 * result + (amount != null ? amount.hashCode() : 0);
+        result = 31 * result + (purchaseDate != null ? purchaseDate.hashCode() : 0);
         return result;
     }
 }

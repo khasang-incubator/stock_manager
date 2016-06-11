@@ -1,12 +1,12 @@
-package io.khasang.stockmanager.dao;
+package io.khasang.stockmanager.dao.impl;
 
+import io.khasang.stockmanager.dao.UserDAO;
 import io.khasang.stockmanager.entity.User;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.beans.InvalidPropertyException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,23 +14,10 @@ import javax.persistence.NoResultException;
 import java.util.ArrayList;
 import java.util.List;
 
-//@Import(HibernateConfig.class)
+@Component
 public class UserDAOImpl implements UserDAO {
     @Autowired
     private SessionFactory sessionFactory;
-
-    @Override
-    public List<User> getAll() {
-        List<User> list = new ArrayList<>();
-        try (Session session = sessionFactory.openSession()) {
-            session.beginTransaction();
-            //noinspection unchecked
-            list.addAll(session.createCriteria(User.class).list());
-        } catch (HibernateException e) {
-            e.printStackTrace();
-        }
-        return list;
-    }
 
     public String insertToTable(User user) {
         Session session = sessionFactory.openSession();
@@ -49,6 +36,19 @@ public class UserDAOImpl implements UserDAO {
         } finally {
             session.close();
         }
+    }
+
+    @Override
+    public List<User> getAll() {
+        List<User> list = new ArrayList<>();
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+            //noinspection unchecked
+            list.addAll(session.createCriteria(User.class).list());
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 
     @Override
@@ -73,7 +73,8 @@ public class UserDAOImpl implements UserDAO {
         }
     }
 
-    public User getById(long id) throws NoResultException {
+    @Override
+    public User getById(Long id) throws NoResultException {
         User user = null;
         try (Session session = sessionFactory.openSession()) {
             session.beginTransaction();
@@ -98,4 +99,5 @@ public class UserDAOImpl implements UserDAO {
             e.printStackTrace();
         }
     }
+
 }

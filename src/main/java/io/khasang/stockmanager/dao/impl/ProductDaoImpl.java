@@ -1,6 +1,6 @@
 package io.khasang.stockmanager.dao.impl;
 
-import io.khasang.stockmanager.dao.ProductDao;
+import io.khasang.stockmanager.dao.ProductDAO;
 import io.khasang.stockmanager.entity.Product;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class ProductDaoImpl implements ProductDao {
+public class ProductDAOImpl implements ProductDAO {
     @Autowired
     SessionFactory sessionFactory;
 
@@ -35,7 +35,7 @@ public class ProductDaoImpl implements ProductDao {
     }
 
     @Override
-    public Product getById(int id) {
+    public Product getById(Long id) {
         return sessionFactory.getCurrentSession().get(Product.class, id);
     }
 }

@@ -1,11 +1,8 @@
 package io.khasang.stockmanager.controller;
 
 import io.khasang.stockmanager.dao.BackupDB;
-import io.khasang.stockmanager.dao.InsertToTable;
 import io.khasang.stockmanager.dao.RestoreDB;
 import io.khasang.stockmanager.dao.UserDAO;
-import io.khasang.stockmanager.model.DataExample;
-import io.khasang.stockmanager.model.ProductOrder;
 import io.khasang.stockmanager.model.UserEditor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,20 +10,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.persistence.NoResultException;
 import java.security.InvalidParameterException;
-import java.sql.SQLException;
 
 @Controller
-public class AppController {
-    @Autowired
-    private DataExample dataExample;
-    @Autowired
-    private ProductOrder productOrder;
-    @Autowired
-    private InsertToTable insertToTable;
+public class AdminController {
+
     @Autowired
     private UserDAO userDAO;
     @Autowired
@@ -84,7 +74,7 @@ public class AppController {
             model.addAttribute("error", "user not exists.");
         }
         model.addAttribute("users", userDAO.getAll());
-        return "users";
+        return "redirect:/admin/users";
     }
 
     @RequestMapping("/admin/backup")
@@ -92,34 +82,12 @@ public class AppController {
         model.addAttribute("backup", backupDB.makeBackup());
         return "backup";
     }
-    
-    @RequestMapping("/select")
-    public String items(Model model) throws SQLException {
-        model.addAttribute("items", productOrder.selectWholeTable());
-        return "select";
-    }
 
     @RequestMapping("/admin/restore")
     public String restore(Model model) {
         model.addAttribute("restore", restoreDB.makeRestore());
         return "restore";
     }
-
-    @RequestMapping(value = "/point**", method = RequestMethod.GET)
-    public ModelAndView point() {
-        ModelAndView model = new ModelAndView();
-        model.addObject("coordY", 58.76);
-        model.addObject("coordX", 39.64);
-        model.setViewName("point");
-        return model;
-    }
-
-    @RequestMapping(value = "/index**", method = RequestMethod.GET)
-    public ModelAndView index() {
-        ModelAndView model = new ModelAndView();
-        model.addObject("pointdin", "point");
-        model.setViewName("index");
-        return model;
-    }
-
+    
 }
+

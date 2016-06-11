@@ -1,7 +1,11 @@
 package io.khasang.stockmanager.config;
 
 import io.khasang.stockmanager.dao.*;
-import io.khasang.stockmanager.model.*;
+import io.khasang.stockmanager.dao.impl.*;
+import io.khasang.stockmanager.entity.Project;
+import io.khasang.stockmanager.entity.ProjectProduct;
+import io.khasang.stockmanager.entity.User;
+import io.khasang.stockmanager.model.UserEditor;
 import io.khasang.stockmanager.service.ProductService;
 import io.khasang.stockmanager.service.impl.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,18 +19,9 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 @Configuration
 @PropertySource("classpath:util.properties")
 public class AppContext {
+
     @Autowired
     Environment environment;
-
-    @Bean
-    public Message message() {
-        return new Message();
-    }
-
-    @Bean
-    ProductOrder productOrder() {
-        return new ProductOrder(jdbcTemplate());
-    }
 
     @Bean
     public JdbcTemplate jdbcTemplate() {
@@ -46,23 +41,23 @@ public class AppContext {
     }
 
     @Bean
-    public DataExample dataExample() {
-        return new DataExample(jdbcTemplate());
+    public Project project() {
+        return new Project();
     }
 
     @Bean
-    public StockBalanceData stockBalanceData() {
-        return new StockBalanceData(jdbcTemplate());
+    public ProjectDAO projectDAO() {
+        return new ProjectDAO();
     }
 
     @Bean
-    public JdbcAuthentication jdbcAuthentication() {
-        return new JdbcAuthentication();
+    public ProjectProduct projectProduct() {
+        return new ProjectProduct();
     }
 
     @Bean
-    public InsertToTable insertToTable() {
-        return new InsertToTable();
+    public User user() {
+        return new User();
     }
 
     @Bean
@@ -71,12 +66,12 @@ public class AppContext {
     }
 
     @Bean
-    public BackupDB backupDB() {
+    public BackupDB backup() {
         return new BackupDBImpl();
     }
 
     @Bean
-    public RestoreDB restoreDB() {
+    public RestoreDB restore() {
         return new RestoreDBImpl();
     }
 
@@ -86,8 +81,23 @@ public class AppContext {
     }
 
     @Bean
-    public ProductService productService() {
-        return new ProductServiceImpl();
+    public ProjectService projectService() {
+        return new ProjectServiceImpl();
     }
 
+    @Bean
+    public ProjectProductDAO projectProductDao() {
+        return new ProjectProductDAOImpl();
+    }
+
+    @Bean
+    public ProjectProductService projectProductService() {
+        return new ProjectProductServiceImpl();
+    }
+
+    @Bean
+    public ProductService productService(){
+        return new ProductServiceImpl();
+    }
+    
 }

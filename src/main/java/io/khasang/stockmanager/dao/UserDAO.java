@@ -11,11 +11,9 @@ public interface UserDAO {
 
     void add(User user);
 
-    User getById(long id);
+    User getById(Long id);
 
     void delete(User user);
 
     String insertToTable(User user);
-
-    //some
 }

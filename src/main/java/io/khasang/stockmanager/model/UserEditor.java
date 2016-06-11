@@ -3,18 +3,14 @@ package io.khasang.stockmanager.model;
 import io.khasang.stockmanager.dao.UserDAO;
 import io.khasang.stockmanager.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import javax.persistence.NoResultException;
 import java.security.InvalidParameterException;
 
-@Component
 public class UserEditor {
 
     @Autowired
     private UserDAO userDAO;
-//    @Autowired
-//    private User user;
 
     /**
      * Define operation by params (New user || Update user)
@@ -42,7 +38,7 @@ public class UserEditor {
 
     public void delete(String id) throws NoResultException {
         try {
-            User user = userDAO.getById(Integer.parseInt(id));
+            User user = userDAO.getById(parseId(id));
             userDAO.delete(user);
         } catch (Exception e) {
             e.printStackTrace();
@@ -127,13 +123,13 @@ public class UserEditor {
     }
 
     /**
-     * Parse id to int
+     * Parse id to Long
      *
      * @param id
-     * @return int id
+     * @return Long id
      * @throws InvalidParameterException on parse error
      */
-    private long parseId(String id) throws InvalidParameterException {
+    private Long parseId(String id) throws InvalidParameterException {
         try {
             return Long.parseLong(id);
         } catch (NumberFormatException e) {

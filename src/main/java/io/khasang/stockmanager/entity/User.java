@@ -15,13 +15,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column
+    @Column(name = "first_name")
     @NotNull
     @NotEmpty
     @Size(min = 1, max = 256)
     private String firstName;
 
-    @Column
+    @Column(name = "last_name")
     @NotNull
     @NotEmpty
     @Size(min = 1, max = 256)
@@ -29,12 +29,12 @@ public class User {
 
     @NotEmpty
     @NotNull
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String login;
 
     @NotNull
     @NotEmpty
-    @Column
+    @Column(nullable = false)
     private String password;
 
     @NotEmpty
@@ -43,15 +43,19 @@ public class User {
     @Email
     private String email;
 
-    @Column
+    @Column(nullable = false)
     private String role;
 
-    public String getFirstName() {
-        return firstName;
+    public User() {
     }
 
-    public void setFirstName(String firstName) {
+    public User(String firstName, String lastName, String login, String password, String email, String role) {
         this.firstName = firstName;
+        this.lastName = lastName;
+        this.login = login;
+        this.password = password;
+        this.email = email;
+        this.role = role;
     }
 
     public Long getId() {
@@ -60,6 +64,14 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
@@ -108,7 +120,7 @@ public class User {
         if (o == null || getClass() != o.getClass()) return false;
 
         User user = (User) o;
-        if (id != user.id) return false;
+
         if (id != null ? !id.equals(user.id) : user.id != null) return false;
         if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
         if (lastName != null ? !lastName.equals(user.lastName) : user.lastName != null) return false;
@@ -120,7 +132,6 @@ public class User {
 
     @Override
     public int hashCode() {
-
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);

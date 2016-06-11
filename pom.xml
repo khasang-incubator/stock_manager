@@ -50,6 +50,7 @@
             <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
+    
         <!--Spring Security-->
         <dependency>
             <groupId>org.springframework.security</groupId>
@@ -87,8 +88,6 @@
             <scope>test</scope>
             <type>jar</type>
         </dependency>
-
-        <!-- http://mvnrepository.com/artifact/org.mockito/mockito-all -->
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
@@ -176,6 +175,7 @@
             <version>5.0.1.Final</version>
         </dependency>
         <!--END Hibernate -->
+
         <!-- validation test -->
         <dependency>
             <groupId>javax.el</groupId>
@@ -189,23 +189,6 @@
             <artifactId>el-impl</artifactId>
             <version>2.2</version>
             <scope>test</scope>
-        </dependency>
-
-        <!--Jersey REST-->
-        <dependency>
-            <groupId>org.glassfish.jersey.core</groupId>
-            <artifactId>jersey-server</artifactId>
-            <version>2.22.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.containers</groupId>
-            <artifactId>jersey-container-servlet-core</artifactId>
-            <version>2.22.2</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.ws.rs</groupId>
-            <artifactId>jsr311-api</artifactId>
-            <version>1.1.1</version>
         </dependency>
     </dependencies>
 

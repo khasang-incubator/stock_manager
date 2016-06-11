@@ -17,12 +17,12 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @Controller
 public class HelloController {
-    @Autowired
-    UserDAO userDao;
+
+    UserDAO userDAO;
 
     @Autowired
-    public HelloController(UserDAO userDao) {
-        this.userDao = userDao;
+    public HelloController(UserDAO userDAO) {
+        this.userDAO = userDAO;
     }
 
     @RequestMapping(value = "/add_user", method = GET)
@@ -36,7 +36,7 @@ public class HelloController {
         if (errors.hasErrors()) {
             return "add_user";
         } else {
-            String result = userDao.insertToTable(user);
+            String result = userDAO.insertToTable(user);
             return "redirect:/registration_result?result=" + result;
         }
     }

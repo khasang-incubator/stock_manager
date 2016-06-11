@@ -1,9 +1,11 @@
 package io.khasang.stockmanager.service;
 
 import io.khasang.stockmanager.entity.Product;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public interface ProductService {
 
     void saveProduct(Product product);

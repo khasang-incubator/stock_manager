@@ -5,12 +5,7 @@
 <head>
     <title>Registration</title>
     <link href="../css/starter-template.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <style>
-        .error {
-            color: red;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/bootstrap-3.3.6-dist/css/bootstrap.min.css">
 </head>
 <body>
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -22,11 +17,14 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">StockManager</a>
+            <a class="navbar-brand" href="/">StockManager</a>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/">Home</a></li>
+                <li><a href="/admin">Admin</a></li>
+                <li><a href="/io.khasang.stockmanager.dao.desk">Desk</a></li>
+                <li><a href="/products">Goods</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -36,59 +34,57 @@
 
 <div class="container">
     <div class="starter-template">
-    <sf:form method="POST" commandName="user">
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Input user registration info</th>
-                <th></th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>First Name:</td>
-                <td><sf:input path="firstName"/></td>
-                <td><form:errors path="firstName" cssClass="error"></form:errors></td>
-            </tr>
-            <tr>
-                <td>Last Name:</td>
-                <td><sf:input path="lastName"/></td>
-                <td><form:errors path="lastName" cssClass="error"></form:errors></td>
-            </tr>
-            <tr>
-                <td>Email:</td>
-                <td><sf:input type="email" path="email"/></td>
-                <td><form:errors path="email" cssClass="error"></form:errors></td>
-            </tr>
-            <tr>
-                <td>Username:</td>
-                <td><sf:input path="login"/></td>
-                <td><form:errors path="login" cssClass="error"></form:errors></td>
-            </tr>
-            <tr>
-                <td>Password:</td>
-                <td><sf:password path="password"/></td>
-                <td><form:errors path="password" cssClass="error"></form:errors></td>
-            </tr>
-            </tr>
-            <tr>
-                <td>Role:</td>
-                <td><sf:input path="role"/></td>
-                <td><form:errors path="role" cssClass="error"></form:errors></td>
-            </tr>
-            </tbody>
-            <tr>
-                <td>
-                    <input type="submit" value="Register"/>
-                </td>
-            </tr>
-        </table>
-    </sf:form>
+        <sf:form method="POST" commandName="user">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Input user registration info</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>First Name:</td>
+                    <td><sf:input path="firstName"/></td>
+                    <td><form:errors path="firstName" cssClass="error"></form:errors></td>
+                </tr>
+                <tr>
+                    <td>Last Name:</td>
+                    <td><sf:input path="lastName"/></td>
+                    <td><form:errors path="lastName" cssClass="error"></form:errors></td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><sf:input type="email" path="email"/></td>
+                    <td><form:errors path="email" cssClass="error"></form:errors></td>
+                </tr>
+                <tr>
+                    <td>Username:</td>
+                    <td><sf:input path="login"/></td>
+                    <td><form:errors path="login" cssClass="error"></form:errors></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><sf:password path="password"/></td>
+                    <td><form:errors path="password" cssClass="error"></form:errors></td>
+                </tr>
+                </tr>
+                <tr>
+                    <td>Role:</td>
+                    <td><sf:input path="role"/></td>
+                    <td><form:errors path="role" cssClass="error"></form:errors></td>
+                </tr>
+                </tbody>
+                <tr>
+                    <td>
+                        <input type="submit" value="Register"/>
+                    </td>
+                </tr>
+            </table>
+        </sf:form>
     </div>
 </div>
-
-
 
 
 <!-- Bootstrap core JavaScript
@@ -97,6 +93,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="../css/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
 
-<script aria-hidden="true" type="application/adlite" id="adlite_id_fknghnkgncdocekndckeeklpkjgickgc" style="display: none;"></script>
+<script aria-hidden="true" type="application/adlite" id="adlite_id_fknghnkgncdocekndckeeklpkjgickgc"
+        style="display: none;"></script>
 </body>
 </html>

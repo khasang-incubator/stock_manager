@@ -16,6 +16,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     DataSource dataSource;
 
+    //
 //    String userAndPaswQuery = "select login, password, true from users where login = ?";
 //    String autorityQuery = "select login, role from user_roles where username = ?";
 

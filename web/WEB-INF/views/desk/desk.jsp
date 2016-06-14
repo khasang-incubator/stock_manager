@@ -2,56 +2,61 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
     <head>
-        <title>Desk of StockManager by ShtykovPB aka Buranzo</title>
+        <title>Desk</title>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="css/io.khasang.stockmanager.dao.desk.css">
+        <!--        <link rel="stylesheet" href="css/io.khasang.stockmanager.dao.desk.css">-->
+        <!--<link rel="stylesheet" href="css/desk.css">-->
+        <link href="css/bootstrap-3.3.6-dist/css/bootstrap.css" rel="stylesheet"  type="text/css" media="all">
         <script src="js/availableStateProject.js">
         </script>
     </head>
     <body>
-        <h1 id="welcomeText" class="welcomeText">Desk</h1>
+
+
+
+        <h1 id="welcomeText" class="alert alert-info">Desk</h1>
 
         <!--VIEW PROJECTS-->
-        <table class="tablePage">
+        <table class="table">
             <tr>
-                <td class="tablePage"> 
+                <td> 
                     <form action="/io.khasang.stockmanager.dao.desk/addProject" method="GET">
-                        <table>
+                        <table class="table">
                             <th  colspan = '2' class="titleTable"><b>add Project</b></th>
                             <tr>
                                 <td>Project name</td>
                                 <td>
-                                    <input class="input" type="text" name="projectName">
+                                    <input type="text" name="projectName">
                                 </td>
                             </tr>
                             <tr>
                                 <td>Type</td>
                                 <td>
-                                    <input class="input" type="text" name="type">
+                                    <input type="text" name="type">
                                 </td>
                             </tr>
                             <tr>
                                 <td>Start date</td>
                                 <td>
-                                    <input class="input" type="date" name="startDate">
+                                    <input type="date" name="startDate">
                                 </td>
                             </tr>
                             <tr>
                                 <td>Finish date</td>
                                 <td>
-                                    <input class="input" type="date" name="finishDate">
+                                    <input type="date" name="finishDate">
                                 </td>
                             </tr>
                             <tr>
                                 <td>Total amount</td>
                                 <td>
-                                    <input class="input" type="text" name="totalAmount">
+                                    <input type="text" name="totalAmount">
                                 </td>
                             </tr>
                             <tr>
                                 <td>Vip</td>
                                 <td>
-                                    <select class="input" name="vip">
+                                    <select class="form-control" name="vip">
                                         <option>No</option>
                                         <option>Yes</option>
                                     </select>
@@ -60,7 +65,7 @@
                             <tr>
                                 <td>User id</td>
                                 <td>
-                                    <select class="input" name="userId">
+                                    <select class="form-control" name="userId">
                                         <option>select user id</option>
                                         <c:forEach items="${users}" var="user">
                                             <option><c:out value="${user.id}" /></option>
@@ -71,13 +76,13 @@
                             <tr>
                                 <td>state</td>
                                 <td>
-                                    <select class="input" name="state">
+                                    <select class="form-control" name="state">
                                         <option>process</option>
                                     </select>
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="2"><input type="submit" value="addProject" ></td>
+                                <td colspan="2"><input class="btn btn-info" type="submit" value="addProject" ></td>
                             </tr>
                         </table>
                         <br>
@@ -86,8 +91,8 @@
 
                 <!--ADD PROJECT BLOCK-->
 
-                <td class="tablePage">
-                    <table>
+                <td>
+                    <table class="table">
                         <th  colspan = '11' class="titleTable"><b>Projects</b></th>
                         <tr>
                             <td class="titleTable">id</td>
@@ -105,26 +110,26 @@
                         <tr>
                             <c:forEach items="${projects}" var="project">
                             <form name="stateProjectForm" action="/io.khasang.stockmanager.dao.desk/updateStateProject" method="GET">
-                                <td><input class="input" type="text" name="id" value=<c:out value="${project.id}" /> size="5"></td>
-                                <td><input class="input" type="text" name="projectName" value=<c:out value="${project.projectName}" /> size="10"></td>
-                                <td><input class="input" type="text" name="type" value=<c:out value="${project.type}" /> size="10"></td>
-                                <td><input class="input" type="text" name="startDate" value=<c:out value="${project.startDate}" /> size="10"></td>
-                                <td><input class="input" type="text" name="finishDate" value=<c:out value="${project.finishDate}" /> size="10"></td>
-                                <td><input class="input" type="text" name="totalAmount" value=<c:out value="${project.totalAmount}" /> size="5"></td>
-                                <td><input class="input" type="text" name="vip" value=<c:out value="${project.vip}" /> size="3"></td>
+                                <td><input type="text" name="id" value=<c:out value="${project.id}" /> size="5"></td>
+                                <td><input type="text" name="projectName" value=<c:out value="${project.projectName}" /> size="10"></td>
+                                <td><input type="text" name="type" value=<c:out value="${project.type}" /> size="10"></td>
+                                <td><input type="text" name="startDate" value=<c:out value="${project.startDate}" /> size="10"></td>
+                                <td><input type="text" name="finishDate" value=<c:out value="${project.finishDate}" /> size="10"></td>
+                                <td><input type="text" name="totalAmount" value=<c:out value="${project.totalAmount}" /> size="5"></td>
+                                <td><input type="text" name="vip" value=<c:out value="${project.vip}" /> size="3"></td>
                                 <td>
-                                    <select class="input" id="state" name="state">
+                                    <select class="form-control" id="state" name="state">
                                         <option><c:out value="${project.state}" /></option>
                                     </select>
                                 </td>
-                                <td><input class="input" type="text" name="userId" value=<c:out value="${project.userId}" /> size="5"></td>
+                                <td><input type="text" name="userId" value=<c:out value="${project.userId}" /> size="5"></td>
                                 <td>
-                                    <input type="submit" value="update" >
+                                    <input class="btn btn-info" type="submit" value="update" >
                                 </td>
                             </form>
                             <form action="/io.khasang.stockmanager.dao.desk/deleteProject/${project.id}" method="GET">
                                 <td>             
-                                    <input type="submit" value="delete" >  
+                                    <input class="btn btn-info" type="submit" value="delete" >  
                                 </td>
                             </form>
                 </tr>
@@ -134,19 +139,19 @@
 </tr>
 
 <!--SEPARATOR-->
-<tr><td  class="tablePage" colspan="2"><hr></td></tr>
+<tr><td" colspan="2"><hr></td></tr>
 
 <!--VIEW PROJECTS_PRODUCTS -->
 
 <tr>
-    <td class="tablePage">
+    <td>
         <form action="/io.khasang.stockmanager.dao.desk/addProjectProduct" method="GET">
-            <table>
-                <th  colspan = '2' class="titleTable"><b>add ProjectProduct</b></th>
+            <table class="table">
+                <th  colspan = '2'><b>add ProjectProduct</b></th>
                 <tr>
                     <td>Project id</td>
                     <td>
-                        <select class="input" name="projectId">
+                        <select class="form-control" name="projectId">
                             <option>select project id</option>
                             <c:forEach items="${projects}" var="project">
                                 <option><c:out value="${project.id}" /></option>
@@ -156,38 +161,38 @@
                 </tr>
                 <td>Quantity</td>
                 <td>
-                    <input class="input" type="text" name="quantity">
+                    <input type="text" name="quantity">
                 </td>
                 </tr>
                 <tr>
                     <td>Price</td>
                     <td>
-                        <input class="input" type="text" name="price">
+                        <input type="text" name="price">
                     </td>
                 </tr>
                 <tr>
                     <td>Amount</td>
                     <td>
-                        <input class="input" type="text" name="amount">
+                        <input type="text" name="amount">
                     </td>
                 </tr>
                 <tr>
                     <td>Purchase date</td>
                     <td>
-                        <input class="input" type="date" name="purchaseDate">
+                        <input type="date" name="purchaseDate">
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2"><input type="submit" value="addProjectProduct" ></td>
+                    <td colspan="2"><input class="btn btn-info" type="submit" value="addProjectProduct" ></td>
                 </tr>
             </table>
         </form>
     </td>
 
     <!-- ADD PROJECT PRODUCT BLOCK-->
-    <td class="tablePage">
-        <table>
-            <th  colspan = '7' class="titleTable"><b>ProjectsProducts</b></th>
+    <td>
+        <table class="table">
+            <th  colspan = '7'><b>ProjectsProducts</b></th>
             <tr>
                 <td class="titleTable">id</td>
                 <td class="titleTable">projectId</td>
@@ -200,15 +205,15 @@
 
             <tr>
                 <c:forEach items="${projectsProducts}" var="projectProducts">
-                    <td><input class="input" type="text" name="id" value=<c:out value="${projectProducts.id}" /> size="5"></td>
-                    <td><input class="input" type="text" name="projectId" value=<c:out value="${projectProducts.projectId}" /> size="5"></td>
-                    <td><input class="input" type="text" name="quantity" value=<c:out value="${projectProducts.quantity}" /> size="5"></td>
-                    <td><input class="input" type="text" name="price" value=<c:out value="${projectProducts.price}" /> size="5"></td>
-                    <td><input class="input" type="text" name="amount" value=<c:out value="${projectProducts.amount}" /> size="5"></td>
-                    <td><input class="input" type="text" name="purchaseDate" value=<c:out value="${projectProducts.purchaseDate}" /> size="10"></td>
+                    <td><input type="text" name="id" value=<c:out value="${projectProducts.id}" /> size="5"></td>
+                    <td><input type="text" name="projectId" value=<c:out value="${projectProducts.projectId}" /> size="5"></td>
+                    <td><input type="text" name="quantity" value=<c:out value="${projectProducts.quantity}" /> size="5"></td>
+                    <td><input type="text" name="price" value=<c:out value="${projectProducts.price}" /> size="5"></td>
+                    <td><input type="text" name="amount" value=<c:out value="${projectProducts.amount}" /> size="5"></td>
+                    <td><input type="text" name="purchaseDate" value=<c:out value="${projectProducts.purchaseDate}" /> size="10"></td>
                 <form action="/io.khasang.stockmanager.dao.desk/deleteProjectProduct/${projectProducts.id}" method="GET">
                     <td>             
-                        <input type="submit" value="delete" >  
+                        <input class="btn btn-info" type="submit" value="delete" >  
                     </td>
                 </form>
     </tr>

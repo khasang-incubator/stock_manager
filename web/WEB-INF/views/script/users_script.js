@@ -57,7 +57,7 @@ var FORM = {
     newValues: function (id, firstName, lastName, login, email, role) {
         this.fields.id.value = id;
         this.fields.firstName.value = firstName;
-        this.fields.lastName.value = last;
+        this.fields.lastName.value = lastName;
         this.fields.login.value = login;
         this.fields.email.value = email;
         this.fields.role.selectedIndex = ROLES[role];

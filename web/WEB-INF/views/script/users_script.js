@@ -1,7 +1,7 @@
 window.onload = function () {
     var doc = document;
     var table = doc.getElementById("users_table");
-    var trs = doc.getElementsByTagName("tr");
+    var trs = table.getElementsByTagName("tr");
     for (var tr in trs) {
         trs[tr].onclick = function () {
             USERS.assign(this);

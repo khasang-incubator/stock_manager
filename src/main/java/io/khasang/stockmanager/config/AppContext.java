@@ -110,8 +110,8 @@ public class AppContext {
     }
 
     @Bean
-    public ProductService productService(){
+    public ProductService productService() {
         return new ProductServiceImpl();
     }
-    
+
 }

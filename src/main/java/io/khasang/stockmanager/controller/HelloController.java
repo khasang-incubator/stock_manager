@@ -57,7 +57,7 @@ public class HelloController {
     }
 
     @RequestMapping("/confidential/hello")
-    public String info(Model model){
+    public String info(Model model) {
         model.addAttribute("hello", "hello");
         return "newpage";
     }

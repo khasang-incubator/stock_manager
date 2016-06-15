@@ -54,7 +54,7 @@
     <%--<c:if test="${pageContext.request.userPrincipal.name != null}">--%>
     <%--<h2>User: ${pageContext.request.userPrincipal.name}</h2>--%>
     <%--</c:if>--%>
-    <table class="table" border="1" id="users_table">
+    <table class="table" id="users_table">
         <tr>
             <th>ID</th>
             <th>Имя</th>
@@ -65,7 +65,7 @@
             <th>Удаление</th>
         </tr>
         <c:forEach items="${users}" var="users">
-            <tr>
+            <tr class="hover">
                 <td class="id">${users.id}</td>
                 <td class="firstName">${users.firstName}</td>
                 <td class="lastName">${users.lastName}</td>

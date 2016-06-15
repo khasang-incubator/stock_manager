@@ -28,6 +28,7 @@
                 <li><a href="/products">Goods</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="/point">Desk</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>

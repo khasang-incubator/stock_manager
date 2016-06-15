@@ -5,12 +5,13 @@ import io.khasang.stockmanager.model.Location;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
-@Path("/")
-public class JerseyController {
+@Path("/location")
+public class JerseyLocationController {
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Location getCoordinates() {
-        Location location = new Location(1, 1);
+        Location location = new Location(55.74954f, 37.621587f);
         return location;
     }
 
@@ -24,5 +25,12 @@ public class JerseyController {
     @Produces(MediaType.APPLICATION_JSON)
     public String deleteCoordinates() {
         return "success";
+    }
+
+    @GET
+    @Path("/string")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getString() {
+        return "{ya:string}";
     }
 }

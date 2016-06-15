@@ -67,6 +67,11 @@
             <artifactId>spring-security-config</artifactId>
             <version>${spring.security.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
         <!-- http://mvnrepository.com/artifact/org.json/json -->
         <dependency>
             <groupId>org.json</groupId>
@@ -178,24 +183,19 @@
 
         <!--Jersey REST-->
         <dependency>
-            <groupId>com.sun.jersey</groupId>
-            <artifactId>jersey-core</artifactId>
-            <version>1.19.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.jersey</groupId>
+            <groupId>org.glassfish.jersey.core</groupId> 
             <artifactId>jersey-server</artifactId>
-            <version>1.19.1</version>
+            <version>2.23.1</version>
         </dependency>
         <dependency>
-            <groupId>com.sun.jersey</groupId>
-            <artifactId>jersey-json</artifactId>
-            <version>1.19.1</version>
+            <groupId>org.glassfish.jersey.media</groupId> 
+            <artifactId>jersey-media-json-jackson</artifactId> 
+            <version>2.23</version>
         </dependency>
         <dependency>
-            <groupId>com.sun.jersey</groupId>
-            <artifactId>jersey-servlet</artifactId>
-            <version>1.19.1</version>
+            <groupId>org.glassfish.jersey.containers</groupId> 
+            <artifactId>jersey-container-servlet</artifactId> 
+            <version>2.23.1</version> 
         </dependency>
         <dependency>
             <groupId>javax.ws.rs</groupId>

@@ -98,6 +98,6 @@ public class AdminController {
         model.addAttribute("restore", restoreDB.makeRestore());
         return "restore";
     }
-    
+
 }
 

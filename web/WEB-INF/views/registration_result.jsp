@@ -13,7 +13,7 @@
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>git s
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
@@ -21,7 +21,8 @@
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/">Home</a></li>
+                <li><a href="/">Home</a></li>
+                <li class="active"><a href="/add_user">Registration</a></li>
                 <li><a href="/admin">Admin</a></li>
                 <li><a href="/io.khasang.stockmanager.dao.desk">Desk</a></li>
                 <li><a href="/products">Goods</a></li>

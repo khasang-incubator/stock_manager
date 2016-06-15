@@ -22,9 +22,10 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     UserDetailsService userDetailsService;
 
     @Autowired
-    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception{
+    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordencoder());
     }
+
     @Autowired
     DataSource dataSource;
 
@@ -32,12 +33,12 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/confidential/**").access("hasRole('ROLE_SUPERADMIN')")
-                .antMatchers("/add_user/**").access("hasRole('ROLE_SUPERADMIN')")
+                //.antMatchers("/add_user/**").access("hasRole('ROLE_SUPERADMIN')")
                 .and().formLogin().defaultSuccessUrl("/", false);
     }
 
-    @Bean(name="passwordEncoder")
-    public PasswordEncoder passwordencoder(){
+    @Bean(name = "passwordEncoder")
+    public PasswordEncoder passwordencoder() {
         return new BCryptPasswordEncoder();
     }
 }

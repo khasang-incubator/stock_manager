@@ -18,7 +18,8 @@ public class JerseyLocationController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public String setCoordinates(Location location) {
-        return "success";
+        System.out.println(location);
+        return "{res:success}";
     }
 
     @DELETE

@@ -3,12 +3,12 @@ package io.khasang.stockmanager.controller;
 import io.khasang.stockmanager.dao.UserDAO;
 import io.khasang.stockmanager.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 
@@ -45,5 +45,20 @@ public class HelloController {
     public String showResult(@RequestParam("result") String result, Model model) {
         model.addAttribute("result", result);
         return "registration_result";
+    }
+
+
+    @RequestMapping(value = {"/hello/{name}"}, method = RequestMethod.GET)
+    public ModelAndView hello(@PathVariable("name") String name) {
+        ModelAndView model = new ModelAndView();
+        model.setViewName("helloPage");
+        model.addObject("crypt", new BCryptPasswordEncoder().encode(name));
+        return model;
+    }
+
+    @RequestMapping("/confidential/hello")
+    public String info(Model model){
+        model.addAttribute("hello", "hello");
+        return "newpage";
     }
 }

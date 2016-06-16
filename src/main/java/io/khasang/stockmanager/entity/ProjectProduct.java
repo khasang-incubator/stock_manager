@@ -1,8 +1,8 @@
 package io.khasang.stockmanager.entity;
 
-import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.sql.Date;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "project_product")
@@ -20,7 +20,7 @@ public class ProjectProduct {
     @Basic
     @Column(name = "product_id")
     private Long productId;
-    
+
     @Basic
     @Column(name = "quantity")
     private int quantity;

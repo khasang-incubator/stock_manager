@@ -1,15 +1,13 @@
 package io.khasang.stockmanager.dao.impl;
 
 import io.khasang.stockmanager.dao.ProjectProductDAO;
-import io.khasang.stockmanager.entity.Product;
 import io.khasang.stockmanager.entity.Project;
 import io.khasang.stockmanager.entity.ProjectProduct;
+import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 public class ProjectProductDAOImpl implements ProjectProductDAO {
@@ -54,16 +52,16 @@ public class ProjectProductDAOImpl implements ProjectProductDAO {
     }
 
     @Override
-    public List<Project> getProject() {
+    public List<Project> getProjects() {
         Session session = sessionFactory.openSession();
         return session.createQuery("from Project p ORDER BY p.id ASC").list();
     }
 
-    @Override
-    public List<Product> getProduct() {
-        Session session = sessionFactory.openSession();
-        return session.createQuery("from Product p ORDER BY p.id ASC").list();
-    }
+//    @Override
+//    public List<Product> getProducts() {
+//        Session session = sessionFactory.openSession();
+//        return session.createQuery("from Product p ORDER BY p.id ASC").list();
+//    }
 
     @Override
     public void truncate() {

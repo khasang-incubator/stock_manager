@@ -95,17 +95,22 @@ public class AppContext {
     }
 
     @Bean
-    public ProjectService projectService() {
+    public ProjectServiceImpl projectServiceImpl() {
         return new ProjectServiceImpl();
     }
 
     @Bean
-    public ProjectProductDAO projectProductDao() {
+    public ProjectDAOImpl projectDAOImpl() {
+        return new ProjectDAOImpl();
+    }
+
+    @Bean
+    public ProjectProductDAOImpl projectProductDAOImpl() {
         return new ProjectProductDAOImpl();
     }
 
     @Bean
-    public ProjectProductService projectProductService() {
+    public ProjectProductServiceImpl projectProductServiceImpl() {
         return new ProjectProductServiceImpl();
     }
 
@@ -113,5 +118,4 @@ public class AppContext {
     public ProductService productService() {
         return new ProductServiceImpl();
     }
-
 }

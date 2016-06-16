@@ -13,8 +13,7 @@
 
         <!--         Optional theme
                 <link rel="stylesheet" href="css/bootstrap-3.3.6-dist/css/bootstrap-theme.min.css" type="text/css" media="all">-->
-
-        Latest compiled and minified JavaScript
+        
         <script src="css/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
 
         <!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -32,7 +31,7 @@
             <div class="panel-body">
 
 
-                <div class="dropdown">
+<!--                <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
                         <span class="caret"></span></button>
                     <ul class="dropdown-menu">
@@ -40,7 +39,7 @@
                         <li><a href="#">CSS</a></li>
                         <li><a href="#">JavaScript</a></li>
                     </ul>
-                </div>
+                </div>-->
 
 
                 <!--                <div class="panel-group" id="collapse-group">
@@ -66,7 +65,7 @@
                             <!--ADD PROJECT BLOCK-->
                             <!--                            <form action="/io.khasang.stockmanager.dao.desk/addProject" method="GET">-->
                             <form action="desk/addProject" method="GET">
-                                <table id="addProjectTable" class="table table-hover">
+                                <table id="addProjectTable" class="table table-hover table-bordered">
                                     <th  colspan = '2'><b>add Project</b></th>
                                     <tr>
                                         <td>Project name</td>
@@ -136,7 +135,7 @@
                         <td>
                             <!--VIEW PROJECTS BLOCK-->
                             <c:if test="${fn:length(projects) > 0}">
-                            <table id="viewProjectsTable" class="table table-striped table-hover">
+                                <table id="viewProjectsTable" class="table table-striped table-hover table-bordered">
                                 <th  colspan = '11'><b>Projects</b></th>
                                 <tr>
                                     <td>id</td>
@@ -191,7 +190,7 @@
 
                         <!-- ADD PROJECT PRODUCT BLOCK-->
                         <form action="desk/addProjectProduct" method="GET">
-                            <table id="addProjectProductTable" class="table table-hover">
+                            <table id="addProjectProductTable" class="table table-hover table-bordered">
                                 <th  colspan = '2'><b>add ProjectProduct</b></th>
                                 <tr>
                                     <td>Project id</td>
@@ -249,7 +248,7 @@
 
                         <!--VIEW PROJECTS_PRODUCTS BLOCK-->
                         <c:if test="${fn:length(projectsProducts) > 0}">
-                            <table id="viewProjectsProductsTable" class="table table-striped table-hover">
+                            <table id="viewProjectsProductsTable" class="table table-striped table-hover table-bordered">
                                 <th  colspan = '7'><b>ProjectsProducts</b></th>
                                 <tr>
                                     <td>id</td>

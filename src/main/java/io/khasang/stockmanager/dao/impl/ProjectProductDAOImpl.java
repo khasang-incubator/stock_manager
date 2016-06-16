@@ -57,12 +57,6 @@ public class ProjectProductDAOImpl implements ProjectProductDAO {
         return session.createQuery("from Project p ORDER BY p.id ASC").list();
     }
 
-//    @Override
-//    public List<Product> getProducts() {
-//        Session session = sessionFactory.openSession();
-//        return session.createQuery("from Product p ORDER BY p.id ASC").list();
-//    }
-
     @Override
     public void truncate() {
         Session session = sessionFactory.openSession();

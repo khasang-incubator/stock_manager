@@ -16,7 +16,5 @@ public interface ProjectProductService {
 
     List<Project> getProjects();
 
-//    List<Product> getProducts();
-
     void truncate();
 }

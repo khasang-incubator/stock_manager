@@ -38,11 +38,6 @@ public class ProjectProductServiceImpl implements ProjectProductService {
         return projectProductDaoImpl.getProjects();
     }
 
-//    @Override
-//    public List<Product> getProducts() {
-//        return projectProductDaoImpl.getProducts();
-//    }
-
     @Override
     public void truncate() {
         projectProductDaoImpl.truncate();

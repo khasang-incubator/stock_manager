@@ -21,7 +21,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception{
-        auth.userDetailsService(userDetailsService)/*.passwordEncoder(passwordencoder())*/;
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordencoder());
     }
     @Autowired
     DataSource dataSource;

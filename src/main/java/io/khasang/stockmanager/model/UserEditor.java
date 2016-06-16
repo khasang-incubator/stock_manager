@@ -3,6 +3,7 @@ package io.khasang.stockmanager.model;
 import io.khasang.stockmanager.dao.UserDAO;
 import io.khasang.stockmanager.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.NoResultException;
 import java.security.InvalidParameterException;
@@ -11,6 +12,9 @@ public class UserEditor {
 
     @Autowired
     private UserDAO userDAO;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     /**
      * Define operation by params (New user || Update user)
@@ -118,7 +122,8 @@ public class UserEditor {
         user.setLogin(login);
         user.setEmail(email);
         user.setRole(role);
-        user.setPassword(password);
+        //don't look here
+        user.setPassword(passwordEncoder.encode(password));
         userDAO.add(user);
     }
 

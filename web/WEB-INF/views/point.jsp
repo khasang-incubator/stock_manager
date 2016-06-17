@@ -12,7 +12,7 @@
     <script src="js/root_point.js" type="text/javascript"></script>
     <link rel="icon" type="image/jpg" href="http://www.amuzzz.ru/uploads/posts/2012-10/13502811621168_13.jpeg"/>
 </head>
-<body ng-controller="point" data-ng-init="getLocation()">
+<body ng-controller="pointCtrl" data-ng-init="getLocation()">
 <div id="header" class="col-lg-12">
     <div class="col-lg-4">
         <button type="button" class="btn btn-link">Назад</button>
@@ -24,7 +24,7 @@
 <div id="container" class="col-lg-12">
     <div class="col-lg-2">
     </div>
-    <div id="map" class="col-lg-4" style="min-width: 320px; min-height: 240px"></div>
+    <div id="map" class="col-lg-4" style="min-width: 320px; min-height: 500px"></div>
     <div class="col-lg-4">
         <div class="col-lg-12 block panel-body">
             <h2>Название: Наша дача</h2>
@@ -45,5 +45,11 @@
 </div>
 
 <button ng-click="setLocation()">ADDDDD SAVE</button>
+<table ng-repeat="loc in locations">
+    <tr>
+        <td>{{loc.x}}</td>
+        <td>{{loc.y}}</td>
+    </tr>
+</table>
 </body>
 </html>

@@ -5,23 +5,25 @@ var LOCATION = {
     y: 0
 };
 
-angular.module("root", ["ngResource"]).controller("point", ["$scope", "$resource", function ($scope, $resource) {
-    var locationGET = $resource("/service/location", {get: {method: 'GET'}});
-    var locationPOST = $resource("/service/location", {post: {method: 'POST'}});
-    var locationDELETE = $resource("/service/location", {delete: {method: 'DELETE'}});
+var angularSaveLocation;
 
+angular.module("root", []).controller("pointCtrl", function ($scope, $http) {
     $scope.getLocation = function () {
-        $scope.location = locationGET.get(function (data) {
-            LOCATION.x = data.x;
-            LOCATION.y = data.y;
-        });
+        // $http.get - выполняем HTTP GET запрос к указанному ресурсу.
+        $http.get("service/location").success(function (response) {
+            // при успешной обработке запроса передаем данные в scope
+            LOCATION.x = response.x;
+            LOCATION.y = response.y;
+        })
     };
 
+
     $scope.setLocation = function () {
-        $scope.location = locationPOST.save({x: LOCATION.x, y: LOCATION.y}, function (data) {
-            alert(data);
-            dataO = data;
-        });
+        $http.post("service/location", $scope.locations).success(function (response) {
+            alert("success" + response)
+        }).error(function (response) {
+            alert(response)
+        })
     };
 
     $scope.deleteLocation = function () {
@@ -29,7 +31,14 @@ angular.module("root", ["ngResource"]).controller("point", ["$scope", "$resource
             alert(data);
         });
     };
-}]);
+
+    $scope.locations = [];
+
+    angularSaveLocation = $scope.saveLocation = function (x, y) {
+        $scope.locations.push({x: x, y: y});
+        $scope.$apply();
+    };
+});
 
 ymaps.ready(init);
 var myMap, myPlacemark, coords;
@@ -42,21 +51,24 @@ function init() {
         hintContent: '!!!!!!!!',
         balloonContent: '???????????/'
     });
-    myMap.events.add('click', function (e) {
+    myMap.events.add('click', function (event) {
         if (!myMap.balloon.isOpen()) {
-            coords = e.get('coordPosition');
+            coords = event.get('coordPosition');
             myMap.balloon.open(coords, {
-                contentHeader:'Событие!',
-                contentBody:'<p>Кто-то щелкнул по карте.</p>' +
+                contentHeader: 'Событие!',
+                contentBody: '<p>Кто-то щелкнул по карте.</p>' +
                 '<p>Координаты щелчка: ' + [
                     coords[0].toPrecision(6),
                     coords[1].toPrecision(6)
-                ].join(', ') + '</p>',
-                contentFooter:'<sup>Щелкните еще раз</sup>'
+                ].join(', ') + '</p>' +
+                '<button onclick="angularSaveLocation(' + coords[0] + ',' + coords[1] + ')">Save</button>',
+                contentFooter: '<sup>Щелкните еще раз</sup>'
             });
         }
         else {
             myMap.balloon.close();
+            var placemark = new ymaps.Placemark([coords[0], coords[1]]);
+            myMap.geoObjects.add(placemark);
         }
         LOCATION.x = coords[0].toPrecision(6);
         LOCATION.y = coords[1].toPrecision(6);

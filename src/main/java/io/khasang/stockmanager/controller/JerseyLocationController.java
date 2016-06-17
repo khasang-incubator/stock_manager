@@ -1,12 +1,17 @@
 package io.khasang.stockmanager.controller;
 
-import io.khasang.stockmanager.model.Location;
+import io.khasang.stockmanager.entity.Location;
 
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.SecurityContext;
+import java.util.List;
 
 @Path("/location")
 public class JerseyLocationController {
+    @Context
+    private SecurityContext securityContext;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -17,9 +22,9 @@ public class JerseyLocationController {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public String setCoordinates(Location location) {
-        System.out.println(location);
-        return "{res:success}";
+    public Location setCoordinates(List<Location> locations) {
+        locations.forEach(System.out::println);
+        return new Location();
     }
 
     @DELETE

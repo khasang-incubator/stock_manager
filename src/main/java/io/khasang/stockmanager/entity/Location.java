@@ -1,4 +1,4 @@
-package io.khasang.stockmanager.model;
+package io.khasang.stockmanager.entity;
 
 public class Location {
     private float x;

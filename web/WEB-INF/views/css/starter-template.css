@@ -7,11 +7,6 @@ body {
     text-align: center;
 }
 
-.hover:hover {
-    background-color: #5bc0de;
-    color: #fff;
-}
-
 .error {
     color: red;
 }

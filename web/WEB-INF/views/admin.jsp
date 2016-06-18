@@ -54,76 +54,83 @@
     <%--<c:if test="${pageContext.request.userPrincipal.name != null}">--%>
     <%--<h2>User: ${pageContext.request.userPrincipal.name}</h2>--%>
     <%--</c:if>--%>
-    <table class="table" id="users_table">
-        <tr>
-            <th>ID</th>
-            <th>Имя</th>
-            <th>Фамилия</th>
-            <th>Логин</th>
-            <th>Email</th>
-            <th>Роль</th>
-            <th>Удаление</th>
-        </tr>
-        <c:forEach items="${users}" var="users">
-            <tr class="hover">
-                <td class="id">${users.id}</td>
-                <td class="firstName">${users.firstName}</td>
-                <td class="lastName">${users.lastName}</td>
-                <td class="login">${users.login}</td>
-                <td class="email">${users.email}</td>
-                <td class="role">${users.role}</td>
-                <td><a href="/admin/delete?id=${users.id}">X</a></td>
+    <div class="col-md-12">
+        <table class="table table-striped table-hover" id="users_table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Логин</th>
+                <th>Email</th>
+                <th>Роль</th>
+                <th>Удаление</th>
             </tr>
-        </c:forEach>
-    </table>
-    <form id="user_form" method="post">
+            </thead>
+            <tbody>
+            <c:forEach items="${users}" var="users">
+                <tr>
+                    <td class="id">${users.id}</td>
+                    <td class="firstName">${users.firstName}</td>
+                    <td class="lastName">${users.lastName}</td>
+                    <td class="login">${users.login}</td>
+                    <td class="email">${users.email}</td>
+                    <td class="role">${users.role}</td>
+                    <td><a href="/admin/delete?id=${users.id}">X</a></td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-12">
         <h1>USER</h1>
         <br>
-        <input type="text" name="id" hidden>
-        <table class="table">
-            <tr>
-                <td><label>Name</label></td>
-                <td><input type="text" name="firstName"/></td>
-            </tr>
-            <tr>
-                <td><label>Surname</label></td>
-                <td><input type="text" name="lastName"/></td>
-            </tr>
-            <tr>
-                <td><label>Login</label></td>
-                <td><input type="text" name="login"/></td>
-            </tr>
-            <tr>
-                <td><label>Email</label></td>
-                <td><input type="text" name="email"/></td>
-            </tr>
-            <tr>
-                <td><label>Role</label></td>
-                <td>
-                    <select name="role">
-                        <option v>USER</option>
-                        <option>ADMIN</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td><label>Password</label></td>
-                <td><input type="text" name="password" id="password" style="visibility: hidden"/></td>
-            </tr>
-            <tr>
-                <td><label>New user</label></td>
-                <td><input type="checkbox" name="new_user" id="pass_checkbox"></td>
-            </tr>
-            <tr>
-                <td colspan="2"><input class="btn btn-info" type="SUBMIT" value="Submit"></td>
-            </tr>
-        </table>
-    </form>
-    <c:url value="/logout" var="logoutUrl"/>
-    <form action="${logoutUrl}" method="post" id="logoutForm">
-        <input type="hidden" name="${_csrf.parameterName}"
-               value="${_csrf.token}"/>
-    </form>
+    </div>
+    <div class="col-md-5">
+        <form id="user_form" method="post">
+            <input type="text" name="id" hidden>
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" class="form-control" id="firstName" name="firstName"/>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control" id="lastName" name="lastName"/>
+            </div>
+            <div class="form-group">
+                <label for="login">Login</label>
+                <input type="text" class="form-control" id="login" name="login"/>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" id="email" name="email"/>
+            </div>
+            <div class="form-group">
+                <label for="role">Role</label>
+                <select class="form-control" id="role" name="role">
+                    <option>USER</option>
+                    <option>ADMIN</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="text" class="form-control" name="password" id="password" style="visibility: hidden"/>
+            </div>
+            <div class="check-box">
+                <label for="pass_checkbox">
+                    <input type="checkbox" name="new_user" id="pass_checkbox">
+                    New user
+                </label>
+            </div>
+            <button class="btn btn-default" type="SUBMIT">Submit</button>
+        </form>
+        <c:url value="/logout" var="logoutUrl"/>
+        <form action="${logoutUrl}" method="post" id="logoutForm">
+            <input type="hidden"
+                   name="${_csrf.parameterName}"
+                   value="${_csrf.token}"/>
+        </form>
+    </div>
 </div>
 </body>
 </html>

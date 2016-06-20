@@ -45,8 +45,8 @@ public class UserDAOImpl implements UserDAO {
             return user.getId();
         } catch (HibernateException e) {
             e.printStackTrace();
+            throw new RuntimeException("Id not found.");
         }
-        throw new RuntimeException("Id not found.");
     }
 
     @Override

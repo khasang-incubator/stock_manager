@@ -5,19 +5,23 @@ var placemarks = [];
 
 var angularSaveLocation;
 
-angular.module("root", []).controller("pointCtrl", function ($scope, $http) {
+angular.module("root", []).controller("pointCtrl", function ($scope, $http, $compile) {
     $scope.getLocation = function () {
         // $http.get - выполняем HTTP GET запрос к указанному ресурсу.
         $http.get("service/location").success(function (response) {
             // при успешной обработке запроса передаем данные в scope\
-            locations = response;
-            
+            $scope.locations = response;
+
         })
     };
 
-
     $scope.setLocation = function () {
-        $http.put("service/location", $scope.locations).success(function (response) {
+        var locations = [];
+        for(var location in $scope.locations) {
+            locations.push({x:$scope.locations[location].x, y:$scope.locations[location].y});
+        }
+        
+        $http.put("service/location", locations).success(function (response) {
             alert("success" + response)
         }).error(function (response) {
             alert(response)
@@ -32,91 +36,51 @@ angular.module("root", []).controller("pointCtrl", function ($scope, $http) {
 
     $scope.locations = [];
 
-    angularSaveLocation = $scope.saveLocation = function (x, y) {
+    $scope.saveLocation = function (x, y) {
         $scope.locations.push({x: x, y: y});
-        $scope.$apply();
     };
-});
+    
+    $scope.addClickFunc = function (id, coords) {
+        var element = '<button ng-click="saveLocation(' + coords[0] + ',' + coords[1] + ')">Save</button>';
+        document.getElementById(id).innerHTML = element;
+        $compile(document.getElementById(id))($scope);
+    }
+    
+    ymaps.ready(init);
+    var myMap, myPlacemark, coords;
 
-ymaps.ready(init);
-var myMap, myPlacemark, coords;
-function init() {
-    myMap = new ymaps.Map("map", {
-        center: [0, 0],
-        zoom: 7
-    });
-    myPlacemark = new ymaps.Placemark([2, 2], {
-        hintContent: '!!!!!!!!',
-        balloonContent: '???????????/'
-    });
-    myMap.events.add('click', function (event) {
-        if (!myMap.balloon.isOpen()) {
-            coords = event.get('coordPosition');
-            myMap.balloon.open(coords, {
-                contentHeader: 'Событие!',
-                contentBody: '<p>Кто-то щелкнул по карте.</p>' +
-                '<p>Координаты щелчка: ' + [
-                    coords[0].toPrecision(6),
-                    coords[1].toPrecision(6)
-                ].join(', ') + '</p>' +
-                '<button onclick="angularSaveLocation(' + coords[0] + ',' + coords[1] + ')">Save</button>',
-                contentFooter: '<sup>Щелкните еще раз</sup>'
-            });
-        }
-        else {
-            myMap.balloon.close();
-            var placemark = new ymaps.Placemark([coords[0], coords[1]]);
-            myMap.geoObjects.add(placemark);
-        }
-        LOCATION.x = coords[0].toPrecision(6);
-        LOCATION.y = coords[1].toPrecision(6);
-    });
-    myMap.geoObjects.add(myPlacemark);
-    locations.forEach(addToPlacemarkArray);
-}
+    function init() {
+        myMap = new ymaps.Map("map", {
+            center: [0, 0],
+            zoom: 7
+        });
+        myMap.events.add('click', function (event) {
+            if (!myMap.balloon.isOpen()) {
+                coords = event.get('coordPosition');
+                myMap.balloon.open(coords, {
+                    contentHeader: 'Событие!',
+                    contentBody: '<p>Кто-то щелкнул по карте.</p>' +
+                    '<p>Координаты щелчка: ' + [
+                        coords[0].toPrecision(6),
+                        coords[1].toPrecision(6)
+                    ].join(', ') + '</p>' +
+                    '<span id="ballon' + coords[0] + '"></span>',
+                    contentFooter: '<sup>Щелкните еще раз</sup>'
+                });
+                $scope.addClickFunc('ballon' + coords[0], coords);
+            }
+            else {
+                myMap.balloon.close();
+                var placemark = new ymaps.Placemark([coords[0], coords[1]]);
+                myMap.geoObjects.add(placemark);
+            }
+        });
+        myMap.geoObjects.add(myPlacemark);
+        $scope.locations.forEach(addToPlacemarkArray);
+    }
+});
 
 function addToPlacemarkArray(location) {
     var placemark = new ymaps.Placemark([location.x, location.y]);
     myMap.geoObjects.add(placemark);
 }
-
-// ymaps.ready(init);
-// var myMap, myPlacemark, act;
-//
-// function init () {
-//     myMap = new ymaps.Map("map", {
-//         center: [57.5262, 38.3061], // Углич
-//         zoom: 11
-//     }, {
-//         balloonMaxWidth: 200
-//     });
-//
-//     // Обработка события, возникающего при щелчке
-//     // левой кнопкой мыши в любой точке карты.
-//     // При возникновении такого события откроем балун.
-//     myMap.events.add('click', function (e) {
-//         if (!myMap.balloon.isOpen()) {
-//             var coords = e.get('coordPosition');
-//             myMap.balloon.open(coords, {
-//                 contentHeader:'Событие!',
-//                 contentBody:'<p>Кто-то щелкнул по карте.</p>' +
-//                 '<p>Координаты щелчка: ' + [
-//                     coords[0].toPrecision(6),
-//                     coords[1].toPrecision(6)
-//                 ].join(', ') + '</p>',
-//                 contentFooter:'<sup>Щелкните еще раз</sup>'
-//             });
-//         }
-//         else {
-//             myMap.balloon.close();
-//         }
-//     });
-//
-//     // Обработка события, возникающего при щелчке
-//     // правой кнопки мыши в любой точке карты.
-//     // При возникновении такого события покажем всплывающую подсказку
-//     // в точке щелчка.
-//     myMap.events.add('contextmenu', function (e) {
-//         myMap.hint.show(e.get('coordPosition'), 'Кто-то щелкнул правой кнопкой');
-//     });
-// }

@@ -2,12 +2,12 @@ package io.khasang.stockmanager.dao.impl;
 
 import io.khasang.stockmanager.dao.LocationDAO;
 import io.khasang.stockmanager.entity.Location;
-import io.khasang.stockmanager.entity.User;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -33,7 +33,7 @@ public class LocationDAOImpl implements LocationDAO {
 
     @Override
     public List<Location> getLocationsByUserId(Long id) {
-        try (Session session = sessionFactory.openSession()){
+        try (Session session = sessionFactory.openSession()) {
             System.out.println(id);
             return session.createCriteria(Location.class).add(Restrictions.eq("userId", id)).list();
         } catch (HibernateException e) {
@@ -62,5 +62,11 @@ public class LocationDAOImpl implements LocationDAO {
         } catch (HibernateException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void saveOrUpdate(Location location) {
+        HibernateTemplate hibernateTemplate = new HibernateTemplate(sessionFactory);
+        hibernateTemplate.saveOrUpdate(location);
     }
 }

@@ -1,7 +1,6 @@
 package io.khasang.stockmanager.dao;
 
 import io.khasang.stockmanager.entity.Location;
-import io.khasang.stockmanager.entity.User;
 
 import java.util.List;
 
@@ -13,4 +12,6 @@ public interface LocationDAO {
     void delete(Location location);
 
     void add(Location location);
+
+    void saveOrUpdate(Location locations);
 }

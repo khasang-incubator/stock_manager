@@ -3,16 +3,15 @@ package io.khasang.stockmanager.controller;
 import io.khasang.stockmanager.dao.LocationDAO;
 import io.khasang.stockmanager.dao.UserDAO;
 import io.khasang.stockmanager.entity.Location;
+import io.khasang.stockmanager.model.LocationEditor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.SecurityContext;
 import java.security.Principal;
 import java.util.List;
-import java.util.stream.Stream;
 
 @RestController
 @RequestMapping("/service/location")
@@ -21,6 +20,8 @@ public class LocationController {
     private LocationDAO locationDAO;
     @Autowired
     private UserDAO userDAO;
+    @Autowired
+    private LocationEditor locationEditor;
 
     public LocationController() {
     }
@@ -33,11 +34,16 @@ public class LocationController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    public Location setCoordinates(Principal principal, @RequestBody List<Location> locations) {
-
-        System.out.println(principal.getName());
-        locations.forEach(System.out::println);
-        return new Location();
+    public String setCoordinates(Principal principal, @RequestBody List<Location> locations) {
+        try {
+            System.out.println(principal.getName());
+            locations.forEach(System.out::println);
+            locationEditor.saveLocations(principal.getName(), locations);
+            return "success";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error";
+        }
     }
 
 //    @RequestMapping(method = RequestMethod.DELETE)

@@ -15,6 +15,7 @@
         <spring.security.version>4.0.4.RELEASE</spring.security.version>
         <hibernate-version>5.0.1.Final</hibernate-version>
         <spring-security-test>4.0.3.RELEASE</spring-security-test>
+        <jackson.version>2.6.3</jackson.version>
     </properties>
 
     <dependencies>
@@ -201,6 +202,23 @@
             <groupId>javax.ws.rs</groupId>
             <artifactId>jsr311-api</artifactId>
             <version>1.1.1</version>
+        </dependency>
+
+        <!-- jackson -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.6.3</version>
         </dependency>
 
         <!-- validation test -->

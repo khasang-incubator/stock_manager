@@ -80,6 +80,11 @@ public class AppContext {
     }
 
     @Bean
+    public LocationDAO locationDAO() {
+        return new LocationDAOImpl();
+    }
+
+    @Bean
     public BackupDB backup() {
         return new BackupDBImpl();
     }

@@ -1,9 +1,7 @@
 /* global ymaps */
 
-var LOCATION = {
-    x: 0,
-    y: 0
-};
+var locations;
+var placemarks = [];
 
 var angularSaveLocation;
 
@@ -11,15 +9,15 @@ angular.module("root", []).controller("pointCtrl", function ($scope, $http) {
     $scope.getLocation = function () {
         // $http.get - выполняем HTTP GET запрос к указанному ресурсу.
         $http.get("service/location").success(function (response) {
-            // при успешной обработке запроса передаем данные в scope
-            LOCATION.x = response.x;
-            LOCATION.y = response.y;
+            // при успешной обработке запроса передаем данные в scope\
+            locations = response;
+            
         })
     };
 
 
     $scope.setLocation = function () {
-        $http.post("service/location", $scope.locations).success(function (response) {
+        $http.put("service/location", $scope.locations).success(function (response) {
             alert("success" + response)
         }).error(function (response) {
             alert(response)
@@ -44,7 +42,7 @@ ymaps.ready(init);
 var myMap, myPlacemark, coords;
 function init() {
     myMap = new ymaps.Map("map", {
-        center: [LOCATION.x, LOCATION.y],
+        center: [0, 0],
         zoom: 7
     });
     myPlacemark = new ymaps.Placemark([2, 2], {
@@ -74,6 +72,12 @@ function init() {
         LOCATION.y = coords[1].toPrecision(6);
     });
     myMap.geoObjects.add(myPlacemark);
+    locations.forEach(addToPlacemarkArray);
+}
+
+function addToPlacemarkArray(location) {
+    var placemark = new ymaps.Placemark([location.x, location.y]);
+    myMap.geoObjects.add(placemark);
 }
 
 // ymaps.ready(init);

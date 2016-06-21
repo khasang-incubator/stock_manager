@@ -25,6 +25,7 @@
                 <li class="active"><a href="/admin">Admin</a></li>
                 <li><a href="/desk">Desk</a></li>
                 <li><a href="/products">Goods</a></li>
+                <li><a href="/point">Map</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="/admin/backup">Backup</a></li>
@@ -37,23 +38,77 @@
     </div>
 </div>
 <div class="container">
-    <c:choose>
-        <c:when test="${not empty error}">
-            <p>Error, ${error}!</p>
-        </c:when>
-        <c:when test="${not empty backup}">
-            <p>Backup was ${backup}</p>
-        </c:when>
-        <c:when test="${not empty restore}">
-            <p>Restore was ${restore}</p>
-        </c:when>
-        <c:otherwise>
-            <br>
-        </c:otherwise>
-    </c:choose>
+    <div class="col-md-12">
+        <c:choose>
+            <c:when test="${not empty error}">
+                <p>Admin log: Error, ${error}!</p>
+            </c:when>
+            <c:when test="${not empty backup}">
+                <p>Admin log: Backup was ${backup}</p>
+            </c:when>
+            <c:when test="${not empty restore}">
+                <p>Admin log: Restore was ${restore}</p>
+            </c:when>
+            <c:otherwise>
+                <p>Admin log:</p>
+            </c:otherwise>
+        </c:choose>
+    </div>
     <%--<c:if test="${pageContext.request.userPrincipal.name != null}">--%>
     <%--<h2>User: ${pageContext.request.userPrincipal.name}</h2>--%>
     <%--</c:if>--%>
+    <div class="col-md-12">
+        <h3>Form for registration or update users:</h3>
+    </div>
+    <div class="col-md-5">t
+        <form id="user_form" method="post">
+            <input type="text" name="id" hidden>
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" class="form-control" id="firstName" name="firstName"/>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control" id="lastName" name="lastName"/>
+            </div>
+            <div class="form-group">
+                <label for="login">Login</label>
+                <input type="text" class="form-control" id="login" name="login"/>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" id="email" name="email"/>
+            </div>
+            <div class="form-group">
+                <label for="role">Role</label>
+                <select class="form-control" id="role" name="role">
+                    <option>ROLE_USER</option>
+                    <option>ROLE_ADMIN</option>
+                    <option>ROLE_SUPERADMIN</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="text" class="form-control" name="password" id="password" style="visibility: hidden"/>
+            </div>
+            <div class="check-box">
+                <label for="pass_checkbox">
+                    <input type="checkbox" name="new_user" id="pass_checkbox">
+                    New user
+                </label>
+            </div>
+            <button class="btn btn-default" type="SUBMIT">Submit</button>
+        </form>
+        <c:url value="/logout" var="logoutUrl"/>
+        <form action="${logoutUrl}" method="post" id="logoutForm">
+            <input type="hidden"
+                   name="${_csrf.parameterName}"
+                   value="${_csrf.token}"/>
+        </form>
+    </div>
+    <div class="col-md-12">
+        <h3>Database:</h3>
+    </div>
     <div class="col-md-12">
         <table class="table table-striped table-hover" id="users_table">
             <thead>
@@ -81,55 +136,6 @@
             </c:forEach>
             </tbody>
         </table>
-    </div>
-    <div class="col-md-12">
-        <h1>USER</h1>
-        <br>
-    </div>
-    <div class="col-md-5">
-        <form id="user_form" method="post">
-            <input type="text" name="id" hidden>
-            <div class="form-group">
-                <label for="firstName">First Name</label>
-                <input type="text" class="form-control" id="firstName" name="firstName"/>
-            </div>
-            <div class="form-group">
-                <label for="lastName">Last Name</label>
-                <input type="text" class="form-control" id="lastName" name="lastName"/>
-            </div>
-            <div class="form-group">
-                <label for="login">Login</label>
-                <input type="text" class="form-control" id="login" name="login"/>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="text" class="form-control" id="email" name="email"/>
-            </div>
-            <div class="form-group">
-                <label for="role">Role</label>
-                <select class="form-control" id="role" name="role">
-                    <option>USER</option>
-                    <option>ADMIN</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="text" class="form-control" name="password" id="password" style="visibility: hidden"/>
-            </div>
-            <div class="check-box">
-                <label for="pass_checkbox">
-                    <input type="checkbox" name="new_user" id="pass_checkbox">
-                    New user
-                </label>
-            </div>
-            <button class="btn btn-default" type="SUBMIT">Submit</button>
-        </form>
-        <c:url value="/logout" var="logoutUrl"/>
-        <form action="${logoutUrl}" method="post" id="logoutForm">
-            <input type="hidden"
-                   name="${_csrf.parameterName}"
-                   value="${_csrf.token}"/>
-        </form>
     </div>
 </div>
 </body>

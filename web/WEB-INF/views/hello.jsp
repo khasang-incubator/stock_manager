@@ -26,9 +26,9 @@
                 <li><a href="/admin">Admin</a></li>
                 <li><a href="/desk">Desk</a></li>
                 <li><a href="/products">Goods</a></li>
+                <li><a href="/point">Map</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="/point">Desk</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>

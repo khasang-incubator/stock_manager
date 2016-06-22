@@ -20,9 +20,10 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     UserDetailsService userDetailsService;
 
     @Autowired
-    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception{
+    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordencoder());
     }
+
     @Autowired
     DataSource dataSource;
 
@@ -36,8 +37,8 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
         .and().csrf().disable();
     }
 
-    @Bean(name="passwordEncoder")
-    public PasswordEncoder passwordencoder(){
+    @Bean(name = "passwordEncoder")
+    public PasswordEncoder passwordencoder() {
         return new BCryptPasswordEncoder();
     }
 }

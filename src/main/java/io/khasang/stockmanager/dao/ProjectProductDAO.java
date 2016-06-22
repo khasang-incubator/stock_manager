@@ -1,6 +1,5 @@
 package io.khasang.stockmanager.dao;
 
-import io.khasang.stockmanager.entity.Product;
 import io.khasang.stockmanager.entity.Project;
 import io.khasang.stockmanager.entity.ProjectProduct;
 import java.util.List;
@@ -15,9 +14,9 @@ public interface ProjectProductDAO {
 
     List<ProjectProduct> getProjectProducts();
 
-    List<Project> getProject();
+    List<Project> getProjects();
 
-    List<Product> getProduct();
+//    List<Product> getProducts();
 
     void truncate();
 }

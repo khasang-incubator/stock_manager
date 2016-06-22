@@ -95,6 +95,6 @@ public class AdminController {
         model.addAttribute("users", userDAO.getAll());
         return "admin";
     }
-    
+
 }
 

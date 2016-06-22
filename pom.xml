@@ -15,6 +15,7 @@
         <spring.security.version>4.0.4.RELEASE</spring.security.version>
         <hibernate-version>5.0.1.Final</hibernate-version>
         <spring-security-test>4.0.3.RELEASE</spring-security-test>
+        <jackson.version>2.6.3</jackson.version>
     </properties>
 
     <dependencies>
@@ -50,7 +51,7 @@
             <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
-    
+
         <!--Spring Security-->
         <dependency>
             <groupId>org.springframework.security</groupId>
@@ -65,6 +66,11 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
             <version>${spring.security.version}</version>
         </dependency>
         <!-- http://mvnrepository.com/artifact/org.json/json -->
@@ -178,19 +184,41 @@
 
         <!--Jersey REST-->
         <dependency>
-            <groupId>org.glassfish.jersey.core</groupId>
+            <groupId>org.glassfish.jersey.core</groupId> 
             <artifactId>jersey-server</artifactId>
-            <version>2.22.2</version>
+            <version>2.23.1</version>
         </dependency>
         <dependency>
-            <groupId>org.glassfish.jersey.containers</groupId>
-            <artifactId>jersey-container-servlet-core</artifactId>
-            <version>2.22.2</version>
+            <groupId>org.glassfish.jersey.media</groupId> 
+            <artifactId>jersey-media-json-jackson</artifactId> 
+            <version>2.23</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.containers</groupId> 
+            <artifactId>jersey-container-servlet</artifactId> 
+            <version>2.23.1</version> 
         </dependency>
         <dependency>
             <groupId>javax.ws.rs</groupId>
             <artifactId>jsr311-api</artifactId>
             <version>1.1.1</version>
+        </dependency>
+
+        <!-- jackson -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.6.3</version>
         </dependency>
 
         <!-- validation test -->

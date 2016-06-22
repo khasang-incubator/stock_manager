@@ -61,4 +61,9 @@ public class HelloController {
         model.addAttribute("hello", "hello");
         return "newpage";
     }
+
+    @RequestMapping("/point")
+    public String point(Model model){
+        return "point";
+    }
 }

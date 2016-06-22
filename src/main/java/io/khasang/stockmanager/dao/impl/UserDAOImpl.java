@@ -39,6 +39,17 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
+    public Long getUserIdByLogin(String name) {
+        try (Session session = sessionFactory.openSession()){
+            User user = (User) session.createCriteria(User.class).add(Restrictions.eq("login", name)).uniqueResult();
+            return user.getId();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Id not found.");
+        }
+    }
+
+    @Override
     public List<User> getAll() {
         List<User> list = new ArrayList<>();
         try (Session session = sessionFactory.openSession()) {

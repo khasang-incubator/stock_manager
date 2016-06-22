@@ -16,4 +16,6 @@ public interface UserDAO {
     void delete(User user);
 
     String insertToTable(User user);
+
+    Long getUserIdByLogin(String name);
 }

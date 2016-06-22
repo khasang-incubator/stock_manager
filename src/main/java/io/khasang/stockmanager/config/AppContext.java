@@ -5,6 +5,7 @@ import io.khasang.stockmanager.dao.impl.*;
 import io.khasang.stockmanager.entity.Project;
 import io.khasang.stockmanager.entity.ProjectProduct;
 import io.khasang.stockmanager.entity.User;
+import io.khasang.stockmanager.model.LocationEditor;
 import io.khasang.stockmanager.model.UserEditor;
 import io.khasang.stockmanager.service.ProductService;
 import io.khasang.stockmanager.service.impl.ProductServiceImpl;
@@ -80,6 +81,11 @@ public class AppContext {
     }
 
     @Bean
+    public LocationDAO locationDAO() {
+        return new LocationDAOImpl();
+    }
+
+    @Bean
     public BackupDB backup() {
         return new BackupDBImpl();
     }
@@ -90,27 +96,38 @@ public class AppContext {
     }
 
     @Bean
+//    @Scope(value= WebApplicationContext.SCOPE_SESSION,
+//            proxyMode= ScopedProxyMode.INTERFACES)
     public UserEditor userEditor() {
         return new UserEditor();
     }
 
     @Bean
-    public ProjectServiceImpl projectServiceImpl() {
+<<<<<<< HEAD
+    //TODO solve problem with session scope
+//    @Scope(value= WebApplicationContext.SCOPE_SESSION,
+//            proxyMode= ScopedProxyMode.INTERFACES)
+    public LocationEditor locationEditor() {
+        return new LocationEditor();
+    }
+
+    @Bean
+    public ProjectService projectService() {
         return new ProjectServiceImpl();
     }
 
     @Bean
-    public ProjectDAOImpl projectDAOImpl() {
+    public ProjectDAO projectDAO() {
         return new ProjectDAOImpl();
     }
 
     @Bean
-    public ProjectProductDAOImpl projectProductDAOImpl() {
+    public ProjectProductDAO projectProductDAO() {
         return new ProjectProductDAOImpl();
     }
 
     @Bean
-    public ProjectProductServiceImpl projectProductServiceImpl() {
+    public ProjectProductService projectProductService() {
         return new ProjectProductServiceImpl();
     }
 

@@ -27,11 +27,6 @@ public class AdminController {
     @Autowired
     private UserEditor userEditor;
 
-    @RequestMapping("/admin")
-    public String admin(Model model) {
-        return "admin";
-    }
-
     @RequestMapping("/")
     public String hello() {
         return "hello";
@@ -42,10 +37,10 @@ public class AdminController {
         return "403";
     }
 
-    @RequestMapping("/admin/users")
+    @RequestMapping("/admin")
     public String changeRole(Model model) {
         model.addAttribute("users", userDAO.getAll());
-        return "users";
+        return "admin";
     }
 
     @RequestMapping(value = "/point**", method = RequestMethod.GET)
@@ -57,7 +52,7 @@ public class AdminController {
         return model;
     }
 
-    @RequestMapping(value = "/admin/users", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin", method = RequestMethod.POST)
     public String userPost(Model model, @RequestParam(name = "id", required = false) String id,
                            @RequestParam(name = "firstName", required = false) String firstName,
                            @RequestParam(name = "lastName", required = false) String lastName,
@@ -72,7 +67,7 @@ public class AdminController {
             model.addAttribute("error", "check your params!");
         }
         model.addAttribute("users", userDAO.getAll());
-        return "users";
+        return "redirect:/admin";
     }
 
     @RequestMapping("/admin/delete")
@@ -84,19 +79,21 @@ public class AdminController {
             model.addAttribute("error", "user not exists.");
         }
         model.addAttribute("users", userDAO.getAll());
-        return "redirect:/admin/users";
+        return "redirect:/admin";
     }
 
     @RequestMapping("/admin/backup")
     public String backup(Model model) {
         model.addAttribute("backup", backupDB.makeBackup());
-        return "backup";
+        model.addAttribute("users", userDAO.getAll());
+        return "admin";
     }
 
     @RequestMapping("/admin/restore")
     public String restore(Model model) {
         model.addAttribute("restore", restoreDB.makeRestore());
-        return "restore";
+        model.addAttribute("users", userDAO.getAll());
+        return "admin";
     }
 
 }

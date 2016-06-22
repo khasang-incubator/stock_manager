@@ -60,7 +60,7 @@
     <div class="col-md-12">
         <h3>Form for registration or update users:</h3>
     </div>
-    <div class="col-md-5">t
+    <div class="col-md-5">
         <form id="user_form" method="post">
             <input type="text" name="id" hidden>
             <div class="form-group">

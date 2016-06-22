@@ -103,7 +103,6 @@ public class AppContext {
     }
 
     @Bean
-<<<<<<< HEAD
     //TODO solve problem with session scope
 //    @Scope(value= WebApplicationContext.SCOPE_SESSION,
 //            proxyMode= ScopedProxyMode.INTERFACES)
@@ -114,11 +113,6 @@ public class AppContext {
     @Bean
     public ProjectService projectService() {
         return new ProjectServiceImpl();
-    }
-
-    @Bean
-    public ProjectDAO projectDAO() {
-        return new ProjectDAOImpl();
     }
 
     @Bean

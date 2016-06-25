@@ -3,6 +3,7 @@ package io.khasang.stockmanager.controller;
 import io.khasang.stockmanager.dao.UserDAO;
 import io.khasang.stockmanager.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,6 +54,7 @@ public class HelloController {
         ModelAndView model = new ModelAndView();
         model.setViewName("helloPage");
         model.addObject("crypt", new BCryptPasswordEncoder().encode(name));
+        model.addObject("username", SecurityContextHolder.getContext().getAuthentication().getName());
         return model;
     }
 

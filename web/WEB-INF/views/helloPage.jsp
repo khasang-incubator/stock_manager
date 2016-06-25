@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="css/bootstrap-3.3.6-dist/css/bootstrap.min.css">
 </head>
 <body>
+<h1>Current User</h1>
+<p>${username}</p>
 <h1>Encrypt password</h1>
 <p>${crypt}</p>
+
 </body>
 </html>

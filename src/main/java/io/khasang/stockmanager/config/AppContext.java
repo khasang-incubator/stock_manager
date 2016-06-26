@@ -59,10 +59,10 @@ public class AppContext {
         return new Project();
     }
 
-    @Bean
-    public ProjectDAO projectDAO() {
-        return new ProjectDAO();
-    }
+//    @Bean
+//    public ProjectDAO projectDAO() {
+//        return new ProjectDAO();
+//    }
 
     @Bean
     public ProjectProduct projectProduct() {
@@ -118,4 +118,15 @@ public class AppContext {
     public ProductService productService() {
         return new ProductServiceImpl();
     }
+
+    @Bean
+    public MapPointsDAOImpl mapPointsDAOImpl() {
+        return new MapPointsDAOImpl();
+    }
+
+    @Bean
+    public MapPointsServiceImpl mapPointsServiceImpl() {
+        return new MapPointsServiceImpl();
+    }
+
 }

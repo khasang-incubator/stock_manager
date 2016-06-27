@@ -23,14 +23,19 @@
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="/">Home</a></li>
-                <li class="active"><a href="/add_user">Registration</a></li>
-                <li><a href="/admin">Admin</a></li>
-                <li><a href="/io.khasang.stockmanager.dao.desk">Desk</a></li>
+                <li class="active"><a href="/admin">Admin</a></li>
+                <li><a href="/desk">Desk</a></li>
                 <li><a href="/products">Goods</a></li>
+                <li><a href="/point">Map</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="/admin/backup">Backup</a></li>
+                <li><a href="/admin/restore">Restore</a></li>
+                <c:if test="${pageContext.request.userPrincipal.name != null}">
+                    <li><a href="javascript:logoutSubmit()">Logout</a></li>
+                </c:if>
             </ul>
-        </div><!--/.nav-collapse -->
+        </div>
     </div>
 </div>
 <div class="container">

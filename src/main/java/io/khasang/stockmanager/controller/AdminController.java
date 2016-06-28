@@ -1,9 +1,9 @@
 package io.khasang.stockmanager.controller;
 
-import io.khasang.stockmanager.dao.BackupDB;
-import io.khasang.stockmanager.dao.RestoreDB;
 import io.khasang.stockmanager.dao.UserDAO;
 import io.khasang.stockmanager.model.UserEditor;
+import io.khasang.stockmanager.service.commandline.BackupDBImpl;
+import io.khasang.stockmanager.service.commandline.RestoreDBImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,9 +21,9 @@ public class AdminController {
     @Autowired
     private UserDAO userDAO;
     @Autowired
-    private BackupDB backupDB;
+    private BackupDBImpl backupDBImpl;
     @Autowired
-    private RestoreDB restoreDB;
+    private RestoreDBImpl restoreDBImpl;
     @Autowired
     private UserEditor userEditor;
 
@@ -84,14 +84,14 @@ public class AdminController {
 
     @RequestMapping("/admin/backup")
     public String backup(Model model) {
-        model.addAttribute("backup", backupDB.makeBackup());
+        model.addAttribute("backup", backupDBImpl.makeBackup());
         model.addAttribute("users", userDAO.getAll());
         return "admin";
     }
 
     @RequestMapping("/admin/restore")
     public String restore(Model model) {
-        model.addAttribute("restore", restoreDB.makeRestore());
+        model.addAttribute("restore", restoreDBImpl.makeRestore());
         model.addAttribute("users", userDAO.getAll());
         return "admin";
     }

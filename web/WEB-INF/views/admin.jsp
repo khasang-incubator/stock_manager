@@ -44,10 +44,10 @@
                 <p>Admin log: Error, ${error}!</p>
             </c:when>
             <c:when test="${not empty backup}">
-                <p>Admin log: Backup was ${backup}</p>
+                <p>Admin log: Backup: ${backup}</p>
             </c:when>
             <c:when test="${not empty restore}">
-                <p>Admin log: Restore was ${restore}</p>
+                <p>Admin log: Restore: ${restore}</p>
             </c:when>
             <c:otherwise>
                 <p>Admin log:</p>

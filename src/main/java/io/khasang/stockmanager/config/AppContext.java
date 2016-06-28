@@ -8,6 +8,8 @@ import io.khasang.stockmanager.entity.User;
 import io.khasang.stockmanager.model.LocationEditor;
 import io.khasang.stockmanager.model.UserEditor;
 import io.khasang.stockmanager.service.ProductService;
+import io.khasang.stockmanager.service.commandline.BackupDBImpl;
+import io.khasang.stockmanager.service.commandline.RestoreDBImpl;
 import io.khasang.stockmanager.service.impl.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -86,13 +88,15 @@ public class AppContext {
     }
 
     @Bean
-    public BackupDB backup() {
-        return new BackupDBImpl();
+    public BackupDBImpl backupDBImpl() {
+        return new BackupDBImpl(environment.getProperty("jdbc.postgresql.username"),
+                environment.getProperty("jdbc.postgresql.password"));
     }
 
     @Bean
-    public RestoreDB restore() {
-        return new RestoreDBImpl();
+    public RestoreDBImpl restoreDBImpl() {
+        return new RestoreDBImpl(environment.getProperty("jdbc.postgresql.username"),
+                environment.getProperty("jdbc.postgresql.password"));
     }
 
     @Bean

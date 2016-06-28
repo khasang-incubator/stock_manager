@@ -70,4 +70,16 @@ public class ProductSalePlace {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    private Product product;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 }

@@ -71,6 +71,7 @@
                         <td>${product.name}</td>
                         <td>${product.description}</td>
                         <td><a href="delete/${product.id}">Delete</a></td>
+                        <td><a href="products/productsaleplace/${product.id}">Places</a></td>
                     </tr>
                 </c:forEach>
                 </tbody>

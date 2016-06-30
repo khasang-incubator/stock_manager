@@ -4,13 +4,9 @@ import io.khasang.stockmanager.entity.ProductSalePlace;
 import java.util.List;
 
 public interface ProductSalePlaceDAO {
-    List<ProductSalePlace> getAll();
+    List<ProductSalePlace> getAllByProductId(Long productId);
 
-    List<ProductSalePlace> getProductSalePlacesByProductId(Long id);
+    void save(ProductSalePlace productSalePlace);
 
     void delete(ProductSalePlace productSalePlace);
-
-    void add(ProductSalePlace productSalePlace);
-
-    void saveOrUpdate(ProductSalePlace productSalePlace);
 }

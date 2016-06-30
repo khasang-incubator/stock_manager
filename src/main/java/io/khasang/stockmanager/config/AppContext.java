@@ -7,7 +7,9 @@ import io.khasang.stockmanager.entity.ProjectProduct;
 import io.khasang.stockmanager.entity.User;
 import io.khasang.stockmanager.model.LocationEditor;
 import io.khasang.stockmanager.model.UserEditor;
+import io.khasang.stockmanager.service.ProductSalePlaceService;
 import io.khasang.stockmanager.service.ProductService;
+import io.khasang.stockmanager.service.impl.ProductSalePlaceServiceImpl;
 import io.khasang.stockmanager.service.impl.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -129,4 +131,8 @@ public class AppContext {
     public ProductService productService() {
         return new ProductServiceImpl();
     }
+
+    @Bean
+    public ProductSalePlaceService productSalePlaceService () {
+        return  new ProductSalePlaceServiceImpl(); }
 }

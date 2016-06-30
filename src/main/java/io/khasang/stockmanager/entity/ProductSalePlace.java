@@ -1,8 +1,6 @@
 package io.khasang.stockmanager.entity;
 
-import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "product_sale_places")
@@ -11,18 +9,12 @@ public class ProductSalePlace {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotNull
-    @NotEmpty
     @Column(name = "product_id")
     private Long productId;
 
-    @NotNull
-    @NotEmpty
     @Column(nullable = false)
     private float x;
 
-    @NotNull
-    @NotEmpty
     @Column(nullable = false)
     private float y;
 
@@ -71,15 +63,4 @@ public class ProductSalePlace {
         this.description = description;
     }
 
-    private Product product;
-
-    @ManyToOne
-    @JoinColumn(name = "product_id")
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
 }

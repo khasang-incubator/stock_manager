@@ -20,18 +20,18 @@ public class ProductController {
     ProductService productService;
 
     @RequestMapping("/products")
-    public String listContacts(Map<String, Object> map) {
+    public String listProducts(Map<String, Object> map) {
         map.put("product", new Product());
         map.put("productList", productService.getAll());
         return "product";
     }
 
-    @RequestMapping("/delete/{productId}")
+    @RequestMapping("products/delete/{productId}")
     public String deleteProduct(@PathVariable("productId") Long productId) {
         productService.delete(productId);
         return "redirect:/products";
     }
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(value = "products/add", method = RequestMethod.POST)
     public String addProduct(@ModelAttribute("product") Product product,
                              BindingResult result) {
         productService.saveProduct(product);

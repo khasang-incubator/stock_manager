@@ -2,11 +2,12 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<link rel="stylesheet" href="../css/starter-template.css">
-<link rel="stylesheet" href="../css/bootstrap-3.3.6-dist/css/bootstrap.min.css">
 <html>
 <head>
     <title>Catalog products</title>
+    // bootstrap
+    <link rel="stylesheet" href="../css/starter-template.css">
+    <link rel="stylesheet" href="../css/bootstrap-3.3.6-dist/css/bootstrap.min.css">
 </head>
 <body>
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -43,14 +44,14 @@
         <div class="panel panel-default">
             <div class="panel-heading" align="left"><label for="focusedInput">Add new product</label></div>
             <div class="panel-body">
-                <form:form method="post" action="add" commandName="product" class="form-inline">
-                    <div class="form-group">
-                            <td><label for="focusedInput">Product:</label>
-                                <form:input path="name" class="form-control" id="focusedInput"/></td>
-                            <td><label for="focusedInput">Description:</label>
-                                <form:input path="description"  class="form-control"/></td>
-                            <td valign="bottom"><input type="submit" value="Добавить"/></td>
-                        </div>
+                <form:form method="post" action="products/add" commandName="product" class="form-inline" >
+                    <div class="form-group" >
+                        <label for="focusedInput">Product:</label>
+                            <form:input path="name" class="form-control" id="focusedInput"/>
+                        <label for="focusedInput">Description:</label>
+                            <form:input path="description" class="form-control"/>
+                        <input type="submit" value="Добавить"/>
+                    </div>
                 </form:form>
             </div>
         </div>
@@ -70,7 +71,8 @@
                         <td>${product.id}</td>
                         <td>${product.name}</td>
                         <td>${product.description}</td>
-                        <td><a href="delete/${product.id}">Delete</a></td>
+                        <td><a href="products/delete/${product.id}">Delete</a></td>
+                        <td><a href="productsaleplace/${product.id}">Places</a></td>
                     </tr>
                 </c:forEach>
                 </tbody>

@@ -13,7 +13,7 @@
 
         <!--         Optional theme
                 <link rel="stylesheet" href="css/bootstrap-3.3.6-dist/css/bootstrap-theme.min.css" type="text/css" media="all">-->
-        
+
         <script src="css/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
 
         <!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -26,9 +26,34 @@
     </head>
     <body>
 
-        <div class="panel panel-default">
-            <div class="panel-heading"><H1 class="text-info">Desk</h1></div>
-            <div class="panel-body">
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">StockManager</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/add_user">Registration</a></li>
+                        <li><a href="/admin">Admin</a></li>
+                        <li class="active"><a href="/desk">Desk</a></li>
+                        <li><a href="/products">Goods</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+
+        <!--<div class="panel panel-default">-->
+            <!--<div class="panel-heading"><H1 class="text-info">Desk</h1></div>-->
+            <!--<div class="panel-body">-->
 
 
 <!--                <div class="dropdown">
@@ -280,8 +305,8 @@
                 </td>
                 </tr>
                 </table>
-            </div>
-        </div>
+<!--            </div>
+        </div>-->
 
         <!--PAGE FOOTER-->
         <div class="panel-footer">Panel footer</div>

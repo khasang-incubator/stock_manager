@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -29,12 +31,20 @@ public class HelloController {
     @RequestMapping(value = "/add_user", method = GET)
     public String addUser(Model model) {
         model.addAttribute("user", new User());
+        Map<String,String> roles = new LinkedHashMap<>();
+        roles.put("ROLE_SUPERADMIN", "SUPERADMIN");
+        roles.put("ROLE_USER", "USER");
+        model.addAttribute("roleList", roles);
         return "add_user";
     }
 
     @RequestMapping(value = "/add_user", method = POST)
-    public String addUser(@Valid @ModelAttribute("user") User user, Errors errors) {
+    public String addUser(@Valid @ModelAttribute("user") User user, Errors errors, Model model) {
         if (errors.hasErrors()) {
+            Map<String,String> roles = new LinkedHashMap<>();
+            roles.put("ROLE_SUPERADMIN", "SUPERADMIN");
+            roles.put("ROLE_USER", "USER");
+            model.addAttribute("roleList", roles);
             return "add_user";
         } else {
             String result = userDAO.insertToTable(user);

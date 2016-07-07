@@ -10,7 +10,10 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -59,19 +62,37 @@ public class StockManagerController {
 
     @RequestMapping(value = "/romak_register", method = POST)
     public String processRegistration(@Valid @ModelAttribute("StockRegistration") StockRegistration user
-            ,Errors errors, Model model) {
+            , Errors errors, Model model) {
         if (errors.hasErrors()) {
             return "StockRegistration";
         }
-            stockRegistration.save(user);
-            return "redirect:/romak_" +
-                    user.getUserName();
+        stockRegistration.save(user);
+        return "redirect:/romak_" +
+                user.getUserName();
     }
 
     @RequestMapping("/romak_RegistrationTable")
     public String tableRegistrationCreate(Model model) {
         model.addAttribute("regTable", dataExample.getResultRegistrationTable());
         return "regTable";
+    }
+
+    @RequestMapping(value = "/protected**", method = RequestMethod.GET)
+    public ModelAndView protectedPage() {
+        ModelAndView model = new ModelAndView();
+        model.addObject("title", "Welcome to secure page!");
+        model.addObject("message", "This is protected page - only for admin users!");
+        model.setViewName("protected");
+        return model;
+    }
+
+    @RequestMapping(value = "/point**", method = RequestMethod.GET)
+    public ModelAndView point() {
+        ModelAndView model = new ModelAndView();
+        model.addObject("coordY", 58.76);
+        model.addObject("coordX", 39.64);
+        model.setViewName("point");
+        return model;
     }
 
 

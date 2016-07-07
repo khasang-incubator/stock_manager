@@ -4,7 +4,7 @@
 <head>
     <script src="../script/users_script.js"></script>
     <link href="../css/starter-template.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/bootstrap-3.3.6-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <title>Title</title>
 </head>
 <body>

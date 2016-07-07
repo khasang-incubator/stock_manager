@@ -5,8 +5,8 @@
     <head>
         <title>Desk</title>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="../../css/bootstrap-3.3.6-dist/css/bootstrap.min.css" type="text/css" media="all">
-        <script src="../../css/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css" type="text/css" media="all">
+        <script src="../../bootstrap/js/bootstrap.min.js"></script>
 
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Montserrat:400,700|Cardo:400,400italic,700">
 

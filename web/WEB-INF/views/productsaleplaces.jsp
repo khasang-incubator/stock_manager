@@ -7,7 +7,7 @@
     <title>Product sale places</title>
     <!-- bootstrap -->
     <link rel="stylesheet" href="/css/starter-template.css">
-    <link rel="stylesheet" href="/css/bootstrap-3.3.6-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
     <!-- yandex map -->
     <script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
     <script src="/js/mapproductsaleplace.js" type="text/javascript"></script>

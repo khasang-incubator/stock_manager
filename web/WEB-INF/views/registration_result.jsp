@@ -4,7 +4,7 @@
 <head>
     <title>Registration result</title>
     <link href="../css/starter-template.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/bootstrap-3.3.6-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <meta http-equiv="refresh" content="3;/"/>
 </head>
 <body>

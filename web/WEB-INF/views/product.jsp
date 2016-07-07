@@ -7,7 +7,7 @@
     <title>Catalog products</title>
     // bootstrap
     <link rel="stylesheet" href="../css/starter-template.css">
-    <link rel="stylesheet" href="../css/bootstrap-3.3.6-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 </head>
 <body>
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">

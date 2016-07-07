@@ -5,7 +5,7 @@
 <head>
     <title>Registration</title>
     <link href="../css/starter-template.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/bootstrap-3.3.6-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 </head>
 <body>
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -92,7 +92,7 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="../css/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+<script src="../bootstrap/js/bootstrap.min.js"></script>
 
 <script aria-hidden="true" type="application/adlite" id="adlite_id_fknghnkgncdocekndckeeklpkjgickgc"
         style="display: none;"></script>

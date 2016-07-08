@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <script src="../script/users_script.js"></script>
+    <script src="../js/users_script.js"></script>
     <link href="../css/starter-template.css" rel="stylesheet">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <title>Title</title>
@@ -91,23 +91,23 @@
                         <form id="user_form" method="post">
                             <input type="text" name="id" hidden>
                             <div class="form-group">
-                                <label for="firstName">First Name</label>
+                                <label for="firstName">First Name:</label>
                                 <input type="text" class="form-control" id="firstName" name="firstName"/>
                             </div>
                             <div class="form-group">
-                                <label for="lastName">Last Name</label>
+                                <label for="lastName">Last Name:</label>
                                 <input type="text" class="form-control" id="lastName" name="lastName"/>
                             </div>
                             <div class="form-group">
-                                <label for="login">Login</label>
+                                <label for="login">Login:</label>
                                 <input type="text" class="form-control" id="login" name="login"/>
                             </div>
                             <div class="form-group">
-                                <label for="email">Email</label>
+                                <label for="email">Email:</label>
                                 <input type="text" class="form-control" id="email" name="email"/>
                             </div>
                             <div class="form-group">
-                                <label for="role">Role</label>
+                                <label for="role">Role:</label>
                                 <select class="form-control" id="role" name="role">
                                     <option>ROLE_USER</option>
                                     <option>ROLE_ADMIN</option>
@@ -138,25 +138,27 @@
             </div>
             <br/>
         </div>
-        <div class="panel-heading" align="left"><label>Admin log:</label></div>
-        <div class="panel-body">
-            <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading" align="left"><label>Admin log:</label></div>
+            <div class="panel-body">
                 <div class="row">
-                    <div class="col-md-5">
-                        <c:choose>
-                            <c:when test="${not empty error}">
-                                <p>Error, ${error}!</p>
-                            </c:when>
-                            <c:when test="${not empty backup}">
-                                <p>Backup was ${backup}</p>
-                            </c:when>
-                            <c:when test="${not empty restore}">
-                                <p>Restore was ${restore}</p>
-                            </c:when>
-                            <c:otherwise>
-                                <p></p>
-                            </c:otherwise>
-                        </c:choose>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <c:choose>
+                                <c:when test="${not empty error}">
+                                    <p>Error, ${error}!</p>
+                                </c:when>
+                                <c:when test="${not empty backup}">
+                                    <p>Backup was ${backup}</p>
+                                </c:when>
+                                <c:when test="${not empty restore}">
+                                    <p>Restore was ${restore}</p>
+                                </c:when>
+                                <c:otherwise>
+                                    <p></p>
+                                </c:otherwise>
+                            </c:choose>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -43,14 +43,21 @@
             <div class="panel-heading" align="left"><label>Welcome to StockManager</label></div>
             <div class="panel-body">
                 <div class="row">
-                    <form name='loginForm' action="<c:url value='/' />" method='POST' class="form-inline">
-                        <label for="focusedInput">User:</label>
-                        <input type='text' name='username' value="admin" class="form-control">
-                        <label for="focusedInput">Password:</label>
-                        <input type='password' name='password' value="admin" class="form-control" id="focusedInput"/>
-                        <input name="submit" type="submit" value="Login"/>
-                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                    </form>
+                    <c:choose>
+                        <c:when test="${pageContext.request.userPrincipal.authenticated}">You are logged in as
+                            <b>${pageContext.request.userPrincipal.name}</b></c:when>
+                        <c:otherwise>
+                            <form name='loginForm' action="<c:url value='/' />" method='POST' class="form-inline">
+                                <label for="focusedInput">User:</label>
+                                <input type='text' name='username' value="admin" class="form-control">
+                                <label for="focusedInput">Password:</label>
+                                <input type='password' name='password' value="admin" class="form-control"
+                                       id="focusedInput"/>
+                                <input name="submit" type="submit" value="Login"/>
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                            </form>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
         </div>

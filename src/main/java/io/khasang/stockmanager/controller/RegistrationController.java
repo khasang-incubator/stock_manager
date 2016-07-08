@@ -32,8 +32,9 @@ public class RegistrationController {
     public String addUser(Model model) {
         model.addAttribute("user", new User());
         Map<String,String> roles = new LinkedHashMap<>();
-        roles.put("ROLE_SUPERADMIN", "SUPERADMIN");
         roles.put("ROLE_USER", "USER");
+        roles.put("ROLE_SUPERADMIN", "SUPERADMIN");
+        roles.put("ROLE_ADMIN", "ADMIN");
         model.addAttribute("roleList", roles);
         return "add_user";
     }
@@ -42,8 +43,9 @@ public class RegistrationController {
     public String addUser(@Valid @ModelAttribute("user") User user, Errors errors, Model model) {
         if (errors.hasErrors()) {
             Map<String,String> roles = new LinkedHashMap<>();
-            roles.put("ROLE_SUPERADMIN", "SUPERADMIN");
             roles.put("ROLE_USER", "USER");
+            roles.put("ROLE_SUPERADMIN", "SUPERADMIN");
+            roles.put("ROLE_ADMIN", "ADMIN");
             model.addAttribute("roleList", roles);
             return "add_user";
         } else {

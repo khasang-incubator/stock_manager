@@ -27,10 +27,7 @@ public class AdminController {
     @Autowired
     private UserEditor userEditor;
 
-    @RequestMapping("/")
-    public String hello() {
-        return "hello";
-    }
+
 
     @RequestMapping("/403")
     public String forbidden() {

@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(classes = {WebConfig.class, AppContext.class})
-public class HelloControllerTest {
+public class RegistrationControllerTest {
 
     User userUnsaved;
     User wrongUser;
@@ -54,8 +54,8 @@ public class HelloControllerTest {
     public void shouldProcessRegistration() throws Exception {
         UserDAO mockUserDAO = mock(UserDAO.class);
         when(mockUserDAO.insertToTable(userUnsaved)).thenReturn("successfully insert to table");
-        HelloController helloController = new HelloController(mockUserDAO);
-        MockMvc mockMvc = standaloneSetup(helloController).build();
+        RegistrationController registrationController = new RegistrationController(mockUserDAO);
+        MockMvc mockMvc = standaloneSetup(registrationController).build();
         mockMvc.perform(post("/add_user")
                 .param("firstName", "Dan")
                 .param("lastName", "Smith")

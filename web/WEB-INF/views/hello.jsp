@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>Welcome to StackManager</title>
-    <link href="../css/starter-template.css" rel="stylesheet">
+    <link href="css/starter-template.css" rel="stylesheet">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 </head>
 <body>

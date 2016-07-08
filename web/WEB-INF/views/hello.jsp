@@ -34,32 +34,23 @@
     </div>
 </div>
 <div class="container">
-    <h1>Welcome to stock manager.</h1>
-    <c:choose>
-        <c:when test="${pageContext.request.userPrincipal.authenticated}">You are logged in as <b>${pageContext.request.userPrincipal.name}</b></c:when>
-        <c:otherwise>
-
-            <form name='loginForm'
-                  action="<c:url value='/' />" method='POST'>
-                <table>
-                    <tr>
-                        <td>User:</td>
-                        <td><input type='text' name='username' value="admin"></td>
-                    </tr>
-                    <tr>
-                        <td>Password:</td>
-                        <td><input type='password' name='password' value="admin"/></td>
-                    </tr>
-                    <tr>
-                        <td colspan='2'><input name="submit" type="submit"
-                                               value="submit"/></td>
-                    </tr>
-                </table>
-                <input type="hidden" name="${_csrf.parameterName}"
-                       value="${_csrf.token}"/>
-            </form>
-        </c:otherwise>
-    </c:choose>
-</div>
+    <div class="starter-template">
+        <br>
+        <div class="panel panel-default">
+            <div class="panel-heading" align="left"><label>Welcome to StockManager</label></div>
+            <div class="panel-body">
+                <div class="row">
+                    <form name='loginForm' action="<c:url value='/' />" method='POST'  class="form-inline">
+                        <label for="focusedInput">User:</label>
+                        <input type='text' name='username' value="admin" class="form-control">
+                        <label for="focusedInput">Password:</label>
+                        <input type='password' name='password' value="admin" class="form-control" id="focusedInput"/>
+                        <input name="submit" type="submit" value="Login"/>
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

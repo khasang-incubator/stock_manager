@@ -5,7 +5,6 @@
 <html>
 <head>
     <title>Catalog products</title>
-    // bootstrap
     <link rel="stylesheet" href="../css/starter-template.css">
     <link rel="stylesheet" href="../css/bootstrap-3.3.6-dist/css/bootstrap.min.css">
 </head>
@@ -24,9 +23,9 @@
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="/">Home</a></li>
-                <li class="active"><a href="/admin">Admin</a></li>
+                <li><a href="/admin">Admin</a></li>
                 <li><a href="/desk">Desk</a></li>
-                <li><a href="/products">Goods</a></li>
+                <li class="active"><a href="/products">Goods</a></li>
                 <li><a href="/point">Map</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -41,45 +40,49 @@
 </div>
 <div class="container">
     <div class="starter-template">
+        <br>
         <div class="panel panel-default">
-            <div class="panel-heading" align="left"><label for="focusedInput">Add new product</label></div>
+            <div class="panel-heading" align="left"><label for="focusedInput">Catalog products</label></div>
             <div class="panel-body">
-                <form:form method="post" action="products/add" commandName="product" class="form-inline" >
-                    <div class="form-group" >
-                        <label for="focusedInput">Product:</label>
-                            <form:input path="name" class="form-control" id="focusedInput"/>
+                <div class="row">
+                    <form:form method="post" action="products/add" commandName="product" class="form-inline">
+                        <label for="focusedInput">Add new product:</label>
+                        <form:input path="name" class="form-control" id="focusedInput"/>
                         <label for="focusedInput">Description:</label>
-                            <form:input path="description" class="form-control"/>
-                        <input type="submit" value="Добавить"/>
-                    </div>
-                </form:form>
+                        <form:input path="description" class="form-control"/>
+                        <input type="submit" value="Add"/>
+                    </form:form>
+                </div>
+                <div class="row">
+                    <c:if test="${!empty productList}">
+                        <c:set var="count" scope="page" value="0" />
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>№</th>
+                                <th>Product</th>
+                                <th>Description</th>
+                                <th>Sale place</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach items="${productList}" var="product">
+                                <c:set var="count" scope="page" value="${count + 1}" />
+                                <tr>
+                                    <td>${count}</td>
+                                    <td>${product.name}</td>
+                                    <td>${product.description}</td>
+                                    <td><a href="productsaleplace/${product.id}">Places</a></td>
+                                    <td><a href="products/delete/${product.id}">Delete</a></td>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
+                    </c:if>
+                </div>
             </div>
         </div>
-        <c:if test="${!empty productList}">
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Product</th>
-                    <th>Description</th>
-                    <th>&nbsp;</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${productList}" var="product">
-                    <tr>
-                        <td>${product.id}</td>
-                        <td>${product.name}</td>
-                        <td>${product.description}</td>
-                        <td><a href="products/delete/${product.id}">Delete</a></td>
-                        <td><a href="productsaleplace/${product.id}">Places</a></td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
-        </c:if>
-
-
     </div>
 </div>
 

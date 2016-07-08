@@ -48,33 +48,32 @@
                     <table class="table">
                         <tbody>
                         <tr>
-                            <td>First Name:</td>
+                            <td><label>First Name:</label></td>
                             <td><sf:input path="firstName"/></td>
                             <td><form:errors path="firstName" cssClass="error"></form:errors></td>
                         </tr>
                         <tr>
-                            <td>Last Name:</td>
+                            <td><label>Last Name:</label></td>
                             <td><sf:input path="lastName"/></td>
                             <td><form:errors path="lastName" cssClass="error"></form:errors></td>
                         </tr>
                         <tr>
-                            <td>Email:</td>
+                            <td><label>Email:</label></td>
                             <td><sf:input type="email" path="email"/></td>
                             <td><form:errors path="email" cssClass="error"></form:errors></td>
                         </tr>
                         <tr>
-                            <td>Username:</td>
+                            <td><label>Username:</label></td>
                             <td><sf:input path="login"/></td>
                             <td><form:errors path="login" cssClass="error"></form:errors></td>
                         </tr>
                         <tr>
-                            <td>Password:</td>
+                            <td><label>Password:</label></td>
                             <td><sf:password path="password"/></td>
                             <td><form:errors path="password" cssClass="error"></form:errors></td>
                         </tr>
                         </tr>
                         <tr>
-                            <td>Role:</td>
                             <td><form:select path="role" items="${roleList}"/></td>
                             <td><form:errors path="role" cssClass="error"></form:errors></td>
                         </tr>
@@ -90,11 +89,6 @@
         </div>
     </div>
 </div>
-</div>
-</div>
-</div>
-
-
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->

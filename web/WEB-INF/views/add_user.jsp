@@ -70,8 +70,8 @@
                         </tr>
                         <tr>
                             <td>Role:</td>
-                           <%-- <td><sf:input path="role"/></td>--%>
-                    <td><form:select path="role" items="${roleList}" /></td>>
+                                <%-- <td><sf:input path="role"/></td>--%>
+                            <td><form:select path="role" items="${roleList}"/></td>
                             <td><form:errors path="role" cssClass="error"></form:errors></td>
                         </tr>
                         </tbody>
@@ -85,6 +85,8 @@
             </div>
         </div>
     </div>
+</div>
+</div>
 </div>
 </div>
 

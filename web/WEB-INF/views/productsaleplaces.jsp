@@ -40,9 +40,9 @@
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="/">Home</a></li>
-                <li class="active"><a href="/admin">Admin</a></li>
+                <li><a href="/admin">Admin</a></li>
                 <li><a href="/desk">Desk</a></li>
-                <li><a href="/products">Goods</a></li>
+                <li class="active"><a href="/products">Goods</a></li>
                 <li><a href="/point">Map</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -59,6 +59,7 @@
     <div style="display:none">
         <form:form method="post" action="add" commandName="productSalePlace" class="form-inline" id="formPostPlace">
             <div class="form-group">
+                <form:input path="id" class="form-control" id="idInvForm"/>
                 <form:input path="description" class="form-control" id="descriptionInvForm"/>
                 <form:input path="x" class="form-control" id="xInvForm"/>
                 <form:input path="y" class="form-control" id="yInvForm"/>
@@ -67,8 +68,9 @@
         </form:form>
     </div>
     <div class="starter-template">
-        <div class="panel panel-default">
-            <div class="panel-heading" align="left"><label>sale places</label></div>
+        <br>
+        <div class="panel panel-default" >
+            <div class="panel-heading" align="left"><label>Product:&nbsp;</label><label><h4>${productName}</h4></label></div>
             <div class="panel-body">
                 <div class="row">
                     <div class="col-xs-12" id="map">

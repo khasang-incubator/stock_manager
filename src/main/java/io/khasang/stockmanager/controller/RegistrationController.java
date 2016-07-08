@@ -19,12 +19,12 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @Controller
-public class HelloController {
+public class RegistrationController {
 
     UserDAO userDAO;
 
     @Autowired
-    public HelloController(UserDAO userDAO) {
+    public RegistrationController(UserDAO userDAO) {
         this.userDAO = userDAO;
     }
 

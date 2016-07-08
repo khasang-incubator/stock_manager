@@ -64,10 +64,15 @@ var FORM = {
     },
     togglePassword: function () {
         var password = document.getElementById("password");
+        var passwordLabel = document.getElementById("password-label");
         if (password.style.visibility === "hidden")
             password.style.visibility = "visible";
         else
             password.style.visibility = "hidden";
+        if (passwordLabel.style.visibility === "hidden")
+            passwordLabel.style.visibility = "visible";
+        else
+            passwordLabel.style.visibility = "hidden";
     }
 };
 

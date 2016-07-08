@@ -115,7 +115,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="password">Password</label>
+                                <label for="password" id="password-label" style="visibility: hidden">Password</label>
                                 <input type="text" class="form-control" name="password" id="password"
                                        style="visibility: hidden"/>
                             </div>

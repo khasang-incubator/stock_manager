@@ -34,30 +34,32 @@
     </div>
 </div>
 <div class="container">
-    <h1>Hello</h1>
-    <p>${hello}</p>
-    <form name='loginForm'
-          action="<c:url value='/' />" method='POST'>
+    <h1>Welcome to stock manager.</h1>
+    <c:choose>
+        <c:when test="${pageContext.request.userPrincipal.authenticated}">You are logged in as <b>${pageContext.request.userPrincipal.name}</b></c:when>
+        <c:otherwise>
 
-        <table>
-            <tr>
-                <td>User:</td>
-                <td><input type='text' name='username' value="admin"></td>
-            </tr>
-            <tr>
-                <td>Password:</td>
-                <td><input type='password' name='password' value="admin"/></td>
-            </tr>
-            <tr>
-                <td colspan='2'><input name="submit" type="submit"
-                                       value="submit"/></td>
-            </tr>
-        </table>
-
-        <input type="hidden" name="${_csrf.parameterName}"
-               value="${_csrf.token}"/>
-
-    </form>
+            <form name='loginForm'
+                  action="<c:url value='/' />" method='POST'>
+                <table>
+                    <tr>
+                        <td>User:</td>
+                        <td><input type='text' name='username' value="admin"></td>
+                    </tr>
+                    <tr>
+                        <td>Password:</td>
+                        <td><input type='password' name='password' value="admin"/></td>
+                    </tr>
+                    <tr>
+                        <td colspan='2'><input name="submit" type="submit"
+                                               value="submit"/></td>
+                    </tr>
+                </table>
+                <input type="hidden" name="${_csrf.parameterName}"
+                       value="${_csrf.token}"/>
+            </form>
+        </c:otherwise>
+    </c:choose>
 </div>
 </body>
 </html>

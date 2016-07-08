@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Registration</title>
@@ -26,8 +27,18 @@
                 <li><a href="/admin">Admin</a></li>
                 <li><a href="/desk">Desk</a></li>
                 <li><a href="/products">Goods</a></li>
+                <li><a href="/point">Map</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <c:choose>
+                    <c:when test="${pageContext.request.userPrincipal.authenticated}">
+                        <li><a href="/admin/backup">Backup</a></li>
+                        <li><a href="/admin/restore">Restore</a></li>
+                    </c:when>
+                </c:choose>
+                <c:if test="${pageContext.request.userPrincipal.name != null}">
+                    <li><a href="javascript:logoutSubmit()">Logout</a></li>
+                </c:if>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
@@ -70,7 +81,6 @@
                         </tr>
                         <tr>
                             <td>Role:</td>
-                                <%-- <td><sf:input path="role"/></td>--%>
                             <td><form:select path="role" items="${roleList}"/></td>
                             <td><form:errors path="role" cssClass="error"></form:errors></td>
                         </tr>

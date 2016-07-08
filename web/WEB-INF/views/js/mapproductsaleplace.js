@@ -20,6 +20,14 @@ function init() {
         document.getElementById('submitInvForm').click();
     }
 
+    editPlaceClickFunc = function () {
+        document.getElementById('idInvForm').value = document.getElementById('idBalloon').value;
+        document.getElementById('descriptionInvForm').value = document.getElementById('descriptionBalloon').value;
+        document.getElementById('xInvForm').value = coords[0].toPrecision(6);
+        document.getElementById('yInvForm').value = coords[1].toPrecision(6);
+        document.getElementById('submitInvForm').click();
+    }
+
     myMap.events.add('click', function (e) {
         coords = e.get('coords');
         myMap.balloon.open(coords, {
@@ -34,18 +42,19 @@ function init() {
 
     });
 
-    showPlace = function (x,y,place,id) {
+    showPlace = function (x, y, place, id) {
         apostrof = "'";
-        var coords = [x, y];
+        coords = [x, y];
         myMap.balloon.open(coords, {
             contentHeader: 'Place:',
-            contentBody: place +
+            contentBody: '<input type="text" size="40" value="' + place + '"  id="descriptionBalloon">' +
             '<p>Coordinates: ' + [
                 coords[0].toPrecision(6),
                 coords[1].toPrecision(6)
             ].join(', ') + '</p>' +
-            '<span id="balloon' + coords[0] + '"><button onclick="location.href=' + apostrof + 'delete/' +
-             + id + apostrof+ '">Delete</button></span>'
+            '<span id="balloon' + coords[0] + '"><button onclick="editPlaceClickFunc()">Save</button>&nbsp;&nbsp;&nbsp;' +
+            '<button onclick="location.href=' + apostrof + 'delete/' + +id + apostrof + '">Delete</button></span>' +
+            '<div style="display:none"><input type="text" value="' + id + '"  id="idBalloon"></div>'
         });
     };
 }

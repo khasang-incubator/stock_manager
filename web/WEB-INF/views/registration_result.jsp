@@ -33,8 +33,17 @@
     </div>
 </div>
 <div class="container">
-    <h1>Registration result:</h1>
-    <p>${result}</p>
+    <div class="starter-template">
+        <br>
+        <div class="panel panel-default">
+            <div class="panel-heading" align="left"><label>Registration result</label></div>
+            <div class="panel-body">
+                <div class="row">
+                    <p>${result}</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

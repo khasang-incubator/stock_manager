@@ -106,6 +106,15 @@
             </div>
         </div>
     </div>
+    <footer class="footer">
+        <div class="container">
+            <hr/>
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4">
+                <p style="text-align: center;">&copy; Stock-Manager</p>
+            </div>
+        </div>
+    </footer>
 </div>
 
 </body>

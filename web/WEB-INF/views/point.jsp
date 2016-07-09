@@ -68,14 +68,6 @@
     </div>
     <div class="col-lg-2"></div>
 </div>
-<div id="footer" class="col-lg-12">
-    <hr/>
-    <div class="col-lg-4"></div>
-    <div class="col-lg-4">
-        <p style="text-align: center;">&copy; Stock-Manager</p>
-    </div>
-    <div class="col-lg-4"></div>
-</div>
 
 <button ng-click="setLocation()">ADDDDD SAVE</button>
 <table ng-repeat="loc in locations">

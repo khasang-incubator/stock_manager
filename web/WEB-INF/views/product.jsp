@@ -54,7 +54,7 @@
                 </div>
                 <div class="row">
                     <c:if test="${!empty productList}">
-                        <c:set var="count" scope="page" value="0" />
+                        <c:set var="count" scope="page" value="0"/>
                         <table class="table table-hover">
                             <thead>
                             <tr>
@@ -67,7 +67,7 @@
                             </thead>
                             <tbody>
                             <c:forEach items="${productList}" var="product">
-                                <c:set var="count" scope="page" value="${count + 1}" />
+                                <c:set var="count" scope="page" value="${count + 1}"/>
                                 <tr>
                                     <td>${count}</td>
                                     <td>${product.name}</td>
@@ -84,6 +84,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>

@@ -36,6 +36,9 @@ public class AdminController {
     @RequestMapping("/admin")
     public String changeRole(Model model) {
         model.addAttribute("users", userDAO.getAll());
+
+
+
         return "admin";
     }
 

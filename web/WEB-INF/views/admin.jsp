@@ -127,12 +127,6 @@
                             </div>
                             <button class="btn btn-default" type="SUBMIT">Submit</button>
                         </form>
-                        <c:url value="/logout" var="logoutUrl"/>
-                        <form action="${logoutUrl}" method="post" id="logoutForm">
-                            <input type="hidden"
-                                   name="${_csrf.parameterName}"
-                                   value="${_csrf.token}"/>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -166,5 +160,9 @@
     </div>
 </div>
 </div>
+<c:url value="/logout" var="logoutUrl"/>
+<form action="${logoutUrl}" method="post" id="logoutForm">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+</form>
 </body>
 </html>

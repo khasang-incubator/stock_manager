@@ -11,6 +11,7 @@
     <!-- yandex map -->
     <script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
     <script src="/js/mapproductsaleplace.js" type="text/javascript"></script>
+    <script src="../js/users_script.js"></script>
     <style>
         #map {
             width: 100%;
@@ -77,8 +78,9 @@
     </div>
     <div class="starter-template">
         <br>
-        <div class="panel panel-default" >
-            <div class="panel-heading" align="left"><label>Product:&nbsp;</label><label><h4>${productName}</h4></label></div>
+        <div class="panel panel-default">
+            <div class="panel-heading" align="left"><label>Product:&nbsp;</label><label><h4>${productName}</h4></label>
+            </div>
             <div class="panel-body">
                 <div class="row">
                     <div class="col-xs-12" id="map">
@@ -88,7 +90,8 @@
                     <c:forEach items="${productSalePlaceList}" var="productSalePlace">
                         <div class="row">
                             <div class="col-xs-12">
-                                <a href="javascript:showPlace(${productSalePlace.x},${productSalePlace.y},'${productSalePlace.description}',${productSalePlace.id})" class="list-group-item place-content" id="#set-balloon">
+                                <a href="javascript:showPlace(${productSalePlace.x},${productSalePlace.y},'${productSalePlace.description}',${productSalePlace.id})"
+                                   class="list-group-item place-content" id="#set-balloon">
                                     <div class="place-content bg-alt">
                                         <dl class="dl-horizontal">
                                             <dt>Place:</dt>
@@ -116,6 +119,9 @@
         </div>
     </footer>
 </div>
-
+<c:url value="/logout" var="logoutUrl"/>
+<form action="${logoutUrl}" method="post" id="logoutForm">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+</form>
 </body>
 </html>

@@ -7,35 +7,9 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css" type="text/css" media="all">
     <script src="../../bootstrap/js/bootstrap.min.js"></script>
-
     <link href="css/starter-template.css" rel="stylesheet">
-
-    <!--        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Montserrat:400,700|Cardo:400,400italic,700">
-
-            <link rel="stylesheet" href="../../css/b&w/style.default.css" id="theme-stylesheet">
-             ekko lightbox
-            <link rel="stylesheet" href="../../css/b&w/ekko-lightbox.css">
-             Custom stylesheet - for your changes
-            <link rel="stylesheet" href="../../css/b&w/custom.css">-->
-    <!-- Favicon-->
-    <!--<link rel="shortcut icon" href="favicon.png">-->
-
-    <script src="../../js/availableStateProject.js">
-    </script>
-
-    <!--        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-            <script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
-             Bootstrap CDN
-            <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-             jQuery Cookie - For Demo Purpose
-            <script src="../../js/b&w/jquery.cookie.js"></script>
-             Lightbox
-            <script src="../../js/b&w/ekko-lightbox.js"></script>
-             Sticky + Scroll To scripts for navbar
-            <script src="../../js/b&w/jquery.sticky.js"></script>
-            <script src="../../js/b&w/jquery.scrollTo.min.js"></script>
-             main script
-            <script src="../../js/b&w/front.js"></script>-->
+    <script src="../../js/availableStateProject.js"></script>
+    <script src="../js/users_script.js"></script>
 </head>
 <body>
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -350,7 +324,10 @@
             </div>
         </div>
     </div>
-
 </div>
+<c:url value="/logout" var="logoutUrl"/>
+<form action="${logoutUrl}" method="post" id="logoutForm">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+</form>
 </body>
 </html>

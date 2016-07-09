@@ -47,36 +47,35 @@
         </div><!--/.nav-collapse -->
     </div>
 </div>
-<div id="header" class="col-lg-12">
-    <div class="col-lg-4">
-        <button type="button" class="btn btn-link">Назад</button>
-    </div>
-    <div class="col-lg-4">
-    </div>
-    <div class="col-lg-4"></div>
-</div>
-<div id="container" class="col-lg-12">
-    <div class="col-lg-2">
-    </div>
-    <div id="map" class="col-lg-4" style="min-width: 320px; min-height: 500px"></div>
-    <div class="col-lg-4">
-        <div class="col-lg-12 block panel-body">
-            <h2>Название: Наша дача</h2>
+<div class="container">
+    <div class="starter-template">
+        <br/>
+        <div class="panel panel-default">
+            <div class="panel-heading" align="left"><label>Название: Наша дача</label></div>
+            <div class="panel-body">
+                <div class="row">
+                    <div id="map" style="min-width: 320px; min-height: 500px"></div>
+                </div>
+                <div class="row">
+                    Адрес: г. Москва, ул. Шарикоподшипникова, д. 12
+                </div>
+                <div class="row">
+                    <button ng-click="setLocation()">ADD SAVE</button>
+                    <table ng-repeat="loc in locations">
+                        <tr>
+                            <td>{{loc.x}}</td>
+                            <td>{{loc.y}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
-        <div class="col-lg-12 block panel-body">
-            <h4>Адрес: г. Москва, ул. Шарикоподшипникова, д. 12</h4>
-        </div>
+
     </div>
-    <div class="col-lg-2"></div>
 </div>
 
-<button ng-click="setLocation()">ADDDDD SAVE</button>
-<table ng-repeat="loc in locations">
-    <tr>
-        <td>{{loc.x}}</td>
-        <td>{{loc.y}}</td>
-    </tr>
-</table>
+
+</body>
 <c:url value="/logout" var="logoutUrl"/>
 <form action="${logoutUrl}" method="post" id="logoutForm">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>

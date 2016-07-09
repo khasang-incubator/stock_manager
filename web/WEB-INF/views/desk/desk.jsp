@@ -275,8 +275,8 @@
                         </form>
                     </div>
                 </div>
+                <br/>
                 <div class="row">
-
                     <!--VIEW PROJECTS–PRODUCTS BLOCK-->
                     <div class="col-md-12">
                         <div class="table-responsive">

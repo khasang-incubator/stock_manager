@@ -46,41 +46,6 @@
     <div class="starter-template">
         <br/>
         <div class="panel panel-default">
-            <div class="panel-heading" align="left"><label>Registered Users:</label></div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <table class="table table-striped table-hover" id="users_table">
-                            <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Имя</th>
-                                <th>Фамилия</th>
-                                <th>Логин</th>
-                                <th>Email</th>
-                                <th>Роль</th>
-                                <th>Удаление</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <c:forEach items="${users}" var="users">
-                                <tr>
-                                    <td class="id">${users.id}</td>
-                                    <td class="firstName">${users.firstName}</td>
-                                    <td class="lastName">${users.lastName}</td>
-                                    <td class="login">${users.login}</td>
-                                    <td class="email">${users.email}</td>
-                                    <td class="role">${users.role}</td>
-                                    <td><a href="/admin/delete?id=${users.id}">X</a></td>
-                                </tr>
-                            </c:forEach>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="panel panel-default">
             <div class="panel-heading" align="left"><label>Form for registration or update users:</label></div>
             <div class="panel-body">
                 <div class="row">
@@ -131,6 +96,41 @@
                 </div>
             </div>
             <br/>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" align="left"><label>Registered Users:</label></div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-striped table-hover" id="users_table">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Имя</th>
+                                <th>Фамилия</th>
+                                <th>Логин</th>
+                                <th>Email</th>
+                                <th>Роль</th>
+                                <th>Удаление</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach items="${users}" var="users">
+                                <tr>
+                                    <td class="id">${users.id}</td>
+                                    <td class="firstName">${users.firstName}</td>
+                                    <td class="lastName">${users.lastName}</td>
+                                    <td class="login">${users.login}</td>
+                                    <td class="email">${users.email}</td>
+                                    <td class="role">${users.role}</td>
+                                    <td><a href="/admin/delete?id=${users.id}">X</a></td>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="panel panel-default">
             <div class="panel-heading" align="left"><label>Admin log:</label></div>

@@ -70,7 +70,7 @@
             <div class="starter-template">
                 <br>
                 <div class="panel panel-default">
-                    <div class="panel-heading" align="left"><label>Projects</label></div>
+                    <div class="panel-heading" align="left"><label>Add new project</label></div>
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12"><!--
@@ -217,8 +217,9 @@
                     <!-------------SEPARATOR--------------->
                     <p/>
                     <div class="panel panel-default">
-                        <div class="panel-heading" align="left"><label>Projects–Products</label></div>
+                        <div class="panel-heading" align="left"><label>Add new project–product</label></div>
                         <br>
+                        <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12">
                                 <!--ADD PROJECT–PRODUCT BLOCK-->
@@ -330,6 +331,7 @@
 
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

@@ -6,7 +6,7 @@
     <link href="../css/starter-template.css" rel="stylesheet">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <meta http-equiv="refresh" content="3;/"/>
-    <script src="../js/users_script.js"></script>
+    <script src="js/logout.js"></script>
 </head>
 <body>
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">

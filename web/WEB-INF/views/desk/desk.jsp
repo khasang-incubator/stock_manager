@@ -5,11 +5,13 @@
 <head>
     <title>Desk</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css" type="text/css" media="all">
-    <script src="../../bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type="text/css" media="all">
+    <script src="bootstrap/js/bootstrap.min.js"></script>
     <link href="css/starter-template.css" rel="stylesheet">
     <script src="../../js/availableStateProject.js"></script>
-    <script src="../js/users_script.js"></script>
+    <script src="js/logout.js"></script>
+    <link href="../css/starter-template.css" rel="stylesheet">
 </head>
 <body>
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">

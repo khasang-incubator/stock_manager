@@ -7,7 +7,7 @@
     <title>Catalog products</title>
     <link rel="stylesheet" href="../css/starter-template.css">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-    <script src="../js/users_script.js"></script>
+    <script src="js/logout.js"></script>
 </head>
 <body>
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">

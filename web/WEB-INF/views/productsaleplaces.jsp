@@ -11,7 +11,7 @@
     <!-- yandex map -->
     <script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
     <script src="/js/mapproductsaleplace.js" type="text/javascript"></script>
-    <script src="../js/users_script.js"></script>
+    <script src="js/logout.js"></script>
     <style>
         #map {
             width: 100%;

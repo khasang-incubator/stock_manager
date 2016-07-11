@@ -16,7 +16,7 @@
     <link rel="icon" type="image/jpg" href="http://www.amuzzz.ru/uploads/posts/2012-10/13502811621168_13.jpeg"/>
     <link href="../css/starter-template.css" rel="stylesheet">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-    <script src="../js/users_script.js"></script>
+    <script src="js/logout.js"></script>
 </head>
 <body ng-controller="pointCtrl" data-ng-init="getLocation()">
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">

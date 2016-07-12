@@ -6,8 +6,12 @@
 <head>
     <title>Catalog products</title>
     <link rel="stylesheet" href="../css/starter-template.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <script src="js/logout.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/products.js"></script>
+
 </head>
 <body>
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -73,7 +77,9 @@
                                     <td>${count}</td>
                                     <td>${product.name}</td>
                                     <td>${product.description}</td>
-                                    <td><a href="productsaleplace/${product.id}">Places</a></td>
+                                    <td><a href="productsaleplace/${product.id}">
+                                        <div class="circle" id="${product.id}"></div>
+                                    </a></td>
                                     <td><a href="products/delete/${product.id}">Delete</a></td>
                                 </tr>
                             </c:forEach>

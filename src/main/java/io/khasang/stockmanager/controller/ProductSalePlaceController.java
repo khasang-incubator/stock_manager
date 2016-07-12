@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class ProductSalePlaceController {
@@ -40,6 +37,12 @@ public class ProductSalePlaceController {
     public String deleteProduct(@PathVariable("id") Long id) {
         productSalePlaceService.delete(id);
         return "redirect:/productsaleplace/"+ productId;
+    }
+
+    @RequestMapping("/productsaleplace/get/{productId}")
+    @ResponseBody
+    public String getProductSalePlaceQuantityByProductId(@PathVariable("productId") Long productId) {
+        return String.valueOf(productSalePlaceService.getAllByProductId(productId).size());
     }
 
 

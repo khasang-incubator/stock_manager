@@ -78,7 +78,9 @@
                                     <td>${product.name}</td>
                                     <td>${product.description}</td>
                                     <td><a href="productsaleplace/${product.id}">
-                                        <div class="circle" id="${product.id}"></div>
+                                        <p style="float: left; margin-right:5px;"><img src="img/place.png" width="20"
+                                                                                       height="30"></p>
+                                        <div class="place" id="${product.id}"></div>
                                     </a></td>
                                     <td><a href="products/delete/${product.id}">Delete</a></td>
                                 </tr>

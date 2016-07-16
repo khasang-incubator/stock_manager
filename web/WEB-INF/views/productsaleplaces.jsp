@@ -42,21 +42,12 @@
             <ul class="nav navbar-nav">
                 <li><a href="/">Home</a></li>
                 <li><a href="/admin">Admin</a></li>
+                <li><a href="/add_user">Registration</a></li>
                 <li><a href="/desk">Desk</a></li>
                 <li class="active"><a href="/products">Goods</a></li>
                 <li><a href="/point">Map</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="/admin/backup">Backup</a></li>
-                <li><a href="/admin/restore">Restore</a></li>
-                <c:choose>
-                    <c:when test="${pageContext.request.userPrincipal.authenticated}">
-                        <li><a href="/admin/backup">Backup</a></li>
-                        <li><a href="/admin/restore">Restore</a></li>
-                    </c:when>
-                    <c:otherwise>
-                    </c:otherwise>
-                </c:choose>
                 <c:if test="${pageContext.request.userPrincipal.name != null}">
                     <li><a href="javascript:logoutSubmit()">Logout</a></li>
                 </c:if>

@@ -1,9 +1,11 @@
 package io.khasang.stockmanager.controller;
 
 
+import io.khasang.stockmanager.dao.UserDAO;
 import io.khasang.stockmanager.entity.Product;
 import io.khasang.stockmanager.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,10 +21,14 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
+    @Autowired
+    private UserDAO userDAO;
+
     @RequestMapping("/products")
     public String listProducts(Map<String, Object> map) {
+        Long userId = userDAO.getUserIdByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
         map.put("product", new Product());
-        map.put("productList", productService.getAll());
+        map.put("productList", productService.getAll(userId));
         return "product";
     }
 
@@ -34,6 +40,8 @@ public class ProductController {
     @RequestMapping(value = "products/add", method = RequestMethod.POST)
     public String addProduct(@ModelAttribute("product") Product product,
                              BindingResult result) {
+        Long userId = userDAO.getUserIdByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
+        product.setUserId(userId);
         productService.saveProduct(product);
         return "redirect:/products";
     }

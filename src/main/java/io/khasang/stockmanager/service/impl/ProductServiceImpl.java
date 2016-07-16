@@ -41,8 +41,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Transactional
     @Override
-    public List<Product> getAll() {
-        return dao.getAll();
+    public List<Product> getAll(Long userId) {
+        return dao.getAll(userId);
     }
 
     @Transactional

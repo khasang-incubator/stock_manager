@@ -34,8 +34,10 @@ public class ProductDAOImpl implements ProductDAO {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Product> getAll() {
-        return sessionFactory.getCurrentSession().createQuery("from Product").list();
+    public List<Product> getAll(Long userId) {
+        return sessionFactory.getCurrentSession().createQuery("from Product " +
+                "where user_id = :userId")
+                .setParameter("userId", userId).list();
     }
 
     @Override

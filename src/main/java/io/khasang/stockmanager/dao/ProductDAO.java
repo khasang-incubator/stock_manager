@@ -12,7 +12,7 @@ public interface ProductDAO {
     void delete(Product product);
 
     void deleteAll();
-    List<Product> getAll();
+    List<Product> getAll(Long userId);
 
     Product getById(Long id);
 }

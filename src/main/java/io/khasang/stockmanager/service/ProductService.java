@@ -14,7 +14,7 @@ public interface ProductService {
 
     void delete(Long id);
 
-    List<Product> getAll();
+    List<Product> getAll(Long userId);
 
     Product getById(Long id);
 

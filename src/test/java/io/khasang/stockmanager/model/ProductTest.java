@@ -39,24 +39,24 @@ public class ProductTest {
         product.setUserId(1L);
         productDAO.save(product);
         Assert.assertNotNull(product.getId());
-        productDAO.getAll();
+        productDAO.getAll(44L);
     }
 
     @Test
     @ExpectedDatabase(value = "/productTest-delete.xml", assertionMode = DatabaseAssertionMode.NON_STRICT)
     public void deleteTest() {
-        productDAO.delete(productDAO.getAll().get(0));
-        Assert.assertEquals(0, productDAO.getAll().size());
+        productDAO.delete(productDAO.getAll(44L).get(0));
+        Assert.assertEquals(0, productDAO.getAll(44L).size());
     }
 
     @Test
     public void getByIdTest() {
-        Product product = productDAO.getById(productDAO.getAll().get(0).getId());
+        Product product = productDAO.getById(productDAO.getAll(44L).get(0).getId());
         Assert.assertEquals("Test", product.getName());
     }
 
     @Test
     public void getAll() {
-        Assert.assertEquals(1, productDAO.getAll().size());
+        Assert.assertEquals(1, productDAO.getAll(44L).size());
     }
 }

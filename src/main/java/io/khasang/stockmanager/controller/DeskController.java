@@ -1,11 +1,13 @@
 package io.khasang.stockmanager.controller;
 
+import io.khasang.stockmanager.dao.UserDAO;
 import io.khasang.stockmanager.dao.impl.ProjectProductServiceImpl;
 import io.khasang.stockmanager.dao.impl.ProjectServiceImpl;
 import io.khasang.stockmanager.entity.Project;
 import io.khasang.stockmanager.entity.ProjectProduct;
 import io.khasang.stockmanager.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -25,11 +27,15 @@ public class DeskController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private UserDAO userDAO;
+
     // general io.khasang.stockmanager.dao.desk
     @RequestMapping("/desk")
     public String desk(Model model) {
+        Long userId = userDAO.getUserIdByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
         model.addAttribute("projects", projectServiceImpl.getProjects());
-        model.addAttribute("products", productService.getAll());
+        model.addAttribute("products", productService.getAll(userId));
         model.addAttribute("users", projectServiceImpl.getUsers());
         model.addAttribute("projectsProducts", projectProductServiceImpl.getProjectProducts());
         return "desk/desk";

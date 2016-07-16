@@ -33,10 +33,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").access("hasRole('ROLE_SUPERADMIN')")
                 .antMatchers("/confidential/**").access("hasRole('ROLE_SUPERADMIN')")
                 .antMatchers("/hello/**").access("hasRole('ROLE_SUPERADMIN')")
-                .antMatchers("/products/**").access("hasRole('ROLE_USER')")
-                .antMatchers("/products/**").access("hasRole('ROLE_SUPERADMIN')")
-                .antMatchers("/productsaleplace/**").access("hasRole('ROLE_USER')")
-                .antMatchers("/productsaleplace/**").access("hasRole('ROLE_SUPERADMIN')")
+                .antMatchers("/products/**").access("hasAnyRole('ROLE_USER','ROLE_SUPERADMIN')")
 //                .antMatchers("/add_user/**").access("hasRole('ROLE_SUPERADMIN')")
                 .and().formLogin().loginPage("/").failureUrl("/?error").defaultSuccessUrl("/", false)
         .and().csrf().disable();

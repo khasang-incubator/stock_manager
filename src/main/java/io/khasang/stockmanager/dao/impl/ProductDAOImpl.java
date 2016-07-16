@@ -25,11 +25,15 @@ public class ProductDAOImpl implements ProductDAO {
     @Override
     public void delete(Product product) {
         sessionFactory.getCurrentSession().delete(product);
+        sessionFactory.getCurrentSession().createQuery("DELETE FROM ProductSalePlace " +
+                "where product_id = :productId")
+                .setParameter("productId", product.getId()).executeUpdate();
     }
 
     @Override
     public void deleteAll() {
         sessionFactory.getCurrentSession().createQuery("DELETE FROM Product").executeUpdate();
+        sessionFactory.getCurrentSession().createQuery("DELETE FROM ProductSalePlace").executeUpdate();
     }
 
     @Override

@@ -21,6 +21,14 @@
                 <li id="pointMenuItem"><a href="/point">Map</a></li>
                 <li id="aboutMenuItem"><a href="#about">About</a></li>
                 <li id="contactMenuItem"><a href="#contact">Contact</a></li>
+                <c:if test="${param.activeId} eq 'adminMenuItem'}">
+                    <c:choose>
+                        <c:when test="${pageContext.request.userPrincipal.authenticated}">
+                            <li><a href="/admin/backup">Backup</a></li>
+                            <li><a href="/admin/restore">Restore</a></li>
+                        </c:when>
+                    </c:choose>
+                </c:if>
                 <c:if test="${pageContext.request.userPrincipal.name != null}">
                     <li><a href="javascript:logoutSubmit()">Logout</a></li>
                 </c:if>
@@ -33,9 +41,9 @@
         var doc = document;
         var activeMenuItem = doc.getElementById("${param.activeId}");
         activeMenuItem.className = "active";
-        alert("active id: ${param.activeId}");
     }
     ;
+    setActive();
 </script>
 
 

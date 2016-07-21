@@ -28,7 +28,7 @@ public class ProductController {
     public String listProducts(Map<String, Object> map) {
         Long userId = userDAO.getUserIdByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
         map.put("product", new Product());
-        map.put("productList", productService.getAll(userId));
+        map.put("productList", productService.getAllByUser(userId));
         return "product";
     }
 

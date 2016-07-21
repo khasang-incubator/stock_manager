@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collections;
 import java.util.List;
 
 
@@ -24,6 +25,7 @@ public class ProductDAOImpl implements ProductDAO {
 
     @Override
     public void delete(Product product) {
+        if (product == null) return;
         sessionFactory.getCurrentSession().delete(product);
         sessionFactory.getCurrentSession().createQuery("DELETE FROM ProductSalePlace " +
                 "where product_id = :productId")
@@ -38,7 +40,9 @@ public class ProductDAOImpl implements ProductDAO {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Product> getAll(Long userId) {
+    public List<Product> getAllByUser(Long userId) {
+        if (userId == null)
+            return Collections.emptyList();
         return sessionFactory.getCurrentSession().createQuery("from Product " +
                 "where user_id = :userId")
                 .setParameter("userId", userId).list();

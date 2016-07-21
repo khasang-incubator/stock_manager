@@ -42,7 +42,7 @@ public class UserDAOImpl implements UserDAO {
     public Long getUserIdByLogin(String name) {
         try (Session session = sessionFactory.openSession()){
             User user = (User) session.createCriteria(User.class).add(Restrictions.eq("login", name)).uniqueResult();
-            return user.getId();
+            return user == null ? null : user.getId();
         } catch (HibernateException e) {
             e.printStackTrace();
             throw new RuntimeException("Id not found.");

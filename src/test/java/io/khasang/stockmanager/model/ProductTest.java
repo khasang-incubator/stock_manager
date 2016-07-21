@@ -39,24 +39,36 @@ public class ProductTest {
         product.setUserId(1L);
         productDAO.save(product);
         Assert.assertNotNull(product.getId());
-        productDAO.getAll(44L);
+        productDAO.getAllByUser(1L);
     }
 
     @Test
     @ExpectedDatabase(value = "/productTest-delete.xml", assertionMode = DatabaseAssertionMode.NON_STRICT)
     public void deleteTest() {
-        productDAO.delete(productDAO.getAll(44L).get(0));
-        Assert.assertEquals(0, productDAO.getAll(44L).size());
+        productDAO.delete(productDAO.getAllByUser(1L).get(0));
+        Assert.assertEquals(0, productDAO.getAllByUser(1L).size());
+    }
+
+    @Test
+    @ExpectedDatabase(value = "/productTest-delete.xml", assertionMode = DatabaseAssertionMode.NON_STRICT)
+    public void deleteByNullUserIdTest() {
+        productDAO.delete(null);
+        Assert.assertEquals(1, productDAO.getAllByUser(1L).size());
     }
 
     @Test
     public void getByIdTest() {
-        Product product = productDAO.getById(productDAO.getAll(44L).get(0).getId());
+        Product product = productDAO.getById(productDAO.getAllByUser(1L).get(0).getId());
         Assert.assertEquals("Test", product.getName());
     }
 
     @Test
-    public void getAll() {
-        Assert.assertEquals(1, productDAO.getAll(44L).size());
+    public void getAllByUserTest() {
+        Assert.assertEquals(1, productDAO.getAllByUser(1L).size());
+    }
+
+    @Test
+    public void getAllByNullUserTest() {
+        Assert.assertEquals(0, productDAO.getAllByUser(null).size());
     }
 }

@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -31,24 +29,16 @@ public class RegistrationController {
     @RequestMapping(value = "/add_user", method = GET)
     public String addUser(Model model) {
         model.addAttribute("user", new User());
-        Map<String,String> roles = new LinkedHashMap<>();
-        roles.put("ROLE_USER", "USER");
-        roles.put("ROLE_SUPERADMIN", "SUPERADMIN");
-        roles.put("ROLE_ADMIN", "ADMIN");
-        model.addAttribute("roleList", roles);
         return "add_user";
     }
 
     @RequestMapping(value = "/add_user", method = POST)
-    public String addUser(@Valid @ModelAttribute("user") User user, Errors errors, Model model) {
+    public String addUser(@Valid @ModelAttribute("user") User user, Errors errors) {
         if (errors.hasErrors()) {
-            Map<String,String> roles = new LinkedHashMap<>();
-            roles.put("ROLE_USER", "USER");
-            roles.put("ROLE_SUPERADMIN", "SUPERADMIN");
-            roles.put("ROLE_ADMIN", "ADMIN");
-            model.addAttribute("roleList", roles);
             return "add_user";
         } else {
+            // on this page we can create only ROLE_USER privileged users
+            user.setRole("ROLE_USER");
             String result = userDAO.insertToTable(user);
             return "redirect:/registration_result?result=" + result;
         }
@@ -77,7 +67,7 @@ public class RegistrationController {
     }
 
     @RequestMapping("/point")
-    public String point(Model model){
+    public String point(Model model) {
         return "point";
     }
 }

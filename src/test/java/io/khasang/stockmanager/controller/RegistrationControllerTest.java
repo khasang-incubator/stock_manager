@@ -40,7 +40,7 @@ public class RegistrationControllerTest {
         userUnsaved.setLogin("jsmith");
         userUnsaved.setPassword("qwerty");
         userUnsaved.setEmail("jsmith@google.com");
-        userUnsaved.setRole("admin");
+        userUnsaved.setRole("ROLE_USER");
         wrongUser = new User();
         wrongUser.setFirstName("D");
         wrongUser.setLastName("S");
@@ -62,7 +62,7 @@ public class RegistrationControllerTest {
                 .param("login", "jsmith")
                 .param("password", "qwerty")
                 .param("email", "jsmith@google.com")
-                .param("role", "admin"))
+                .param("role", "ROLE_USER"))
                 .andExpect(redirectedUrl("/registration_result?result=successfully insert to table"));
         verify(mockUserDAO, atLeastOnce()).insertToTable(userUnsaved);
     }

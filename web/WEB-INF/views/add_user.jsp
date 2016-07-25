@@ -49,7 +49,9 @@
                         </tr>
                         </tr>
                         <tr>
-                            <td><form:select path="role" items="${roleList}"/></td>
+                            <td><form:select path="role">
+                                <form:option value="ROLE_USER">ROLE_USER</form:option>
+                            </form:select></td>
                             <td><form:errors path="role" cssClass="error"></form:errors></td>
                         </tr>
                         </tbody>
